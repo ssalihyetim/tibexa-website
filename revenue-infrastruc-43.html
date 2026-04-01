@@ -1,13 +1,14 @@
-<html lang="en" class="scroll-smooth bg-black"><head>
+<html lang="tr" class="scroll-smooth bg-black"><head>
 <script>
 try{if(window.parent&&window.parent!==window){window.parent.promotekit_referral="1fd2949a-d22c-431b-92bf-02d4ad04ee24";window.parent.document.cookie="promotekit_referral=1fd2949a-d22c-431b-92bf-02d4ad04ee24;path=/;domain=.aura.build;max-age=31536000"}}catch(e){}
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STRATA | Revenue Infrastructure</title>
+<title>Tibexa Global | B2B İhracat Altyapısı</title>
 <!-- Fonts: Geist Sans & Mono for Swiss Editorial Tech feel -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.1/index.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5.0.1/index.min.css">
 <!-- Icons -->
@@ -167,9 +168,9 @@ background: rgba(255, 255, 255, 0.03);
 .logo-loop-track {
     display: flex;
     align-items: center;
-    gap: 4.5rem;
+    gap: 5.5rem;
     width: max-content;
-    animation: logoScroll 22s linear infinite;
+    animation: logoScroll 26s linear infinite;
     will-change: transform;
 }
 .logo-loop-track:hover {
@@ -177,7 +178,7 @@ background: rgba(255, 255, 255, 0.03);
 }
 .logo-loop-item {
     flex-shrink: 0;
-    height: 2.75rem;
+    height: 3.5rem;
     width: auto;
     filter: brightness(0) invert(1);
     opacity: 0.5;
@@ -217,26 +218,27 @@ gtag('config', 'G-2M6V79H761');
     <nav class="fixed top-0 w-full z-50 glass-panel border-b-0 border-white/5 mix-blend-difference">
         <div class="w-full max-w-[100rem] mx-auto flex items-center justify-between px-6 lg:px-12 h-[5rem]">
             <!-- Bold Minimalist SVG Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="group-hover:rotate-90 transition-transform duration-500 ease-in-out">
-                    <rect x="2" y="2" width="20" height="20" stroke="white" stroke-width="2.5"></rect>
-                    <circle cx="12" cy="12" r="4" fill="white"></circle>
-                </svg>
-                <span class="font-sans font-semibold text-lg tracking-tight text-white uppercase">STRATA</span>
+            <a href="#" class="flex items-center group">
+                <img src="TibexaLogo/Tibexa Global/WhiteLogo_cropped.png" alt="Tibexa Global" class="h-10 object-contain" style="filter: invert(1);">
             </a>
-            
+
             <!-- Links -->
             <div class="hidden md:flex items-center justify-center gap-[3rem] text-[clamp(0.75rem,1vw,0.875rem)] font-medium text-textsec">
-                <a href="#platform" class="hover:text-white transition-colors">Platform</a>
-                <a href="#features" class="hover:text-white transition-colors">Architecture</a>
-                <a href="#metrics" class="hover:text-white transition-colors">Results</a>
-                <a href="#customers" class="hover:text-white transition-colors">Customers</a>
+                <a href="#platform" class="hover:text-white transition-colors" data-tr="Sistem" data-en="Platform">Sistem</a>
+                <a href="#features" class="hover:text-white transition-colors" data-tr="Metodoloji" data-en="Methodology">Metodoloji</a>
+                <a href="#metrics" class="hover:text-white transition-colors" data-tr="Sonuçlar" data-en="Results">Sonuçlar</a>
+                <a href="#customers" class="hover:text-white transition-colors" data-tr="Referanslar" data-en="References">Referanslar</a>
             </div>
-            
-            <!-- CTA -->
-            <div class="hidden md:block">
-                <a href="#contact" class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] uppercase tracking-tech text-white border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-all duration-300">
-                    Deploy Strata
+
+            <!-- Lang Toggle + CTA -->
+            <div class="hidden md:flex items-center gap-4">
+                <button id="lang-toggle" onclick="toggleLang()" class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] uppercase tracking-tech text-textsec hover:text-white transition-colors flex items-center gap-1.5">
+                    <span id="lang-label">TR</span>
+                    <span class="text-white/20">/</span>
+                    <span id="lang-label-alt" class="text-white/30">EN</span>
+                </button>
+                <a href="#contact" class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] uppercase tracking-tech text-white border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition-all duration-300" data-tr="Görüşme Planla" data-en="Book a Call">
+                    Görüşme Planla
                 </a>
             </div>
             <button class="md:hidden text-white">
@@ -263,21 +265,21 @@ gtag('config', 'G-2M6V79H761');
             <div class="w-full max-w-[100rem] mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pb-[10vh]">
                 
                 <div class="lg:col-span-10 flex flex-col items-start reveal-up">
-                    <div class="editorial-badge mb-[3rem]">SYSTEM_CORE // 1.0</div>
-                    <h1 class="text-h1 text-white mb-[2rem]">
-                        Scale without<br>
-                        <span class="text-textsec">the friction.</span>
+                    <div class="editorial-badge mb-[3rem]" data-tr="GTM_ALTYAPISI // 1.0" data-en="GTM_INFRASTRUCTURE // 1.0">GTM_ALTYAPISI // 1.0</div>
+                    <h1 class="text-h1 text-white mb-[2rem]" data-tr="Uluslararası alıcı bulmak<br><span class='text-textsec'>şans işi değil.</span>" data-en="Finding global buyers<br><span class='text-textsec'>is not luck.</span>">
+                        Uluslararası alıcı bulmak<br>
+                        <span class="text-textsec">şans işi değil.</span>
                     </h1>
                 </div>
 
                 <div class="lg:col-span-8 flex flex-col md:flex-row md:items-center gap-8 md:gap-16 reveal-up delay-1">
-                    <p class="text-body max-w-[32rem]">
-                        Strata is the deterministic revenue infrastructure for high-growth teams. We eliminate operational drag so your people can focus on what matters: aggressive, predictable expansion.
+                    <p class="text-body max-w-[32rem]" data-tr="ROI odaklı ihracatçı firmalar için outbound satış altyapısı kuruyoruz. Doğru pazarda, doğru alıcıya, doğru mesajla ulaşmanızı sistematize ediyoruz." data-en="We build outbound sales infrastructure for ROI-driven exporters. We systematize reaching the right buyer, in the right market, with the right message.">
+                        ROI odaklı ihracatçı firmalar için outbound satış altyapısı kuruyoruz. Doğru pazarda, doğru alıcıya, doğru mesajla ulaşmanızı sistematize ediyoruz.
                     </p>
                     <div class="flex-shrink-0">
-                        <button class="btn-editorial group" onclick="document.getElementById('platform').scrollIntoView()">
-                            <span class="relative z-10 flex items-center gap-3">
-                                Initialize System
+                        <button class="btn-editorial group" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                            <span class="relative z-10 flex items-center gap-3" data-tr="Strateji Görüşmesi" data-en="Strategy Call">
+                                Strateji Görüşmesi
                                 <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl icon-arrow"></iconify-icon>
                             </span>
                         </button>
@@ -287,9 +289,9 @@ gtag('config', 'G-2M6V79H761');
         </section>
 
         <!-- 02. SOCIAL PROOF / LOGO LOOP -->
-        <section class="border-y border-white/10 bg-surface/50 py-[3rem] relative z-10">
+        <section class="border-y border-white/10 bg-surface/50 py-[4rem] relative z-10">
             <div class="w-full max-w-[100rem] mx-auto px-6 lg:px-12">
-                <p class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-textsec uppercase tracking-tech mb-6 text-center">Trusted by market leaders</p>
+                <p class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-textsec uppercase tracking-tech mb-8 text-center" data-tr="Birlikte büyüdüğümüz markalar" data-en="Brands we grow with">Birlikte büyüdüğümüz markalar</p>
                 <div class="logo-loop-wrapper">
                     <div class="logo-loop-track">
                         <!-- Set 1 -->
@@ -322,21 +324,21 @@ gtag('config', 'G-2M6V79H761');
             <div class="w-full max-w-[100rem] mx-auto px-6 lg:px-12">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-[4rem] lg:gap-[8rem]">
                     <div class="lg:col-span-5 reveal-up">
-                        <div class="editorial-badge mb-[2rem]">THE_FRICTION</div>
-                        <h2 class="text-h3 text-white mb-6">Growth shouldn't break your systems. Or your people.</h2>
+                        <div class="editorial-badge mb-[2rem]" data-tr="SORUN_TANIMLAMASI" data-en="THE_PROBLEM">SORUN_TANIMLAMASI</div>
+                        <h2 class="text-h3 text-white mb-6" data-tr="İhracat büyümesi sisteminizi kırmamalı. Ekibinizi de." data-en="Export growth shouldn’t break your systems. Or your people.">İhracat büyümesi sisteminizi kırmamalı. Ekibinizi de.</h2>
                         <a href="#features" class="btn-outline mt-8">
-                            Explore the architecture
+                            <span data-tr="Metodolojimizi keşfedin" data-en="Explore our methodology">Metodolojimizi keşfedin</span>
                             <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
                         </a>
                     </div>
-                    
+
                     <div class="lg:col-span-7 flex flex-col gap-[3rem] reveal-up delay-1">
-                        <p class="text-body text-white">
-                            As organizations scale, legacy tools create compounding technical debt. Data silos form. Workflows fracture. Your best talent spends hours managing the software that was supposed to manage the work.
+                        <p class="text-body text-white" data-tr="Firmalar büyüdükçe ihracat süreçleri karmaşıklaşır. Alıcı listeleri dağınık kalır, satış döngüleri uzar, en iyi insanlarınız CRM doldurmakla vakit kaybeder. Sonuç: fırsat kaçar, pipeline kurur." data-en="As companies grow, export processes get complex. Buyer lists scatter, sales cycles stretch, your best people waste time filling CRMs. Result: opportunities slip, pipeline dries up.">
+                            Firmalar büyüdükçe ihracat süreçleri karmaşıklaşır. Alıcı listeleri dağınık kalır, satış döngüleri uzar, en iyi insanlarınız CRM doldurmakla vakit kaybeder. Sonuç: fırsat kaçar, pipeline kurur.
                         </p>
                         <div class="border-l border-white/20 pl-6 lg:pl-10">
-                            <p class="text-body">
-                                Strata replaces fragmented point solutions with a singular, deterministic architecture. It’s designed to be invisible when you don’t need it, and infinitely powerful when you do. <strong>Trust the system. Empower the human.</strong>
+                            <p class="text-body" data-tr="Tibexa dağınık satış araçlarını tek bir sisteme dönüştürür. Psikografik ICP analizi, outbound altyapısı ve ölçülebilir pipeline yönetimi. <strong>Sistem çalışsın. Ekibiniz satışa odaklansın.</strong>" data-en="Tibexa turns scattered sales tools into one system. Psychographic ICP analysis, outbound infrastructure, and measurable pipeline management. <strong>Let the system work. Let your team focus on selling.</strong>">
+                                Tibexa dağınık satış araçlarını tek bir sisteme dönüştürür. Psikografik ICP analizi, outbound altyapısı ve ölçülebilir pipeline yönetimi. <strong>Sistem çalışsın. Ekibiniz satışa odaklansın.</strong>
                             </p>
                         </div>
                     </div>
@@ -350,8 +352,8 @@ gtag('config', 'G-2M6V79H761');
 
             <div class="w-full max-w-[100rem] mx-auto px-6 lg:px-12 relative z-10">
                 <div class="flex flex-col items-center text-center mb-[6rem] reveal-up">
-                    <div class="editorial-badge mb-[2rem]">INTERFACE // CORE</div>
-                    <h2 class="text-h2 text-white max-w-[40rem]">Clarity at any velocity.</h2>
+                    <div class="editorial-badge mb-[2rem]" data-tr="SİSTEM // ARAYÜZ" data-en="SYSTEM // INTERFACE">SİSTEM // ARAYÜZ</div>
+                    <h2 class="text-h2 text-white max-w-[40rem]" data-tr="Her hızda netlik." data-en="Clarity at any velocity.">Her hızda netlik.</h2>
                 </div>
 
                 <!-- Faux UI Dashboard Graphic -->
@@ -373,7 +375,7 @@ gtag('config', 'G-2M6V79H761');
                             <!-- Sidebar / Metrics -->
                             <div class="space-y-6">
                                 <div>
-                                    <h3 class="text-sm font-normal text-textsec uppercase tracking-tech font-mono mb-3">Active Initiatives</h3>
+                                    <h3 class="text-sm font-normal text-textsec uppercase tracking-tech font-mono mb-3">Aktif Operasyonlar</h3>
                                     <div class="space-y-3">
                                         <div class="flex items-center justify-between p-3 rounded-lg border border-white/5 bg-surface/50">
                                             <div class="flex items-center gap-3">
@@ -381,8 +383,8 @@ gtag('config', 'G-2M6V79H761');
                                                     <i data-lucide="target" class="w-5 h-5"></i>
                                                 </div>
                                                 <div>
-                                                    <div class="text-base font-normal text-white">Retargeting V4</div>
-                                                    <div class="text-sm text-textsec">ROAS: 3.4x</div>
+                                                    <div class="text-base font-normal text-white">Almanya Outbound</div>
+                                                    <div class="text-sm text-textsec">Pipeline: 3.4x</div>
                                                 </div>
                                             </div>
                                             <div class="w-8 h-4 rounded-full relative cursor-pointer border border-transparent bg-white">
@@ -395,8 +397,8 @@ gtag('config', 'G-2M6V79H761');
                                                     <i data-lucide="mail" class="w-5 h-5"></i>
                                                 </div>
                                                 <div>
-                                                    <div class="text-base font-normal text-white">Email Sequence</div>
-                                                    <div class="text-sm text-textsec">Open rate: 42%</div>
+                                                    <div class="text-base font-normal text-white">Email Dizisi</div>
+                                                    <div class="text-sm text-textsec">Açılma: %42</div>
                                                 </div>
                                             </div>
                                             <div class="w-8 h-4 rounded-full relative cursor-pointer border bg-white/10 border-white/20">
@@ -409,8 +411,8 @@ gtag('config', 'G-2M6V79H761');
                                                     <i data-lucide="message-square" class="w-5 h-5"></i>
                                                 </div>
                                                 <div>
-                                                    <div class="text-base font-normal text-white">ICP Discovery</div>
-                                                    <div class="text-sm text-textsec">In progress</div>
+                                                    <div class="text-base font-normal text-white">ICP Analizi</div>
+                                                    <div class="text-sm text-textsec">Devam ediyor</div>
                                                 </div>
                                             </div>
                                             <div class="w-4 h-4 rounded-full border-2 animate-spin mr-1 border-white/20 border-t-white/60"></div>
@@ -421,8 +423,8 @@ gtag('config', 'G-2M6V79H761');
                                                     <i data-lucide="database" class="w-5 h-5"></i>
                                                 </div>
                                                 <div>
-                                                    <div class="text-base font-normal text-white">Data Lake Setup</div>
-                                                    <div class="text-sm text-textsec">Syncing nodes</div>
+                                                    <div class="text-base font-normal text-white">Pazar Haritalama</div>
+                                                    <div class="text-sm text-textsec">Veri senkronize</div>
                                                 </div>
                                             </div>
                                             <div class="w-8 h-1.5 rounded-full overflow-hidden mr-1 bg-white/10">
@@ -437,7 +439,7 @@ gtag('config', 'G-2M6V79H761');
                             <div class="md:col-span-2 border rounded-lg p-4 flex flex-col justify-between min-h-[280px] border-white/5 bg-surface/30">
                                 <div class="flex justify-between items-start mb-8">
                                     <div>
-                                        <div class="text-base mb-1 text-textsec font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] uppercase">Predicted Revenue</div>
+                                        <div class="text-base mb-1 text-textsec font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] uppercase">Tahmini Pipeline</div>
                                         <div id="revenue-counter" class="text-3xl font-normal tracking-tight text-white">$0<span class="text-sm text-textsec font-normal">.00</span></div>
                                     </div>
                                     <div class="flex items-center gap-1 text-sm px-2 py-1 rounded-md font-normal text-black bg-white">
@@ -475,11 +477,11 @@ gtag('config', 'G-2M6V79H761');
             <div class="w-full max-w-7xl mx-auto px-6 lg:px-12">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-[4rem] reveal-up gap-6">
                     <div>
-                        <div class="editorial-badge mb-[2rem]">CAPABILITIES</div>
-                        <h2 class="text-h3 text-white">Engineered for<br>leverage.</h2>
+                        <div class="editorial-badge mb-[2rem]" data-tr="METODOLOJİ" data-en="METHODOLOGY">METODOLOJİ</div>
+                        <h2 class="text-h3 text-white" data-tr="Sonuç için<br>tasarlandı." data-en="Engineered for<br>results.">Sonuç için<br>tasarlandı.</h2>
                     </div>
-                    <p class="text-body max-w-[24rem]">
-                        Complex operations reduced to elegant primitives.
+                    <p class="text-body max-w-[24rem]" data-tr="Karmaşık ihracat süreçlerini sistematik adımlara dönüştürüyoruz." data-en="We turn complex export processes into systematic steps.">
+                        Karmaşık ihracat süreçlerini sistematik adımlara dönüştürüyoruz.
                     </p>
                 </div>
 
@@ -493,8 +495,8 @@ gtag('config', 'G-2M6V79H761');
                             <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm group-hover:border-white/30 transition-colors duration-500 border-white/10 bg-surface">
                                 <i data-lucide="zap" class="w-6 h-6 text-white/70"></i>
                             </div>
-                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Unified Ledger</h3>
-                            <p class="text-base text-textsec">A single source of truth. Eradicate data discrepancies across your go-to-market stack natively.</p>
+                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Psikografik ICP Haritalama</h3>
+                            <p class="text-base text-textsec">Demografik değil, zihin yapısına göre alıcı profili. Doğru alıcıyı bulmak için doğru soruyu soruyoruz.</p>
                         </div>
 
                         <div class="md:w-7/12 w-full h-56 relative flex items-center justify-center z-10 border rounded-xl bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] to-transparent border-white/5 from-surface/80">
@@ -531,8 +533,8 @@ gtag('config', 'G-2M6V79H761');
                                 <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm border-white/10 bg-surface text-white/70">
                                     <i data-lucide="database" class="w-6 h-6"></i>
                                 </div>
-                                <h3 class="text-2xl font-normal tracking-tight mb-3 text-white">Deterministic Routing</h3>
-                                <p class="text-base text-textsec leading-relaxed mb-8">Rule-based automation that doesn't break at scale. Build robust pipelines and infrastructure to power your stack.</p>
+                                <h3 class="text-2xl font-normal tracking-tight mb-3 text-white">Outbound Altyapısı</h3>
+                                <p class="text-base text-textsec leading-relaxed mb-8">Ölçeklenebilir, kural tabanlı otomasyon. Email dizileri, LinkedIn erişimi ve çok kanallı satış pipeline'ı tek sistemde.</p>
                             </div>
 
                             <!-- Terminal Code Block -->
@@ -580,8 +582,8 @@ gtag('config', 'G-2M6V79H761');
                             <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm transition-colors duration-500 border-white/10 bg-surface">
                                 <i data-lucide="target" class="w-6 h-6 text-white/70"></i>
                             </div>
-                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Real-time Attribution</h3>
-                            <p class="text-base text-textsec">Connect top-of-funnel signals directly to recognized revenue. Stop guessing what drives growth.</p>
+                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Pipeline Takibi</h3>
+                            <p class="text-base text-textsec">Hangi kanal, hangi mesaj, hangi pazar sonuç üretiyor? Tahmin değil, veriyle karar verin.</p>
                         </div>
 
                         <div class="mt-12 h-32 w-full flex items-end gap-2 justify-between relative z-10 border-b pb-px border-white/10">
@@ -603,8 +605,8 @@ gtag('config', 'G-2M6V79H761');
                             <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm transition-colors duration-500 border-white/10 bg-surface">
                                 <i data-lucide="search" class="w-6 h-6 text-white/70"></i>
                             </div>
-                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Enterprise Grade</h3>
-                            <p class="text-base text-textsec">SOC2 Type II, GDPR, and HIPAA compliant out of the box. Security as a foundation, not a feature.</p>
+                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Pazar Önceliklendirme</h3>
+                            <p class="text-base text-textsec">Hangi ülkede, hangi segmentte fırsat var? Veri odaklı pazar seçimi ile kaynağınızı doğru yere yönlendirin.</p>
                         </div>
 
                         <div class="mt-12 flex flex-col gap-3 relative z-10">
@@ -648,8 +650,8 @@ gtag('config', 'G-2M6V79H761');
                             <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm transition-colors duration-500 border-white/10 bg-surface">
                                 <i data-lucide="git-branch" class="w-6 h-6 text-white/70"></i>
                             </div>
-                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Extensible API</h3>
-                            <p class="text-base text-textsec">Build custom integrations with our heavily documented, GraphQL-first architecture. Connect your entire customer journey.</p>
+                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">GTM Entegrasyonu</h3>
+                            <p class="text-base text-textsec">CRM, email, LinkedIn ve veri kaynaklarınız tek bir altyapıda. Tüm müşteri yolculuğunu uçtan uca yönetin.</p>
                         </div>
 
                         <div class="md:w-1/2 w-full flex justify-end relative z-10">
@@ -691,21 +693,21 @@ gtag('config', 'G-2M6V79H761');
                     <div class="text-[clamp(3.5rem,6vw,5rem)] font-semibold text-white tracking-tighter leading-none mb-4 flex items-baseline">
                         <span class="metric-counter" data-target="300">0</span><span class="text-4xl text-textsec ml-1">%</span>
                     </div>
-                    <span class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-white uppercase tracking-tech block">Average ROI (Year 1)</span>
+                    <span class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-white uppercase tracking-tech block" data-tr="Ortalama Pipeline Büyümesi" data-en="Average Pipeline Growth">Ortalama Pipeline Büyümesi</span>
                 </div>
 
                 <div class="flex flex-col items-center pt-8 md:pt-0 reveal-up delay-1">
                     <div class="text-[clamp(3.5rem,6vw,5rem)] font-semibold text-white tracking-tighter leading-none mb-4 flex items-baseline">
-                        <span class="metric-counter" data-target="45">0</span><span class="text-4xl text-textsec ml-2">hrs</span>
+                        <span class="metric-counter" data-target="6">0</span><span class="text-4xl text-textsec ml-2"></span>
                     </div>
-                    <span class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-textsec uppercase tracking-tech block">Saved per week / team</span>
+                    <span class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-textsec uppercase tracking-tech block" data-tr="Ortalama Satış Döngüsü (hafta)" data-en="Avg. Sales Cycle (weeks)">Ortalama Satış Döngüsü (hafta)</span>
                 </div>
 
                 <div class="flex flex-col items-center pt-8 md:pt-0 reveal-up delay-2">
                     <div class="text-[clamp(3.5rem,6vw,5rem)] font-semibold text-white tracking-tighter leading-none mb-4 flex items-baseline">
-                        <span class="metric-counter" data-target="99.99" data-decimals="2">0</span><span class="text-4xl text-textsec ml-1">%</span>
+                        <span class="metric-counter" data-target="92">0</span><span class="text-4xl text-textsec ml-1">%</span>
                     </div>
-                    <span class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-textsec uppercase tracking-tech block">System Uptime SLA</span>
+                    <span class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-textsec uppercase tracking-tech block" data-tr="Müşteri Yenileme Oranı" data-en="Client Retention Rate">Müşteri Yenileme Oranı</span>
                 </div>
 
             </div>
@@ -716,11 +718,11 @@ gtag('config', 'G-2M6V79H761');
             <div class="w-full max-w-7xl mx-auto px-6 lg:px-12">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-[4rem] reveal-up gap-6">
                     <div>
-                        <div class="editorial-badge mb-[2rem]">THE_TEAM</div>
-                        <h2 class="text-h3 text-white">The people behind<br>the infrastructure.</h2>
+                        <div class="editorial-badge mb-[2rem]" data-tr="EKİP" data-en="THE_TEAM">EKİP</div>
+                        <h2 class="text-h3 text-white" data-tr="Altyapının arkasındaki<br>insanlar." data-en="The people behind<br>the infrastructure.">Altyapının arkasındaki<br>insanlar.</h2>
                     </div>
-                    <p class="text-body max-w-[24rem]">
-                        A tight-knit collective of engineers, strategists, and operators.
+                    <p class="text-body max-w-[24rem]" data-tr="Mühendisler, stratejistler ve operatörlerden oluşan sıkı bir ekip." data-en="A tight-knit collective of engineers, strategists, and operators.">
+                        Mühendisler, stratejistler ve operatörlerden oluşan sıkı bir ekip.
                     </p>
                 </div>
 
@@ -876,12 +878,12 @@ gtag('config', 'G-2M6V79H761');
 
                     <div class="flex flex-col reveal-up delay-1">
                         <iconify-icon icon="solar:quote-left-linear" class="text-4xl text-white/20 mb-8"></iconify-icon>
-                        <h3 class="text-h3 text-white mb-8 font-medium italic">
-                            "Before Strata, we were throwing headcount at operational problems. Now, the system handles the complexity, and our team focuses purely on closing enterprise revenue. It completely changed our trajectory."
+                        <h3 class="text-h3 text-white mb-8 font-medium italic" data-tr="&quot;Tibexa'dan önce Almanya pazarında 18 aydır sonuç alamıyorduk. Sistemi kurduktan 5 ay sonra 3 yeni kurumsal hesap açtık. Pipeline değerimiz $2.4M'dan $8.1M'a çıktı.&quot;" data-en="&quot;Before Tibexa, we had been struggling in the German market for 18 months. 5 months after implementing the system, we opened 3 new enterprise accounts. Our pipeline value went from $2.4M to $8.1M.&quot;">
+                            "Tibexa'dan önce Almanya pazarında 18 aydır sonuç alamıyorduk. Sistemi kurduktan 5 ay sonra 3 yeni kurumsal hesap açtık. Pipeline değerimiz $2.4M'dan $8.1M'a çıktı."
                         </h3>
                         <div>
-                            <span class="block font-sans font-semibold text-lg text-white mb-1 tracking-tight">Sarah Jenkins</span>
-                            <span class="block font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-textsec uppercase tracking-tech">VP Revenue Operations, Nexus</span>
+                            <span class="block font-sans font-semibold text-lg text-white mb-1 tracking-tight">Murat Erkan</span>
+                            <span class="block font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-textsec uppercase tracking-tech" data-tr="İhracat Direktörü, Ertanlar Makina" data-en="Export Director, Ertanlar Makina">İhracat Direktörü, Ertanlar Makina</span>
                         </div>
                     </div>
 
@@ -895,24 +897,24 @@ gtag('config', 'G-2M6V79H761');
             <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 32px 32px;"></div>
 
             <div class="w-full max-w-[100rem] mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-center text-center reveal-up">
-                <div class="editorial-badge mb-[2rem] text-black/50 before:bg-black/50">INITIATE</div>
-                <h2 class="text-h1 text-black mb-6 max-w-[50rem]">
-                    Ready to scale?
+                <div class="editorial-badge mb-[2rem] text-black/50 before:bg-black/50" data-tr="BAŞLAYALIM" data-en="LET'S START">BAŞLAYALIM</div>
+                <h2 class="text-h1 text-black mb-6 max-w-[50rem]" data-tr="Büyümeye hazır mısınız?" data-en="Ready to grow?">
+                    Büyümeye hazır mısınız?
                 </h2>
-                <p class="text-body text-black/70 mb-[4rem] max-w-[30rem]">
-                    Join the category leaders building on deterministic infrastructure. Get full access to the Strata platform.
+                <p class="text-body text-black/70 mb-[4rem] max-w-[30rem]" data-tr="15 dakikalık strateji görüşmesinde ihracat hedefinize nasıl ulaşabileceğinizi konuşalım." data-en="Let's discuss how to reach your export goals in a 15-minute strategy call.">
+                    15 dakikalık strateji görüşmesinde ihracat hedefinize nasıl ulaşabileceğinizi konuşalım.
                 </p>
-                
+
                 <div class="flex flex-col sm:flex-row items-center gap-6 w-full max-w-[32rem]">
                     <div class="relative w-full flex-grow">
-                        <input type="email" placeholder="work email address" class="w-full bg-black/5 border-b border-black/20 px-4 py-4 font-mono text-sm text-black placeholder:text-black/40 focus:outline-none focus:border-black transition-colors">
+                        <input type="email" placeholder="iş e-posta adresiniz" data-tr="iş e-posta adresiniz" data-en="work email address" class="w-full bg-black/5 border-b border-black/20 px-4 py-4 font-mono text-sm text-black placeholder:text-black/40 focus:outline-none focus:border-black transition-colors">
                     </div>
                     <button class="bg-black text-white px-8 py-4 font-sans font-semibold text-sm whitespace-nowrap hover:bg-black/80 transition-colors w-full sm:w-auto flex items-center justify-center gap-2 group">
-                        Request Access
+                        <span data-tr="Görüşme Planla" data-en="Book a Call">Görüşme Planla</span>
                         <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
                     </button>
                 </div>
-                <p class="mt-6 font-mono text-xs text-black/40 uppercase tracking-tech">No credit card required. SOC2 Compliant.</p>
+                <p class="mt-6 font-mono text-xs text-black/40 uppercase tracking-tech" data-tr="Ücretsiz strateji görüşmesi. Taahhüt yok." data-en="Free strategy call. No commitment.">Ücretsiz strateji görüşmesi. Taahhüt yok.</p>
             </div>
         </section>
 
@@ -923,48 +925,76 @@ gtag('config', 'G-2M6V79H761');
         <div class="max-w-[100rem] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-12 gap-[4rem] md:gap-[2rem]">
             
             <div class="col-span-1 md:col-span-4 flex flex-col items-start gap-4">
-                <div class="flex items-center gap-3">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2" y="2" width="20" height="20" stroke="white" stroke-width="2"></rect>
-                        <circle cx="12" cy="12" r="4" fill="white"></circle>
-                    </svg>
-                    <span class="font-sans font-semibold text-base tracking-tight text-white uppercase">STRATA</span>
+                <div class="flex items-center">
+                    <img src="TibexaLogo/Tibexa Global/WhiteLogo.png" alt="Tibexa Global" class="h-10 object-contain" style="filter: invert(1);">
                 </div>
-                <p class="mt-2">REVENUE_INFRASTRUCTURE</p>
+                <p class="mt-2" data-tr="B2B_İHRACAT_ALTYAPISI" data-en="B2B_EXPORT_INFRASTRUCTURE">B2B_İHRACAT_ALTYAPISI</p>
             </div>
 
             <div class="col-span-1 md:col-span-4 flex justify-between md:justify-around">
                 <div class="flex flex-col gap-4">
-                    <span class="text-white mb-2">Platform</span>
-                    <a href="#" class="hover:text-white transition-colors">Features</a>
-                    <a href="#" class="hover:text-white transition-colors">Integrations</a>
-                    <a href="#" class="hover:text-white transition-colors">Security</a>
+                    <span class="text-white mb-2" data-tr="Hizmetler" data-en="Services">Hizmetler</span>
+                    <a href="#features" class="hover:text-white transition-colors" data-tr="Metodoloji" data-en="Methodology">Metodoloji</a>
+                    <a href="#metrics" class="hover:text-white transition-colors" data-tr="Sonuçlar" data-en="Results">Sonuçlar</a>
+                    <a href="#team" class="hover:text-white transition-colors" data-tr="Ekip" data-en="Team">Ekip</a>
                 </div>
                 <div class="flex flex-col gap-4">
-                    <span class="text-white mb-2">Company</span>
-                    <a href="#" class="hover:text-white transition-colors">About</a>
-                    <a href="#" class="hover:text-white transition-colors">Careers</a>
-                    <a href="#" class="hover:text-white transition-colors">Blog</a>
+                    <span class="text-white mb-2" data-tr="Şirket" data-en="Company">Şirket</span>
+                    <a href="#" class="hover:text-white transition-colors" data-tr="Hakkımızda" data-en="About">Hakkımızda</a>
+                    <a href="#" class="hover:text-white transition-colors" data-tr="İçgörüler" data-en="Insights">İçgörüler</a>
+                    <a href="#contact" class="hover:text-white transition-colors" data-tr="İletişim" data-en="Contact">İletişim</a>
                 </div>
             </div>
 
             <div class="col-span-1 md:col-span-4 flex flex-col md:items-end gap-4">
                 <div class="flex gap-4 text-xl text-white mb-4">
-                    <a href="#" class="hover:text-white/60 transition-colors"><iconify-icon icon="solar:twit-linear"></iconify-icon></a>
+                    <a href="#" class="hover:text-white/60 transition-colors"><iconify-icon icon="mdi:linkedin"></iconify-icon></a>
                     <a href="#" class="hover:text-white/60 transition-colors"><iconify-icon icon="solar:link-linear"></iconify-icon></a>
                 </div>
-                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                <span class="mt-4 text-white/30">© 2025 STRATA INC.</span>
+                <a href="#" class="hover:text-white transition-colors" data-tr="Gizlilik Politikası" data-en="Privacy Policy">Gizlilik Politikası</a>
+                <a href="#" class="hover:text-white transition-colors" data-tr="Kullanım Koşulları" data-en="Terms of Service">Kullanım Koşulları</a>
+                <span class="mt-4 text-white/30">© 2025 TIBEXA GLOBAL</span>
             </div>
 
         </div>
     </footer>
 
+    <!-- LANGUAGE TOGGLE -->
+    <script>
+        let currentLang = 'tr';
+        function toggleLang() {
+            currentLang = currentLang === 'tr' ? 'en' : 'tr';
+            document.documentElement.lang = currentLang;
+
+            // Update toggle labels
+            const label = document.getElementById('lang-label');
+            const labelAlt = document.getElementById('lang-label-alt');
+            label.textContent = currentLang.toUpperCase();
+            labelAlt.textContent = (currentLang === 'tr' ? 'EN' : 'TR');
+
+            // Update all elements with data-tr / data-en
+            document.querySelectorAll('[data-tr][data-en]').forEach(el => {
+                const text = el.getAttribute('data-' + currentLang);
+                if (el.tagName === 'INPUT') {
+                    el.placeholder = text;
+                } else if (el.children.length > 0 && el.querySelector('iconify-icon')) {
+                    // Preserve icon elements inside buttons/spans
+                    const icon = el.querySelector('iconify-icon');
+                    if (icon) {
+                        const iconHtml = icon.outerHTML;
+                        el.innerHTML = text + ' ' + iconHtml;
+                    }
+                } else {
+                    el.innerHTML = text;
+                }
+            });
+        }
+    </script>
+
     <!-- INTERACTIVITY & WEBGL SCRIPT -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             // 1. ASTONISHING WEBGL DOTTED GLOW/RIPPLE SHADER
             const canvas = document.getElementById('webgl-hero');
             if (canvas) {
