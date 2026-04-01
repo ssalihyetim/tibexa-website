@@ -4,3 +4,6 @@
 [2026-04-01T22:23:16.884Z] [warning] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
 [2026-04-01T22:27:56.860Z] [warning] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
 [2026-04-01T22:31:20.188Z] [warning] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
+[2026-04-01T22:34:40.198Z] [error] Failed to load resource: the server responded with a status of 403 ()
+[2026-04-01T22:34:40.237Z] [warning] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
+[2026-04-01T22:34:40.304Z] [error] Failed to load resource: the server responded with a status of 403 ()
