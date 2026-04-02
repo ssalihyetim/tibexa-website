@@ -1,0 +1,254 @@
+<html lang="tr" class="scroll-smooth bg-black"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tibexa Global | İğrek Makina Vaka Çalışması</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.1/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5.0.1/index.min.css">
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        bg: '#000000',
+        surface: '#0A0A0A',
+        surface2: '#141414',
+        textmain: '#FFFFFF',
+        textsec: '#A1A1AA',
+        borderline: '#27272A',
+      },
+      fontFamily: {
+        sans: ['"Geist Sans"', 'sans-serif'],
+        mono: ['"Geist Mono"', 'monospace']
+      },
+      letterSpacing: {
+        tightest: '-0.04em',
+        tech: '0.08em'
+      }
+    }
+  }
+}
+</script>
+<style>
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+::selection { background: #FFFFFF; color: #000000; }
+.text-h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 500; letter-spacing: -0.04em; line-height: 0.95; }
+.text-h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; }
+.text-h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+.text-body { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.7; font-weight: 400; color: #A1A1AA; }
+.editorial-badge {
+  font-family: 'Geist Mono', monospace;
+  font-size: clamp(0.65rem, 0.8vw, 0.75rem);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #A1A1AA;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.editorial-badge::before {
+  content: '';
+  display: block;
+  width: 1.5rem;
+  height: 1px;
+  background: #A1A1AA;
+}
+.metric-card {
+  background: #0A0A0A;
+  border: 1px solid #27272A;
+  padding: 1.5rem;
+}
+.btn-editorial {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2.5rem;
+  background: #FFFFFF;
+  color: #000000;
+  font-family: "Geist Sans", sans-serif;
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  font-weight: 500;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0 100%);
+  overflow: hidden;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+.btn-editorial::before {
+  content: '';
+  position: absolute;
+  top: 100%; left: 0; width: 100%; height: 100%;
+  background: #141414;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+.btn-editorial:hover { color: #FFFFFF; }
+.btn-editorial:hover::before { transform: translateY(-100%); }
+</style>
+</head>
+<body class="bg-bg text-textmain font-sans">
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 border-b border-borderline bg-bg/80 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="revenue-infrastruc-43.html">
+      <img src="TibexaLogo/tibexa-global/WhiteLogo_cropped.png" alt="Tibexa Global" class="h-7" style="filter:invert(1)">
+    </a>
+    <a href="revenue-infrastruc-43.html" class="text-textsec hover:text-white text-sm font-medium transition-colors flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      Ana Sayfa
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-32 pb-20 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-center gap-8 mb-12">
+      <div class="w-20 h-20 rounded-2xl bg-surface2 border border-borderline flex items-center justify-center p-3">
+        <img src="Logo/igrek_clean.png" alt="İğrek Makina" class="w-full h-full object-contain">
+      </div>
+      <div>
+        <span class="editorial-badge mb-4">Ağır Sanayi / Döküm</span>
+        <h1 class="text-h1 text-white mt-3">İrlanda ve ABD'de <span class="text-textsec">Distribütör Adayları</span></h1>
+      </div>
+    </div>
+    <p class="text-body max-w-2xl text-lg">İğrek Makina ile yüksek tonajlı döküm sektöründe AI destekli segmentasyon ve ilk haftada fabrika ziyareti.</p>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="px-6 pb-16">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="metric-card">
+      <p class="font-mono text-textsec text-xs uppercase tracking-tech mb-2">Tespit Edilen</p>
+      <p class="text-3xl font-medium text-white">9.000+</p>
+      <p class="text-textsec text-sm mt-1">firma</p>
+    </div>
+    <div class="metric-card">
+      <p class="font-mono text-textsec text-xs uppercase tracking-tech mb-2">AI Filtreleme</p>
+      <p class="text-3xl font-medium text-white">1.800+</p>
+      <p class="text-textsec text-sm mt-1">ideal hedef</p>
+    </div>
+    <div class="metric-card">
+      <p class="font-mono text-textsec text-xs uppercase tracking-tech mb-2">Distribütör Adayları</p>
+      <p class="text-3xl font-medium text-white">İrlanda + ABD</p>
+      <p class="text-textsec text-sm mt-1">2 ülkede bulundu</p>
+    </div>
+    <div class="metric-card">
+      <p class="font-mono text-textsec text-xs uppercase tracking-tech mb-2">Fabrika Ziyareti</p>
+      <p class="text-3xl font-medium text-white">2 Ülke</p>
+      <p class="text-textsec text-sm mt-1">gerçekleştirildi</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="px-6 pb-20">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
+
+    <div class="lg:w-2/3 space-y-12">
+
+      <div>
+        <h2 class="text-h3 text-white mb-4">Problem ve Hedef</h2>
+        <p class="text-body">İğrek Makina yüksek tonajlı döküm üretimi yapıyor. Mevcut müşteri portföyü ağırlıklı olarak otomotiv sanayinden oluşuyordu. Yeni pazarlara açılmak ve ihracat hacmini artırmak için kalıpçı firmalar ve stamping firmaları hedef kitle olarak belirlendi.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">Altyapı ve Veri Toplama</h2>
+        <p class="text-body">20 domain alınarak email altyapısı kuruldu. Küçük parça işleyen firmalar elendi - yüksek tonajlı döküme uygun olmayan hedefler baştan çıkarıldı. Kendi yazılım ve global database ile Avrupa ve Kuzey Amerika'da 9.000+ firma tespit edildi.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">AI ile Segmentasyon</h2>
+        <p class="text-body">AI ile detaylı segmentasyon yapıldı. Firmalar dökümhaneli, plastik, BIW (Body in White - ideal segment) ve ağır makine kategorilerine ayrıldı. Her firma 0-100 arasında skorlandı ve 1.800+ ideal firma belirlendi.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">Rekabet Avantajları</h2>
+        <p class="text-body">Rakiplerden farklar net şekilde mesajlara yansıtıldı: hızlı tedarik zinciri, hatasız üretim kalitesi ve yüksek tek parça döküm kapasitesi. Bu üç avantaj, özellikle acil projeler için güçlü bir değer önerisi oluşturdu.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">İlk Haftada Fabrika Ziyareti</h2>
+        <p class="text-body">Kampanyanın ilk haftasında İrlanda'dan bir pres firması doğrudan fabrika ziyaretine geldi. Bu, outbound kampanyanın ne kadar doğru hedeflendiğinin kanıtıydı. BIW segmentinin sınırlı sayıda olması nedeniyle ağır sanayi eklendi ve listeye 5.300 yeni firma dahil edildi.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">Distribütör Adayları ve Fabrika Ziyaretleri</h2>
+        <p class="text-body">İrlanda ve Amerika'da distribütör adayları bulundu. Her iki ülkede de fabrika ziyaretleri gerçekleştirildi. Kampanya aktif olarak devam ediyor.</p>
+      </div>
+
+      <div class="border-l-2 border-white pl-8 py-4 mt-12">
+        <p class="text-white text-xl font-medium italic leading-relaxed">"İlk haftada İrlanda'dan bir firma fabrika ziyaretine geldi. Bu hız bizi şaşırttı."</p>
+        <p class="text-textsec mt-4 font-mono text-sm">— İğrek Makina Yönetimi</p>
+      </div>
+
+    </div>
+
+    <div class="lg:w-1/3">
+      <div class="sticky top-24 space-y-6">
+        <div class="bg-surface p-6 border border-borderline">
+          <h3 class="font-mono text-xs uppercase tracking-tech text-textsec mb-6">Proje Detayları</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Firma</span>
+              <span class="text-white text-sm font-medium">İğrek Makina</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Sektör</span>
+              <span class="text-white text-sm font-medium">Ağır Sanayi / Döküm</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Hedef Pazarlar</span>
+              <span class="text-white text-sm font-medium">Avrupa + Kuzey Amerika</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Domain Sayısı</span>
+              <span class="text-white text-sm font-medium">20</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Toplam Firma</span>
+              <span class="text-white text-sm font-medium">9.000+ → 1.800 ideal</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Segmentler</span>
+              <span class="text-white text-sm font-medium">BIW, Döküm, Ağır Makine</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-textsec text-sm">Genişleme</span>
+              <span class="text-white text-sm font-medium">+5.300 firma</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="px-6 py-20 border-t border-borderline">
+  <div class="max-w-7xl mx-auto text-center">
+    <h2 class="text-h2 text-white mb-6">Sizin de ihracat altyapınızı kuralım</h2>
+    <p class="text-body mb-10 max-w-xl mx-auto">İğrek Makina gibi ağır sanayide global müşterilere ulaşmak ister misiniz?</p>
+    <a href="revenue-infrastruc-43.html#contact" class="btn-editorial gap-2">
+      İletişime Geç
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-borderline py-8 px-6">
+  <div class="max-w-7xl mx-auto text-center">
+    <p class="text-textsec text-sm font-mono">&copy; 2026 Tibexa Global. Tüm hakları saklıdır.</p>
+  </div>
+</footer>
+
+</body></html>

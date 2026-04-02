@@ -1,0 +1,250 @@
+<html lang="tr" class="scroll-smooth bg-black"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tibexa Global | Fema Bant Vaka Çalışması</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.1/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5.0.1/index.min.css">
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        bg: '#000000',
+        surface: '#0A0A0A',
+        surface2: '#141414',
+        textmain: '#FFFFFF',
+        textsec: '#A1A1AA',
+        borderline: '#27272A',
+      },
+      fontFamily: {
+        sans: ['"Geist Sans"', 'sans-serif'],
+        mono: ['"Geist Mono"', 'monospace']
+      },
+      letterSpacing: {
+        tightest: '-0.04em',
+        tech: '0.08em'
+      }
+    }
+  }
+}
+</script>
+<style>
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+::selection { background: #FFFFFF; color: #000000; }
+.text-h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 500; letter-spacing: -0.04em; line-height: 0.95; }
+.text-h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; }
+.text-h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+.text-body { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.7; font-weight: 400; color: #A1A1AA; }
+.editorial-badge {
+  font-family: 'Geist Mono', monospace;
+  font-size: clamp(0.65rem, 0.8vw, 0.75rem);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #A1A1AA;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.editorial-badge::before {
+  content: '';
+  display: block;
+  width: 1.5rem;
+  height: 1px;
+  background: #A1A1AA;
+}
+.metric-card {
+  background: #0A0A0A;
+  border: 1px solid #27272A;
+  padding: 1.5rem;
+}
+.btn-editorial {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2.5rem;
+  background: #FFFFFF;
+  color: #000000;
+  font-family: "Geist Sans", sans-serif;
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  font-weight: 500;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0 100%);
+  overflow: hidden;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+.btn-editorial::before {
+  content: '';
+  position: absolute;
+  top: 100%; left: 0; width: 100%; height: 100%;
+  background: #141414;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+.btn-editorial:hover { color: #FFFFFF; }
+.btn-editorial:hover::before { transform: translateY(-100%); }
+</style>
+</head>
+<body class="bg-bg text-textmain font-sans">
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 border-b border-borderline bg-bg/80 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="revenue-infrastruc-43.html">
+      <img src="TibexaLogo/tibexa-global/WhiteLogo_cropped.png" alt="Tibexa Global" class="h-7" style="filter:invert(1)">
+    </a>
+    <a href="revenue-infrastruc-43.html" class="text-textsec hover:text-white text-sm font-medium transition-colors flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      Ana Sayfa
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-32 pb-20 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-center gap-8 mb-12">
+      <div class="w-20 h-20 rounded-2xl bg-surface2 border border-borderline flex items-center justify-center p-3">
+        <img src="Logo/fema.svg" alt="Fema Bant" class="w-full h-full object-contain">
+      </div>
+      <div>
+        <span class="editorial-badge mb-4">Endüstriyel / Bant</span>
+        <h1 class="text-h1 text-white mt-3">2 Ayda 37 <span class="text-textsec">Görüşme</span></h1>
+      </div>
+    </div>
+    <p class="text-body max-w-2xl text-lg">Fema Bant ile ihracata ilk adım: AI destekli firma filtreleme, sektör segmentasyonu ve ilk ayda 32 pozitif dönüş.</p>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="px-6 pb-16">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="metric-card">
+      <p class="font-mono text-textsec text-xs uppercase tracking-tech mb-2">Tespit Edilen</p>
+      <p class="text-3xl font-medium text-white">12.000</p>
+      <p class="text-textsec text-sm mt-1">firma (Avrupa)</p>
+    </div>
+    <div class="metric-card">
+      <p class="font-mono text-textsec text-xs uppercase tracking-tech mb-2">Filtreleme</p>
+      <p class="text-3xl font-medium text-white">8.000</p>
+      <p class="text-textsec text-sm mt-1">AI ile elenmiş</p>
+    </div>
+    <div class="metric-card">
+      <p class="font-mono text-textsec text-xs uppercase tracking-tech mb-2">Görüşme</p>
+      <p class="text-3xl font-medium text-white">37</p>
+      <p class="text-textsec text-sm mt-1">2 ayda toplam</p>
+    </div>
+    <div class="metric-card">
+      <p class="font-mono text-textsec text-xs uppercase tracking-tech mb-2">Sonuç</p>
+      <p class="text-3xl font-medium text-white">Gerçekleşen</p>
+      <p class="text-textsec text-sm mt-1">Satış</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="px-6 pb-20">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
+
+    <div class="lg:w-2/3 space-y-12">
+
+      <div>
+        <h2 class="text-h3 text-white mb-4">Ürün Seçimi ve Hedef Kitle</h2>
+        <p class="text-body">Fema Bant'ın çeşitli bant ürünleri arasından maskeleme bandı (masking tape) seçildi. Auto detailing supplies toptancıları, boya satıcıları ve hırdavat zincirleri hedef kitle olarak belirlendi. Sektörün ihtiyaçlarına göre mesaj stratejisi oluşturuldu.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">AI ile Firma Tespiti ve Filtreleme</h2>
+        <p class="text-body">Kendi yazılımlarıyla Avrupa genelinde 12.000 firma tespit edildi. AI ile derinlemesine filtreleme yapıldı: toptancı/perakendeci ayrımı belirlendi, her firma 0-100 arasında skorlandı ve 50 altında kalan firmalar elendi. Sonuçta 8.000 yüksek kaliteli hedef firma kaldı.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">Kişiselleştirilmiş Yaklaşım</h2>
+        <p class="text-body">Her firmaya sektörüne özel mesaj hazırlandı. Auto detailing firmalarına kalite ve performans vurgusu yapılırken, hırdavat zincirlerine fiyat avantajı öne çıkarıldı. Numune gönderme teklifi her mesajın ayrılmaz parçasıydı.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">İlk Ay Sonuçları</h2>
+        <p class="text-body">Aylık 15 pozitif dönüş hedefiyle ilk ayda 850 firmaya ulaşıldı ve 32 pozitif dönüş elde edildi - hedefin 2 katından fazla. İhracata yeni başlayan firma için İngilizce web sitesi ve katalog da oluşturuldu. Yurtiçi vadeli satışa karşı yurtdışı nakit satış avantajı somut bir motivasyon kaynağı oldu.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">Sadece Başlangıç</h2>
+        <p class="text-body">Fema Bant'ın 10'dan fazla bant tipi var. Şu ana kadar sadece maskeleme bandı için çalışıldı. Diğer ürün grupları için aynı altyapı hazır ve bekliyor.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">Somut Sonuçlar</h2>
+        <p class="text-body">2 ayda toplam 37 görüşme gerçekleştirildi ve ilk satışlar yapıldı. Fema Bant ihracatta somut sonuçlar almaya başladı.</p>
+      </div>
+
+      <div class="border-l-2 border-white pl-8 py-4 mt-12">
+        <p class="text-white text-xl font-medium italic leading-relaxed">"İhracata başlamak bu kadar sistematik olabilir mi diye soruyorduk. İlk ayda 32 dönüş gelince cevabı aldık."</p>
+        <p class="text-textsec mt-4 font-mono text-sm">— Mehmet Bey, Firma Sahibi</p>
+      </div>
+
+    </div>
+
+    <div class="lg:w-1/3">
+      <div class="sticky top-24 space-y-6">
+        <div class="bg-surface p-6 border border-borderline">
+          <h3 class="font-mono text-xs uppercase tracking-tech text-textsec mb-6">Proje Detayları</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Firma</span>
+              <span class="text-white text-sm font-medium">Fema Bant</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Sektör</span>
+              <span class="text-white text-sm font-medium">Endüstriyel / Bant</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Ürün</span>
+              <span class="text-white text-sm font-medium">Maskeleme Bandı</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Hedef Pazar</span>
+              <span class="text-white text-sm font-medium">Avrupa</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Toplam Firma</span>
+              <span class="text-white text-sm font-medium">12.000 → 8.000</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-textsec text-sm">Aylık Hedef</span>
+              <span class="text-white text-sm font-medium">15 (32 elde edildi)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="px-6 py-20 border-t border-borderline">
+  <div class="max-w-7xl mx-auto text-center">
+    <h2 class="text-h2 text-white mb-6">Sizin de ihracat altyapınızı kuralım</h2>
+    <p class="text-body mb-10 max-w-xl mx-auto">Fema Bant gibi ihracata sistematik bir başlangıç yapmak ister misiniz?</p>
+    <a href="revenue-infrastruc-43.html#contact" class="btn-editorial gap-2">
+      İletişime Geç
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-borderline py-8 px-6">
+  <div class="max-w-7xl mx-auto text-center">
+    <p class="text-textsec text-sm font-mono">&copy; 2026 Tibexa Global. Tüm hakları saklıdır.</p>
+  </div>
+</footer>
+
+</body></html>

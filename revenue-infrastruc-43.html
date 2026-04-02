@@ -194,6 +194,55 @@ background: rgba(255, 255, 255, 0.03);
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
+/* SECTOR FLIP CARDS - Scroll-driven horizontal */
+.sector-scroll-wrapper {
+    height: 250vh; /* extra scroll space for the horizontal movement */
+    position: relative;
+}
+.sector-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+.sector-track {
+    display: flex;
+    gap: 1.25rem;
+    transition: none;
+    will-change: transform;
+}
+.sector-card {
+    perspective: 1000px;
+    flex-shrink: 0;
+    width: 240px;
+    height: 320px;
+}
+.sector-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+}
+.sector-card:hover .sector-card-inner {
+    transform: rotateY(180deg);
+}
+.sector-card-front,
+.sector-card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+.sector-card-back {
+    transform: rotateY(180deg);
+}
+
 /* GRID BORDERS (Swiss style) */
 .swiss-grid {
 display: grid;
@@ -224,10 +273,9 @@ gtag('config', 'G-2M6V79H761');
 
             <!-- Links -->
             <div class="hidden md:flex items-center justify-center gap-[3rem] text-[clamp(0.75rem,1vw,0.875rem)] font-medium text-textsec">
-                <a href="#platform" class="hover:text-white transition-colors" data-tr="Sistem" data-en="Platform">Sistem</a>
                 <a href="#features" class="hover:text-white transition-colors" data-tr="Metodoloji" data-en="Methodology">Metodoloji</a>
-                <a href="#metrics" class="hover:text-white transition-colors" data-tr="Sonuçlar" data-en="Results">Sonuçlar</a>
-                <a href="#customers" class="hover:text-white transition-colors" data-tr="Referanslar" data-en="References">Referanslar</a>
+                <a href="#customers" class="hover:text-white transition-colors" data-tr="Sonuçlar" data-en="Results">Sonuçlar</a>
+                <a href="#team" class="hover:text-white transition-colors" data-tr="Ekip" data-en="Team">Ekip</a>
             </div>
 
             <!-- Lang Toggle + CTA -->
@@ -276,13 +324,17 @@ gtag('config', 'G-2M6V79H761');
                     <p class="text-body max-w-[32rem]" data-tr="ROI odaklı ihracatçı firmalar için outbound satış altyapısı kuruyoruz. Doğru pazarda, doğru alıcıya, doğru mesajla ulaşmanızı sistematize ediyoruz." data-en="We build outbound sales infrastructure for ROI-driven exporters. We systematize reaching the right buyer, in the right market, with the right message.">
                         ROI odaklı ihracatçı firmalar için outbound satış altyapısı kuruyoruz. Doğru pazarda, doğru alıcıya, doğru mesajla ulaşmanızı sistematize ediyoruz.
                     </p>
-                    <div class="flex-shrink-0">
+                    <div class="flex-shrink-0 flex items-center gap-6">
                         <button class="btn-editorial group" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
                             <span class="relative z-10 flex items-center gap-3" data-tr="Strateji Görüşmesi" data-en="Strategy Call">
                                 Strateji Görüşmesi
                                 <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl icon-arrow"></iconify-icon>
                             </span>
                         </button>
+                        <a href="#customers" class="btn-outline" data-tr="Nasıl Yaptığımızı İncele" data-en="See How We Do It">
+                            Nasıl Yaptığımızı İncele
+                            <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -340,6 +392,31 @@ gtag('config', 'G-2M6V79H761');
                             <p class="text-body" data-tr="Tibexa dağınık satış araçlarını tek bir sisteme dönüştürür. Psikografik ICP analizi, outbound altyapısı ve ölçülebilir pipeline yönetimi. <strong>Sistem çalışsın. Ekibiniz satışa odaklansın.</strong>" data-en="Tibexa turns scattered sales tools into one system. Psychographic ICP analysis, outbound infrastructure, and measurable pipeline management. <strong>Let the system work. Let your team focus on selling.</strong>">
                                 Tibexa dağınık satış araçlarını tek bir sisteme dönüştürür. Psikografik ICP analizi, outbound altyapısı ve ölçülebilir pipeline yönetimi. <strong>Sistem çalışsın. Ekibiniz satışa odaklansın.</strong>
                             </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03.5 SEKTÖRLER - Scroll-driven horizontal -->
+        <section class="relative bg-bg">
+            <div class="sector-scroll-wrapper" id="sector-wrapper">
+                <div class="sector-sticky">
+                    <div class="w-full max-w-[100rem] mx-auto px-6 lg:px-12">
+                        <p class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-textsec uppercase tracking-tech mb-8 text-center" data-tr="Sonuç ürettiğimiz sektörler" data-en="Industries we deliver results in">Sonuç ürettiğimiz sektörler</p>
+                    </div>
+                    <div class="w-full overflow-hidden" style="-webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);">
+                        <div class="sector-track pl-[5vw]" id="sector-track">
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img src="https://picsum.photos/seed/industrial-factory/480/640" alt="Endüstriyel" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Endüstriyel</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:factory-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Endüstriyel</h4><p class="text-xs text-white/40 leading-relaxed">Bant, ambalaj, yapı malzemeleri. Toptancı ve distribütör ağlarına erişim.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img src="https://picsum.photos/seed/food-production/480/640" alt="Gıda & FMCG" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Gıda & FMCG</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:cup-hot-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Gıda & FMCG</h4><p class="text-xs text-white/40 leading-relaxed">Çikolata, doğal ürünler, kurumsal gıda. Perakende zincirleri ve distribütörler.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img src="https://picsum.photos/seed/cosmetics-health/480/640" alt="Sağlık & Kozmetik" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Sağlık & Kozmetik</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:heart-pulse-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Sağlık & Kozmetik</h4><p class="text-xs text-white/40 leading-relaxed">Supplement, kozmetik, eczane ürünleri. İlaç distribütörleri ve zincir eczaneler.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img src="https://picsum.photos/seed/machinery-casting/480/640" alt="Makine & Döküm" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Makine & Döküm</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:settings-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Makine & Döküm</h4><p class="text-xs text-white/40 leading-relaxed">Ağır sanayi, döküm, kalıp. OEM'ler ve stamping firmalarına doğrudan erişim.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img src="https://picsum.photos/seed/automotive-parts/480/640" alt="Otomotiv" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Otomotiv</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:wheel-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Otomotiv</h4><p class="text-xs text-white/40 leading-relaxed">Yedek parça, BIW, otomotiv tedarik zinciri. Tier 1-2 firmalara erişim.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img src="https://picsum.photos/seed/textile-fabric/480/640" alt="Tekstil" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Tekstil</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:hanger-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Tekstil</h4><p class="text-xs text-white/40 leading-relaxed">Kumaş, hazır giyim, teknik tekstil. Avrupa ve ABD alıcılarına outbound.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img src="https://picsum.photos/seed/event-promo/480/640" alt="Promosyon & Etkinlik" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Promosyon & Etkinlik</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:flag-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Promosyon & Etkinlik</h4><p class="text-xs text-white/40 leading-relaxed">Lanyard, promosyon ürünleri, etkinlik malzemeleri. Global promo firmaları.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img src="https://picsum.photos/seed/consulting-office/480/640" alt="Danışmanlık" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Danışmanlık</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:chart-square-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Danışmanlık</h4><p class="text-xs text-white/40 leading-relaxed">Strateji, yönetim ve ihracat danışmanlığı. B2B hizmet firmalarına pipeline.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img src="https://picsum.photos/seed/creative-agency/480/640" alt="Ajans" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Ajans</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:palette-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Ajans</h4><p class="text-xs text-white/40 leading-relaxed">Dijital pazarlama, reklam, kreatif ajanslar. Uluslararası müşteri kazanımı.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img src="https://picsum.photos/seed/saas-technology/480/640" alt="SaaS & Teknoloji" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">SaaS & Teknoloji</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:monitor-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">SaaS & Teknoloji</h4><p class="text-xs text-white/40 leading-relaxed">Yazılım, SaaS, teknoloji ürünleri. Global pazarda enterprise müşteri edinimi.</p></div></div></div>
                         </div>
                     </div>
                 </div>
@@ -685,34 +762,6 @@ gtag('config', 'G-2M6V79H761');
             </div>
         </section>
 
-        <!-- 06. METRICS / ROI -->
-        <section id="metrics" class="py-[8rem] relative border-y border-white/10 bg-surface/30">
-            <div class="w-full max-w-[100rem] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6 divide-y md:divide-y-0 md:divide-x divide-white/10 text-center">
-                
-                <div class="flex flex-col items-center pt-8 md:pt-0 reveal-up">
-                    <div class="text-[clamp(3.5rem,6vw,5rem)] font-semibold text-white tracking-tighter leading-none mb-4 flex items-baseline">
-                        <span class="metric-counter" data-target="300">0</span><span class="text-4xl text-textsec ml-1">%</span>
-                    </div>
-                    <span class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-white uppercase tracking-tech block" data-tr="Ortalama Pipeline Büyümesi" data-en="Average Pipeline Growth">Ortalama Pipeline Büyümesi</span>
-                </div>
-
-                <div class="flex flex-col items-center pt-8 md:pt-0 reveal-up delay-1">
-                    <div class="text-[clamp(3.5rem,6vw,5rem)] font-semibold text-white tracking-tighter leading-none mb-4 flex items-baseline">
-                        <span class="metric-counter" data-target="6">0</span><span class="text-4xl text-textsec ml-2"></span>
-                    </div>
-                    <span class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-textsec uppercase tracking-tech block" data-tr="Ortalama Satış Döngüsü (hafta)" data-en="Avg. Sales Cycle (weeks)">Ortalama Satış Döngüsü (hafta)</span>
-                </div>
-
-                <div class="flex flex-col items-center pt-8 md:pt-0 reveal-up delay-2">
-                    <div class="text-[clamp(3.5rem,6vw,5rem)] font-semibold text-white tracking-tighter leading-none mb-4 flex items-baseline">
-                        <span class="metric-counter" data-target="92">0</span><span class="text-4xl text-textsec ml-1">%</span>
-                    </div>
-                    <span class="font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-textsec uppercase tracking-tech block" data-tr="Müşteri Yenileme Oranı" data-en="Client Retention Rate">Müşteri Yenileme Oranı</span>
-                </div>
-
-            </div>
-        </section>
-
         <!-- 07. TEAM -->
         <section id="team" class="py-[8rem] relative bg-bg">
             <div class="w-full max-w-7xl mx-auto px-6 lg:px-12">
@@ -726,168 +775,248 @@ gtag('config', 'G-2M6V79H761');
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-up delay-1">
+                <!-- Co-Founders: 2 cols, larger -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6 reveal-up delay-1">
 
-                    <!-- Profile Card 1 - Salih -->
-                    <div class="profile-card group relative rounded-2xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 aspect-[5/6]">
-                        <!-- Glow blobs -->
-                        <div class="absolute top-[15%] left-[20%] w-32 h-32 rounded-full bg-amber-500/20 blur-[60px] group-hover:bg-amber-500/30 transition-all duration-700"></div>
-                        <div class="absolute top-[30%] right-[15%] w-28 h-28 rounded-full bg-rose-500/15 blur-[50px] group-hover:bg-rose-500/25 transition-all duration-700"></div>
-                        <div class="absolute bottom-[30%] left-[30%] w-24 h-24 rounded-full bg-emerald-500/10 blur-[40px] group-hover:bg-emerald-500/20 transition-all duration-700"></div>
-                        <!-- Name & role at top -->
-                        <div class="absolute top-0 left-0 right-0 p-5 pt-6 z-20 text-center bg-gradient-to-b from-[#111] via-[#111]/80 to-transparent pb-10">
-                            <h3 class="text-xl font-medium text-white/90 mb-0.5 tracking-tight">Salih Yetim</h3>
-                            <p class="text-xs text-white/40 font-mono uppercase tracking-tech">Founder & CEO</p>
-                        </div>
-                        <!-- Photo centered-bottom -->
-                        <div class="absolute bottom-0 left-0 right-0 flex justify-center z-10" style="top: 30%;">
-                            <img src="Logo/profile_salih.png" alt="Salih Yetim" class="w-[75%] h-full object-contain object-bottom grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
-                        </div>
-                        <!-- Bottom fade -->
-                        <div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#111] to-transparent z-15 pointer-events-none"></div>
-                        <!-- LinkedIn -->
-                        <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
+                    <!-- Salih Yetim -->
+                    <div class="group relative rounded-2xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-8 flex flex-col items-center text-center">
+                        <div class="absolute top-[20%] left-[15%] w-32 h-32 rounded-full bg-amber-500/15 blur-[60px] group-hover:bg-amber-500/25 transition-all duration-700"></div>
+                        <div class="absolute bottom-[30%] right-[20%] w-28 h-28 rounded-full bg-rose-500/10 blur-[50px] group-hover:bg-rose-500/20 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/salih-yetim/400/400" alt="Salih Yetim" class="w-28 h-28 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-5 relative z-10">
+                        <h3 class="text-xl font-medium text-white/90 tracking-tight relative z-10">Salih Yetim</h3>
+                        <p class="text-xs text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Co-Founder & Satis Lideri</p>
+                        <p class="text-sm text-white/30 mt-3 max-w-[280px] leading-relaxed relative z-10">GTM stratejisini kurar, uygular. Psikografik ICP metodolojisinin mimarı.</p>
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
                             <a href="#" class="w-7 h-7 rounded-full border border-white/20 bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-colors">
                                 <iconify-icon icon="mdi:linkedin" width="14"></iconify-icon>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Profile Card 2 -->
-                    <div class="profile-card group relative rounded-2xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 aspect-[5/6]">
-                        <div class="absolute top-[15%] left-[25%] w-32 h-32 rounded-full bg-blue-500/20 blur-[60px] group-hover:bg-blue-500/30 transition-all duration-700"></div>
-                        <div class="absolute top-[35%] right-[20%] w-24 h-24 rounded-full bg-cyan-500/15 blur-[50px] group-hover:bg-cyan-500/25 transition-all duration-700"></div>
-                        <div class="absolute bottom-[35%] left-[15%] w-28 h-28 rounded-full bg-violet-500/10 blur-[40px] group-hover:bg-violet-500/20 transition-all duration-700"></div>
-                        <div class="absolute top-0 left-0 right-0 p-5 pt-6 z-20 text-center">
-                            <h3 class="text-xl font-medium text-white/90 mb-0.5 tracking-tight">Elif Kaya</h3>
-                            <p class="text-xs text-white/40 font-mono uppercase tracking-tech">CTO</p>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 flex justify-center z-10">
-                            <div class="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-12">
-                                <span class="text-2xl font-light text-white/20">EK</span>
-                            </div>
-                        </div>
-                        <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
+                    <!-- Mert Izinter -->
+                    <div class="group relative rounded-2xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-8 flex flex-col items-center text-center">
+                        <div class="absolute top-[15%] right-[20%] w-32 h-32 rounded-full bg-blue-500/15 blur-[60px] group-hover:bg-blue-500/25 transition-all duration-700"></div>
+                        <div class="absolute bottom-[25%] left-[15%] w-28 h-28 rounded-full bg-cyan-500/10 blur-[50px] group-hover:bg-cyan-500/20 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/mert-izinter/400/400" alt="Mert Izinter" class="w-28 h-28 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-5 relative z-10">
+                        <h3 class="text-xl font-medium text-white/90 tracking-tight relative z-10">Mert Izinter</h3>
+                        <p class="text-xs text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Co-Founder & Operasyon Lideri</p>
+                        <p class="text-sm text-white/30 mt-3 max-w-[280px] leading-relaxed relative z-10">Operasyonel altyapıyı yonetir. Surecler, olcum ve musteri teslimati onun sorumlulugunda.</p>
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
                             <a href="#" class="w-7 h-7 rounded-full border border-white/20 bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-colors">
                                 <iconify-icon icon="mdi:linkedin" width="14"></iconify-icon>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Profile Card 3 -->
-                    <div class="profile-card group relative rounded-2xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 aspect-[5/6]">
-                        <div class="absolute top-[20%] left-[15%] w-28 h-28 rounded-full bg-emerald-500/20 blur-[60px] group-hover:bg-emerald-500/30 transition-all duration-700"></div>
-                        <div class="absolute top-[25%] right-[25%] w-32 h-32 rounded-full bg-teal-500/15 blur-[50px] group-hover:bg-teal-500/25 transition-all duration-700"></div>
-                        <div class="absolute bottom-[30%] right-[15%] w-24 h-24 rounded-full bg-lime-500/10 blur-[40px] group-hover:bg-lime-500/20 transition-all duration-700"></div>
-                        <div class="absolute top-0 left-0 right-0 p-5 pt-6 z-20 text-center">
-                            <h3 class="text-xl font-medium text-white/90 mb-0.5 tracking-tight">Burak Arslan</h3>
-                            <p class="text-xs text-white/40 font-mono uppercase tracking-tech">Head of Engineering</p>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 flex justify-center z-10">
-                            <div class="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-12">
-                                <span class="text-2xl font-light text-white/20">BA</span>
-                            </div>
-                        </div>
-                        <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
-                            <a href="#" class="w-7 h-7 rounded-full border border-white/20 bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-colors">
-                                <iconify-icon icon="mdi:linkedin" width="14"></iconify-icon>
-                            </a>
-                        </div>
+                </div>
+
+                <!-- Team: 4 cols grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal-up delay-2">
+
+                    <!-- Talha Sener -->
+                    <div class="group relative rounded-xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-6 flex flex-col items-center text-center">
+                        <div class="absolute top-[20%] left-[20%] w-20 h-20 rounded-full bg-emerald-500/15 blur-[40px] group-hover:bg-emerald-500/25 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/talha-sener/400/400" alt="Talha Sener" class="w-20 h-20 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-4 relative z-10">
+                        <h3 class="text-base font-medium text-white/90 tracking-tight relative z-10">Talha Sener</h3>
+                        <p class="text-[10px] text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Satis Kesif Muhendisi</p>
+                        <p class="text-xs text-white/25 mt-2 leading-relaxed relative z-10">Hedef pazarlarda alici kesfi ve ilk temas noktalarini olusturur.</p>
                     </div>
 
-                    <!-- Profile Card 4 -->
-                    <div class="profile-card group relative rounded-2xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 aspect-[5/6]">
-                        <div class="absolute top-[18%] right-[20%] w-32 h-32 rounded-full bg-rose-500/20 blur-[60px] group-hover:bg-rose-500/30 transition-all duration-700"></div>
-                        <div class="absolute top-[40%] left-[20%] w-24 h-24 rounded-full bg-pink-500/15 blur-[50px] group-hover:bg-pink-500/25 transition-all duration-700"></div>
-                        <div class="absolute bottom-[25%] right-[30%] w-28 h-28 rounded-full bg-orange-500/10 blur-[40px] group-hover:bg-orange-500/20 transition-all duration-700"></div>
-                        <div class="absolute top-0 left-0 right-0 p-5 pt-6 z-20 text-center">
-                            <h3 class="text-xl font-medium text-white/90 mb-0.5 tracking-tight">Zeynep Demir</h3>
-                            <p class="text-xs text-white/40 font-mono uppercase tracking-tech">Product Lead</p>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 flex justify-center z-10">
-                            <div class="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-12">
-                                <span class="text-2xl font-light text-white/20">ZD</span>
-                            </div>
-                        </div>
-                        <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
-                            <a href="#" class="w-7 h-7 rounded-full border border-white/20 bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-colors">
-                                <iconify-icon icon="mdi:linkedin" width="14"></iconify-icon>
-                            </a>
-                        </div>
+                    <!-- Yusa Sener -->
+                    <div class="group relative rounded-xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-6 flex flex-col items-center text-center">
+                        <div class="absolute top-[25%] right-[15%] w-20 h-20 rounded-full bg-teal-500/15 blur-[40px] group-hover:bg-teal-500/25 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/yusa-sener/400/400" alt="Yusa Sener" class="w-20 h-20 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-4 relative z-10">
+                        <h3 class="text-base font-medium text-white/90 tracking-tight relative z-10">Yusa Sener</h3>
+                        <p class="text-[10px] text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Satis Kesif Muhendisi</p>
+                        <p class="text-xs text-white/25 mt-2 leading-relaxed relative z-10">Veri odakli prospecting ile nitelikli alici listelerini derler.</p>
                     </div>
 
-                    <!-- Profile Card 5 -->
-                    <div class="profile-card group relative rounded-2xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 aspect-[5/6]">
-                        <div class="absolute top-[10%] left-[30%] w-28 h-28 rounded-full bg-violet-500/20 blur-[60px] group-hover:bg-violet-500/30 transition-all duration-700"></div>
-                        <div class="absolute top-[35%] right-[15%] w-32 h-32 rounded-full bg-indigo-500/15 blur-[50px] group-hover:bg-indigo-500/25 transition-all duration-700"></div>
-                        <div class="absolute bottom-[30%] left-[20%] w-24 h-24 rounded-full bg-fuchsia-500/10 blur-[40px] group-hover:bg-fuchsia-500/20 transition-all duration-700"></div>
-                        <div class="absolute top-0 left-0 right-0 p-5 pt-6 z-20 text-center">
-                            <h3 class="text-xl font-medium text-white/90 mb-0.5 tracking-tight">Can Ozer</h3>
-                            <p class="text-xs text-white/40 font-mono uppercase tracking-tech">Growth & Ops</p>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 flex justify-center z-10">
-                            <div class="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-12">
-                                <span class="text-2xl font-light text-white/20">CO</span>
-                            </div>
-                        </div>
-                        <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
-                            <a href="#" class="w-7 h-7 rounded-full border border-white/20 bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-colors">
-                                <iconify-icon icon="mdi:linkedin" width="14"></iconify-icon>
-                            </a>
-                        </div>
+                    <!-- Tunaberk Yerlikaya -->
+                    <div class="group relative rounded-xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-6 flex flex-col items-center text-center">
+                        <div class="absolute bottom-[20%] left-[25%] w-20 h-20 rounded-full bg-violet-500/15 blur-[40px] group-hover:bg-violet-500/25 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/tunaberk-y/400/400" alt="Tunaberk Yerlikaya" class="w-20 h-20 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-4 relative z-10">
+                        <h3 class="text-base font-medium text-white/90 tracking-tight relative z-10">Tunaberk Yerlikaya</h3>
+                        <p class="text-[10px] text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Altyapi Muhendisi</p>
+                        <p class="text-xs text-white/25 mt-2 leading-relaxed relative z-10">Outbound teknik altyapisini tasarlar, entegrasyonlari yonetir.</p>
                     </div>
 
-                    <!-- Profile Card 6 -->
-                    <div class="profile-card group relative rounded-2xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 aspect-[5/6]">
-                        <div class="absolute top-[20%] right-[25%] w-32 h-32 rounded-full bg-sky-500/20 blur-[60px] group-hover:bg-sky-500/30 transition-all duration-700"></div>
-                        <div class="absolute top-[30%] left-[15%] w-28 h-28 rounded-full bg-cyan-500/15 blur-[50px] group-hover:bg-cyan-500/25 transition-all duration-700"></div>
-                        <div class="absolute bottom-[35%] right-[20%] w-24 h-24 rounded-full bg-teal-500/10 blur-[40px] group-hover:bg-teal-500/20 transition-all duration-700"></div>
-                        <div class="absolute top-0 left-0 right-0 p-5 pt-6 z-20 text-center">
-                            <h3 class="text-xl font-medium text-white/90 mb-0.5 tracking-tight">Deniz Aktas</h3>
-                            <p class="text-xs text-white/40 font-mono uppercase tracking-tech">Design Lead</p>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 flex justify-center z-10">
-                            <div class="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-12">
-                                <span class="text-2xl font-light text-white/20">DA</span>
-                            </div>
-                        </div>
-                        <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
-                            <a href="#" class="w-7 h-7 rounded-full border border-white/20 bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-colors">
-                                <iconify-icon icon="mdi:linkedin" width="14"></iconify-icon>
-                            </a>
-                        </div>
+                    <!-- Huseyin Harun Ozkan -->
+                    <div class="group relative rounded-xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-6 flex flex-col items-center text-center">
+                        <div class="absolute top-[15%] right-[20%] w-20 h-20 rounded-full bg-sky-500/15 blur-[40px] group-hover:bg-sky-500/25 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/harun-ozkan/400/400" alt="Huseyin Harun Ozkan" class="w-20 h-20 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-4 relative z-10">
+                        <h3 class="text-base font-medium text-white/90 tracking-tight relative z-10">H. Harun Ozkan</h3>
+                        <p class="text-[10px] text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Veri Muhendisi</p>
+                        <p class="text-xs text-white/25 mt-2 leading-relaxed relative z-10">Pazar verisini toplar, analiz eder. ICP haritalamada veri katmanini yonetir.</p>
+                    </div>
+
+                    <!-- Dorukhan Yetim -->
+                    <div class="group relative rounded-xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-6 flex flex-col items-center text-center">
+                        <div class="absolute bottom-[25%] right-[15%] w-20 h-20 rounded-full bg-indigo-500/15 blur-[40px] group-hover:bg-indigo-500/25 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/dorukhan-y/400/400" alt="Dorukhan Yetim" class="w-20 h-20 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-4 relative z-10">
+                        <h3 class="text-base font-medium text-white/90 tracking-tight relative z-10">Dorukhan Yetim</h3>
+                        <p class="text-[10px] text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Otomasyon Muhendisi</p>
+                        <p class="text-xs text-white/25 mt-2 leading-relaxed relative z-10">Email dizileri, CRM otomasyonu ve is akisi motorunu gelistirir.</p>
+                    </div>
+
+                    <!-- Furkan Yakici -->
+                    <div class="group relative rounded-xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-6 flex flex-col items-center text-center">
+                        <div class="absolute top-[20%] left-[15%] w-20 h-20 rounded-full bg-rose-500/15 blur-[40px] group-hover:bg-rose-500/25 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/furkan-yakici/400/400" alt="Furkan Yakici" class="w-20 h-20 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-4 relative z-10">
+                        <h3 class="text-base font-medium text-white/90 tracking-tight relative z-10">Furkan Yakici</h3>
+                        <p class="text-[10px] text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Icerik & Metin Uzmani</p>
+                        <p class="text-xs text-white/25 mt-2 leading-relaxed relative z-10">Outbound mesajlari, email kopyalari ve satis iceriklerini yazar.</p>
+                    </div>
+
+                    <!-- Melis Yakin -->
+                    <div class="group relative rounded-xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-6 flex flex-col items-center text-center">
+                        <div class="absolute bottom-[20%] left-[20%] w-20 h-20 rounded-full bg-pink-500/15 blur-[40px] group-hover:bg-pink-500/25 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/melis-yakin/400/400" alt="Melis Yakin" class="w-20 h-20 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-4 relative z-10">
+                        <h3 class="text-base font-medium text-white/90 tracking-tight relative z-10">Melis Yakin</h3>
+                        <p class="text-[10px] text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Musteri Basari Sorumlusu</p>
+                        <p class="text-xs text-white/25 mt-2 leading-relaxed relative z-10">Mevcut musterilerle iliskiyi yonetir, sonuc takibi ve raporlamayi saglar.</p>
+                    </div>
+
+                    <!-- Hande Turan -->
+                    <div class="group relative rounded-xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-6 flex flex-col items-center text-center">
+                        <div class="absolute top-[25%] right-[20%] w-20 h-20 rounded-full bg-fuchsia-500/15 blur-[40px] group-hover:bg-fuchsia-500/25 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/hande-turan/400/400" alt="Hande Turan" class="w-20 h-20 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-4 relative z-10">
+                        <h3 class="text-base font-medium text-white/90 tracking-tight relative z-10">Hande Turan</h3>
+                        <p class="text-[10px] text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Satis Destek</p>
+                        <p class="text-xs text-white/25 mt-2 leading-relaxed relative z-10">Satis sureclerinin koordinasyonunu ve operasyonel takibini yurutur.</p>
+                    </div>
+
+                    <!-- Abdoulraouf Khalifa -->
+                    <div class="group relative rounded-xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-6 flex flex-col items-center text-center">
+                        <div class="absolute bottom-[15%] left-[25%] w-20 h-20 rounded-full bg-orange-500/15 blur-[40px] group-hover:bg-orange-500/25 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/abdoulraouf-k/400/400" alt="Abdoulraouf Khalifa" class="w-20 h-20 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-4 relative z-10">
+                        <h3 class="text-base font-medium text-white/90 tracking-tight relative z-10">Abdoulraouf Khalifa</h3>
+                        <p class="text-[10px] text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Soguk Arama Uzmani</p>
+                        <p class="text-xs text-white/25 mt-2 leading-relaxed relative z-10">Hedef pazarlarda telefon ile ilk temasi kurar, toplanti olusturur.</p>
+                    </div>
+
+                    <!-- Dea Laloushi -->
+                    <div class="group relative rounded-xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-6 flex flex-col items-center text-center">
+                        <div class="absolute top-[20%] right-[25%] w-20 h-20 rounded-full bg-lime-500/15 blur-[40px] group-hover:bg-lime-500/25 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/dea-laloushi/400/400" alt="Dea Laloushi" class="w-20 h-20 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-4 relative z-10">
+                        <h3 class="text-base font-medium text-white/90 tracking-tight relative z-10">Dea Laloushi</h3>
+                        <p class="text-[10px] text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Soguk Arama Uzmani</p>
+                        <p class="text-xs text-white/25 mt-2 leading-relaxed relative z-10">Cok dilli erisimle Avrupa pazarlarinda alici baglantisi kurar.</p>
+                    </div>
+
+                    <!-- Bora Ozkan -->
+                    <div class="group relative rounded-xl border border-white/10 bg-[#111] overflow-hidden transition-all duration-500 hover:border-white/20 p-6 flex flex-col items-center text-center">
+                        <div class="absolute bottom-[20%] right-[15%] w-20 h-20 rounded-full bg-amber-500/15 blur-[40px] group-hover:bg-amber-500/25 transition-all duration-700"></div>
+                        <img src="https://picsum.photos/seed/bora-ozkan/400/400" alt="Bora Ozkan" class="w-20 h-20 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 border-2 border-white/10 mb-4 relative z-10">
+                        <h3 class="text-base font-medium text-white/90 tracking-tight relative z-10">Bora Ozkan</h3>
+                        <p class="text-[10px] text-white/40 font-mono uppercase tracking-tech mt-1 relative z-10">Partnerlikler Sorumlusu</p>
+                        <p class="text-xs text-white/25 mt-2 leading-relaxed relative z-10">Stratejik is ortakliklari ve kanal partnerlikleri gelistirir.</p>
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- 08. TESTIMONIAL / TRUST -->
+        <!-- 08. BASARI HİKAYELERİ -->
         <section id="customers" class="py-[10rem] relative bg-bg">
-            <div class="w-full max-w-[100rem] mx-auto px-6 lg:px-12">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-[6rem] items-center">
-                    
-                    <div class="relative w-full aspect-[4/5] overflow-hidden group reveal-up">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Customer Portrait" class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-1000 ease-out">
-                        <!-- Technical overlay frame -->
-                        <div class="absolute inset-0 border border-white/20 m-4 pointer-events-none">
-                            <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-white -translate-x-[1px] -translate-y-[1px]"></div>
-                            <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white translate-x-[1px] translate-y-[1px]"></div>
-                        </div>
-                    </div>
+            <div class="w-full max-w-7xl mx-auto px-6 lg:px-12">
 
-                    <div class="flex flex-col reveal-up delay-1">
-                        <iconify-icon icon="solar:quote-left-linear" class="text-4xl text-white/20 mb-8"></iconify-icon>
-                        <h3 class="text-h3 text-white mb-8 font-medium italic" data-tr="&quot;Tibexa'dan önce Almanya pazarında 18 aydır sonuç alamıyorduk. Sistemi kurduktan 5 ay sonra 3 yeni kurumsal hesap açtık. Pipeline değerimiz $2.4M'dan $8.1M'a çıktı.&quot;" data-en="&quot;Before Tibexa, we had been struggling in the German market for 18 months. 5 months after implementing the system, we opened 3 new enterprise accounts. Our pipeline value went from $2.4M to $8.1M.&quot;">
-                            "Tibexa'dan önce Almanya pazarında 18 aydır sonuç alamıyorduk. Sistemi kurduktan 5 ay sonra 3 yeni kurumsal hesap açtık. Pipeline değerimiz $2.4M'dan $8.1M'a çıktı."
-                        </h3>
-                        <div>
-                            <span class="block font-sans font-semibold text-lg text-white mb-1 tracking-tight">Murat Erkan</span>
-                            <span class="block font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] text-textsec uppercase tracking-tech" data-tr="İhracat Direktörü, Ertanlar Makina" data-en="Export Director, Ertanlar Makina">İhracat Direktörü, Ertanlar Makina</span>
-                        </div>
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-[4rem] reveal-up gap-6">
+                    <div>
+                        <div class="editorial-badge mb-[2rem]" data-tr="BASARI_HİKAYELERİ" data-en="CASE_STUDIES">BASARI_HİKAYELERİ</div>
+                        <h2 class="text-h3 text-white" data-tr="Rakamlar konuşuyor,<br>biz değil." data-en="Numbers speak,<br>we don't.">Rakamlar konuşuyor,<br>biz değil.</h2>
                     </div>
+                    <p class="text-body max-w-[24rem]" data-tr="Her vakada bir başlangıç noktası, bir sonuç noktası. Somut rakamlar, gerçek müşteriler." data-en="Every case has a starting point and an end point. Real numbers, real clients.">
+                        Her vakada bir başlangıç noktası, bir sonuç noktası. Somut rakamlar, gerçek müşteriler.
+                    </p>
+                </div>
+
+                <!-- Case Study Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-[4rem] reveal-up delay-1">
+
+                    <!-- Rapid Lanyard / Nurgün -->
+                    <a href="case-rapidlanyard.html" class="group relative rounded-xl border border-white/10 bg-surface/50 p-6 flex flex-col justify-between min-h-[280px] transition-all duration-500 hover:border-white/20 hover:bg-surface2/80">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="Logo/rapidlanyard_clean.png" alt="Rapid Lanyard" class="h-6 object-contain" style="filter: brightness(0) invert(1); opacity: 0.6;">
+                                <span class="font-mono text-[10px] text-white/30 uppercase tracking-tech">Kırtasiye / Lanyard</span>
+                            </div>
+                            <h3 class="text-lg font-medium text-white/90 tracking-tight mb-2">4 ayda firma cirosu 2 katına çıktı</h3>
+                            <p class="text-sm text-white/30 leading-relaxed">110+ pozitif dönüş, aylık 33 potansiyel müşteri hedefi aşıldı. Firma operasyonel kapasiteyi aştığı için kampanya durduruldu.</p>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-white/70 transition-colors text-sm font-mono">
+                            <span data-tr="Hikayeyi oku" data-en="Read story">Hikayeyi oku</span>
+                            <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </div>
+                    </a>
+
+                    <!-- Selin Çikolata -->
+                    <a href="case-selin-cikolata.html" class="group relative rounded-xl border border-white/10 bg-surface/50 p-6 flex flex-col justify-between min-h-[280px] transition-all duration-500 hover:border-white/20 hover:bg-surface2/80">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="Logo/selinclogo1_clean.png" alt="Selin Çikolata" class="h-6 object-contain" style="filter: brightness(0) invert(1); opacity: 0.6;">
+                                <span class="font-mono text-[10px] text-white/30 uppercase tracking-tech">Gıda / Çikolata</span>
+                            </div>
+                            <h3 class="text-lg font-medium text-white/90 tracking-tight mb-2">2 ayda 300+ pozitif dönüş</h3>
+                            <p class="text-sm text-white/30 leading-relaxed">Ramazan öncesi 2 aylık sprint kampanya. Binlerce inbox altyapısı, 8 email varyasyonu. Tek seferlik projeden uzun vadeli partnerliğe dönüştü.</p>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-white/70 transition-colors text-sm font-mono">
+                            <span data-tr="Hikayeyi oku" data-en="Read story">Hikayeyi oku</span>
+                            <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </div>
+                    </a>
+
+                    <!-- Fema Bant -->
+                    <a href="case-fema-bant.html" class="group relative rounded-xl border border-white/10 bg-surface/50 p-6 flex flex-col justify-between min-h-[280px] transition-all duration-500 hover:border-white/20 hover:bg-surface2/80">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="Logo/fema.svg" alt="Fema Bant" class="h-5 object-contain" style="filter: brightness(0) invert(1); opacity: 0.6;">
+                                <span class="font-mono text-[10px] text-white/30 uppercase tracking-tech">Endüstriyel / Bant</span>
+                            </div>
+                            <h3 class="text-lg font-medium text-white/90 tracking-tight mb-2">2 ayda 37 görüşme ve gerçekleşen satış</h3>
+                            <p class="text-sm text-white/30 leading-relaxed">12.000 firmadan AI filtrelemeyle 8.000'e inildi. İhracata yeni başlayan firmayı global pazara taşıdık, ilk satışlar gerçekleşti.</p>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-white/70 transition-colors text-sm font-mono">
+                            <span data-tr="Hikayeyi oku" data-en="Read story">Hikayeyi oku</span>
+                            <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </div>
+                    </a>
+
+                    <!-- Naturagen -->
+                    <a href="case-naturagen.html" class="group relative rounded-xl border border-white/10 bg-surface/50 p-6 flex flex-col justify-between min-h-[280px] transition-all duration-500 hover:border-white/20 hover:bg-surface2/80">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="Logo/naturagen.webp" alt="Naturagen" class="h-6 object-contain" style="filter: brightness(0) invert(1); opacity: 0.6;">
+                                <span class="font-mono text-[10px] text-white/30 uppercase tracking-tech">Kozmetik / Supplement</span>
+                            </div>
+                            <h3 class="text-lg font-medium text-white/90 tracking-tight mb-2">5. ayda 60 distribütör görüşmesi, kampanya devam ediyor</h3>
+                            <p class="text-sm text-white/30 leading-relaxed">15 ülkede 5.000+ firma haritalandı. Strateji değişimiyle distribütör odağına geçildi, 1.500 hedeften 60 aktif görüşmeye ulaşıldı.</p>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-white/70 transition-colors text-sm font-mono">
+                            <span data-tr="Hikayeyi oku" data-en="Read story">Hikayeyi oku</span>
+                            <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </div>
+                    </a>
+
+                    <!-- İğrek Makina -->
+                    <a href="case-igrek.html" class="group relative rounded-xl border border-white/10 bg-surface/50 p-6 flex flex-col justify-between min-h-[280px] transition-all duration-500 hover:border-white/20 hover:bg-surface2/80">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <img src="Logo/igrek_clean.png" alt="İğrek Makina" class="h-6 object-contain" style="filter: brightness(0) invert(1); opacity: 0.6;">
+                                <span class="font-mono text-[10px] text-white/30 uppercase tracking-tech">Ağır Sanayi / Döküm</span>
+                            </div>
+                            <h3 class="text-lg font-medium text-white/90 tracking-tight mb-2">İrlanda ve ABD'de distribütör adayları, fabrika ziyaretleri</h3>
+                            <p class="text-sm text-white/30 leading-relaxed">9.000+ firmadan AI ile 1.800 ideal hedefe inildi. İrlanda ve Amerika'da distribütör adayları bulundu, fabrika ziyaretleri yapıldı. Kampanya devam ediyor.</p>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-white/70 transition-colors text-sm font-mono">
+                            <span data-tr="Hikayeyi oku" data-en="Read story">Hikayeyi oku</span>
+                            <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </div>
+                    </a>
 
                 </div>
+
+
             </div>
         </section>
 
@@ -989,6 +1118,36 @@ gtag('config', 'G-2M6V79H761');
                 }
             });
         }
+    </script>
+
+    <!-- SCROLL-DRIVEN HORIZONTAL SECTOR CARDS -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const wrapper = document.getElementById('sector-wrapper');
+        const track = document.getElementById('sector-track');
+        if (!wrapper || !track) return;
+
+        const update = () => {
+            const rect = wrapper.getBoundingClientRect();
+            const wrapperH = wrapper.offsetHeight;
+            const viewH = window.innerHeight;
+            const scrollable = wrapperH - viewH;
+            if (scrollable <= 0) return;
+
+            // How far through the wrapper we've scrolled (0 to 1)
+            const progress = Math.max(0, Math.min(1, -rect.top / scrollable));
+
+            // Total track width minus viewport = max translate
+            const trackW = track.scrollWidth;
+            const viewW = window.innerWidth;
+            const maxTranslate = trackW - viewW + 80; // 80px buffer
+
+            track.style.transform = `translateX(${-progress * maxTranslate}px)`;
+        };
+
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    });
     </script>
 
     <!-- INTERACTIVITY & WEBGL SCRIPT -->

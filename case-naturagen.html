@@ -1,0 +1,250 @@
+<html lang="tr" class="scroll-smooth bg-black"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tibexa Global | Naturagen Vaka Çalışması</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.1/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5.0.1/index.min.css">
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        bg: '#000000',
+        surface: '#0A0A0A',
+        surface2: '#141414',
+        textmain: '#FFFFFF',
+        textsec: '#A1A1AA',
+        borderline: '#27272A',
+      },
+      fontFamily: {
+        sans: ['"Geist Sans"', 'sans-serif'],
+        mono: ['"Geist Mono"', 'monospace']
+      },
+      letterSpacing: {
+        tightest: '-0.04em',
+        tech: '0.08em'
+      }
+    }
+  }
+}
+</script>
+<style>
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+::selection { background: #FFFFFF; color: #000000; }
+.text-h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 500; letter-spacing: -0.04em; line-height: 0.95; }
+.text-h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; }
+.text-h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+.text-body { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.7; font-weight: 400; color: #A1A1AA; }
+.editorial-badge {
+  font-family: 'Geist Mono', monospace;
+  font-size: clamp(0.65rem, 0.8vw, 0.75rem);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #A1A1AA;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.editorial-badge::before {
+  content: '';
+  display: block;
+  width: 1.5rem;
+  height: 1px;
+  background: #A1A1AA;
+}
+.metric-card {
+  background: #0A0A0A;
+  border: 1px solid #27272A;
+  padding: 1.5rem;
+}
+.btn-editorial {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2.5rem;
+  background: #FFFFFF;
+  color: #000000;
+  font-family: "Geist Sans", sans-serif;
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  font-weight: 500;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1rem), calc(100% - 1rem) 100%, 0 100%);
+  overflow: hidden;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+.btn-editorial::before {
+  content: '';
+  position: absolute;
+  top: 100%; left: 0; width: 100%; height: 100%;
+  background: #141414;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+.btn-editorial:hover { color: #FFFFFF; }
+.btn-editorial:hover::before { transform: translateY(-100%); }
+</style>
+</head>
+<body class="bg-bg text-textmain font-sans">
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 border-b border-borderline bg-bg/80 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="revenue-infrastruc-43.html">
+      <img src="TibexaLogo/tibexa-global/WhiteLogo_cropped.png" alt="Tibexa Global" class="h-7" style="filter:invert(1)">
+    </a>
+    <a href="revenue-infrastruc-43.html" class="text-textsec hover:text-white text-sm font-medium transition-colors flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      Ana Sayfa
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-32 pb-20 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-center gap-8 mb-12">
+      <div class="w-20 h-20 rounded-2xl bg-surface2 border border-borderline flex items-center justify-center p-3">
+        <img src="Logo/naturagen.webp" alt="Naturagen" class="w-full h-full object-contain">
+      </div>
+      <div>
+        <span class="editorial-badge mb-4">Kozmetik / Supplement</span>
+        <h1 class="text-h1 text-white mt-3">5. Ayda 60 <span class="text-textsec">Distribütör Görüşmesi</span></h1>
+      </div>
+    </div>
+    <p class="text-body max-w-2xl text-lg">Naturagen ile kozmetik ve supplement pazarında 15 ülkeye yayılan, AI destekli distribütör hedefleme kampanyası.</p>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="px-6 pb-16">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="metric-card">
+      <p class="font-mono text-textsec text-xs uppercase tracking-tech mb-2">Ülke Sayısı</p>
+      <p class="text-3xl font-medium text-white">15</p>
+      <p class="text-textsec text-sm mt-1">hedef pazar</p>
+    </div>
+    <div class="metric-card">
+      <p class="font-mono text-textsec text-xs uppercase tracking-tech mb-2">Toplam Firma</p>
+      <p class="text-3xl font-medium text-white">5.000+</p>
+      <p class="text-textsec text-sm mt-1">tespit edildi</p>
+    </div>
+    <div class="metric-card">
+      <p class="font-mono text-textsec text-xs uppercase tracking-tech mb-2">Distribütör Görüşme</p>
+      <p class="text-3xl font-medium text-white">60</p>
+      <p class="text-textsec text-sm mt-1">5. ayda toplam</p>
+    </div>
+    <div class="metric-card">
+      <p class="font-mono text-textsec text-xs uppercase tracking-tech mb-2">Durum</p>
+      <p class="text-3xl font-medium text-white">Aktif</p>
+      <p class="text-textsec text-sm mt-1">kampanya devam ediyor</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="px-6 pb-20">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
+
+    <div class="lg:w-2/3 space-y-12">
+
+      <div>
+        <h2 class="text-h3 text-white mb-4">Hedef Kitle ve İlk Adımlar</h2>
+        <p class="text-body">Naturagen'in kozmetik ve supplement ürünleri için kozmetik zincirleri, ilaç distribütörleri ve toptancılar hedef kitle olarak belirlendi. İlk adım olarak Kosova'da ülkenin en büyük distribütörleriyle görüşmeler başlatıldı.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">Romanya Pilotu</h2>
+        <p class="text-body">Romanya'da 620 firma hedeflendi. 30+ pozitif dönüş alındı ve 5 online toplantı planlandı. Planlanan fiziksel ziyaret kar fırtınası nedeniyle ertelendi, ancak online kanaldan görüşmeler devam etti.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">Birinci Strateji Değişikliği: Ölçeklendirme</h2>
+        <p class="text-body">Tek ülke tek ülke ilerlemek yerine toplu liste stratejisine geçildi. Türkiye'den en çok kozmetik alan ülkeler listelendi ve 3 gruba ayrıldı. 15 ülkede 5.000+ firma tespit edildi.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">İkinci Strateji Değişikliği: Distribütör Odağı</h2>
+        <p class="text-body">Herkese satış yapmak yerine sadece distribütör hedefleme stratejisine geçildi. AI ile 5.000 firmadan 1.500 distribütör filtrelendi. Bu odaklanma, dönüşüm oranını dramatik şekilde artırdı.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">Güncel Sonuçlar</h2>
+        <p class="text-body">Yeni strateji ile ilk haftada 230 firmaya ulaşıldı, 6 pozitif dönüş alındı ve online toplantılar planlandı. Kampanya aktif olarak devam ediyor ve sonuçlar her hafta büyüyor.</p>
+      </div>
+
+      <div class="border-t border-borderline pt-12">
+        <h2 class="text-h3 text-white mb-4">60 Distribütör Görüşmesi</h2>
+        <p class="text-body">Strateji değişimi sonucunda 5. ayda toplam 60 distribütör görüşmesi yaşandı. Kampanya aktif olarak devam ediyor.</p>
+      </div>
+
+      <div class="border-l-2 border-white pl-8 py-4 mt-12">
+        <p class="text-white text-xl font-medium italic leading-relaxed">"Tek tek ülke denemekten, 15 ülkeyi aynı anda sistematik şekilde ele almaya geçtik. Fark inanılmaz."</p>
+        <p class="text-textsec mt-4 font-mono text-sm">— Gamze Malkoç, Genel Müdür</p>
+      </div>
+
+    </div>
+
+    <div class="lg:w-1/3">
+      <div class="sticky top-24 space-y-6">
+        <div class="bg-surface p-6 border border-borderline">
+          <h3 class="font-mono text-xs uppercase tracking-tech text-textsec mb-6">Proje Detayları</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Firma</span>
+              <span class="text-white text-sm font-medium">Naturagen</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Sektör</span>
+              <span class="text-white text-sm font-medium">Kozmetik / Supplement</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Hedef Pazarlar</span>
+              <span class="text-white text-sm font-medium">15 Ülke</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Toplam Firma</span>
+              <span class="text-white text-sm font-medium">5.000+</span>
+            </div>
+            <div class="flex justify-between border-b border-borderline pb-3">
+              <span class="text-textsec text-sm">Distribütör Hedef</span>
+              <span class="text-white text-sm font-medium">1.500</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-textsec text-sm">Durum</span>
+              <span class="text-white text-sm font-medium">Devam Ediyor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="px-6 py-20 border-t border-borderline">
+  <div class="max-w-7xl mx-auto text-center">
+    <h2 class="text-h2 text-white mb-6">Sizin de ihracat altyapınızı kuralım</h2>
+    <p class="text-body mb-10 max-w-xl mx-auto">Naturagen gibi 15 ülkeye aynı anda açılmak ister misiniz?</p>
+    <a href="revenue-infrastruc-43.html#contact" class="btn-editorial gap-2">
+      İletişime Geç
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-borderline py-8 px-6">
+  <div class="max-w-7xl mx-auto text-center">
+    <p class="text-textsec text-sm font-mono">&copy; 2026 Tibexa Global. Tüm hakları saklıdır.</p>
+  </div>
+</footer>
+
+</body></html>
