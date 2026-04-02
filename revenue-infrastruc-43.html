@@ -113,30 +113,61 @@ width: 1.5rem;
 height: 1px;
 background: #c89010;
 }
+/* MOBILE ACCORDION */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.accordion-item.open .accordion-content {
+    max-height: 200px;
+    padding-bottom: 1.25rem;
+}
+.accordion-item.open .accordion-arrow {
+    transform: rotate(180deg);
+}
+
+/* SHINY AMBER TEXT */
+.shiny-amber {
+    background: linear-gradient(90deg, #c89010 0%, #f5c842 40%, #c89010 60%, #f5c842 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shinySlide 3s ease-in-out infinite;
+}
+@keyframes shinySlide {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
 /* ROTATING TEXT */
 .rotate-container {
     display: inline-block;
     position: relative;
     overflow: hidden;
     vertical-align: bottom;
+    line-height: inherit;
 }
 .rotate-container .rotate-word {
     display: block;
     font-style: italic;
     font-weight: 600;
-    color: rgba(200, 144, 16, 0.85);
-    -webkit-text-stroke: 0.5px rgba(200, 144, 16, 0.4);
+    color: #FFFFFF;
     animation: rotateText 5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
     position: absolute;
     left: 0;
     top: 0;
     opacity: 0;
     transform: translateY(100%);
-}
-.rotate-container .rotate-word:nth-child(1) {
-    animation-delay: 0s;
+    white-space: nowrap;
 }
 .rotate-container .rotate-word:nth-child(2) {
+    animation-delay: 0s;
+}
+.rotate-container .rotate-word:nth-child(3) {
     animation-delay: 2.5s;
 }
 .rotate-container .rotate-sizer {
@@ -144,6 +175,7 @@ background: #c89010;
     display: block;
     font-style: italic;
     font-weight: 600;
+    white-space: nowrap;
 }
 @keyframes rotateText {
     0% { opacity: 0; transform: translateY(80%); }
@@ -367,12 +399,7 @@ gtag('config', 'G-2M6V79H761');
                 <div class="lg:col-span-10 flex flex-col items-start reveal-up">
                     <div class="editorial-badge mb-[3rem]" data-tr="GTM_ALTYAPISI // 1.0" data-en="GTM_INFRASTRUCTURE // 1.0">GTM_ALTYAPISI // 1.0</div>
                     <h1 class="text-h1 text-white mb-[2rem]">
-                        Uluslararası alıcı bulmak<br>
-                        <span class="rotate-container">
-                            <span class="rotate-sizer">sistem işi.</span>
-                            <span class="rotate-word">şans işi değil.</span>
-                            <span class="rotate-word">sistem işi.</span>
-                        </span>
+                        Uluslararası alıcı<br><span class="shiny-amber">bulmak</span> <span class="rotate-container"><span class="rotate-sizer">şans işi değil.</span><span class="rotate-word">şans işi değil.</span><span class="rotate-word">sistem işi.</span></span>
                     </h1>
                 </div>
 
@@ -620,18 +647,19 @@ gtag('config', 'G-2M6V79H761');
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-4 reveal-up delay-1">
+                <!-- Desktop: Bento grid / Mobile: Accordion -->
+                <div class="hidden md:grid grid-cols-3 gap-x-4 gap-y-4 reveal-up delay-1">
 
-                    <!-- Card 1: Full Width - Strategy -->
-                    <div class="md:col-span-3 group relative overflow-hidden rounded-2xl border p-8 flex flex-col md:flex-row items-center gap-8 md:gap-16 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-500 border-white/10 bg-surface/50 hover:bg-surface2/80 hover:border-white/15">
-                        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 via-white/20"></div>
+                    <!-- Card 1: Full Width - Hedef Alıcı Haritalama -->
+                    <div class="md:col-span-3 group relative overflow-hidden rounded-2xl border p-8 flex flex-col md:flex-row items-center gap-8 md:gap-16 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-500 border-amber-500/10 bg-gradient-to-br from-amber-500/[0.04] to-transparent hover:from-amber-500/[0.08] hover:border-amber-500/20">
+                        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                         <div class="md:w-5/12 z-10 relative">
                             <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm group-hover:border-amber-500/30 transition-colors duration-500 border-amber-500/20 bg-amber-500/5">
                                 <i data-lucide="zap" class="w-6 h-6 text-amber-400/80"></i>
                             </div>
-                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Psikografik ICP Haritalama</h3>
-                            <p class="text-base text-textsec">Demografik değil, zihin yapısına göre alıcı profili. Doğru alıcıyı bulmak için doğru soruyu soruyoruz.</p>
+                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Hedef Alıcı Haritalama</h3>
+                            <p class="text-base text-textsec">Sektör ve firma büyüklüğüne değil, alıcının karar yapısına bakıyoruz. Doğru alıcıyı bulmak için doğru soruyu soruyoruz.</p>
                         </div>
 
                         <div class="md:w-7/12 w-full h-56 relative flex items-center justify-center z-10 border rounded-xl bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] to-transparent border-white/5 from-surface/80">
@@ -659,17 +687,17 @@ gtag('config', 'G-2M6V79H761');
                         </div>
                     </div>
 
-                    <!-- Card 2: 2/3 Width - Data Engineering with Terminal -->
-                    <div class="md:col-span-2 group relative overflow-hidden rounded-2xl border flex flex-col md:flex-row shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-500 border-white/10 bg-surface/50 hover:bg-surface2/80 hover:border-white/15">
-                        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 via-white/20 z-20"></div>
+                    <!-- Card 2: 2/3 Width - Aktif Müşteri Arama -->
+                    <div class="md:col-span-2 group relative overflow-hidden rounded-2xl border flex flex-col md:flex-row shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-500 border-emerald-500/10 bg-gradient-to-br from-emerald-500/[0.03] to-transparent hover:from-emerald-500/[0.06] hover:border-emerald-500/20">
+                        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20"></div>
 
                         <div class="p-8 md:w-1/2 flex flex-col justify-between z-10 relative">
                             <div>
                                 <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm border-emerald-500/20 bg-emerald-500/5 text-emerald-400/80">
                                     <i data-lucide="database" class="w-6 h-6"></i>
                                 </div>
-                                <h3 class="text-2xl font-normal tracking-tight mb-3 text-white">Outbound Altyapısı</h3>
-                                <p class="text-base text-textsec leading-relaxed mb-8">Ölçeklenebilir, kural tabanlı otomasyon. Email dizileri, LinkedIn erişimi ve çok kanallı satış pipeline'ı tek sistemde.</p>
+                                <h3 class="text-2xl font-normal tracking-tight mb-3 text-white">Aktif Müşteri Arama Sistemi</h3>
+                                <p class="text-base text-textsec leading-relaxed mb-8">Mail serisi, LinkedIn ve telefon ile çok kanallı erişim. Sizin yerinize müşteri arıyoruz, tek sistemden.</p>
                             </div>
 
                             <!-- Terminal Code Block -->
@@ -710,14 +738,14 @@ gtag('config', 'G-2M6V79H761');
                         </div>
                     </div>
 
-                    <!-- Card 3: 1/3 Width - Performance with Bar Chart -->
-                    <div class="group relative overflow-hidden rounded-2xl border p-8 flex flex-col justify-between shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-500 border-white/10 bg-surface/50 hover:bg-surface2/80 hover:border-white/15">
-                        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 via-white/20"></div>
+                    <!-- Card 3: 1/3 Width - Satış Hattı Takibi -->
+                    <div class="group relative overflow-hidden rounded-2xl border p-8 flex flex-col justify-between shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-500 border-amber-500/10 bg-gradient-to-b from-amber-500/[0.03] to-transparent hover:from-amber-500/[0.06] hover:border-amber-500/20">
+                        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div class="z-10 relative">
                             <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm transition-colors duration-500 border-amber-500/20 bg-amber-500/5">
                                 <i data-lucide="target" class="w-6 h-6 text-amber-400/70"></i>
                             </div>
-                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Pipeline Takibi</h3>
+                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Satış Hattı Takibi</h3>
                             <p class="text-base text-textsec">Hangi kanal, hangi mesaj, hangi pazar sonuç üretiyor? Tahmin değil, veriyle karar verin.</p>
                         </div>
 
@@ -733,9 +761,9 @@ gtag('config', 'G-2M6V79H761');
                         </div>
                     </div>
 
-                    <!-- Card 4: 1/3 Width - SEO with Search Results -->
-                    <div class="group relative overflow-hidden rounded-2xl border p-8 flex flex-col justify-between shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-500 border-white/10 bg-surface/50 hover:bg-surface2/80 hover:border-white/15">
-                        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 via-white/20"></div>
+                    <!-- Card 4: 1/3 Width - Pazar Önceliklendirme -->
+                    <div class="group relative overflow-hidden rounded-2xl border p-8 flex flex-col justify-between shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-500 border-emerald-500/10 bg-gradient-to-b from-emerald-500/[0.03] to-transparent hover:from-emerald-500/[0.06] hover:border-emerald-500/20">
+                        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div class="z-10 relative">
                             <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm transition-colors duration-500 border-emerald-500/20 bg-emerald-500/5">
                                 <i data-lucide="search" class="w-6 h-6 text-emerald-400/70"></i>
@@ -777,16 +805,16 @@ gtag('config', 'G-2M6V79H761');
                         </div>
                     </div>
 
-                    <!-- Card 5: 2/3 Width - CRM with Data Flow -->
-                    <div class="md:col-span-2 group relative overflow-hidden rounded-2xl border p-8 flex flex-col md:flex-row justify-between items-center gap-12 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-500 border-white/10 bg-surface/50 hover:bg-surface2/80 hover:border-white/15">
-                        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 via-white/20"></div>
+                    <!-- Card 5: 2/3 Width - Pazara Açılma Entegrasyonu -->
+                    <div class="md:col-span-2 group relative overflow-hidden rounded-2xl border p-8 flex flex-col md:flex-row justify-between items-center gap-12 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-500 border-amber-500/10 bg-gradient-to-br from-amber-500/[0.03] to-transparent hover:from-amber-500/[0.06] hover:border-amber-500/20">
+                        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                         <div class="md:w-1/2 relative z-10">
                             <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm transition-colors duration-500 border-amber-500/20 bg-amber-500/5">
                                 <i data-lucide="git-branch" class="w-6 h-6 text-amber-400/70"></i>
                             </div>
-                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">GTM Entegrasyonu</h3>
-                            <p class="text-base text-textsec">CRM, email, LinkedIn ve veri kaynaklarınız tek bir altyapıda. Tüm müşteri yolculuğunu uçtan uca yönetin.</p>
+                            <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Pazara Açılma Entegrasyonu</h3>
+                            <p class="text-base text-textsec">Müşteri takip sistemi, mail ve LinkedIn tek altyapıda. Tüm satış yolculuğunu uçtan uca yönetin.</p>
                         </div>
 
                         <div class="md:w-1/2 w-full flex justify-end relative z-10">
@@ -817,6 +845,87 @@ gtag('config', 'G-2M6V79H761');
                     </div>
 
                 </div>
+
+                <!-- Mobile Accordion -->
+                <div class="md:hidden flex flex-col gap-3 reveal-up delay-1">
+
+                    <div class="accordion-item rounded-xl border border-amber-500/10 bg-gradient-to-br from-amber-500/[0.04] to-transparent overflow-hidden">
+                        <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between p-5 text-left">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg border border-amber-500/20 bg-amber-500/5 flex items-center justify-center">
+                                    <i data-lucide="zap" class="w-4 h-4 text-amber-400/80"></i>
+                                </div>
+                                <span class="text-lg font-medium text-white">Hedef Alıcı Haritalama</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-down-linear" class="text-xl text-white/40 accordion-arrow transition-transform duration-300"></iconify-icon>
+                        </button>
+                        <div class="accordion-content px-5 pb-5">
+                            <p class="text-sm text-textsec leading-relaxed">Sektör ve firma büyüklüğüne değil, alıcının karar yapısına bakıyoruz. Doğru alıcıyı bulmak için doğru soruyu soruyoruz.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item rounded-xl border border-emerald-500/10 bg-gradient-to-br from-emerald-500/[0.03] to-transparent overflow-hidden">
+                        <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between p-5 text-left">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center">
+                                    <i data-lucide="database" class="w-4 h-4 text-emerald-400/80"></i>
+                                </div>
+                                <span class="text-lg font-medium text-white">Aktif Müşteri Arama</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-down-linear" class="text-xl text-white/40 accordion-arrow transition-transform duration-300"></iconify-icon>
+                        </button>
+                        <div class="accordion-content px-5 pb-5">
+                            <p class="text-sm text-textsec leading-relaxed">Mail serisi, LinkedIn ve telefon ile çok kanallı erişim. Sizin yerinize müşteri arıyoruz, tek sistemden.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item rounded-xl border border-amber-500/10 bg-gradient-to-br from-amber-500/[0.03] to-transparent overflow-hidden">
+                        <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between p-5 text-left">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg border border-amber-500/20 bg-amber-500/5 flex items-center justify-center">
+                                    <i data-lucide="target" class="w-4 h-4 text-amber-400/80"></i>
+                                </div>
+                                <span class="text-lg font-medium text-white">Satış Hattı Takibi</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-down-linear" class="text-xl text-white/40 accordion-arrow transition-transform duration-300"></iconify-icon>
+                        </button>
+                        <div class="accordion-content px-5 pb-5">
+                            <p class="text-sm text-textsec leading-relaxed">Hangi kanal, hangi mesaj, hangi pazar sonuç üretiyor? Tahmin değil, veriyle karar verin.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item rounded-xl border border-emerald-500/10 bg-gradient-to-br from-emerald-500/[0.03] to-transparent overflow-hidden">
+                        <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between p-5 text-left">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center">
+                                    <i data-lucide="search" class="w-4 h-4 text-emerald-400/80"></i>
+                                </div>
+                                <span class="text-lg font-medium text-white">Pazar Önceliklendirme</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-down-linear" class="text-xl text-white/40 accordion-arrow transition-transform duration-300"></iconify-icon>
+                        </button>
+                        <div class="accordion-content px-5 pb-5">
+                            <p class="text-sm text-textsec leading-relaxed">Hangi ülkede, hangi segmentte fırsat var? Veri odaklı pazar seçimi ile kaynağınızı doğru yere yönlendirin.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item rounded-xl border border-amber-500/10 bg-gradient-to-br from-amber-500/[0.03] to-transparent overflow-hidden">
+                        <button onclick="this.parentElement.classList.toggle('open')" class="w-full flex items-center justify-between p-5 text-left">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg border border-amber-500/20 bg-amber-500/5 flex items-center justify-center">
+                                    <i data-lucide="git-branch" class="w-4 h-4 text-amber-400/80"></i>
+                                </div>
+                                <span class="text-lg font-medium text-white">Pazara Açılma Entegrasyonu</span>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-down-linear" class="text-xl text-white/40 accordion-arrow transition-transform duration-300"></iconify-icon>
+                        </button>
+                        <div class="accordion-content px-5 pb-5">
+                            <p class="text-sm text-textsec leading-relaxed">Müşteri takip sistemi, mail ve LinkedIn tek altyapıda. Tüm satış yolculuğunu uçtan uca yönetin.</p>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </section>
 
