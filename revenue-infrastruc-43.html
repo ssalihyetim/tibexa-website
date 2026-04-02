@@ -71,7 +71,7 @@ background: #141414;
 transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 z-index: -1;
 }
-.btn-editorial:hover { color: #FFFFFF; }
+.btn-editorial:hover { color: #FFFFFF; box-shadow: 0 0 40px rgba(200, 144, 16, 0.12); }
 .btn-editorial:hover::before { transform: translateY(-100%); }
 .btn-editorial .icon-arrow { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
 .btn-editorial:hover .icon-arrow { transform: translate(4px, -4px); }
@@ -111,8 +111,29 @@ content: '';
 display: block;
 width: 1.5rem;
 height: 1px;
-background: #A1A1AA;
+background: #c89010;
 }
+/* SCROLL REVEAL TEXT */
+.scroll-reveal-text {
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    line-height: 1.5;
+    font-weight: 600;
+}
+.scroll-reveal-text .word {
+    display: inline-block;
+    opacity: 0.15;
+    transition: opacity 0.3s ease;
+}
+.scroll-reveal-text .word.visible {
+    opacity: 1;
+}
+.scroll-reveal-text .word.highlight {
+    text-decoration: underline;
+    text-decoration-color: rgba(200, 144, 16, 0.5);
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
+}
+
 /* MICRO-INTERACTIONS & EFFECTS */
 .glass-panel {
 background: rgba(10, 10, 10, 0.6);
@@ -287,12 +308,12 @@ gtag('config', 'G-2M6V79H761');
     <main class="relative z-10 w-full">
 
         <!-- 01. HERO SECTION -->
-        <section class="relative min-h-screen flex flex-col justify-center overflow-hidden pt-[5rem]">
+        <section id="hero-section" class="relative min-h-screen flex flex-col justify-center overflow-hidden pt-[5rem]" style="will-change: opacity;">
             <!-- WEBGL CANVAS BACKGROUND -->
-            <canvas id="webgl-hero"></canvas>
+            <canvas id="webgl-hero" style="will-change: transform;"></canvas>
             
             <!-- Swiss Grid Overlay lines -->
-            <div class="absolute inset-0 pointer-events-none flex justify-between px-6 lg:px-12 opacity-10">
+            <div id="hero-grid" class="absolute inset-0 pointer-events-none flex justify-between px-6 lg:px-12 opacity-10" style="will-change: transform;">
                 <div class="w-[1px] h-full bg-white"></div>
                 <div class="w-[1px] h-full bg-white hidden md:block"></div>
                 <div class="w-[1px] h-full bg-white hidden lg:block"></div>
@@ -305,7 +326,7 @@ gtag('config', 'G-2M6V79H761');
                     <div class="editorial-badge mb-[3rem]" data-tr="GTM_ALTYAPISI // 1.0" data-en="GTM_INFRASTRUCTURE // 1.0">GTM_ALTYAPISI // 1.0</div>
                     <h1 class="text-h1 text-white mb-[2rem]" data-tr="Uluslararası alıcı bulmak<br><span class='text-textsec'>şans işi değil.</span>" data-en="Finding global buyers<br><span class='text-textsec'>is not luck.</span>">
                         Uluslararası alıcı bulmak<br>
-                        <span class="text-textsec">şans işi değil.</span>
+                        <span style="color: rgba(200, 144, 16, 0.7);">şans işi değil.</span>
                     </h1>
                 </div>
 
@@ -366,7 +387,9 @@ gtag('config', 'G-2M6V79H761');
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-[4rem] lg:gap-[8rem]">
                     <div class="lg:col-span-5 reveal-up">
                         <div class="editorial-badge mb-[2rem]" data-tr="SORUN_TANIMLAMASI" data-en="THE_PROBLEM">SORUN_TANIMLAMASI</div>
-                        <h2 class="text-h3 text-white mb-6" data-tr="İhracat büyümesi sisteminizi kırmamalı. Ekibinizi de." data-en="Export growth shouldn’t break your systems. Or your people.">İhracat büyümesi sisteminizi kırmamalı. Ekibinizi de.</h2>
+                        <div class="scroll-reveal mb-6" data-scroll-reveal>
+                            <h2 class="scroll-reveal-text text-white">İhracat büyümesi sisteminizi bozmamalı. Ekibinizi de.</h2>
+                        </div>
                         <a href="#features" class="btn-outline mt-8">
                             <span data-tr="Metodolojimizi keşfedin" data-en="Explore our methodology">Metodolojimizi keşfedin</span>
                             <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
@@ -374,13 +397,13 @@ gtag('config', 'G-2M6V79H761');
                     </div>
 
                     <div class="lg:col-span-7 flex flex-col gap-[3rem] reveal-up delay-1">
-                        <p class="text-body text-white" data-tr="Firmalar büyüdükçe ihracat süreçleri karmaşıklaşır. Alıcı listeleri dağınık kalır, satış döngüleri uzar, en iyi insanlarınız CRM doldurmakla vakit kaybeder. Sonuç: fırsat kaçar, pipeline kurur." data-en="As companies grow, export processes get complex. Buyer lists scatter, sales cycles stretch, your best people waste time filling CRMs. Result: opportunities slip, pipeline dries up.">
-                            Firmalar büyüdükçe ihracat süreçleri karmaşıklaşır. Alıcı listeleri dağınık kalır, satış döngüleri uzar, en iyi insanlarınız CRM doldurmakla vakit kaybeder. Sonuç: fırsat kaçar, pipeline kurur.
-                        </p>
-                        <div class="border-l border-white/20 pl-6 lg:pl-10">
-                            <p class="text-body" data-tr="Tibexa dağınık satış araçlarını tek bir sisteme dönüştürür. Psikografik ICP analizi, outbound altyapısı ve ölçülebilir pipeline yönetimi. <strong>Sistem çalışsın. Ekibiniz satışa odaklansın.</strong>" data-en="Tibexa turns scattered sales tools into one system. Psychographic ICP analysis, outbound infrastructure, and measurable pipeline management. <strong>Let the system work. Let your team focus on selling.</strong>">
-                                Tibexa dağınık satış araçlarını tek bir sisteme dönüştürür. Psikografik ICP analizi, outbound altyapısı ve ölçülebilir pipeline yönetimi. <strong>Sistem çalışsın. Ekibiniz satışa odaklansın.</strong>
-                            </p>
+                        <div class="scroll-reveal" data-scroll-reveal>
+                            <p class="scroll-reveal-text text-white/90" style="font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 400;">Firmalar büyüdükçe ihracat süreçleri karmaşıklaşır. Alıcı listeleri dağınık kalır, satış döngüleri uzar, en iyi insanlarınız tablo doldurmakla vakit kaybeder. <span class="highlight">Sonuç: fırsat kaçar, müşteri adayları kurur.</span></p>
+                        </div>
+                        <div class="border-l-2 pl-6 lg:pl-10" style="border-color: rgba(200, 144, 16, 0.3);">
+                            <div class="scroll-reveal" data-scroll-reveal>
+                                <p class="scroll-reveal-text" style="font-size: clamp(1.4rem, 3vw, 2.2rem);">Biz size <span class="highlight">yeni müşteriler</span> getirelim. Siz <span class="highlight">satışa odaklanın.</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -396,16 +419,16 @@ gtag('config', 'G-2M6V79H761');
                     </div>
                     <div class="w-full overflow-hidden" style="-webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);">
                         <div class="sector-track pl-[5vw]" id="sector-track">
-                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/industrial-factory/480/640" alt="Endüstriyel" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Endüstriyel</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:factory-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Endüstriyel</h4><p class="text-xs text-white/40 leading-relaxed">Bant, ambalaj, yapı malzemeleri. Toptancı ve distribütör ağlarına erişim.</p></div></div></div>
-                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/food-production/480/640" alt="Gıda & FMCG" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Gıda & FMCG</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:cup-hot-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Gıda & FMCG</h4><p class="text-xs text-white/40 leading-relaxed">Çikolata, doğal ürünler, kurumsal gıda. Perakende zincirleri ve distribütörler.</p></div></div></div>
-                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/cosmetics-health/480/640" alt="Sağlık & Kozmetik" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Sağlık & Kozmetik</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:heart-pulse-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Sağlık & Kozmetik</h4><p class="text-xs text-white/40 leading-relaxed">Supplement, kozmetik, eczane ürünleri. İlaç distribütörleri ve zincir eczaneler.</p></div></div></div>
-                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/machinery-casting/480/640" alt="Makine & Döküm" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Makine & Döküm</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:settings-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Makine & Döküm</h4><p class="text-xs text-white/40 leading-relaxed">Ağır sanayi, döküm, kalıp. OEM'ler ve stamping firmalarına doğrudan erişim.</p></div></div></div>
-                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/automotive-parts/480/640" alt="Otomotiv" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Otomotiv</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:wheel-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Otomotiv</h4><p class="text-xs text-white/40 leading-relaxed">Yedek parça, BIW, otomotiv tedarik zinciri. Tier 1-2 firmalara erişim.</p></div></div></div>
-                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/textile-fabric/480/640" alt="Tekstil" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Tekstil</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:hanger-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Tekstil</h4><p class="text-xs text-white/40 leading-relaxed">Kumaş, hazır giyim, teknik tekstil. Avrupa ve ABD alıcılarına outbound.</p></div></div></div>
-                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/event-promo/480/640" alt="Promosyon & Etkinlik" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Promosyon & Etkinlik</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:flag-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Promosyon & Etkinlik</h4><p class="text-xs text-white/40 leading-relaxed">Lanyard, promosyon ürünleri, etkinlik malzemeleri. Global promo firmaları.</p></div></div></div>
-                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/consulting-office/480/640" alt="Danışmanlık" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Danışmanlık</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:chart-square-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Danışmanlık</h4><p class="text-xs text-white/40 leading-relaxed">Strateji, yönetim ve ihracat danışmanlığı. B2B hizmet firmalarına pipeline.</p></div></div></div>
-                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/creative-agency/480/640" alt="Ajans" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Ajans</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:palette-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Ajans</h4><p class="text-xs text-white/40 leading-relaxed">Dijital pazarlama, reklam, kreatif ajanslar. Uluslararası müşteri kazanımı.</p></div></div></div>
-                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/saas-technology/480/640" alt="SaaS & Teknoloji" class="w-full h-full object-cover grayscale opacity-70"><div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">SaaS & Teknoloji</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:monitor-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">SaaS & Teknoloji</h4><p class="text-xs text-white/40 leading-relaxed">Yazılım, SaaS, teknoloji ürünleri. Global pazarda enterprise müşteri edinimi.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/industrial-factory/480/640" alt="Endüstriyel" class="w-full h-full object-cover opacity-90"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Endüstriyel</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:factory-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Endüstriyel</h4><p class="text-xs text-white/40 leading-relaxed">Bant, ambalaj, yapı malzemeleri. Toptancı ve distribütör ağlarına erişim.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/food-production/480/640" alt="Gıda & FMCG" class="w-full h-full object-cover opacity-90"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Gıda & FMCG</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:cup-hot-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Gıda & FMCG</h4><p class="text-xs text-white/40 leading-relaxed">Çikolata, doğal ürünler, kurumsal gıda. Perakende zincirleri ve distribütörler.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/cosmetics-health/480/640" alt="Sağlık & Kozmetik" class="w-full h-full object-cover opacity-90"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Sağlık & Kozmetik</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:heart-pulse-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Sağlık & Kozmetik</h4><p class="text-xs text-white/40 leading-relaxed">Supplement, kozmetik, eczane ürünleri. İlaç distribütörleri ve zincir eczaneler.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/machinery-casting/480/640" alt="Makine & Döküm" class="w-full h-full object-cover opacity-90"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Makine & Döküm</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:settings-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Makine & Döküm</h4><p class="text-xs text-white/40 leading-relaxed">Ağır sanayi, döküm, kalıp. OEM'ler ve stamping firmalarına doğrudan erişim.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/automotive-parts/480/640" alt="Otomotiv" class="w-full h-full object-cover opacity-90"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Otomotiv</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:wheel-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Otomotiv</h4><p class="text-xs text-white/40 leading-relaxed">Yedek parça, BIW, otomotiv tedarik zinciri. Tier 1-2 firmalara erişim.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/textile-fabric/480/640" alt="Tekstil" class="w-full h-full object-cover opacity-90"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Tekstil</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:hanger-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Tekstil</h4><p class="text-xs text-white/40 leading-relaxed">Kumaş, hazır giyim, teknik tekstil. Avrupa ve ABD alıcılarına outbound.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/event-promo/480/640" alt="Promosyon & Etkinlik" class="w-full h-full object-cover opacity-90"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Promosyon & Etkinlik</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:flag-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Promosyon & Etkinlik</h4><p class="text-xs text-white/40 leading-relaxed">Lanyard, promosyon ürünleri, etkinlik malzemeleri. Global promo firmaları.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/consulting-office/480/640" alt="Danışmanlık" class="w-full h-full object-cover opacity-90"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Danışmanlık</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:chart-square-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Danışmanlık</h4><p class="text-xs text-white/40 leading-relaxed">Strateji, yönetim ve ihracat danışmanlığı. B2B hizmet firmalarına pipeline.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/creative-agency/480/640" alt="Ajans" class="w-full h-full object-cover opacity-90"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">Ajans</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:palette-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">Ajans</h4><p class="text-xs text-white/40 leading-relaxed">Dijital pazarlama, reklam, kreatif ajanslar. Uluslararası müşteri kazanımı.</p></div></div></div>
+                            <div class="sector-card"><div class="sector-card-inner"><div class="sector-card-front border border-white/10"><img loading="lazy" src="https://picsum.photos/seed/saas-technology/480/640" alt="SaaS & Teknoloji" class="w-full h-full object-cover opacity-90"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><span class="absolute bottom-5 left-5 text-lg font-medium text-white tracking-tight">SaaS & Teknoloji</span></div><div class="sector-card-back border border-white/10 bg-[#111] flex flex-col justify-center items-center text-center p-6"><iconify-icon icon="solar:monitor-linear" class="text-3xl text-white/40 mb-4"></iconify-icon><h4 class="text-lg font-medium text-white mb-2">SaaS & Teknoloji</h4><p class="text-xs text-white/40 leading-relaxed">Yazılım, SaaS, teknoloji ürünleri. Global pazarda enterprise müşteri edinimi.</p></div></div></div>
                         </div>
                     </div>
                 </div>
@@ -445,26 +468,26 @@ gtag('config', 'G-2M6V79H761');
                                     <div class="space-y-3">
                                         <div class="flex items-center justify-between p-3 rounded-lg border border-white/5 bg-surface/50">
                                             <div class="flex items-center gap-3">
-                                                <div class="w-8 h-8 rounded-md flex items-center justify-center bg-white/5 text-white/70">
+                                                <div class="w-8 h-8 rounded-md flex items-center justify-center bg-amber-500/10 text-amber-400/80">
                                                     <i data-lucide="target" class="w-5 h-5"></i>
                                                 </div>
                                                 <div>
                                                     <div class="text-base font-normal text-white">Almanya Outbound</div>
-                                                    <div class="text-sm text-textsec">Pipeline: 3.4x</div>
+                                                    <div class="text-sm text-amber-400/60">Pipeline: 3.4x</div>
                                                 </div>
                                             </div>
-                                            <div class="w-8 h-4 rounded-full relative cursor-pointer border border-transparent bg-white">
-                                                <div class="w-3 h-3 rounded-full absolute right-0.5 top-0.5 shadow-sm bg-black"></div>
+                                            <div class="w-8 h-4 rounded-full relative cursor-pointer border border-transparent bg-emerald-500">
+                                                <div class="w-3 h-3 rounded-full absolute right-0.5 top-0.5 shadow-sm bg-white"></div>
                                             </div>
                                         </div>
                                         <div class="flex items-center justify-between p-3 rounded-lg border border-white/5 bg-surface/50">
                                             <div class="flex items-center gap-3">
-                                                <div class="w-8 h-8 rounded-md flex items-center justify-center bg-white/5 text-white/70">
+                                                <div class="w-8 h-8 rounded-md flex items-center justify-center bg-emerald-500/10 text-emerald-400/80">
                                                     <i data-lucide="mail" class="w-5 h-5"></i>
                                                 </div>
                                                 <div>
                                                     <div class="text-base font-normal text-white">Email Dizisi</div>
-                                                    <div class="text-sm text-textsec">Açılma: %42</div>
+                                                    <div class="text-sm text-emerald-400/60">Açılma: %42</div>
                                                 </div>
                                             </div>
                                             <div class="w-8 h-4 rounded-full relative cursor-pointer border bg-white/10 border-white/20">
@@ -473,15 +496,15 @@ gtag('config', 'G-2M6V79H761');
                                         </div>
                                         <div class="flex items-center justify-between p-3 rounded-lg border border-white/5 bg-surface/50">
                                             <div class="flex items-center gap-3">
-                                                <div class="w-8 h-8 rounded-md flex items-center justify-center bg-white/5 text-white/70">
+                                                <div class="w-8 h-8 rounded-md flex items-center justify-center bg-amber-500/10 text-amber-400/70">
                                                     <i data-lucide="message-square" class="w-5 h-5"></i>
                                                 </div>
                                                 <div>
                                                     <div class="text-base font-normal text-white">ICP Analizi</div>
-                                                    <div class="text-sm text-textsec">Devam ediyor</div>
+                                                    <div class="text-sm text-amber-400/50">Devam ediyor</div>
                                                 </div>
                                             </div>
-                                            <div class="w-4 h-4 rounded-full border-2 animate-spin mr-1 border-white/20 border-t-white/60"></div>
+                                            <div class="w-4 h-4 rounded-full border-2 animate-spin mr-1 border-amber-500/20 border-t-amber-400/60"></div>
                                         </div>
                                         <div class="flex items-center justify-between p-3 rounded-lg border border-white/5 bg-surface/50">
                                             <div class="flex items-center gap-3">
@@ -493,8 +516,8 @@ gtag('config', 'G-2M6V79H761');
                                                     <div class="text-sm text-textsec">Veri senkronize</div>
                                                 </div>
                                             </div>
-                                            <div class="w-8 h-1.5 rounded-full overflow-hidden mr-1 bg-white/10">
-                                                <div class="w-[60%] h-full rounded-full bg-white/50"></div>
+                                            <div class="w-8 h-1.5 rounded-full overflow-hidden mr-1 bg-emerald-500/10">
+                                                <div class="w-[60%] h-full rounded-full bg-emerald-400/50"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -508,7 +531,7 @@ gtag('config', 'G-2M6V79H761');
                                         <div class="text-base mb-1 text-textsec font-mono text-[clamp(0.65rem,0.8vw,0.75rem)] uppercase">Tahmini Pipeline</div>
                                         <div id="revenue-counter" class="text-3xl font-normal tracking-tight text-white">$0<span class="text-sm text-textsec font-normal">.00</span></div>
                                     </div>
-                                    <div class="flex items-center gap-1 text-sm px-2 py-1 rounded-md font-normal text-black bg-white">
+                                    <div class="flex items-center gap-1 text-sm px-2 py-1 rounded-md font-normal text-black" style="background: #f59e0b;">
                                         <i data-lucide="trending-up" class="w-4 h-4"></i>
                                         +14.2%
                                     </div>
@@ -518,12 +541,12 @@ gtag('config', 'G-2M6V79H761');
                                 <div class="relative w-full h-32 flex items-end gap-2 overflow-hidden mt-auto">
                                     <div class="w-full h-[20%] rounded-t-sm bg-white/5"></div>
                                     <div class="w-full h-[35%] rounded-t-sm bg-white/5"></div>
-                                    <div class="w-full h-[30%] rounded-t-sm bg-white/10"></div>
-                                    <div class="w-full h-[45%] rounded-t-sm bg-white/15"></div>
-                                    <div class="w-full h-[60%] rounded-t-sm bg-white/20"></div>
-                                    <div class="w-full h-[55%] rounded-t-sm bg-white/25"></div>
-                                    <div class="w-full bg-white/40 h-[80%] rounded-t-sm"></div>
-                                    <div class="w-full h-[75%] rounded-t-sm relative bg-white/50">
+                                    <div class="w-full h-[30%] rounded-t-sm bg-amber-500/10"></div>
+                                    <div class="w-full h-[45%] rounded-t-sm bg-amber-500/15"></div>
+                                    <div class="w-full h-[60%] rounded-t-sm bg-amber-500/20"></div>
+                                    <div class="w-full h-[55%] rounded-t-sm bg-amber-400/25"></div>
+                                    <div class="w-full bg-amber-400/40 h-[80%] rounded-t-sm"></div>
+                                    <div class="w-full h-[75%] rounded-t-sm relative bg-amber-400/50">
                                         <div class="absolute -top-7 left-1/2 -translate-x-1/2 text-sm px-1.5 py-0.5 rounded font-normal whitespace-nowrap hidden md:block bg-white text-black">
                                             Today
                                         </div>
@@ -558,8 +581,8 @@ gtag('config', 'G-2M6V79H761');
                         <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 via-white/20"></div>
 
                         <div class="md:w-5/12 z-10 relative">
-                            <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm group-hover:border-white/30 transition-colors duration-500 border-white/10 bg-surface">
-                                <i data-lucide="zap" class="w-6 h-6 text-white/70"></i>
+                            <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm group-hover:border-amber-500/30 transition-colors duration-500 border-amber-500/20 bg-amber-500/5">
+                                <i data-lucide="zap" class="w-6 h-6 text-amber-400/80"></i>
                             </div>
                             <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Psikografik ICP Haritalama</h3>
                             <p class="text-base text-textsec">Demografik değil, zihin yapısına göre alıcı profili. Doğru alıcıyı bulmak için doğru soruyu soruyoruz.</p>
@@ -596,7 +619,7 @@ gtag('config', 'G-2M6V79H761');
 
                         <div class="p-8 md:w-1/2 flex flex-col justify-between z-10 relative">
                             <div>
-                                <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm border-white/10 bg-surface text-white/70">
+                                <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm border-emerald-500/20 bg-emerald-500/5 text-emerald-400/80">
                                     <i data-lucide="database" class="w-6 h-6"></i>
                                 </div>
                                 <h3 class="text-2xl font-normal tracking-tight mb-3 text-white">Outbound Altyapısı</h3>
@@ -645,8 +668,8 @@ gtag('config', 'G-2M6V79H761');
                     <div class="group relative overflow-hidden rounded-2xl border p-8 flex flex-col justify-between shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-500 border-white/10 bg-surface/50 hover:bg-surface2/80 hover:border-white/15">
                         <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 via-white/20"></div>
                         <div class="z-10 relative">
-                            <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm transition-colors duration-500 border-white/10 bg-surface">
-                                <i data-lucide="target" class="w-6 h-6 text-white/70"></i>
+                            <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm transition-colors duration-500 border-amber-500/20 bg-amber-500/5">
+                                <i data-lucide="target" class="w-6 h-6 text-amber-400/70"></i>
                             </div>
                             <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Pipeline Takibi</h3>
                             <p class="text-base text-textsec">Hangi kanal, hangi mesaj, hangi pazar sonuç üretiyor? Tahmin değil, veriyle karar verin.</p>
@@ -668,8 +691,8 @@ gtag('config', 'G-2M6V79H761');
                     <div class="group relative overflow-hidden rounded-2xl border p-8 flex flex-col justify-between shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] transition-all duration-500 border-white/10 bg-surface/50 hover:bg-surface2/80 hover:border-white/15">
                         <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 via-white/20"></div>
                         <div class="z-10 relative">
-                            <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm transition-colors duration-500 border-white/10 bg-surface">
-                                <i data-lucide="search" class="w-6 h-6 text-white/70"></i>
+                            <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm transition-colors duration-500 border-emerald-500/20 bg-emerald-500/5">
+                                <i data-lucide="search" class="w-6 h-6 text-emerald-400/70"></i>
                             </div>
                             <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">Pazar Önceliklendirme</h3>
                             <p class="text-base text-textsec">Hangi ülkede, hangi segmentte fırsat var? Veri odaklı pazar seçimi ile kaynağınızı doğru yere yönlendirin.</p>
@@ -713,8 +736,8 @@ gtag('config', 'G-2M6V79H761');
                         <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 via-white/20"></div>
 
                         <div class="md:w-1/2 relative z-10">
-                            <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm transition-colors duration-500 border-white/10 bg-surface">
-                                <i data-lucide="git-branch" class="w-6 h-6 text-white/70"></i>
+                            <div class="w-10 h-10 rounded-lg border flex items-center justify-center mb-6 shadow-sm transition-colors duration-500 border-amber-500/20 bg-amber-500/5">
+                                <i data-lucide="git-branch" class="w-6 h-6 text-amber-400/70"></i>
                             </div>
                             <h3 class="text-2xl font-normal tracking-tight mb-2 text-white">GTM Entegrasyonu</h3>
                             <p class="text-base text-textsec">CRM, email, LinkedIn ve veri kaynaklarınız tek bir altyapıda. Tüm müşteri yolculuğunu uçtan uca yönetin.</p>
@@ -933,7 +956,7 @@ gtag('config', 'G-2M6V79H761');
                             <h3 class="text-lg font-medium text-white/90 tracking-tight mb-2">4 ayda firma cirosu 2 katına çıktı</h3>
                             <p class="text-sm text-white/30 leading-relaxed">110+ pozitif dönüş, aylık 33 potansiyel müşteri hedefi aşıldı. Firma operasyonel kapasiteyi aştığı için kampanya durduruldu.</p>
                         </div>
-                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-white/70 transition-colors text-sm font-mono">
+                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-amber-400 transition-colors text-sm font-mono">
                             <span data-tr="Hikayeyi oku" data-en="Read story">Hikayeyi oku</span>
                             <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
                         </div>
@@ -949,7 +972,7 @@ gtag('config', 'G-2M6V79H761');
                             <h3 class="text-lg font-medium text-white/90 tracking-tight mb-2">2 ayda 300+ pozitif dönüş</h3>
                             <p class="text-sm text-white/30 leading-relaxed">Ramazan öncesi 2 aylık sprint kampanya. Binlerce inbox altyapısı, 8 email varyasyonu. Tek seferlik projeden uzun vadeli partnerliğe dönüştü.</p>
                         </div>
-                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-white/70 transition-colors text-sm font-mono">
+                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-amber-400 transition-colors text-sm font-mono">
                             <span data-tr="Hikayeyi oku" data-en="Read story">Hikayeyi oku</span>
                             <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
                         </div>
@@ -965,7 +988,7 @@ gtag('config', 'G-2M6V79H761');
                             <h3 class="text-lg font-medium text-white/90 tracking-tight mb-2">2 ayda 37 görüşme ve gerçekleşen satış</h3>
                             <p class="text-sm text-white/30 leading-relaxed">12.000 firmadan AI filtrelemeyle 8.000'e inildi. İhracata yeni başlayan firmayı global pazara taşıdık, ilk satışlar gerçekleşti.</p>
                         </div>
-                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-white/70 transition-colors text-sm font-mono">
+                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-amber-400 transition-colors text-sm font-mono">
                             <span data-tr="Hikayeyi oku" data-en="Read story">Hikayeyi oku</span>
                             <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
                         </div>
@@ -981,7 +1004,7 @@ gtag('config', 'G-2M6V79H761');
                             <h3 class="text-lg font-medium text-white/90 tracking-tight mb-2">5. ayda 60 distribütör görüşmesi, kampanya devam ediyor</h3>
                             <p class="text-sm text-white/30 leading-relaxed">15 ülkede 5.000+ firma haritalandı. Strateji değişimiyle distribütör odağına geçildi, 1.500 hedeften 60 aktif görüşmeye ulaşıldı.</p>
                         </div>
-                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-white/70 transition-colors text-sm font-mono">
+                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-amber-400 transition-colors text-sm font-mono">
                             <span data-tr="Hikayeyi oku" data-en="Read story">Hikayeyi oku</span>
                             <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
                         </div>
@@ -997,7 +1020,7 @@ gtag('config', 'G-2M6V79H761');
                             <h3 class="text-lg font-medium text-white/90 tracking-tight mb-2">İrlanda ve ABD'de distribütör adayları, fabrika ziyaretleri</h3>
                             <p class="text-sm text-white/30 leading-relaxed">9.000+ firmadan AI ile 1.800 ideal hedefe inildi. İrlanda ve Amerika'da distribütör adayları bulundu, fabrika ziyaretleri yapıldı. Kampanya devam ediyor.</p>
                         </div>
-                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-white/70 transition-colors text-sm font-mono">
+                        <div class="flex items-center gap-2 mt-4 text-white/40 group-hover:text-amber-400 transition-colors text-sm font-mono">
                             <span data-tr="Hikayeyi oku" data-en="Read story">Hikayeyi oku</span>
                             <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
                         </div>
@@ -1107,6 +1130,93 @@ gtag('config', 'G-2M6V79H761');
                 }
             });
         }
+    </script>
+
+    <!-- SCROLL REVEAL TEXT -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Split text into words
+        document.querySelectorAll('[data-scroll-reveal] .scroll-reveal-text').forEach(el => {
+            const html = el.innerHTML;
+            // Preserve HTML tags like <span class="highlight">
+            const parts = html.split(/(<[^>]+>)/);
+            let result = '';
+            let insideTag = false;
+            parts.forEach(part => {
+                if (part.startsWith('<')) {
+                    result += part;
+                    if (part.startsWith('</')) insideTag = false;
+                    else if (!part.endsWith('/>')) insideTag = true;
+                } else {
+                    const words = part.split(/(\s+)/);
+                    words.forEach(w => {
+                        if (w.trim()) {
+                            result += '<span class="word">' + w + '</span>';
+                        } else {
+                            result += w;
+                        }
+                    });
+                }
+            });
+            el.innerHTML = result;
+        });
+
+        // Reveal words on scroll
+        const revealOnScroll = () => {
+            document.querySelectorAll('[data-scroll-reveal]').forEach(container => {
+                const rect = container.getBoundingClientRect();
+                const viewH = window.innerHeight;
+                // Start revealing when element is 80% from top, finish at 30%
+                const start = viewH * 0.85;
+                const end = viewH * 0.25;
+                const words = container.querySelectorAll('.word');
+                if (!words.length) return;
+
+                words.forEach((word, i) => {
+                    const wordProgress = (start - rect.top) / (start - end);
+                    const wordThreshold = i / words.length;
+                    if (wordProgress > wordThreshold) {
+                        word.classList.add('visible');
+                    } else {
+                        word.classList.remove('visible');
+                    }
+                });
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll, { passive: true });
+        revealOnScroll();
+    });
+    </script>
+
+    <!-- HERO PARALLAX -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const hero = document.getElementById('hero-section');
+        const canvas = document.getElementById('webgl-hero');
+        const grid = document.getElementById('hero-grid');
+        const h1 = hero ? hero.querySelector('.text-h1') : null;
+        if (!hero) return;
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const y = window.scrollY;
+                    const heroH = hero.offsetHeight;
+                    if (y > heroH) { ticking = false; return; }
+
+                    if (canvas) canvas.style.transform = 'translateY(' + (y * 0.3) + 'px) scale(' + (1 + y * 0.0003) + ')';
+                    if (grid) grid.style.transform = 'translateY(' + (y * 0.2) + 'px)';
+                    if (h1) h1.style.transform = 'translateY(' + (y * 0.15) + 'px)';
+                    hero.style.opacity = 1 - (y / heroH) * 0.6;
+
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+    });
     </script>
 
     <!-- SCROLL-DRIVEN HORIZONTAL SECTOR CARDS -->
