@@ -24,6 +24,9 @@ try{if(window.parent&&window.parent!==window){window.parent.promotekit_referral=
 <!-- Icons -->
 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <!-- Tailwind (pre-built) -->
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -113,22 +116,6 @@ width: 1.5rem;
 height: 1px;
 background: #c89010;
 }
-/* PROCESS TIMELINE */
-.tl-wrapper { height: 300vh; position: relative; }
-.tl-sticky { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
-.tl-line { position: absolute; left: 2rem; top: 15%; bottom: 15%; width: 2px; background: rgba(200,144,16,0.1); }
-.tl-line-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(to bottom, rgba(200,144,16,0.6), rgba(200,144,16,0.2)); transition: height 0.1s linear; }
-.tl-dot { position: absolute; left: 2rem; top: 15%; width: 12px; height: 12px; margin-left: -5px; border-radius: 50%; background: #c89010; box-shadow: 0 0 20px rgba(200,144,16,0.4); transition: top 0.1s linear; z-index: 10; }
-.tl-step { opacity: 0.1; transform: translateX(30px); filter: blur(4px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-.tl-step.active { opacity: 1; transform: translateX(0); filter: blur(0); }
-.tl-step.done { opacity: 0.5; transform: translateX(0); filter: blur(0); }
-@media (min-width: 768px) {
-    .tl-line { left: 50%; }
-    .tl-dot { left: 50%; }
-    .tl-step:nth-child(odd) .tl-card { margin-left: auto; }
-    .tl-step:nth-child(even) .tl-card { margin-right: auto; }
-}
-
 /* MOBILE ACCORDION */
 .accordion-content {
     max-height: 0;
@@ -499,69 +486,59 @@ gtag('config', 'G-2M6V79H761');
             </div>
         </section>
 
-        <!-- 03.25 PROCESS TIMELINE -->
-        <section class="relative bg-bg">
-            <div class="tl-wrapper" id="tl-wrapper">
-                <div class="tl-sticky">
-                    <div class="w-full max-w-5xl mx-auto px-6 lg:px-12 relative">
+        <!-- 03.25 PROCESS TIMELINE - Horizontal bar with GSAP ScrollTrigger -->
+        <section class="py-[8rem] relative bg-bg">
+            <div class="w-full max-w-6xl mx-auto px-6 lg:px-12">
+                <div class="text-center mb-16">
+                    <div class="editorial-badge mb-4 justify-center" data-tr="SÜREÇ" data-en="PROCESS">SÜREÇ</div>
+                    <h2 class="text-h3 text-white" data-tr="4 adımda ihracat altyapınız hazır." data-en="Your export infrastructure in 4 steps.">4 adımda ihracat altyapınız hazır.</h2>
+                </div>
 
-                        <!-- Title -->
-                        <div class="text-center mb-12">
-                            <div class="editorial-badge mb-4 justify-center" data-tr="SÜREÇ" data-en="PROCESS">SÜREÇ</div>
-                            <h2 class="text-h3 text-white" data-tr="4 adımda ihracat altyapınız hazır." data-en="Your export infrastructure in 4 steps.">4 adımda ihracat altyapınız hazır.</h2>
+                <!-- Horizontal timeline -->
+                <div class="relative" id="htl">
+                    <!-- Bar track -->
+                    <div class="relative h-1 rounded-full bg-white/10 mb-16">
+                        <div id="htl-fill" class="absolute top-0 left-0 h-full rounded-full w-0" style="background: linear-gradient(90deg, #c89010, #f59e0b);"></div>
+                        <!-- Dot markers -->
+                        <div class="absolute top-1/2 -translate-y-1/2 left-0 w-3 h-3 rounded-full border-2 border-white/20 bg-black htl-dot" data-i="0"></div>
+                        <div class="absolute top-1/2 -translate-y-1/2 left-[33.33%] w-3 h-3 rounded-full border-2 border-white/20 bg-black htl-dot" data-i="1"></div>
+                        <div class="absolute top-1/2 -translate-y-1/2 left-[66.66%] w-3 h-3 rounded-full border-2 border-white/20 bg-black htl-dot" data-i="2"></div>
+                        <div class="absolute top-1/2 -translate-y-1/2 right-0 w-3 h-3 rounded-full border-2 border-white/20 bg-black htl-dot" data-i="3"></div>
+                    </div>
+
+                    <!-- Step labels -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="htl-step opacity-20 transition-all duration-500" data-i="0">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="font-mono text-amber-400 text-xs font-semibold">01</span>
+                                <iconify-icon icon="solar:globe-linear" class="text-lg text-amber-400/70"></iconify-icon>
+                            </div>
+                            <h3 class="text-lg font-medium text-white mb-1.5 tracking-tight">Doğru Pazar Tespiti</h3>
+                            <p class="text-xs text-white/35 leading-relaxed">Hangi ülkede, hangi segmentte gerçek talep var?</p>
                         </div>
-
-                        <!-- Timeline line -->
-                        <div class="tl-line" id="tl-line"><div class="tl-line-fill" id="tl-line-fill"></div></div>
-                        <div class="tl-dot" id="tl-dot"></div>
-
-                        <!-- Steps -->
-                        <div class="flex flex-col gap-8 pl-12 md:pl-0 relative" id="tl-steps">
-
-                            <div class="tl-step" data-step="0">
-                                <div class="tl-card md:w-5/12 rounded-xl border border-amber-500/15 bg-gradient-to-br from-amber-500/[0.05] to-transparent p-6">
-                                    <div class="flex items-center gap-3 mb-3">
-                                        <span class="font-mono text-amber-400 text-sm font-semibold">01</span>
-                                        <iconify-icon icon="solar:globe-linear" class="text-xl text-amber-400/70"></iconify-icon>
-                                    </div>
-                                    <h3 class="text-xl font-medium text-white mb-2">Doğru Pazar Tespiti</h3>
-                                    <p class="text-sm text-white/40 leading-relaxed">Hangi ülkede, hangi segmentte gerçek talep var? Veri ile pazar önceliklendirmesi yapıyoruz.</p>
-                                </div>
+                        <div class="htl-step opacity-20 transition-all duration-500" data-i="1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="font-mono text-emerald-400 text-xs font-semibold">02</span>
+                                <iconify-icon icon="solar:users-group-rounded-linear" class="text-lg text-emerald-400/70"></iconify-icon>
                             </div>
-
-                            <div class="tl-step" data-step="1">
-                                <div class="tl-card md:w-5/12 rounded-xl border border-emerald-500/15 bg-gradient-to-br from-emerald-500/[0.05] to-transparent p-6">
-                                    <div class="flex items-center gap-3 mb-3">
-                                        <span class="font-mono text-emerald-400 text-sm font-semibold">02</span>
-                                        <iconify-icon icon="solar:users-group-rounded-linear" class="text-xl text-emerald-400/70"></iconify-icon>
-                                    </div>
-                                    <h3 class="text-xl font-medium text-white mb-2">Hedef Firma ve Kişi Tespiti</h3>
-                                    <p class="text-sm text-white/40 leading-relaxed">Binlerce firma arasından AI ile ideal alıcıları filtreliyoruz. Karar verici kişilere ulaşıyoruz.</p>
-                                </div>
+                            <h3 class="text-lg font-medium text-white mb-1.5 tracking-tight">Hedef Firma ve Kişi Tespiti</h3>
+                            <p class="text-xs text-white/35 leading-relaxed">AI ile binlerce firmadan ideal alıcıları filtreliyoruz.</p>
+                        </div>
+                        <div class="htl-step opacity-20 transition-all duration-500" data-i="2">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="font-mono text-amber-400 text-xs font-semibold">03</span>
+                                <iconify-icon icon="solar:layers-linear" class="text-lg text-amber-400/70"></iconify-icon>
                             </div>
-
-                            <div class="tl-step" data-step="2">
-                                <div class="tl-card md:w-5/12 rounded-xl border border-amber-500/15 bg-gradient-to-br from-amber-500/[0.05] to-transparent p-6">
-                                    <div class="flex items-center gap-3 mb-3">
-                                        <span class="font-mono text-amber-400 text-sm font-semibold">03</span>
-                                        <iconify-icon icon="solar:layers-linear" class="text-xl text-amber-400/70"></iconify-icon>
-                                    </div>
-                                    <h3 class="text-xl font-medium text-white mb-2">Altyapı Kurulumu</h3>
-                                    <p class="text-sm text-white/40 leading-relaxed">Mail sistemleri, arama altyapısı ve kişiselleştirilmiş mesajlarla çok kanallı erişim kuruyoruz.</p>
-                                </div>
+                            <h3 class="text-lg font-medium text-white mb-1.5 tracking-tight">Altyapı Kurulumu</h3>
+                            <p class="text-xs text-white/35 leading-relaxed">Mail, arama ve kişiselleştirilmiş mesajlarla çok kanallı erişim.</p>
+                        </div>
+                        <div class="htl-step opacity-20 transition-all duration-500" data-i="3">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="font-mono text-emerald-400 text-xs font-semibold">04</span>
+                                <iconify-icon icon="solar:cup-star-linear" class="text-lg text-emerald-400/70"></iconify-icon>
                             </div>
-
-                            <div class="tl-step" data-step="3">
-                                <div class="tl-card md:w-5/12 rounded-xl border border-emerald-500/15 bg-gradient-to-br from-emerald-500/[0.05] to-transparent p-6">
-                                    <div class="flex items-center gap-3 mb-3">
-                                        <span class="font-mono text-emerald-400 text-sm font-semibold">04</span>
-                                        <iconify-icon icon="solar:cup-star-linear" class="text-xl text-emerald-400/70"></iconify-icon>
-                                    </div>
-                                    <h3 class="text-xl font-medium text-white mb-2">Yeni Müşteriler</h3>
-                                    <p class="text-sm text-white/40 leading-relaxed">Nitelikli toplantılar, gerçek satış fırsatları. Siz satışa odaklanın, gerisini biz halledelim.</p>
-                                </div>
-                            </div>
-
+                            <h3 class="text-lg font-medium text-white mb-1.5 tracking-tight">Yeni Müşteriler</h3>
+                            <p class="text-xs text-white/35 leading-relaxed">Nitelikli toplantılar ve gerçek satış fırsatları.</p>
                         </div>
                     </div>
                 </div>
@@ -1557,45 +1534,64 @@ gtag('config', 'G-2M6V79H761');
     });
     </script>
 
-    <!-- PROCESS TIMELINE SCROLL -->
+    <!-- GSAP HORIZONTAL TIMELINE -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const wrapper = document.getElementById('tl-wrapper');
-        const fill = document.getElementById('tl-line-fill');
-        const dot = document.getElementById('tl-dot');
-        const steps = document.querySelectorAll('.tl-step');
-        if (!wrapper || !steps.length) return;
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        gsap.registerPlugin(ScrollTrigger);
 
-        const update = () => {
-            const rect = wrapper.getBoundingClientRect();
-            const wH = wrapper.offsetHeight;
-            const vH = window.innerHeight;
-            const scrollable = wH - vH;
-            if (scrollable <= 0) return;
-            const progress = Math.max(0, Math.min(1, -rect.top / scrollable));
+        const fill = document.getElementById('htl-fill');
+        const dots = document.querySelectorAll('.htl-dot');
+        const steps = document.querySelectorAll('.htl-step');
+        const htl = document.getElementById('htl');
+        if (!htl || !fill) return;
 
-            // Fill line
-            if (fill) fill.style.height = (progress * 100) + '%';
+        // Bar fill animation
+        gsap.to(fill, {
+            width: '100%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: htl,
+                start: 'top 80%',
+                end: 'bottom 30%',
+                scrub: 0.5,
+            }
+        });
 
-            // Move dot (between 15% and 85% of the sticky area)
-            if (dot) dot.style.top = (15 + progress * 70) + '%';
-
-            // Activate steps
-            const totalSteps = steps.length;
-            steps.forEach((step, i) => {
-                const stepStart = i / totalSteps;
-                const stepEnd = (i + 0.6) / totalSteps;
-                step.classList.remove('active', 'done');
-                if (progress >= stepEnd) {
-                    step.classList.add('done');
-                } else if (progress >= stepStart) {
-                    step.classList.add('active');
+        // Dots and steps activate based on scroll progress
+        const positions = [0, 0.33, 0.66, 1];
+        steps.forEach((step, i) => {
+            gsap.to(step, {
+                opacity: 1,
+                y: 0,
+                filter: 'blur(0px)',
+                duration: 0.5,
+                scrollTrigger: {
+                    trigger: htl,
+                    start: 'top ' + (80 - i * 12) + '%',
+                    end: 'top ' + (60 - i * 12) + '%',
+                    scrub: 0.3,
                 }
             });
-        };
+            // Set initial state
+            gsap.set(step, { opacity: 0.15, y: 15, filter: 'blur(3px)' });
+        });
 
-        window.addEventListener('scroll', update, { passive: true });
-        update();
+        // Dot activation
+        dots.forEach((dot, i) => {
+            gsap.to(dot, {
+                borderColor: '#c89010',
+                backgroundColor: '#c89010',
+                boxShadow: '0 0 12px rgba(200,144,16,0.5)',
+                scale: 1.3,
+                scrollTrigger: {
+                    trigger: htl,
+                    start: 'top ' + (80 - i * 15) + '%',
+                    end: 'top ' + (70 - i * 15) + '%',
+                    scrub: 0.3,
+                }
+            });
+        });
     });
     </script>
 
