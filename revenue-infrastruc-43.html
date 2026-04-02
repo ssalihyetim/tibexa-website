@@ -113,6 +113,46 @@ width: 1.5rem;
 height: 1px;
 background: #c89010;
 }
+/* ROTATING TEXT */
+.rotate-container {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    vertical-align: bottom;
+}
+.rotate-container .rotate-word {
+    display: block;
+    font-style: italic;
+    font-weight: 600;
+    color: rgba(200, 144, 16, 0.85);
+    -webkit-text-stroke: 0.5px rgba(200, 144, 16, 0.4);
+    animation: rotateText 5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transform: translateY(100%);
+}
+.rotate-container .rotate-word:nth-child(1) {
+    animation-delay: 0s;
+}
+.rotate-container .rotate-word:nth-child(2) {
+    animation-delay: 2.5s;
+}
+.rotate-container .rotate-sizer {
+    visibility: hidden;
+    display: block;
+    font-style: italic;
+    font-weight: 600;
+}
+@keyframes rotateText {
+    0% { opacity: 0; transform: translateY(80%); }
+    5% { opacity: 1; transform: translateY(0); }
+    45% { opacity: 1; transform: translateY(0); }
+    50% { opacity: 0; transform: translateY(-80%); }
+    100% { opacity: 0; transform: translateY(-80%); }
+}
+
 /* SCROLL REVEAL TEXT */
 .scroll-reveal-text {
     font-size: clamp(1.6rem, 4vw, 3rem);
@@ -121,11 +161,13 @@ background: #c89010;
 }
 .scroll-reveal-text .word {
     display: inline-block;
-    opacity: 0.15;
-    transition: opacity 0.3s ease;
+    opacity: 0.08;
+    filter: blur(6px);
+    transition: opacity 0.4s ease, filter 0.4s ease;
 }
 .scroll-reveal-text .word.visible {
     opacity: 1;
+    filter: blur(0px);
 }
 .scroll-reveal-text .word.highlight {
     text-decoration: underline;
@@ -324,9 +366,13 @@ gtag('config', 'G-2M6V79H761');
                 
                 <div class="lg:col-span-10 flex flex-col items-start reveal-up">
                     <div class="editorial-badge mb-[3rem]" data-tr="GTM_ALTYAPISI // 1.0" data-en="GTM_INFRASTRUCTURE // 1.0">GTM_ALTYAPISI // 1.0</div>
-                    <h1 class="text-h1 text-white mb-[2rem]" data-tr="Uluslararası alıcı bulmak<br><span class='text-textsec'>şans işi değil.</span>" data-en="Finding global buyers<br><span class='text-textsec'>is not luck.</span>">
+                    <h1 class="text-h1 text-white mb-[2rem]">
                         Uluslararası alıcı bulmak<br>
-                        <span style="color: rgba(200, 144, 16, 0.7);">şans işi değil.</span>
+                        <span class="rotate-container">
+                            <span class="rotate-sizer">sistem işi.</span>
+                            <span class="rotate-word">şans işi değil.</span>
+                            <span class="rotate-word">sistem işi.</span>
+                        </span>
                     </h1>
                 </div>
 
@@ -1138,15 +1184,11 @@ gtag('config', 'G-2M6V79H761');
         // Split text into words
         document.querySelectorAll('[data-scroll-reveal] .scroll-reveal-text').forEach(el => {
             const html = el.innerHTML;
-            // Preserve HTML tags like <span class="highlight">
             const parts = html.split(/(<[^>]+>)/);
             let result = '';
-            let insideTag = false;
             parts.forEach(part => {
                 if (part.startsWith('<')) {
                     result += part;
-                    if (part.startsWith('</')) insideTag = false;
-                    else if (!part.endsWith('/>')) insideTag = true;
                 } else {
                     const words = part.split(/(\s+)/);
                     words.forEach(w => {
@@ -1161,26 +1203,31 @@ gtag('config', 'G-2M6V79H761');
             el.innerHTML = result;
         });
 
-        // Reveal words on scroll
-        const revealOnScroll = () => {
-            document.querySelectorAll('[data-scroll-reveal]').forEach(container => {
-                const rect = container.getBoundingClientRect();
-                const viewH = window.innerHeight;
-                // Start revealing when element is 80% from top, finish at 30%
-                const start = viewH * 0.85;
-                const end = viewH * 0.25;
-                const words = container.querySelectorAll('.word');
-                if (!words.length) return;
+        // Collect all reveal groups in order
+        const groups = Array.from(document.querySelectorAll('[data-scroll-reveal]'));
+        // Flatten all words across all groups into one ordered sequence
+        let allWords = [];
+        groups.forEach(g => {
+            g.querySelectorAll('.word').forEach(w => allWords.push(w));
+        });
+        const totalWords = allWords.length;
 
-                words.forEach((word, i) => {
-                    const wordProgress = (start - rect.top) / (start - end);
-                    const wordThreshold = i / words.length;
-                    if (wordProgress > wordThreshold) {
-                        word.classList.add('visible');
-                    } else {
-                        word.classList.remove('visible');
-                    }
-                });
+        const revealOnScroll = () => {
+            if (!groups.length) return;
+            // Use the FIRST group's position as the scroll anchor
+            const anchor = groups[0].getBoundingClientRect();
+            const viewH = window.innerHeight;
+            const start = viewH * 0.95;
+            const end = viewH * 0.15; // tight range - all words reveal within viewport
+            const progress = Math.max(0, Math.min(1, (start - anchor.top) / (start - end)));
+
+            allWords.forEach((word, i) => {
+                const threshold = i / totalWords;
+                if (progress > threshold) {
+                    word.classList.add('visible');
+                } else {
+                    word.classList.remove('visible');
+                }
             });
         };
 
