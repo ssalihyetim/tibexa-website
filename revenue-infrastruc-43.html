@@ -113,6 +113,22 @@ width: 1.5rem;
 height: 1px;
 background: #c89010;
 }
+/* PROCESS TIMELINE */
+.tl-wrapper { height: 300vh; position: relative; }
+.tl-sticky { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
+.tl-line { position: absolute; left: 2rem; top: 15%; bottom: 15%; width: 2px; background: rgba(200,144,16,0.1); }
+.tl-line-fill { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(to bottom, rgba(200,144,16,0.6), rgba(200,144,16,0.2)); transition: height 0.1s linear; }
+.tl-dot { position: absolute; left: 2rem; top: 15%; width: 12px; height: 12px; margin-left: -5px; border-radius: 50%; background: #c89010; box-shadow: 0 0 20px rgba(200,144,16,0.4); transition: top 0.1s linear; z-index: 10; }
+.tl-step { opacity: 0.1; transform: translateX(30px); filter: blur(4px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.tl-step.active { opacity: 1; transform: translateX(0); filter: blur(0); }
+.tl-step.done { opacity: 0.5; transform: translateX(0); filter: blur(0); }
+@media (min-width: 768px) {
+    .tl-line { left: 50%; }
+    .tl-dot { left: 50%; }
+    .tl-step:nth-child(odd) .tl-card { margin-left: auto; }
+    .tl-step:nth-child(even) .tl-card { margin-right: auto; }
+}
+
 /* MOBILE ACCORDION */
 .accordion-content {
     max-height: 0;
@@ -477,6 +493,75 @@ gtag('config', 'G-2M6V79H761');
                             <div class="scroll-reveal" data-scroll-reveal>
                                 <p class="scroll-reveal-text" style="font-size: clamp(1.4rem, 3vw, 2.2rem);">Biz size <span class="highlight">yeni müşteriler</span> getirelim. Siz <span class="highlight">satışa odaklanın.</span></p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03.25 PROCESS TIMELINE -->
+        <section class="relative bg-bg">
+            <div class="tl-wrapper" id="tl-wrapper">
+                <div class="tl-sticky">
+                    <div class="w-full max-w-5xl mx-auto px-6 lg:px-12 relative">
+
+                        <!-- Title -->
+                        <div class="text-center mb-12">
+                            <div class="editorial-badge mb-4 justify-center" data-tr="SÜREÇ" data-en="PROCESS">SÜREÇ</div>
+                            <h2 class="text-h3 text-white" data-tr="4 adımda ihracat altyapınız hazır." data-en="Your export infrastructure in 4 steps.">4 adımda ihracat altyapınız hazır.</h2>
+                        </div>
+
+                        <!-- Timeline line -->
+                        <div class="tl-line" id="tl-line"><div class="tl-line-fill" id="tl-line-fill"></div></div>
+                        <div class="tl-dot" id="tl-dot"></div>
+
+                        <!-- Steps -->
+                        <div class="flex flex-col gap-8 pl-12 md:pl-0 relative" id="tl-steps">
+
+                            <div class="tl-step" data-step="0">
+                                <div class="tl-card md:w-5/12 rounded-xl border border-amber-500/15 bg-gradient-to-br from-amber-500/[0.05] to-transparent p-6">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <span class="font-mono text-amber-400 text-sm font-semibold">01</span>
+                                        <iconify-icon icon="solar:globe-linear" class="text-xl text-amber-400/70"></iconify-icon>
+                                    </div>
+                                    <h3 class="text-xl font-medium text-white mb-2">Doğru Pazar Tespiti</h3>
+                                    <p class="text-sm text-white/40 leading-relaxed">Hangi ülkede, hangi segmentte gerçek talep var? Veri ile pazar önceliklendirmesi yapıyoruz.</p>
+                                </div>
+                            </div>
+
+                            <div class="tl-step" data-step="1">
+                                <div class="tl-card md:w-5/12 rounded-xl border border-emerald-500/15 bg-gradient-to-br from-emerald-500/[0.05] to-transparent p-6">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <span class="font-mono text-emerald-400 text-sm font-semibold">02</span>
+                                        <iconify-icon icon="solar:users-group-rounded-linear" class="text-xl text-emerald-400/70"></iconify-icon>
+                                    </div>
+                                    <h3 class="text-xl font-medium text-white mb-2">Hedef Firma ve Kişi Tespiti</h3>
+                                    <p class="text-sm text-white/40 leading-relaxed">Binlerce firma arasından AI ile ideal alıcıları filtreliyoruz. Karar verici kişilere ulaşıyoruz.</p>
+                                </div>
+                            </div>
+
+                            <div class="tl-step" data-step="2">
+                                <div class="tl-card md:w-5/12 rounded-xl border border-amber-500/15 bg-gradient-to-br from-amber-500/[0.05] to-transparent p-6">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <span class="font-mono text-amber-400 text-sm font-semibold">03</span>
+                                        <iconify-icon icon="solar:layers-linear" class="text-xl text-amber-400/70"></iconify-icon>
+                                    </div>
+                                    <h3 class="text-xl font-medium text-white mb-2">Altyapı Kurulumu</h3>
+                                    <p class="text-sm text-white/40 leading-relaxed">Mail sistemleri, arama altyapısı ve kişiselleştirilmiş mesajlarla çok kanallı erişim kuruyoruz.</p>
+                                </div>
+                            </div>
+
+                            <div class="tl-step" data-step="3">
+                                <div class="tl-card md:w-5/12 rounded-xl border border-emerald-500/15 bg-gradient-to-br from-emerald-500/[0.05] to-transparent p-6">
+                                    <div class="flex items-center gap-3 mb-3">
+                                        <span class="font-mono text-emerald-400 text-sm font-semibold">04</span>
+                                        <iconify-icon icon="solar:cup-star-linear" class="text-xl text-emerald-400/70"></iconify-icon>
+                                    </div>
+                                    <h3 class="text-xl font-medium text-white mb-2">Yeni Müşteriler</h3>
+                                    <p class="text-sm text-white/40 leading-relaxed">Nitelikli toplantılar, gerçek satış fırsatları. Siz satışa odaklanın, gerisini biz halledelim.</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -1469,6 +1554,48 @@ gtag('config', 'G-2M6V79H761');
 
         window.addEventListener('scroll', revealOnScroll, { passive: true });
         revealOnScroll();
+    });
+    </script>
+
+    <!-- PROCESS TIMELINE SCROLL -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const wrapper = document.getElementById('tl-wrapper');
+        const fill = document.getElementById('tl-line-fill');
+        const dot = document.getElementById('tl-dot');
+        const steps = document.querySelectorAll('.tl-step');
+        if (!wrapper || !steps.length) return;
+
+        const update = () => {
+            const rect = wrapper.getBoundingClientRect();
+            const wH = wrapper.offsetHeight;
+            const vH = window.innerHeight;
+            const scrollable = wH - vH;
+            if (scrollable <= 0) return;
+            const progress = Math.max(0, Math.min(1, -rect.top / scrollable));
+
+            // Fill line
+            if (fill) fill.style.height = (progress * 100) + '%';
+
+            // Move dot (between 15% and 85% of the sticky area)
+            if (dot) dot.style.top = (15 + progress * 70) + '%';
+
+            // Activate steps
+            const totalSteps = steps.length;
+            steps.forEach((step, i) => {
+                const stepStart = i / totalSteps;
+                const stepEnd = (i + 0.6) / totalSteps;
+                step.classList.remove('active', 'done');
+                if (progress >= stepEnd) {
+                    step.classList.add('done');
+                } else if (progress >= stepStart) {
+                    step.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', update, { passive: true });
+        update();
     });
     </script>
 
