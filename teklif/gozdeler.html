@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Gözdeler Otomotiv × Tibexa — Pazar Genişleme Sistemi</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111318;
+    --card: #181c24;
+    --card2: #1e2330;
+    --border: rgba(255,255,255,0.07);
+    --white: #f4f4f0;
+    --muted: #8a8f9e;
+    --accent: #c9a84c;
+    --accent2: #e8c96a;
+    --green: #3ecf8e;
+    --red: #f55;
+    --blue: #5b9cf6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Red Hat Display', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .slides-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .slide {
+    min-width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 48px 72px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide::-webkit-scrollbar { width: 3px; }
+  .slide::-webkit-scrollbar-track { background: transparent; }
+  .slide::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  .nav {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+    background: rgba(17,19,24,0.9);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 12px 20px;
+  }
+
+  .nav button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px 8px;
+    transition: color 0.2s;
+  }
+  .nav button:hover { color: var(--accent); }
+
+  .dots { display: flex; gap: 6px; }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .dot.active { background: var(--accent); width: 20px; border-radius: 3px; }
+
+  .slide-counter {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    min-width: 50px;
+    text-align: center;
+  }
+
+  .logo { height: 28px; object-fit: contain; }
+
+  .slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+
+  .slide-label {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  h2 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+
+  h3 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  p { font-size: 15px; line-height: 1.7; color: var(--muted); }
+
+  .accent { color: var(--accent); }
+  .white { color: var(--white); }
+  .green { color: var(--green); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+
+  .card-accent {
+    background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* COVER */
+  #s1 {
+    background: var(--black);
+    justify-content: center;
+    padding: 72px;
+  }
+
+  .cover-label {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .cover-label::before {
+    content: '';
+    display: block;
+    width: 40px; height: 1px;
+    background: var(--accent);
+  }
+
+  .cover-title { margin-bottom: 24px; }
+
+  .cover-subtitle {
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 48px;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .cover-meta { display: flex; gap: 40px; }
+
+  .cover-meta-item { font-size: 13px; }
+  .cover-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .cover-deco {
+    position: absolute;
+    right: 0; top: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 60%, rgba(201,168,76,0.04) 100%);
+    pointer-events: none;
+  }
+
+  .cover-deco-line {
+    position: absolute;
+    right: 120px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.15), transparent);
+  }
+
+  /* OPPORTUNITY */
+  .big-stat {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .segment-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .segment-pill {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 12px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .segment-pill .dot-pill {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* PRICING */
+  .pkg-label {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .pkg-a { background: rgba(91,156,246,0.15); color: var(--blue); border: 1px solid rgba(91,156,246,0.3); }
+  .pkg-b { background: rgba(201,168,76,0.15); color: var(--accent2); border: 1px solid rgba(201,168,76,0.3); }
+
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .pricing-table th {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pricing-table td {
+    padding: 14px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--white);
+  }
+
+  .pricing-table tr:last-child td { border-bottom: none; }
+
+  .pricing-table tr.recommended td {
+    background: rgba(201,168,76,0.08);
+  }
+
+  .pricing-table tr.recommended td:first-child {
+    border-left: 2px solid var(--accent);
+  }
+
+  .rec-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--black);
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 8px;
+    text-transform: uppercase;
+  }
+
+  .price-main {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--white);
+  }
+
+  .price-cash {
+    font-size: 12px;
+    color: var(--green);
+    margin-top: 2px;
+  }
+
+  .reply-range {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--accent);
+  }
+
+  .channels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .ch-pill {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .ch-pill.active { color: var(--white); border-color: rgba(255,255,255,0.2); }
+
+  .proof-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .proof-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  .tl-item {
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -24px; top: 6px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.2);
+  }
+
+  .tl-week {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .vs-block {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    align-items: center;
+    margin-top: 24px;
+  }
+
+  .btn {
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--border);
+  }
+
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .divider {
+    width: 48px; height: 2px;
+    background: var(--accent);
+    margin: 20px 0;
+  }
+
+  .kv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+  }
+  .kv .k { color: var(--muted); }
+  .kv .v { font-weight: 600; }
+
+  /* ROI CALCULATOR */
+  .roi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
+  .roi-input-group { display: flex; flex-direction: column; gap: 6px; }
+  .roi-input-group label { font-size: 11px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+  .roi-input-group input, .roi-input-group select {
+    background: var(--card2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px 16px; font-size: 15px; color: var(--white); font-family: 'Red Hat Display', sans-serif;
+    outline: none; transition: border-color 0.2s;
+  }
+  .roi-input-group input:focus, .roi-input-group select:focus { border-color: var(--accent); }
+  .roi-results { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
+  .roi-result-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; text-align: center; transition: all 0.3s;
+  }
+  .roi-result-card.highlight {
+    background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+    border-color: rgba(201,168,76,0.3);
+  }
+  .roi-result-card .roi-value {
+    font-family: 'Red Hat Display', sans-serif; font-size: 28px; font-weight: 800;
+    line-height: 1; margin-bottom: 6px;
+  }
+  .roi-result-card .roi-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+  .roi-bar-wrap { margin-top: 24px; }
+  .roi-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+  .roi-bar { height: 8px; background: var(--card2); border-radius: 4px; overflow: hidden; }
+  .roi-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .roi-bar-fill.green { background: linear-gradient(90deg, var(--green), #5de8a8); }
+  .roi-bar-fill.gold { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .roi-bar-fill.red { background: linear-gradient(90deg, var(--red), #f88); }
+  .roi-scenario-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+  .roi-tab {
+    padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 600;
+    letter-spacing: 1px; cursor: pointer; border: 1px solid var(--border);
+    background: transparent; color: var(--muted); transition: all 0.2s;
+  }
+  .roi-tab.active { background: var(--accent); color: var(--black); border-color: var(--accent); }
+  .roi-tab:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+  /* FINAL */
+  #s_final {
+    justify-content: center;
+    background: linear-gradient(135deg, var(--black) 0%, #0f1118 100%);
+  }
+
+  .final-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 20px;
+    padding: 48px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* FADE IN */
+  .slide > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .slide.active > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .slide.active > *:nth-child(1) { transition-delay: 0.05s; }
+  .slide.active > *:nth-child(2) { transition-delay: 0.12s; }
+  .slide.active > *:nth-child(3) { transition-delay: 0.19s; }
+  .slide.active > *:nth-child(4) { transition-delay: 0.26s; }
+  .slide.active > *:nth-child(5) { transition-delay: 0.33s; }
+  .slide.active > *:nth-child(6) { transition-delay: 0.40s; }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .tag-blue { background: rgba(91,156,246,0.12); color: var(--blue); border: 1px solid rgba(91,156,246,0.25); }
+  .tag-gold { background: rgba(201,168,76,0.12); color: var(--accent2); border: 1px solid rgba(201,168,76,0.25); }
+
+  /* WAVE TABLE */
+  .wave-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+  .wave-table th {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .wave-table td {
+    padding: 12px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--white);
+  }
+  .wave-table tr:last-child td { border-bottom: none; }
+
+  /* TIER BADGE */
+  .tier-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .tier-1 { background: rgba(62,207,142,0.15); color: var(--green); }
+  .tier-2 { background: rgba(91,156,246,0.15); color: var(--blue); }
+  .tier-3 { background: rgba(201,168,76,0.15); color: var(--accent2); }
+
+</style>
+</head>
+<body>
+
+<div class="slides-container" id="slides">
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide active" id="s1">
+    <div class="cover-deco"></div>
+    <div class="cover-deco-line"></div>
+
+    <div class="slide-header">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+        <span style="font-size:11px; color:var(--muted); letter-spacing:2px;">×</span>
+        <img src="gozdeler_logo_white.png" alt="Gözdeler" style="height:28px; object-fit:contain;">
+      </div>
+      <span class="slide-label">Gizli · Gözdeler Otomotiv için hazırlandı</span>
+    </div>
+
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; max-width: 750px;">
+      <div class="cover-label">Pazar Genişleme Sistemi · Nisan 2026</div>
+
+      <h1 class="cover-title">
+        49 ülkede <span class="accent">yeni ihracat<br>kanalları</span><br>
+        açıyoruz.
+      </h1>
+
+      <p class="cover-subtitle">
+        EPDM kauçuk conta ve profil ürün gamı için Avrupa, Türki dünya ve K.Afrika'da sistematik pazar genişleme operasyonu. 7 segment, 3 dalga.
+      </p>
+
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <div class="label">Hazırlayan</div>
+          <div class="white" style="font-weight:600;">Tibexa Global</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="label">Tarih</div>
+          <div class="white" style="font-weight:600;">Nisan 2026</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="label">Kapsam</div>
+          <div class="white" style="font-weight:600;">7 Segment · 49 Ülke · 2 Yöntem</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: FIRSAT -->
+  <div class="slide" id="s2">
+    <div class="slide-header">
+      <span class="slide-label">01 / Fırsat</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+    </div>
+
+    <h2>$52K ihracattan<br><span class="accent">$200K+ ihracata.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="gap:24px; margin-top:8px;">
+      <div>
+        <p style="margin-bottom:16px;">
+          Gözdeler, 5 yılda 3 müşteriyle $131K ihracat yaptı — ama bu, erişilebilir pazarın %1'inden az. Inter Cars (Avrupa'nın #1 aftermarket distribütörü) zaten müşteri. Senator Avto 5 yıldır kesintisiz sipariş veriyor. Talep kanıtlanmış — mesele daha fazla müşteriye ulaşmak.
+        </p>
+
+        <p style="margin-bottom:16px;">49 ülkede <strong class="white">7.600–12.000 firma</strong> hedeflenebilir. 7 segment, her biri farklı ürün ve satış açısıyla.</p>
+
+        <div class="segment-row">
+          <div class="segment-pill"><span class="dot-pill"></span>Oto Cam Distribütörleri</div>
+          <div class="segment-pill"><span class="dot-pill"></span>Aftermarket Distribütörleri</div>
+          <div class="segment-pill"><span class="dot-pill"></span>Ticari Araç Yedek Parça</div>
+          <div class="segment-pill"><span class="dot-pill"></span>Cam Montaj Zincirleri</div>
+        </div>
+        <div class="segment-row" style="margin-top:8px;">
+          <div class="segment-pill"><span class="dot-pill"></span>Yapı Sektörü</div>
+          <div class="segment-pill"><span class="dot-pill"></span>Traktör / Tarım Yedek Parça</div>
+          <div class="segment-pill"><span class="dot-pill"></span>Karavan / Özel Araç</div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="card" style="flex:1;">
+          <div style="font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:8px;">Aktif Erişilebilir Pazar</div>
+          <div class="big-stat" style="font-size:38px;">7.600–12K</div>
+          <p style="margin-top:8px; font-size:13px;">49 ülkede, 7 segmentte hedeflenebilir firma</p>
+        </div>
+        <div class="card" style="flex:1;">
+          <div style="font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:8px;">Mevcut İhracat (2024)</div>
+          <div class="big-stat" style="font-size:38px;">$52.226</div>
+          <p style="margin-top:8px; font-size:13px;">3 müşteri, 3 ülke — Inter Cars %42 bağımlılık</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: SEGMENTLER & DALGALAR -->
+  <div class="slide" id="s3">
+    <div class="slide-header">
+      <span class="slide-label">01b / Hedef Segmentler & Dalga Planı</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+    </div>
+
+    <h2>7 segment, <span class="accent">3 dalga.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="gap:20px; margin-top:4px;">
+      <div>
+        <div style="font-size:11px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Hedef Segmentler</div>
+        <div class="card" style="padding:16px;">
+          <div class="kv"><span class="k">A — Oto Cam Distribütörleri</span><span class="v" style="font-size:12px;">2.000–3.000 firma</span></div>
+          <div class="kv"><span class="k">B — Aftermarket Distribütörleri</span><span class="v" style="font-size:12px;">3.000–4.500 firma</span></div>
+          <div class="kv"><span class="k">C — Ticari Araç Yedek Parça</span><span class="v" style="font-size:12px;">800–1.200 firma</span></div>
+          <div class="kv"><span class="k">D — Cam Montaj Zincirleri</span><span class="v" style="font-size:12px;">300–500 firma</span></div>
+          <div class="kv"><span class="k">E — Yapı Sektörü</span><span class="v" style="font-size:12px;">1.000–1.800 firma</span></div>
+          <div class="kv"><span class="k">G — Traktör / Tarım</span><span class="v" style="font-size:12px;">400–700 firma</span></div>
+          <div class="kv"><span class="k">H — Karavan / Özel Araç</span><span class="v" style="font-size:12px;">300–500 firma</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:11px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Dalga Planı</div>
+        <div class="card" style="padding:0; overflow:hidden;">
+          <table class="wave-table">
+            <thead>
+              <tr>
+                <th>Dalga</th>
+                <th>Kapsam</th>
+                <th>Ülke</th>
+                <th>Firma</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tier-badge tier-1">Dalga 1</span><br><span style="font-size:11px; color:var(--muted);">Ay 1–2</span></td>
+                <td><span style="font-size:12px;">Doğu Avrupa + Balkanlar<br><span style="color:var(--muted); font-size:11px;">PL, RO, BG, UA, HU, CZ, RS, HR…</span></span></td>
+                <td>20</td>
+                <td><strong>2.700–4.200</strong></td>
+              </tr>
+              <tr>
+                <td><span class="tier-badge tier-2">Dalga 2</span><br><span style="font-size:11px; color:var(--muted);">Ay 3–4</span></td>
+                <td><span style="font-size:12px;">Türki Dünya + K.Afrika + Orta Doğu<br><span style="color:var(--muted); font-size:11px;">KZ, UZ, GE, AZ, EG, MA, IQ…</span></span></td>
+                <td>19</td>
+                <td><strong>1.535–2.610</strong></td>
+              </tr>
+              <tr>
+                <td><span class="tier-badge tier-3">Dalga 3</span><br><span style="font-size:11px; color:var(--muted);">Ay 5–6</span></td>
+                <td><span style="font-size:12px;">Batı Avrupa<br><span style="color:var(--muted); font-size:11px;">DE, IT, FR, ES, UK, NL, BE…</span></span></td>
+                <td>10</td>
+                <td><strong>3.380–5.150</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card card-accent" style="margin-top:12px; padding:14px 18px;">
+          <p style="font-size:12px;">
+            <strong style="color:var(--accent2);">Savaş sonrası ek fırsat:</strong> 9 ülke (SA, BAE, Katar, İsrail…) donduruldu. Aktifleştiğinde <strong class="white">1.275–2.000 ek firma</strong>, yıllık <strong class="white">$100K–$300K</strong> ihracat potansiyeli.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: METODOLOJİ -->
+  <div class="slide" id="s4">
+    <div class="slide-header">
+      <span class="slide-label">02 / Metodoloji</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+    </div>
+
+    <h2>Şans değil, <span class="accent">sistem.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="gap:32px; margin-top:8px;">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-week">Hafta 1–2</div>
+          <h3 style="margin-bottom:4px;">Liste & Segmentasyon</h3>
+          <p style="font-size:13px;">7 segment × 49 ülke matrisinde firmalar taranır. Distribütör büyüklüğü, mevcut tedarikçi durumu, ürün gamı uyumuna göre skorlanır. Dalga 1 (CEE + Balkanlar) öncelikle hazırlanır.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-week">Hafta 2–3</div>
+          <h3 style="margin-bottom:4px;">Decision Maker Bulma</h3>
+          <p style="font-size:13px;">Purchasing Manager, Product Manager, Import Director gibi title'lara ulaşılır. Email ve LinkedIn verify edilir. Her firmadan en az 1 doğrulanmış kontak.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-week">Hafta 3+</div>
+          <h3 style="margin-bottom:4px;">Operasyon & Mesaj Varyasyonu</h3>
+          <p style="font-size:13px;">Her segmente özel mesaj açısı. Oto cam distribütörüne "cam lastikleri" anlatılır, yapı sektörüne "EPDM profiller" anlatılır. 7 segment × dalga bazlı varyasyonlar.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-week">Sürekli</div>
+          <h3 style="margin-bottom:4px;">Raporlama & Optimizasyon</h3>
+          <p style="font-size:13px;">Açılma, tıklama, pozitif yanıt oranları takip edilir. En iyi performans gösteren segment/ülke kombinasyonlarına kaynak yoğunlaştırılır.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="card card-accent">
+          <h3 style="margin-bottom:12px;">Segment Bazlı Mesaj Stratejisi</h3>
+          <div class="kv"><span class="k">A — Oto Cam Dist.</span><span class="v" style="font-size:12px;">Cam lastikleri, floklu fitiller açısı</span></div>
+          <div class="kv"><span class="k">B — Aftermarket</span><span class="v" style="font-size:12px;">Kapı/bagaj fitilleri, geniş SKU gamı</span></div>
+          <div class="kv"><span class="k">C — Ticari Araç</span><span class="v" style="font-size:12px;">Büyük boy cam lastikleri, filo bakımı</span></div>
+          <div class="kv"><span class="k">D — Cam Montaj</span><span class="v" style="font-size:12px;">Cam contaları, franchise zincirine tek kontrat</span></div>
+          <div class="kv"><span class="k">E — Yapı</span><span class="v" style="font-size:12px;">EPDM/sünger profiller, proje bazlı hacim</span></div>
+          <div class="kv"><span class="k">G — Traktör/Tarım</span><span class="v" style="font-size:12px;">Kabin cam lastikleri, niş pazar avantajı</span></div>
+          <div class="kv"><span class="k">H — Karavan/Özel</span><span class="v" style="font-size:12px;">Prototipleme hızı, yüksek marj</span></div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:12px;">Beklenen Dönüş Oranı</h3>
+          <p style="font-size:13px; margin-bottom:12px;">B2B endüstriyel ürünlerde doğrudan erişim conversion oranı:</p>
+          <div style="font-family:'Red Hat Display',sans-serif; font-size:36px; font-weight:800; color:var(--accent);">%1</div>
+          <p style="font-size:12px; margin-top:4px;">toplantı oranı · 10.000 firmadan 100 online toplantı beklentisi</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: ERİŞİM OPERASYONU -->
+  <div class="slide" id="s5">
+    <div class="slide-header">
+      <span class="slide-label">03 / Erişim Operasyonu</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+    </div>
+
+    <h2>Pazar Genişleme <span class="accent">Operasyonu</span></h2>
+    <div class="divider"></div>
+
+    <p style="margin-bottom:16px; max-width:700px;">Her segmente özel mesaj stratejisi. Firma başına 3'lü email sekansı (ilk temas + 2 follow-up). Dalga planına göre kademeli genişleme — Dalga 1'de kanıtlanmış pazarlarda başla, sonuçlara göre ölçekle.</p>
+
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Ölçek</th>
+          <th>Hedef Firma</th>
+          <th>Toplam Temas</th>
+          <th>Süre</th>
+          <th>Beklenen Toplantı</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Muhafazakar</strong><br><span style="font-size:11px;color:var(--muted);">Dalga 1 · CEE + Balkanlar</span></td>
+          <td>1.000</td>
+          <td>3.000</td>
+          <td>2 ay</td>
+          <td><span class="reply-range">5–15</span></td>
+        </tr>
+        <tr class="recommended">
+          <td><strong>Başlangıç</strong> <span class="rec-badge">Önerilen</span><br><span style="font-size:11px;color:var(--muted);">Dalga 1+2 · 39 ülke</span></td>
+          <td>5.000</td>
+          <td>15.000</td>
+          <td>4 ay</td>
+          <td><span class="reply-range">25–75</span></td>
+        </tr>
+        <tr>
+          <td><strong>Büyüme</strong><br><span style="font-size:11px;color:var(--muted);">3 dalga · 49 ülke tam kapsam</span></td>
+          <td>10.000</td>
+          <td>30.000</td>
+          <td>6 ay</td>
+          <td><span class="reply-range">50–150</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="card card-accent" style="margin-top:16px; padding:16px 20px;">
+      <p style="font-size:13px;">
+        <strong style="color:var(--accent2);">Nasıl çalışır?</strong> Her firma 3 aşamalı email sekansından geçer. 1. email: segment bazlı değer teklifi. 2. email: sosyal kanıt + referans. 3. email: son hatırlatma + kolay aksiyon. Pozitif yanıt veren firmalar doğrudan Gözdeler'in satış ekibine aktarılır.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: MÜŞTERİ DEĞERİ & LTV -->
+  <div class="slide" id="s8">
+    <div class="slide-header">
+      <span class="slide-label">04 / Müşteri Değeri</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+    </div>
+
+    <h2>Bir müşterinin <span class="accent">gerçek değeri.</span></h2>
+    <div class="divider"></div>
+
+    <p style="max-width:650px; margin-bottom:16px;">Gözdeler'in mevcut ihracat verisi bunu kanıtlıyor: Senator Avto 5 yıldır, Caraus 4 yıldır kesintisiz sipariş veriyor. Endüstriyel conta sektöründe tek sipariş değil, yıllarca tekrarlayan ilişki kazanırsınız.</p>
+
+    <div class="grid-3" style="gap:16px; margin-bottom:16px;">
+      <!-- Küçük Müşteri -->
+      <div class="card" style="padding:20px;">
+        <div style="font-size:10px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:12px;">Küçük Müşteri</div>
+        <div class="kv"><span class="k">Benzeri</span><span class="v" style="font-size:12px;">Senator Avto</span></div>
+        <div class="kv"><span class="k">Yıllık değer</span><span class="v white">$8.000</span></div>
+        <div class="kv"><span class="k">Sipariş sıklığı</span><span class="v white">Yılda 2–3</span></div>
+        <div class="kv"><span class="k">Tutma oranı</span><span class="v white">%70</span></div>
+        <div class="kv"><span class="k">Müşteri ömrü</span><span class="v white">3,3 yıl</span></div>
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border); text-align:center;">
+          <div style="font-size:11px; color:var(--muted); margin-bottom:4px;">LTV</div>
+          <div class="big-stat" style="font-size:28px; color:var(--accent);">$26.400</div>
+        </div>
+      </div>
+
+      <!-- Orta Müşteri -->
+      <div class="card" style="padding:20px;">
+        <div style="font-size:10px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:12px;">Orta Müşteri</div>
+        <div class="kv"><span class="k">Benzeri</span><span class="v" style="font-size:12px;">Bölgesel aftermarket</span></div>
+        <div class="kv"><span class="k">Yıllık değer</span><span class="v white">$15.000</span></div>
+        <div class="kv"><span class="k">Sipariş sıklığı</span><span class="v white">Yılda 3–4</span></div>
+        <div class="kv"><span class="k">Tutma oranı</span><span class="v white">%75</span></div>
+        <div class="kv"><span class="k">Müşteri ömrü</span><span class="v white">4,0 yıl</span></div>
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border); text-align:center;">
+          <div style="font-size:11px; color:var(--muted); margin-bottom:4px;">LTV</div>
+          <div class="big-stat" style="font-size:28px; color:var(--accent);">$60.000</div>
+        </div>
+      </div>
+
+      <!-- Büyük Müşteri -->
+      <div class="card card-accent" style="padding:20px;">
+        <div style="font-size:10px; letter-spacing:2px; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Büyük Müşteri</div>
+        <div class="kv"><span class="k">Benzeri</span><span class="v" style="font-size:12px;">Inter Cars ölçeğinde</span></div>
+        <div class="kv"><span class="k">Yıllık değer</span><span class="v white">$35.000</span></div>
+        <div class="kv"><span class="k">Sipariş sıklığı</span><span class="v white">Yılda 6–8</span></div>
+        <div class="kv"><span class="k">Tutma oranı</span><span class="v white">%80</span></div>
+        <div class="kv"><span class="k">Müşteri ömrü</span><span class="v white">5,0 yıl</span></div>
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border); text-align:center;">
+          <div style="font-size:11px; color:var(--muted); margin-bottom:4px;">LTV</div>
+          <div class="big-stat" style="font-size:28px; color:var(--green);">$175.000</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="padding:16px 24px;">
+      <p style="font-size:12px;">
+        <strong class="white">Tüm rakamlar Gözdeler'in doğrulanmış ihracat verisinden türetilmiştir:</strong>
+        <span style="color:var(--muted);">Senator Avto $7.873/yıl ort., Caraus $11.105/yıl ort., Inter Cars $13.141/yıl ort. Senator 5 yıldır, Caraus 4 yıldır kesintisiz sipariş veriyor.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: 3 YILLIK PROJEKSİYON -->
+  <div class="slide" id="s9">
+    <div class="slide-header">
+      <span class="slide-label">05 / İhracat Projeksiyonu</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+    </div>
+
+    <h2>3 yılda Gözdeler için <span class="accent">ne değişir?</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="gap:20px; margin-top:8px;">
+      <div>
+        <div style="font-size:11px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">3 Yıllık Yeni İhracat Projeksiyonu</div>
+        <div class="card" style="padding:0; overflow:hidden;">
+          <table class="wave-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th style="color:var(--muted);">Kötümser</th>
+                <th style="color:var(--accent);">Gerçekçi</th>
+                <th style="color:var(--green);">İyimser</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color:var(--muted); font-size:12px;">Yeni müşteri</td>
+                <td>8</td>
+                <td><strong>12</strong></td>
+                <td>18</td>
+              </tr>
+              <tr>
+                <td style="color:var(--muted); font-size:12px;">1. yıl ihracat</td>
+                <td>$52.500</td>
+                <td><strong>$75.500</strong></td>
+                <td>$116.500</td>
+              </tr>
+              <tr>
+                <td style="color:var(--muted); font-size:12px;">2. yıl ihracat</td>
+                <td>$105.000</td>
+                <td><strong>$151.000</strong></td>
+                <td>$233.000</td>
+              </tr>
+              <tr>
+                <td style="color:var(--muted); font-size:12px;">3. yıl ihracat</td>
+                <td>$88.200</td>
+                <td><strong>$126.840</strong></td>
+                <td>$195.720</td>
+              </tr>
+              <tr style="border-top:2px solid var(--border);">
+                <td style="font-weight:700;">3 Yıl Toplam</td>
+                <td style="font-weight:700;">$245.700</td>
+                <td style="font-weight:700; color:var(--accent);">$353.340</td>
+                <td style="font-weight:700; color:var(--green);">$545.220</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card" style="margin-top:12px; padding:16px 20px;">
+          <div style="font-size:11px; letter-spacing:2px; color:var(--accent); text-transform:uppercase; margin-bottom:8px;">Toplam LTV (Tüm Yeni Müşteriler)</div>
+          <div class="grid-3" style="gap:12px;">
+            <div style="text-align:center;">
+              <div style="font-size:12px; color:var(--muted); margin-bottom:4px;">Kötümser</div>
+              <div style="font-size:20px; font-weight:800; color:var(--white);">$427K</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:12px; color:var(--accent); margin-bottom:4px;">Gerçekçi</div>
+              <div style="font-size:20px; font-weight:800; color:var(--accent);">$600K</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:12px; color:var(--green); margin-bottom:4px;">İyimser</div>
+              <div style="font-size:20px; font-weight:800; color:var(--green);">$940K</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:11px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Gözdeler İçin Ne Değişir? (Gerçekçi Senaryo)</div>
+
+        <div class="card" style="margin-bottom:12px;">
+          <div class="kv"><span class="k">Yıllık ihracat geliri</span><span class="v"><span style="color:var(--muted); text-decoration:line-through;">$52K</span> → <span class="green">$200K+</span></span></div>
+          <div class="kv"><span class="k">Aktif müşteri sayısı</span><span class="v"><span style="color:var(--muted); text-decoration:line-through;">3</span> → <span class="green">12–15</span></span></div>
+          <div class="kv"><span class="k">İhracat yapılan ülke</span><span class="v"><span style="color:var(--muted); text-decoration:line-through;">3</span> → <span class="green">8–15</span></span></div>
+          <div class="kv"><span class="k">Tek müşteriye bağımlılık</span><span class="v"><span style="color:var(--red); text-decoration:line-through;">Inter Cars %42</span> → <span class="green">&lt;%20</span></span></div>
+        </div>
+
+        <!-- LTV Birikim Grafiği -->
+        <div class="card" style="padding:20px 24px;">
+          <div style="font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:12px;">İhracat Büyüme Eğrisi — Gerçekçi</div>
+          <svg viewBox="0 0 320 180" style="width:100%; height:auto;">
+            <line x1="40" y1="20" x2="40" y2="150" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <line x1="40" y1="150" x2="310" y2="150" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <line x1="40" y1="110" x2="310" y2="110" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4"/>
+            <line x1="40" y1="70" x2="310" y2="70" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4"/>
+            <line x1="40" y1="30" x2="310" y2="30" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4"/>
+            <text x="36" y="154" fill="#8a8f9e" font-size="9" text-anchor="end" font-family="Red Hat Display">$0</text>
+            <text x="36" y="114" fill="#8a8f9e" font-size="9" text-anchor="end" font-family="Red Hat Display">$75K</text>
+            <text x="36" y="74" fill="#8a8f9e" font-size="9" text-anchor="end" font-family="Red Hat Display">$150K</text>
+            <text x="36" y="34" fill="#8a8f9e" font-size="9" text-anchor="end" font-family="Red Hat Display">$225K</text>
+            <!-- Şu an -->
+            <rect x="55" y="128" width="45" height="22" rx="3" fill="rgba(255,85,85,0.5)"/>
+            <text x="77" y="124" fill="#f55" font-size="9" text-anchor="middle" font-family="Red Hat Display" font-weight="600">$52K</text>
+            <text x="77" y="165" fill="#8a8f9e" font-size="8" text-anchor="middle" font-family="Red Hat Display">Şu an</text>
+            <!-- 1. Yıl -->
+            <rect x="120" y="108" width="45" height="42" rx="3" fill="rgba(201,168,76,0.6)"/>
+            <text x="142" y="104" fill="#e8c96a" font-size="9" text-anchor="middle" font-family="Red Hat Display" font-weight="600">$75K</text>
+            <text x="142" y="165" fill="#8a8f9e" font-size="8" text-anchor="middle" font-family="Red Hat Display">1. Yıl</text>
+            <!-- 2. Yıl -->
+            <rect x="185" y="62" width="45" height="88" rx="3" fill="rgba(62,207,142,0.6)"/>
+            <text x="207" y="58" fill="#3ecf8e" font-size="9" text-anchor="middle" font-family="Red Hat Display" font-weight="600">$151K</text>
+            <text x="207" y="165" fill="#8a8f9e" font-size="8" text-anchor="middle" font-family="Red Hat Display">2. Yıl</text>
+            <!-- 3. Yıl -->
+            <rect x="250" y="38" width="45" height="112" rx="3" fill="rgba(62,207,142,0.8)"/>
+            <text x="272" y="34" fill="#3ecf8e" font-size="9" text-anchor="middle" font-family="Red Hat Display" font-weight="600">$200K+</text>
+            <text x="272" y="165" fill="#8a8f9e" font-size="8" text-anchor="middle" font-family="Red Hat Display">3. Yıl</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: NEDEN TIBEXA -->
+  <div class="slide" id="s10">
+    <div class="slide-header">
+      <span class="slide-label">06 / Neden Tibexa</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+    </div>
+
+    <h2>Sonuç ürettiğimizi<br><span class="accent">kanıtladık.</span></h2>
+
+    <div class="grid-2" style="gap:24px; margin-top:24px;">
+      <div>
+        <div class="proof-item">
+          <div class="proof-icon">🔧</div>
+          <div>
+            <h3 style="margin-bottom:4px;">Endüstriyel ürün ihracat deneyimi</h3>
+            <p style="font-size:13px;">Otomotiv yedek parça, tekstil aksesuarı, promosyon ürünleri dahil birden fazla endüstriyel sektörde ihracat operasyonu yürüttük. B2B alıcı profilini ve karar süreçlerini biliyoruz.</p>
+          </div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-icon">📊</div>
+          <div>
+            <h3 style="margin-bottom:4px;">Segment bazlı veri odaklı erişim</h3>
+            <p style="font-size:13px;">7 farklı segmente 7 farklı mesaj. Oto cam distribütörüne cam lastikleri, yapı sektörüne EPDM profiller anlatılır. Tek mesaj herkese gitmez — her firmaya uygun değer teklifi hazırlanır.</p>
+          </div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-icon">🌍</div>
+          <div>
+            <h3 style="margin-bottom:4px;">49 ülke, 3 dalga operasyon kapasitesi</h3>
+            <p style="font-size:13px;">Doğu Avrupa'dan Orta Asya'ya, K.Afrika'dan Batı Avrupa'ya kadar geniş coğrafyada eş zamanlı erişim operasyonu yürütme altyapımız var.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="card">
+          <div style="font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:12px;">Birlikte büyüdüğümüz markalar</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span class="tag tag-gold">Naturagen</span>
+            <span class="tag tag-blue">Rapid Lanyard</span>
+            <span class="tag tag-gold">Arınç Tekstil</span>
+            <span class="tag tag-blue">Ertanlar</span>
+            <span class="tag tag-gold">Selin Çikolata</span>
+            <span class="tag tag-blue">Coniwi</span>
+          </div>
+        </div>
+
+        <div class="card card-accent">
+          <div style="font-size:11px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Çalışma prensibimiz</div>
+          <p style="font-size:13px; line-height:1.8;">
+            Sizi müşteri olarak değil, <strong class="white">partner</strong> olarak görüyoruz. Gözdeler'in ihracattaki büyümesini hızlandırmak, bizim için de başarıdır. Performans düşükse stratejiyi revize ederiz — siz değil, biz sorumlu oluruz.
+          </p>
+        </div>
+
+        <a href="https://tibexa.com" target="_blank" class="btn btn-secondary" style="text-align:center;">tibexa.com → Case Studies</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: FİYAT MATRİSİ — GEÇİCİ GİZLENDİ, geri açmak için bu comment'i kaldır -->
+  <!-- PRICING_HIDDEN_START
+  <div class="slide" id="s_pricing">
+    <div class="slide-header">
+      <span class="slide-label">07 / Fiyatlandırma</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+    </div>
+
+    <h2>Fiyat <span class="accent">Matrisi</span></h2>
+    <p style="margin-bottom:20px; max-width:650px;">Operasyon kapsamına göre üç seçenek. Hepsinde segment bazlı mesajlaşma, karar verici bulma, 3'lü email sekansı ve raporlama dahil.</p>
+
+    <table class="pricing-table" style="margin-bottom:0;">
+      <thead>
+        <tr>
+          <th>Ölçek</th>
+          <th>Hedef Firma</th>
+          <th>Süre</th>
+          <th>Beklenen Toplantı</th>
+          <th style="text-align:center;">Fiyat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Muhafazakar</strong><br><span style="font-size:10px; color:var(--muted);">Dalga 1 · CEE + Balkanlar</span></td>
+          <td>1.000</td>
+          <td>2 ay</td>
+          <td><span class="reply-range">5–15</span></td>
+          <td style="text-align:center;"><div class="price-main">$4.500</div><div class="price-cash">Peşin $3.700</div></td>
+        </tr>
+        <tr class="recommended">
+          <td><strong>Başlangıç</strong> <span class="rec-badge">Önerilen</span><br><span style="font-size:10px; color:var(--muted);">Dalga 1+2 · 39 ülke</span></td>
+          <td>5.000</td>
+          <td>4 ay</td>
+          <td><span class="reply-range">25–75</span></td>
+          <td style="text-align:center;"><div class="price-main">$7.500</div><div class="price-cash">Peşin $6.000</div></td>
+        </tr>
+        <tr>
+          <td><strong>Büyüme</strong><br><span style="font-size:10px; color:var(--muted);">3 dalga · 49 ülke tam kapsam</span></td>
+          <td>10.000</td>
+          <td>6 ay</td>
+          <td><span class="reply-range">50–150</span></td>
+          <td style="text-align:center;"><div class="price-main">$12.800</div><div class="price-cash">Peşin $10.200</div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2" style="gap:16px; margin-top:16px;">
+      <div class="card" style="padding:16px 20px;">
+        <div style="font-size:11px; letter-spacing:2px; color:var(--accent); text-transform:uppercase; margin-bottom:6px;">Dahil olan</div>
+        <p style="font-size:13px;">Firma listesi oluşturma · Karar verici bulma · Segment bazlı mesaj yazımı · 3'lü email sekansı · Haftalık raporlama · Pozitif yanıtların aktarımı</p>
+      </div>
+      <div class="card" style="padding:16px 20px;">
+        <div style="font-size:11px; letter-spacing:2px; color:var(--green); text-transform:uppercase; margin-bottom:6px;">Ölçekleme opsiyonu</div>
+        <p style="font-size:13px;">İlk operasyonun sonuçlarına göre kapsam genişletme, yeni dalga ekleme veya segment derinleştirme. Mevcut veriler ve öğrenmeler korunur.</p>
+      </div>
+    </div>
+
+    <p style="font-size:12px; margin-top:12px; color:var(--muted);">* Peşin ödeme indirimi %15–21 aralığındadır. Taksit seçeneği için görüşme sırasında detaylandırılır.</p>
+  </div>
+  PRICING_HIDDEN_END -->
+
+  <!-- SLIDE 10: GETİRİ HESAPLAYICI -->
+  <div class="slide" id="s_roi">
+    <div class="slide-header">
+      <span class="slide-label">08 / Getiri Hesaplayıcı</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+    </div>
+
+    <h2>Toplantılar <span class="accent">ne getirir?</span></h2>
+    <p style="margin-bottom:20px; max-width:650px;">Yıllık toplantı hedefinizi ayarlayın. 2. yılda hem ilk yıldan kalan müşterilerin tekrar siparişleri, hem yeni kazanılan müşteriler birlikte hesaplanır.</p>
+
+    <div class="roi-grid">
+      <div class="roi-input-group">
+        <label>Yıllık Toplantı Hedefi</label>
+        <input type="number" id="roi-meetings" value="50" min="1" max="500" oninput="calcROI()" />
+      </div>
+      <div class="roi-input-group">
+        <label>Toplantı → Müşteri Oranı (%)</label>
+        <input type="number" id="roi-closerate" value="12" min="1" max="100" oninput="calcROI()" />
+      </div>
+      <div class="roi-input-group">
+        <label>Ort. Müşteri Yıllık Sipariş ($)</label>
+        <input type="text" id="roi-contract" value="10.000" oninput="calcROI()" />
+      </div>
+      <div class="roi-input-group">
+        <label>Müşteri Tutma Oranı (%)</label>
+        <input type="number" id="roi-retention" value="75" min="0" max="100" oninput="calcROI()" />
+      </div>
+    </div>
+
+    <div class="roi-results">
+      <div class="roi-result-card">
+        <div class="roi-value white" id="roi-deals">6</div>
+        <div class="roi-label">Yıllık Yeni Müşteri</div>
+      </div>
+      <div class="roi-result-card">
+        <div class="roi-value accent" id="roi-year1">$60.000</div>
+        <div class="roi-label">1. Yıl İhracat</div>
+      </div>
+      <div class="roi-result-card">
+        <div class="roi-value green" id="roi-year2">$105.000</div>
+        <div class="roi-label">2. Yıl İhracat</div>
+      </div>
+      <div class="roi-result-card highlight">
+        <div class="roi-value green" id="roi-total">$165.000</div>
+        <div class="roi-label">2 Yıl Toplam Getiri</div>
+      </div>
+    </div>
+
+    <!-- Year 1 breakdown -->
+    <div class="roi-bar-wrap" style="margin-top:24px;">
+      <div class="roi-bar-label">
+        <span>1. Yıl — <span id="roi-y1-detail">6 yeni müşteri</span></span>
+        <span id="roi-bar-y1-label">$60.000</span>
+      </div>
+      <div class="roi-bar">
+        <div class="roi-bar-fill gold" id="roi-bar-y1" style="width:36%;"></div>
+      </div>
+    </div>
+    <!-- Year 2 breakdown -->
+    <div class="roi-bar-wrap" style="margin-top:12px;">
+      <div class="roi-bar-label">
+        <span>2. Yıl — <span id="roi-y2-detail">4 kalan + 6 yeni müşteri</span></span>
+        <span id="roi-bar-y2-label">$105.000</span>
+      </div>
+      <div class="roi-bar" style="display:flex; gap:2px;">
+        <div class="roi-bar-fill gold" id="roi-bar-y2-retain" style="width:27%; border-radius:4px 0 0 4px;"></div>
+        <div class="roi-bar-fill green" id="roi-bar-y2-new" style="width:36%; border-radius:0 4px 4px 0;"></div>
+      </div>
+      <div style="display:flex; gap:16px; margin-top:4px;">
+        <span style="font-size:10px; color:var(--accent2);">■ Tekrar sipariş: <span id="roi-y2-retain-val">$45.000</span></span>
+        <span style="font-size:10px; color:var(--green);">■ Yeni müşteri: <span id="roi-y2-new-val">$60.000</span></span>
+      </div>
+    </div>
+
+    <p style="font-size:12px; margin-top:16px; color:var(--muted);">* Dayanak: Senator Avto $7.8K/yıl, Inter Cars $13.1K/yıl, tutma oranı %70–80. Operasyon her yıl devam ettiğinde yeni müşteriler eklenir.</p>
+  </div>
+
+  <!-- SLIDE 13: SONRAKI ADIMLAR -->
+  <div class="slide" id="s_final">
+    <div class="slide-header">
+      <span class="slide-label">09 / Sonraki Adımlar</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+    </div>
+
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+      <div class="final-box">
+        <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:32px;">
+          <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:40px; object-fit:contain;">
+          <span style="font-size:13px; color:var(--muted); letter-spacing:2px;">×</span>
+          <img src="gozdeler_logo_white.png" alt="Gözdeler" style="height:30px; object-fit:contain;">
+        </div>
+
+        <h2 style="margin-bottom:16px;">Birlikte başlayalım.</h2>
+
+        <p style="max-width:500px; margin: 0 auto 32px; font-size:15px;">
+          Gözdeler'in ihracatını 3 ülke/3 müşteriden 15+ ülke/15+ müşteriye taşımak için iki soruya net cevap almamız yeterli.
+        </p>
+
+        <div style="text-align:left; max-width:420px; margin:0 auto 32px;">
+          <div class="kv">
+            <span class="k">1. Hangi dalga önce?</span>
+            <span class="v" style="font-size:13px;">Dalga 1 (CEE) · 1+2 · Tümü</span>
+          </div>
+          <div class="kv">
+            <span class="k">2. Öncelikli segment?</span>
+            <span class="v" style="font-size:13px;">Otomotiv · Yapı · Tümü</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div><!-- end slides-container -->
+
+<!-- NAVIGATION -->
+<div class="nav">
+  <button onclick="prev()" title="Geri">←</button>
+  <div class="dots" id="dots"></div>
+  <button onclick="next()" title="İleri">→</button>
+  <span class="slide-counter" id="counter">1 / 11</span>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const container = document.getElementById('slides');
+  const dotsEl = document.getElementById('dots');
+  const counterEl = document.getElementById('counter');
+  let current = 0;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(n, slides.length - 1));
+    container.style.transform = `translateX(-${current * 100}vw)`;
+    slides[current].classList.add('active');
+    slides[current].scrollTop = 0;
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    counterEl.textContent = `${current + 1} / ${slides.length}`;
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next();
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev();
+  });
+
+  let startX = 0;
+  document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
+  });
+
+  slides[0].classList.add('active');
+
+  // === Getiri Hesaplayıcı ===
+  function parseNum(str) {
+    return parseFloat(String(str).replace(/\./g, '').replace(',', '.')) || 0;
+  }
+
+  function formatNum(n) {
+    return n.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  }
+
+  function calcROI() {
+    const meetings = parseInt(document.getElementById('roi-meetings').value) || 0;
+    const closeRate = parseInt(document.getElementById('roi-closerate').value) || 0;
+    const contract = parseNum(document.getElementById('roi-contract').value);
+    const retention = parseInt(document.getElementById('roi-retention').value) || 0;
+
+    // Year 1: new customers from year 1 meetings
+    const dealsY1 = Math.round(meetings * closeRate / 100);
+    const year1 = dealsY1 * contract;
+
+    // Year 2: retained customers from Y1 + new customers from Y2 meetings
+    const retainedFromY1 = Math.round(dealsY1 * retention / 100);
+    const dealsY2 = Math.round(meetings * closeRate / 100); // same pace
+    const y2Retain = retainedFromY1 * contract;
+    const y2New = dealsY2 * contract;
+    const year2 = y2Retain + y2New;
+
+    const total = year1 + year2;
+
+    document.getElementById('roi-deals').textContent = dealsY1;
+    document.getElementById('roi-year1').textContent = '$' + formatNum(year1);
+    document.getElementById('roi-year2').textContent = '$' + formatNum(year2);
+    document.getElementById('roi-total').textContent = '$' + formatNum(total);
+
+    // Detail labels
+    document.getElementById('roi-y1-detail').textContent = dealsY1 + ' yeni müşteri';
+    document.getElementById('roi-y2-detail').textContent = retainedFromY1 + ' kalan + ' + dealsY2 + ' yeni müşteri';
+    document.getElementById('roi-y2-retain-val').textContent = '$' + formatNum(y2Retain);
+    document.getElementById('roi-y2-new-val').textContent = '$' + formatNum(y2New);
+
+    // Bars
+    const maxVal = Math.max(year1, year2, 1);
+    document.getElementById('roi-bar-y1').style.width = (year1 / maxVal * 100) + '%';
+    document.getElementById('roi-bar-y2-retain').style.width = (y2Retain / maxVal * 100) + '%';
+    document.getElementById('roi-bar-y2-new').style.width = (y2New / maxVal * 100) + '%';
+    document.getElementById('roi-bar-y1-label').textContent = '$' + formatNum(year1);
+    document.getElementById('roi-bar-y2-label').textContent = '$' + formatNum(year2);
+
+    const card = document.querySelector('.roi-result-card.highlight');
+    card.style.borderColor = 'rgba(62,207,142,0.3)';
+    card.style.background = 'linear-gradient(135deg, rgba(62,207,142,0.15), rgba(62,207,142,0.05))';
+  }
+
+  calcROI();
+</script>
+
+</body>
+</html>
