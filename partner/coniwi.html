@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Coniwi × Tibexa — İş Birliği</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111318;
+    --card: #181c24;
+    --card2: #1e2330;
+    --border: rgba(255,255,255,0.07);
+    --white: #f4f4f0;
+    --muted: #8a8f9e;
+    --accent: #d4a017;
+    --accent2: #e8b92d;
+    --pink: #f2849e;
+    --green: #3ecf8e;
+    --gold: #d4a017;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Red Hat Display', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* TYPOGRAPHY */
+  h1 {
+    font-size: clamp(36px, 5.5vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1px;
+  }
+
+  h2 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  p { font-size: 15px; line-height: 1.7; color: var(--muted); }
+
+  .accent { color: var(--accent); }
+  .gold { color: var(--accent); }
+  .white { color: var(--white); }
+  .green { color: var(--green); }
+
+  /* LAYOUT */
+  .section {
+    padding: 80px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .section { padding: 48px 20px; }
+  }
+
+  .section-border { border-top: 1px solid var(--border); }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+
+  .divider {
+    width: 48px; height: 2px;
+    background: var(--accent);
+    margin: 20px 0;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 768px) {
+    .nav-inner { padding: 14px 20px; }
+  }
+
+  .nav-logos {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .nav-logos img { height: 26px; object-fit: contain; }
+  .nav-logos .x-mark { font-size: 11px; color: var(--muted); letter-spacing: 2px; }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+
+  .card-accent {
+    background: linear-gradient(135deg, rgba(212,160,23,0.12), rgba(212,160,23,0.04));
+    border: 1px solid rgba(212,160,23,0.25);
+  }
+
+  /* GRIDS */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  /* BIG STAT */
+  .big-stat {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  /* KV PAIRS */
+  .kv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+  }
+  .kv .k { color: var(--muted); }
+  .kv .v { font-weight: 600; }
+
+  /* BUTTONS */
+  .btn {
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+  }
+  .btn-primary:hover { background: var(--accent2); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* PROOF ITEMS */
+  .proof-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .proof-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: rgba(212,160,23,0.1);
+    border: 1px solid rgba(212,160,23,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  /* STEP TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+  }
+
+  .tl-item {
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .tl-item:last-child { margin-bottom: 0; }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -24px; top: 6px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(212,160,23,0.2);
+  }
+
+  .tl-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .tag-amber { background: rgba(212,160,23,0.12); color: var(--accent2); border: 1px solid rgba(212,160,23,0.25); }
+  .tag-muted { background: rgba(255,255,255,0.06); color: var(--muted); border: 1px solid rgba(255,255,255,0.12); }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .cover { padding: 100px 20px 48px; min-height: auto; }
+  }
+
+  .cover-deco {
+    position: fixed;
+    right: 0; top: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 60%, rgba(212,160,23,0.03) 100%);
+    pointer-events: none;
+  }
+
+  .cover-deco-line {
+    position: fixed;
+    right: 120px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(212,160,23,0.1), transparent);
+    pointer-events: none;
+  }
+
+  /* COMPARISON TABLE */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+
+  .compare-table th {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-table td {
+    padding: 14px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--white);
+  }
+
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  /* LOGO LOOP */
+  .logo-loop-wrapper {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  }
+
+  .logo-loop-track {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    width: max-content;
+    animation: logoScroll 22s linear infinite;
+    will-change: transform;
+  }
+
+  .logo-loop-track:hover { animation-play-state: paused; }
+
+  .logo-loop-item {
+    flex-shrink: 0;
+    height: 2.5rem;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.35;
+    transition: opacity 0.4s ease;
+  }
+
+  .logo-loop-track:hover .logo-loop-item { opacity: 0.6; }
+
+  @keyframes logoScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* CASE CARD */
+  .case-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 260px;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .case-card:hover {
+    border-color: rgba(212,160,23,0.3);
+    background: var(--card2);
+  }
+
+  .case-card .case-logo {
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.5;
+  }
+
+  .case-card .case-sector {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .case-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .case-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .case-card .case-link {
+    font-size: 12px;
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 600;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+
+  .case-card:hover .case-link { color: var(--accent); }
+
+  /* FADE IN ON SCROLL */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* FINAL CTA */
+  .final-box {
+    background: linear-gradient(135deg, rgba(212,160,23,0.12), rgba(212,160,23,0.04));
+    border: 1px solid rgba(212,160,23,0.25);
+    border-radius: 20px;
+    padding: 48px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover-deco"></div>
+<div class="cover-deco-line"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logos">
+      <img src="../Logo/coniwi.png" alt="Coniwi">
+      <span class="x-mark">×</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa Global" style="height:32px;">
+    </div>
+    <span style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase;">İş Birliği Programı</span>
+  </div>
+</nav>
+
+<!-- ═══════ COVER ═══════ -->
+<section class="cover fade-in">
+  <div class="section-label">Coniwi × Tibexa Global · 2026</div>
+
+  <h1 style="max-width:750px;">
+    Amazon'un ötesinde,<br>
+    <span class="accent">doğrudan B2B</span><br>
+    ihracat kanalı.
+  </h1>
+
+  <p style="font-size:18px; max-width:600px; margin-top:24px; margin-bottom:40px; line-height:1.6;">
+    Coniwi müşterilerine özel — marketplace komisyonları olmadan, kendi markanızla doğrudan yurt dışı alıcılara ulaşın.
+  </p>
+
+  <div style="display:flex; gap:40px; flex-wrap:wrap;">
+    <div>
+      <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:4px;">Hazırlayan</div>
+      <div class="white" style="font-weight:600;">Tibexa Global</div>
+    </div>
+    <div>
+      <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:4px;">Partner</div>
+      <div class="white" style="font-weight:600;">Coniwi</div>
+    </div>
+    <div>
+      <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:4px;">Kapsam</div>
+      <div class="white" style="font-weight:600;">B2B Alıcı Bulma Operasyonu</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ÖZEL TEKLİF BANNER ═══════ -->
+<section class="section fade-in" style="padding-top:0; padding-bottom:0;">
+  <div style="background: linear-gradient(135deg, rgba(212,160,23,0.14), rgba(212,160,23,0.05)); border: 1px solid rgba(212,160,23,0.35); border-radius:16px; padding:32px 36px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+    <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+      <div style="background:var(--accent); color:var(--black); font-weight:800; font-size:22px; padding:8px 16px; border-radius:8px; letter-spacing:-0.5px;">%20</div>
+      <div>
+        <h3 style="font-size:17px; margin-bottom:2px;">Coniwi Müşterilerine Özel İndirim</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--muted); margin:0;">Coniwi'den yönlendirilen <strong style="color:var(--white);">ilk 2 firma</strong> için tüm Tibexa hizmetlerinde <strong style="color:var(--accent2);">%20 indirim</strong> uygulanır.</p>
+      </div>
+    </div>
+    <span style="font-size:11px; letter-spacing:2px; color:var(--accent); text-transform:uppercase; white-space:nowrap;">Sınırlı Kontenjan</span>
+  </div>
+</section>
+
+<!-- ═══════ 01 / NEDEN B2B ═══════ -->
+<section class="section section-border fade-in">
+  <div class="section-label">01 / Fırsat</div>
+
+  <h2>Amazon harika.<br><span class="accent">Ama tek kanal olmamalı.</span></h2>
+  <div class="divider"></div>
+
+  <div class="grid-3" style="margin-top:24px;">
+    <div class="card">
+      <div style="font-size:32px; margin-bottom:12px;">💰</div>
+      <h3 style="margin-bottom:8px;">Komisyon Yok</h3>
+      <p style="font-size:13px;">Amazon'un %8-15 komisyonu yok. Doğrudan ticarette tüm kar marjı sizin. Aynı ürün, daha yüksek karlılık.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:32px; margin-bottom:12px;">🤝</div>
+      <h3 style="margin-bottom:8px;">Kendi Müşteriniz</h3>
+      <p style="font-size:13px;">Marketplace'te müşteri Amazon'un. B2B'de doğrudan ilişki kuruyorsunuz — tekrar siparişler, uzun vadeli kontratlar.</p>
+    </div>
+    <div class="card">
+      <div style="font-size:32px; margin-bottom:12px;">📦</div>
+      <h3 style="margin-bottom:8px;">Büyük Hacimler</h3>
+      <p style="font-size:13px;">B2B siparişleri toptan. Tek bir alıcı, yüzlerce perakende müşterinin hacmini tek seferde getirebilir.</p>
+    </div>
+  </div>
+
+  <div class="card card-accent" style="margin-top:20px; padding:16px 24px;">
+    <p style="font-size:13px;">
+      <strong style="color:var(--accent2);">Coniwi müşterisi avantajı:</strong> Amazon'da zaten satış yapıyorsunuz — ürün hazır, lojistik hazır, kalite onaylı. B2B kanalı açmak için <strong class="white">sıfırdan başlamıyorsunuz.</strong> Mevcut altyapınız en büyük avantajınız.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════ 02 / NE YAPIYORUZ ═══════ -->
+<section class="section section-border fade-in">
+  <div class="section-label">02 / Çıktılar</div>
+
+  <h2>Ne yapıyoruz,<br><span class="accent">ne alıyorsunuz?</span></h2>
+  <div class="divider"></div>
+
+  <div class="grid-2" style="gap:32px; margin-top:8px;">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-label">Çıktı 1</div>
+        <h3 style="margin-bottom:4px;">Hedef Pazar Analizi</h3>
+        <p style="font-size:13px;">Ürünleriniz için en uygun ülkeler, sektörler ve alıcı profilleri belirlenir. Rakip analizi ve fiyat pozisyonlama dahil.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">Çıktı 2</div>
+        <h3 style="margin-bottom:4px;">Nitelikli Alıcı Listesi</h3>
+        <p style="font-size:13px;">Hedef pazarlarda sizin ürünlerinize ihtiyaç duyan firmalar veri tabanlarından bulunur, skorlanır ve segmentlenir.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">Çıktı 3</div>
+        <h3 style="margin-bottom:4px;">Kişiselleştirilmiş Outbound Kampanya</h3>
+        <p style="font-size:13px;">Her alıcı segmentine özel mesaj stratejisi. Email, LinkedIn ve telefon üzerinden sistematik erişim operasyonu.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">Çıktı 4</div>
+        <h3 style="margin-bottom:4px;">Sıcak Alıcı Pipeline'ı</h3>
+        <p style="font-size:13px;">İlgilenen alıcılar doğrudan size bağlanır. Satış görüşmesi, numune gönderimi ve kapanış sizin kontrolünüzde.</p>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div class="card" style="text-align:center; padding:32px;">
+        <div style="font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:12px;">Aylık Minimum Çıktı</div>
+        <div class="big-stat" style="color:var(--accent);">20-40</div>
+        <p style="margin-top:8px; font-size:13px;">nitelikli potansiyel alıcı<br>pipeline'ınıza eklenir</p>
+      </div>
+
+      <div class="card" style="text-align:center; padding:32px;">
+        <div style="font-size:11px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:12px;">Hedef</div>
+        <div class="big-stat" style="color:var(--green);">3-8</div>
+        <p style="margin-top:8px; font-size:13px;">aylık sıcak görüşme<br>(toplantı / numune talebi)</p>
+      </div>
+
+      <div class="card card-accent" style="padding:20px;">
+        <p style="font-size:13px;">
+          <strong style="color:var(--accent2);">Şeffaf raporlama:</strong> Haftalık performans raporu — kaç firmaya ulaşıldı, kaç pozitif dönüş geldi, hangi mesajlar çalışıyor. Her şey görünür.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 03 / SÜREÇ ═══════ -->
+<section class="section section-border fade-in">
+  <div class="section-label">03 / Süreç</div>
+
+  <h2>Şans değil, <span class="accent">sistem.</span></h2>
+  <div class="divider"></div>
+
+  <div class="grid-2" style="gap:32px; margin-top:8px;">
+    <div>
+      <p style="margin-bottom:24px;">
+        Her kampanya 4 aşamadan geçer. İlk 2 hafta analiz ve altyapı, sonrası sürekli operasyon. Siz işinize odaklanın — alıcı bulma sürecini biz yönetiyoruz.
+      </p>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Aşama</th>
+            <th>Süre</th>
+            <th>Çıktı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Analiz & Strateji</strong></td>
+            <td>Hafta 1</td>
+            <td>Pazar raporu + alıcı profili</td>
+          </tr>
+          <tr>
+            <td><strong>Liste & Segmentasyon</strong></td>
+            <td>Hafta 1-2</td>
+            <td>Skorlanmış alıcı listesi</td>
+          </tr>
+          <tr>
+            <td><strong>Kampanya Başlangıcı</strong></td>
+            <td>Hafta 3+</td>
+            <td>Aktif outbound operasyonu</td>
+          </tr>
+          <tr>
+            <td><strong>Optimizasyon</strong></td>
+            <td>Sürekli</td>
+            <td>Haftalık rapor + strateji revizyonu</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div class="card">
+        <h3 style="margin-bottom:12px;">Mesaj Stratejisi</h3>
+        <p style="font-size:13px; margin-bottom:16px;">Her alıcıya aynı mesaj gitmez. Segmente göre farklı giriş açısı kullanılır:</p>
+        <div class="kv"><span class="k">Segment A</span><span class="v" style="font-size:13px;">Ürünü ithal eden → alternatif kaynak</span></div>
+        <div class="kv"><span class="k">Segment B</span><span class="v" style="font-size:13px;">Benzer ürün satan → cross-sell</span></div>
+        <div class="kv"><span class="k">Segment C</span><span class="v" style="font-size:13px;">Yeni pazar arayan → trend açısı</span></div>
+        <div class="kv"><span class="k">Segment D</span><span class="v" style="font-size:13px;">Sertifika arayan → kalite açısı</span></div>
+      </div>
+
+      <div class="card card-accent">
+        <h3 style="margin-bottom:8px; color:var(--accent2);">Çok Kanallı Erişim</h3>
+        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
+          <span class="tag tag-amber">✉ Email Sekansları</span>
+          <span class="tag tag-amber">💼 LinkedIn Outreach</span>
+          <span class="tag tag-muted">📞 Telefon Takibi</span>
+          <span class="tag tag-muted">💬 WhatsApp</span>
+        </div>
+        <p style="font-size:12px; margin-top:12px;">Tek kanal değil, çok kanallı temas. Tier 1 firmalara 3+ kanaldan ulaşmak, dönüşümü <strong class="white">2-3x artırıyor.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 04 / KANIT ═══════ -->
+<section class="section section-border fade-in">
+  <div class="section-label">04 / Sonuçlar</div>
+
+  <h2>Rakamlar konuşuyor,<br><span class="accent">biz değil.</span></h2>
+  <div class="divider"></div>
+  <p style="max-width:650px; margin-bottom:32px;">Her vakada bir başlangıç noktası, bir sonuç noktası. Somut rakamlar, gerçek müşteriler.</p>
+
+  <!-- Logo Loop -->
+  <div style="margin-bottom:40px; border:1px solid var(--border); border-radius:12px; padding:24px 0; background:var(--card);">
+    <p style="font-size:10px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; text-align:center; margin-bottom:16px;">Birlikte büyüdüğümüz markalar</p>
+    <div class="logo-loop-wrapper">
+      <div class="logo-loop-track">
+        <img src="../Logo/arınç_clean.png" alt="Arınç Tekstil" class="logo-loop-item">
+        <img src="../Logo/coniwi.png" alt="Coniwi" class="logo-loop-item">
+        <img src="../Logo/ertanlar_clean.png" alt="Ertanlar" class="logo-loop-item">
+        <img src="../Logo/fema.svg" alt="Fema" class="logo-loop-item">
+        <img src="../Logo/igrek_clean.png" alt="İğrek Makina" class="logo-loop-item">
+        <img src="../Logo/naturagen.webp" alt="Naturagen" class="logo-loop-item">
+        <img src="../Logo/nurgun_clean.png" alt="Nurgün" class="logo-loop-item">
+        <img src="../Logo/rapidlanyard_clean.png" alt="Rapid Lanyard" class="logo-loop-item">
+        <img src="../Logo/selinclogo1_clean.png" alt="Selin Çikolata" class="logo-loop-item">
+        <!-- duplicate for seamless loop -->
+        <img src="../Logo/arınç_clean.png" alt="Arınç Tekstil" class="logo-loop-item">
+        <img src="../Logo/coniwi.png" alt="Coniwi" class="logo-loop-item">
+        <img src="../Logo/ertanlar_clean.png" alt="Ertanlar" class="logo-loop-item">
+        <img src="../Logo/fema.svg" alt="Fema" class="logo-loop-item">
+        <img src="../Logo/igrek_clean.png" alt="İğrek Makina" class="logo-loop-item">
+        <img src="../Logo/naturagen.webp" alt="Naturagen" class="logo-loop-item">
+        <img src="../Logo/nurgun_clean.png" alt="Nurgün" class="logo-loop-item">
+        <img src="../Logo/rapidlanyard_clean.png" alt="Rapid Lanyard" class="logo-loop-item">
+        <img src="../Logo/selinclogo1_clean.png" alt="Selin Çikolata" class="logo-loop-item">
+      </div>
+    </div>
+  </div>
+
+  <!-- Case Study Cards -->
+  <div class="grid-3" style="gap:16px; margin-bottom:24px;">
+
+    <!-- Rapid Lanyard -->
+    <a href="../case-rapidlanyard.html" class="case-card">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          <img src="../Logo/rapidlanyard_clean.png" alt="Rapid Lanyard" class="case-logo">
+          <span class="case-sector">Kırtasiye / Lanyard</span>
+        </div>
+        <h3>4 ayda firma cirosu 2 katına çıktı</h3>
+        <p>110+ pozitif dönüş, aylık 33 potansiyel müşteri hedefi aşıldı. Firma operasyonel kapasiteyi aştığı için kampanya durduruldu.</p>
+      </div>
+      <div class="case-link">Hikayeyi oku →</div>
+    </a>
+
+    <!-- Selin Çikolata -->
+    <a href="../case-selin-cikolata.html" class="case-card">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          <img src="../Logo/selinclogo1_clean.png" alt="Selin Çikolata" class="case-logo">
+          <span class="case-sector">Gıda / Çikolata</span>
+        </div>
+        <h3>2 ayda 300+ pozitif dönüş</h3>
+        <p>Ramazan öncesi 2 aylık sprint kampanya. Binlerce inbox altyapısı, 8 email varyasyonu. Tek seferlik projeden uzun vadeli partnerliğe dönüştü.</p>
+      </div>
+      <div class="case-link">Hikayeyi oku →</div>
+    </a>
+
+    <!-- Fema Bant -->
+    <a href="../case-fema-bant.html" class="case-card">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          <img src="../Logo/fema.svg" alt="Fema Bant" class="case-logo" style="height:18px;">
+          <span class="case-sector">Kimya & Endüstriyel / Bant</span>
+        </div>
+        <h3>2 ayda 37 görüşme ve gerçekleşen satış</h3>
+        <p>12.000 firmadan AI filtrelemeyle 8.000'e inildi. İhracata yeni başlayan firmayı global pazara taşıdık, ilk satışlar gerçekleşti.</p>
+      </div>
+      <div class="case-link">Hikayeyi oku →</div>
+    </a>
+
+    <!-- Naturagen -->
+    <a href="../case-naturagen.html" class="case-card">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          <img src="../Logo/naturagen.webp" alt="Naturagen" class="case-logo">
+          <span class="case-sector">Kozmetik / Supplement</span>
+        </div>
+        <h3>5. ayda 60 distribütör görüşmesi</h3>
+        <p>15 ülkede 5.000+ firma haritalandı. Strateji değişimiyle distribütör odağına geçildi, 1.500 hedeften 60 aktif görüşmeye ulaşıldı.</p>
+      </div>
+      <div class="case-link">Hikayeyi oku →</div>
+    </a>
+
+    <!-- İğrek Makina -->
+    <a href="../case-igrek.html" class="case-card">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          <img src="../Logo/igrek_clean.png" alt="İğrek Makina" class="case-logo">
+          <span class="case-sector">Ağır Sanayi / Döküm</span>
+        </div>
+        <h3>İrlanda ve ABD'de distribütör adayları</h3>
+        <p>9.000+ firmadan AI ile 1.800 ideal hedefe inildi. İrlanda ve Amerika'da distribütör adayları bulundu, fabrika ziyaretleri yapıldı.</p>
+      </div>
+      <div class="case-link">Hikayeyi oku →</div>
+    </a>
+
+  </div>
+
+  <!-- Highlight: RapidLanyard -->
+  <div class="card card-accent" style="padding:32px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:20px;">
+      <div>
+        <div style="font-size:11px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:4px;">Öne Çıkan Vaka</div>
+        <h3 style="font-size:20px;">RapidLanyard — Kapasite Aşımı Hikayesi</h3>
+      </div>
+      <a href="../case-rapidlanyard.html" class="btn btn-secondary" style="padding:10px 20px; font-size:12px;">Tam hikayeyi oku →</a>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; margin-bottom:20px;">
+      <div style="text-align:center;">
+        <div class="big-stat" style="font-size:32px;">2x</div>
+        <p style="font-size:11px; margin-top:4px;">Ciro artışı</p>
+      </div>
+      <div style="text-align:center;">
+        <div class="big-stat" style="font-size:32px;">110+</div>
+        <p style="font-size:11px; margin-top:4px;">İlgilenen firma</p>
+      </div>
+      <div style="text-align:center;">
+        <div class="big-stat" style="font-size:32px;">33+</div>
+        <p style="font-size:11px; margin-top:4px;">Aylık potansiyel</p>
+      </div>
+      <div style="text-align:center;">
+        <div class="big-stat" style="font-size:32px; color:var(--green);">4 Ay</div>
+        <p style="font-size:11px; margin-top:4px;">Süre</p>
+      </div>
+    </div>
+    <div style="padding:12px 16px; background:rgba(62,207,142,0.08); border:1px solid rgba(62,207,142,0.2); border-radius:8px;">
+      <p style="font-size:14px; color:var(--white); text-align:center; font-style:italic;">"Yetişemiyoruz." — Yahya Güngör, Genel Müdür</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 05 / SİNERJİ ═══════ -->
+<section class="section section-border fade-in">
+  <div class="section-label">05 / Sinerji</div>
+
+  <h2>Coniwi + Tibexa =<br><span class="accent">tam ihracat altyapısı.</span></h2>
+  <div class="divider"></div>
+
+  <p style="max-width:650px; margin-bottom:24px;">
+    Coniwi Amazon kanalınızı yönetiyor. Tibexa doğrudan B2B alıcı buluyor. İki kanal birlikte çalışınca, ihracatınız tek bir platforma bağlı kalmaz.
+  </p>
+
+  <div class="grid-2" style="gap:20px;">
+    <div class="card">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+        <img src="../Logo/coniwi.png" alt="Coniwi" style="height:22px;">
+      </div>
+      <div class="kv"><span class="k">Amazon mağaza yönetimi</span><span class="v">✓</span></div>
+      <div class="kv"><span class="k">Amazon PPC & SEO</span><span class="v">✓</span></div>
+      <div class="kv"><span class="k">A+ içerik & görsel tasarım</span><span class="v">✓</span></div>
+      <div class="kv"><span class="k">Marketplace stratejisi</span><span class="v">✓</span></div>
+    </div>
+
+    <div class="card card-accent">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+        <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:22px;">
+      </div>
+      <div class="kv"><span class="k">Hedef pazar & alıcı analizi</span><span class="v accent">✓</span></div>
+      <div class="kv"><span class="k">Doğrudan B2B alıcı bulma</span><span class="v accent">✓</span></div>
+      <div class="kv"><span class="k">Çok kanallı outbound kampanya</span><span class="v accent">✓</span></div>
+      <div class="kv"><span class="k">Alıcı-satıcı eşleştirme</span><span class="v accent">✓</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px; padding:16px 24px; background:rgba(62,207,142,0.06); border-color:rgba(62,207,142,0.2);">
+    <p style="font-size:14px; color:var(--white);">
+      <strong style="color:var(--green);">Sonuç:</strong> Amazon'dan gelen gelir + doğrudan B2B gelir = çeşitlendirilmiş, dayanıklı ihracat altyapısı. Tek kanala bağımlılık sona erer.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════ FINAL CTA ═══════ -->
+<section class="section fade-in" style="padding-top:60px; padding-bottom:100px;">
+  <div class="final-box">
+    <div style="font-size:10px; letter-spacing:4px; color:var(--accent); text-transform:uppercase; margin-bottom:24px;">Sonraki Adım</div>
+    <h2 style="margin-bottom:16px;">Amazon'un yanına<br><span class="accent">B2B kanalı ekleyin.</span></h2>
+    <p style="max-width:500px; margin:0 auto 32px;">
+      Coniwi iş birliğimiz kapsamında, ürünleriniz için en uygun hedef pazarları ve alıcı profilini birlikte belirleyelim.
+    </p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://tibexa.com/#contact" class="btn btn-primary">
+        Ücretsiz Görüşme Planla →
+      </a>
+      <a href="https://tibexa.com" class="btn btn-secondary">
+        tibexa.com
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid var(--border); padding:24px 48px;">
+  <div style="max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+    <div class="nav-logos">
+      <img src="../Logo/coniwi.png" alt="Coniwi" style="height:20px; opacity:0.5;">
+      <span class="x-mark">×</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:24px; opacity:0.5;">
+    </div>
+    <p style="font-size:12px; color:var(--muted);">© 2026 Tibexa Global. Tüm hakları saklıdır.</p>
+  </div>
+</footer>
+
+<script>
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

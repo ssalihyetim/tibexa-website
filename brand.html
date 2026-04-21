@@ -1,0 +1,430 @@
+<html lang="tr" class="scroll-smooth bg-black"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Guidelines | Tibexa Global</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.1/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5.0.1/index.min.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+::selection { background: #FFFFFF; color: #000000; }
+
+/* Typography */
+.text-h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 500; letter-spacing: -0.04em; line-height: 0.95; }
+.text-h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; }
+.text-h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+.text-body { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.7; font-weight: 400; color: #A1A1AA; }
+
+.editorial-badge {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-family: 'Geist Mono', monospace; font-size: clamp(0.65rem, 0.8vw, 0.75rem);
+  text-transform: uppercase; letter-spacing: 0.08em; color: #A1A1AA;
+}
+.editorial-badge::before {
+  content: ''; display: block; width: 1.5rem; height: 1px; background: #A1A1AA;
+}
+
+/* Color swatch */
+.swatch {
+  border-radius: 0.75rem; overflow: hidden; border: 1px solid #27272A;
+}
+.swatch-color { height: 120px; }
+.swatch-info { padding: 1rem; background: #0A0A0A; }
+.swatch-name { color: #fff; font-weight: 500; font-size: 0.875rem; margin-bottom: 0.25rem; }
+.swatch-hex { font-family: 'Geist Mono', monospace; font-size: 0.75rem; color: #A1A1AA; }
+
+/* Logo card */
+.logo-card {
+  border: 1px solid #27272A; border-radius: 1rem; overflow: hidden;
+  transition: border-color 0.2s;
+}
+.logo-card:hover { border-color: rgba(255,255,255,0.2); }
+.logo-preview {
+  height: 200px; display: flex; align-items: center; justify-content: center; padding: 2rem;
+}
+.logo-preview img { max-height: 100%; max-width: 100%; object-fit: contain; }
+.logo-meta {
+  padding: 1rem 1.5rem; border-top: 1px solid #27272A; background: #0A0A0A;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo-label { color: #A1A1AA; font-size: 0.8rem; font-family: 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; }
+.download-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'Geist Mono', monospace; font-size: 0.7rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: #fff; border: 1px solid #27272A;
+  padding: 0.4rem 0.75rem; border-radius: 999px; transition: all 0.2s;
+  text-decoration: none;
+}
+.download-btn:hover { border-color: #fff; background: #fff; color: #000; }
+
+/* Font specimen */
+.specimen { border: 1px solid #27272A; border-radius: 1rem; padding: 2rem; }
+.specimen-label { font-family: 'Geist Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: #52525B; margin-bottom: 1rem; }
+
+/* Section divider */
+.section-divider { height: 1px; background: #27272A; }
+</style>
+</head>
+<body class="bg-bg text-textmain font-sans">
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 border-b border-borderline bg-bg/80 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html">
+      <img src="TibexaLogo/tibexa-global/WhiteLogo_cropped.png" alt="Tibexa Global" class="h-7" style="filter:invert(1)">
+    </a>
+    <a href="index.html" class="text-textsec hover:text-white text-sm font-medium transition-colors flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      Ana Sayfa
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-32 pb-16 px-6 border-b border-borderline">
+  <div class="max-w-7xl mx-auto">
+    <div class="editorial-badge mb-6">BRAND GUIDELINES</div>
+    <h1 class="text-h1 text-white mb-6 max-w-3xl">Tibexa Global<br><span class="text-textsec">Marka Kılavuzu</span></h1>
+    <p class="text-body max-w-2xl">Renkler, fontlar, logolar ve kullanım kuralları. Tüm marka varlıklarını bu sayfadan indirebilirsiniz.</p>
+  </div>
+</section>
+
+<!-- 01. COLORS -->
+<section class="py-20 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="editorial-badge mb-4">01</div>
+    <h2 class="text-h2 text-white mb-4">Renk Paleti</h2>
+    <p class="text-body mb-12 max-w-xl">Temel renkler siyah-beyaz kontrastı üzerine kurulu. Amber accent rengi vurgular ve CTA'lar için kullanılır.</p>
+
+    <!-- Primary Colors -->
+    <p class="font-mono text-textsec text-xs uppercase tracking-widest mb-6">Ana Renkler</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #000000;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Black (Background)</div>
+          <div class="swatch-hex">#000000</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #FFFFFF; border-bottom: 1px solid #27272A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">White (Text/CTA)</div>
+          <div class="swatch-hex">#FFFFFF</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #c89010;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Amber (Accent)</div>
+          <div class="swatch-hex">#C89010</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #f5c842;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gold (Accent Light)</div>
+          <div class="swatch-hex">#F5C842</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Surface Colors -->
+    <p class="font-mono text-textsec text-xs uppercase tracking-widest mb-6">Yardımcı Renkler</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #0A0A0A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Surface</div>
+          <div class="swatch-hex">#0A0A0A</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #141414;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Surface 2</div>
+          <div class="swatch-hex">#141414</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #A1A1AA;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Secondary Text</div>
+          <div class="swatch-hex">#A1A1AA</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #27272A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Border</div>
+          <div class="swatch-hex">#27272A</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider max-w-7xl mx-auto"></div>
+
+<!-- 02. TYPOGRAPHY -->
+<section class="py-20 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="editorial-badge mb-4">02</div>
+    <h2 class="text-h2 text-white mb-4">Tipografi</h2>
+    <p class="text-body mb-12 max-w-xl">Swiss editorial yaklaşımla iki font ailesi kullanılır. Başlıklarda negatif letter-spacing, gövde metinlerinde rahat okuma için geniş satır aralığı.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Geist Sans -->
+      <div class="specimen">
+        <div class="specimen-label">Ana Font &mdash; Geist Sans</div>
+        <p style="font-family: 'Geist Sans', sans-serif; font-size: 3rem; font-weight: 500; letter-spacing: -0.04em; color: #fff; line-height: 1; margin-bottom: 1rem;">Aa</p>
+        <p style="font-family: 'Geist Sans', sans-serif; font-size: 1.25rem; color: #fff; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 0.5rem;">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+        <p style="font-family: 'Geist Sans', sans-serif; font-size: 1.25rem; color: #A1A1AA; margin-bottom: 1rem;">abcdefghijklmnopqrstuvwxyz 0123456789</p>
+        <p style="font-family: 'Geist Mono', monospace; font-size: 0.75rem; color: #52525B;">Kullanım: Başlıklar, gövde metni, butonlar, navigasyon</p>
+        <p style="font-family: 'Geist Mono', monospace; font-size: 0.75rem; color: #52525B;">Ağırlıklar: 400 (Regular), 500 (Medium)</p>
+      </div>
+
+      <!-- Geist Mono -->
+      <div class="specimen">
+        <div class="specimen-label">Mono Font &mdash; Geist Mono</div>
+        <p style="font-family: 'Geist Mono', monospace; font-size: 3rem; font-weight: 500; color: #fff; line-height: 1; margin-bottom: 1rem;">Aa</p>
+        <p style="font-family: 'Geist Mono', monospace; font-size: 1.25rem; color: #fff; margin-bottom: 0.5rem;">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+        <p style="font-family: 'Geist Mono', monospace; font-size: 1.25rem; color: #A1A1AA; margin-bottom: 1rem;">abcdefghijklmnopqrstuvwxyz 0123456789</p>
+        <p style="font-family: 'Geist Mono', monospace; font-size: 0.75rem; color: #52525B;">Kullanım: Badge'ler, tarih/meta bilgileri, teknik etiketler, CTA butonları</p>
+        <p style="font-family: 'Geist Mono', monospace; font-size: 0.75rem; color: #52525B;">Genelde UPPERCASE + 0.08-0.12em letter-spacing</p>
+      </div>
+    </div>
+
+    <!-- Type Scale -->
+    <div class="mt-12">
+      <div class="font-mono text-textsec text-xs uppercase tracking-widest mb-6">Boyut Skalası</div>
+      <div class="space-y-6 border border-borderline rounded-xl p-6 md:p-8">
+        <div>
+          <span class="font-mono text-xs text-[#52525B]">H1 &mdash; clamp(3rem, 6vw, 5rem) / -0.04em</span>
+          <p style="font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 500; letter-spacing: -0.04em; line-height: 0.95; color: #fff; margin-top: 0.25rem;">İhracat altyapısı</p>
+        </div>
+        <div class="border-t border-borderline pt-6">
+          <span class="font-mono text-xs text-[#52525B]">H2 &mdash; clamp(2rem, 4vw, 3rem) / -0.03em</span>
+          <p style="font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; color: #fff; margin-top: 0.25rem;">Sonuç için tasarlandı</p>
+        </div>
+        <div class="border-t border-borderline pt-6">
+          <span class="font-mono text-xs text-[#52525B]">H3 &mdash; clamp(1.25rem, 2.5vw, 1.75rem) / -0.02em</span>
+          <p style="font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; color: #fff; margin-top: 0.25rem;">Veri toplama ve segmentasyon</p>
+        </div>
+        <div class="border-t border-borderline pt-6">
+          <span class="font-mono text-xs text-[#52525B]">Body &mdash; clamp(1rem, 1.2vw, 1.125rem) / line-height: 1.7</span>
+          <p style="font-size: 1rem; line-height: 1.7; color: #A1A1AA; margin-top: 0.25rem;">Türk ihracatçı firmalar için yurt dışı alıcı bulma sürecini uçtan uca yönetiyoruz. Veri, müşteriye ulaşma, takip; hepsi bizde.</p>
+        </div>
+        <div class="border-t border-borderline pt-6">
+          <span class="font-mono text-xs text-[#52525B]">Badge / Mono &mdash; 0.65-0.75rem / uppercase / 0.08-0.12em tracking</span>
+          <p class="editorial-badge mt-2">METODOLOJI</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider max-w-7xl mx-auto"></div>
+
+<!-- 03. LOGOS -->
+<section class="py-20 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="editorial-badge mb-4">03</div>
+    <h2 class="text-h2 text-white mb-4">Logolar</h2>
+    <p class="text-body mb-12 max-w-xl">Logo iki versiyonda sunulur: tam logo (wordmark + ikon) ve logo mark (sadece ikon). Her ikisinin de koyu ve açık zemin versiyonları mevcuttur.</p>
+
+    <!-- Full Logos -->
+    <p class="font-mono text-textsec text-xs uppercase tracking-widest mb-6">Tam Logo (Wordmark)</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      <!-- Dark bg, White logo -->
+      <div class="logo-card">
+        <div class="logo-preview" style="background: #000;">
+          <img src="TibexaLogo/tibexa-global/WhiteLogo.png" alt="Tibexa Global - White Logo on Dark">
+        </div>
+        <div class="logo-meta">
+          <span class="logo-label">Beyaz / Koyu Zemin</span>
+          <a href="TibexaLogo/tibexa-global/WhiteLogo.png" download class="download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PNG
+          </a>
+        </div>
+      </div>
+      <!-- White bg, Dark logo -->
+      <div class="logo-card">
+        <div class="logo-preview" style="background: #fff;">
+          <img src="TibexaLogo/tibexa-global/DarkLogo.png" alt="Tibexa Global - Dark Logo on White" style="filter: invert(1);">
+        </div>
+        <div class="logo-meta">
+          <span class="logo-label">Siyah / Açık Zemin</span>
+          <a href="TibexaLogo/tibexa-global/DarkLogo.png" download class="download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PNG
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cropped Logo -->
+    <p class="font-mono text-textsec text-xs uppercase tracking-widest mb-6">Kırpılmış Logo (Nav / Küçük Alanlar)</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      <div class="logo-card">
+        <div class="logo-preview" style="background: #000;">
+          <img src="TibexaLogo/tibexa-global/WhiteLogo_cropped.png" alt="Tibexa Global - Cropped White" style="max-height: 60px;">
+        </div>
+        <div class="logo-meta">
+          <span class="logo-label">Beyaz Kırpılmış</span>
+          <a href="TibexaLogo/tibexa-global/WhiteLogo_cropped.png" download class="download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PNG
+          </a>
+        </div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-preview" style="background: #fff;">
+          <img src="TibexaLogo/tibexa-global/WhiteLogo_cropped.png" alt="Tibexa Global - Cropped Dark" style="max-height: 60px; filter: invert(1);">
+        </div>
+        <div class="logo-meta">
+          <span class="logo-label">Siyah Kırpılmış</span>
+          <a href="TibexaLogo/tibexa-global/WhiteLogo_cropped.png" download class="download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PNG
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo Marks -->
+    <p class="font-mono text-textsec text-xs uppercase tracking-widest mb-6">Logo Mark (Sadece İkon)</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+      <div class="logo-card">
+        <div class="logo-preview" style="background: #000;">
+          <img src="TibexaLogo/tibexa-global/WhiteLogoMark.png" alt="White Logo Mark" style="max-height: 80px;">
+        </div>
+        <div class="logo-meta">
+          <span class="logo-label">Beyaz</span>
+          <a href="TibexaLogo/tibexa-global/WhiteLogoMark.png" download class="download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PNG
+          </a>
+        </div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-preview" style="background: #fff;">
+          <img src="TibexaLogo/tibexa-global/DarkLogoMark.png" alt="Dark Logo Mark" style="max-height: 80px; filter: invert(1);">
+        </div>
+        <div class="logo-meta">
+          <span class="logo-label">Siyah</span>
+          <a href="TibexaLogo/tibexa-global/DarkLogoMark.png" download class="download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PNG
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Favicons -->
+    <p class="font-mono text-textsec text-xs uppercase tracking-widest mb-6">Favicon &amp; App İkonları</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="logo-card">
+        <div class="logo-preview" style="background: #0A0A0A;">
+          <img src="favicon-circle-512.png" alt="Favicon 512" style="max-height: 80px;">
+        </div>
+        <div class="logo-meta">
+          <span class="logo-label">512x512</span>
+          <a href="favicon-circle-512.png" download class="download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PNG
+          </a>
+        </div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-preview" style="background: #0A0A0A;">
+          <img src="icon-192.png" alt="Icon 192" style="max-height: 80px;">
+        </div>
+        <div class="logo-meta">
+          <span class="logo-label">192x192</span>
+          <a href="icon-192.png" download class="download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PNG
+          </a>
+        </div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-preview" style="background: #0A0A0A;">
+          <img src="apple-touch-icon.png" alt="Apple Touch Icon" style="max-height: 80px;">
+        </div>
+        <div class="logo-meta">
+          <span class="logo-label">Apple 180</span>
+          <a href="apple-touch-icon.png" download class="download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PNG
+          </a>
+        </div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-preview" style="background: #0A0A0A;">
+          <img src="favicon-32.png" alt="Favicon 32" style="max-height: 32px; image-rendering: pixelated;">
+        </div>
+        <div class="logo-meta">
+          <span class="logo-label">Favicon 32</span>
+          <a href="favicon-32.png" download class="download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PNG
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider max-w-7xl mx-auto"></div>
+
+<!-- 04. USAGE RULES -->
+<section class="py-20 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="editorial-badge mb-4">04</div>
+    <h2 class="text-h2 text-white mb-4">Kullanım Kuralları</h2>
+    <p class="text-body mb-12 max-w-xl">Logo ve marka varlıklarını tutarlı kullanmak için temel kurallar.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="border border-borderline rounded-xl p-6">
+        <p class="font-mono text-xs text-[#52525B] uppercase tracking-widest mb-3">Minimum Alan</p>
+        <p class="text-body">Logo etrafında en az logo yüksekliğinin yarısı kadar boşluk bırakılmalıdır.</p>
+      </div>
+      <div class="border border-borderline rounded-xl p-6">
+        <p class="font-mono text-xs text-[#52525B] uppercase tracking-widest mb-3">Zemin Kuralı</p>
+        <p class="text-body">Beyaz logo yalnızca koyu zemin (#000 veya #0A0A0A) üzerinde; siyah logo yalnızca açık zemin (#FFF) üzerinde kullanılmalıdır.</p>
+      </div>
+      <div class="border border-borderline rounded-xl p-6">
+        <p class="font-mono text-xs text-[#52525B] uppercase tracking-widest mb-3">Yapılmaması Gerekenler</p>
+        <p class="text-body">Logoyu döndürmeyin, esnetmeyin, efekt eklemeyin, renklendirmeyin veya düşük kontrastlı zeminlerde kullanmayın.</p>
+      </div>
+      <div class="border border-borderline rounded-xl p-6">
+        <p class="font-mono text-xs text-[#52525B] uppercase tracking-widest mb-3">Font Kullanımı</p>
+        <p class="text-body">Başlıklarda negatif letter-spacing (-0.04em ila -0.02em) kullanılır. Gövde metni her zaman #A1A1AA rengindedir.</p>
+      </div>
+      <div class="border border-borderline rounded-xl p-6">
+        <p class="font-mono text-xs text-[#52525B] uppercase tracking-widest mb-3">Accent Renk</p>
+        <p class="text-body">Amber (#C89010) yalnızca CTA hover efektleri, "shiny" gradient metinler ve progres barlar için kullanılır. Büyük yüzeylerde kullanılmaz.</p>
+      </div>
+      <div class="border border-borderline rounded-xl p-6">
+        <p class="font-mono text-xs text-[#52525B] uppercase tracking-widest mb-3">Border &amp; Divider</p>
+        <p class="text-body">#27272A rengi tüm sınır çizgileri ve bölücüler için standart renktir. Opaklık ile oynamak yerine sabit renk kullanılır.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-borderline py-8 px-6">
+  <div class="max-w-7xl mx-auto text-center">
+    <p class="text-textsec text-sm font-mono">&copy; 2026 Tibexa Global. Tüm hakları saklıdır.</p>
+  </div>
+</footer>
+
+</body></html>

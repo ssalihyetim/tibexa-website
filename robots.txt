@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /teklif/
 
-Sitemap: https://soothing-inspiration-production-6fd5.up.railway.app/sitemap.xml
+Sitemap: https://tibexa.com/sitemap.xml

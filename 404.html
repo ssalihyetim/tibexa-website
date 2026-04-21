@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth bg-black">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Sayfa Bulunamadı | Tibexa Global</title>
+<meta name="description" content="Aradığınız sayfa bulunamadı. Tibexa Global ana sayfasına dönün veya blog ve case study'lerimize göz atın.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://tibexa.com/">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.1/index.min.css">
+
+<!-- JSON-LD: BreadcrumbList for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://tibexa.com/" },
+    { "@type": "ListItem", "position": 2, "name": "404 — Sayfa Bulunamadı" }
+  ]
+}
+</script>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #000;
+    color: #f4f4f0;
+    font-family: "Geist Sans", "Red Hat Display", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  ::selection { background: #fff; color: #000; }
+
+  .container {
+    text-align: center;
+    max-width: 640px;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Large 404 background text */
+  .bg-404 {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Geist Sans", sans-serif;
+    font-size: clamp(200px, 40vw, 500px);
+    font-weight: 700;
+    color: rgba(255,255,255,0.02);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Grid overlay */
+  .grid-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .logo {
+    height: 32px;
+    margin-bottom: 48px;
+    opacity: 0.9;
+  }
+
+  .code {
+    font-family: "Geist Sans", monospace;
+    font-size: 14px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #71717a;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: "Geist Sans", sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #a1a1aa;
+    margin-bottom: 40px;
+  }
+
+  /* CTA Buttons */
+  .cta-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    font-family: "Geist Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  }
+
+  .btn-primary {
+    background: #fff;
+    color: #000;
+  }
+  .btn-primary:hover {
+    background: #e4e4e7;
+    box-shadow: 0 0 40px rgba(255,255,255,0.06);
+  }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.06);
+    color: #f4f4f0;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  /* Useful links */
+  .links-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #52525b;
+    margin-bottom: 16px;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .link-card {
+    display: block;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 8px;
+    text-decoration: none;
+    color: #a1a1aa;
+    font-size: 13px;
+    transition: all 0.2s;
+  }
+
+  .link-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.1);
+    color: #f4f4f0;
+  }
+
+  .link-card .link-title {
+    color: #f4f4f0;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  .link-card .link-desc {
+    font-size: 11px;
+    color: #71717a;
+  }
+
+  /* Auto-redirect notice */
+  .redirect-notice {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #52525b;
+    z-index: 10;
+  }
+
+  .redirect-notice span {
+    color: #a1a1aa;
+    font-variant-numeric: tabular-nums;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-404">404</div>
+<div class="grid-overlay"></div>
+
+<div class="container">
+  <img src="/TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" class="logo">
+
+  <div class="code">404 — Sayfa Bulunamadı</div>
+
+  <h1>Bu sayfa artık burada değil.</h1>
+
+  <p class="subtitle">
+    Aradığınız sayfa taşınmış, silinmiş veya hiç var olmamış olabilir.
+    Endişelenmeyin — sizi doğru yere yönlendirelim.
+  </p>
+
+  <div class="cta-row">
+    <a href="/" class="btn btn-primary">← Ana Sayfa</a>
+    <a href="/blog.html" class="btn btn-secondary">Blog</a>
+  </div>
+
+  <div class="links-label">Belki bunları arıyorsunuzdur</div>
+  <div class="links-grid">
+    <a href="/case-rapidlanyard.html" class="link-card">
+      <div class="link-title">Rapid Lanyard</div>
+      <div class="link-desc">Case Study</div>
+    </a>
+    <a href="/case-naturagen.html" class="link-card">
+      <div class="link-title">Naturagen</div>
+      <div class="link-desc">Case Study</div>
+    </a>
+    <a href="/blog-ihracata-nasil-baslanir.html" class="link-card">
+      <div class="link-title">İhracata Nasıl Başlanır?</div>
+      <div class="link-desc">Blog</div>
+    </a>
+    <a href="/blog-yurt-disi-musteri-bulma.html" class="link-card">
+      <div class="link-title">Yurt Dışı Müşteri Bulma</div>
+      <div class="link-desc">Blog</div>
+    </a>
+  </div>
+</div>
+
+<div class="redirect-notice">
+  <span id="countdown">15</span> saniye içinde ana sayfaya yönlendirileceksiniz.
+</div>
+
+<script>
+  let sec = 15;
+  const el = document.getElementById('countdown');
+  const timer = setInterval(() => {
+    sec--;
+    el.textContent = sec;
+    if (sec <= 0) {
+      clearInterval(timer);
+      window.location.href = '/';
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>

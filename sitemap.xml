@@ -1,33 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://soothing-inspiration-production-6fd5.up.railway.app/</loc>
+    <loc>https://tibexa.com/</loc>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://soothing-inspiration-production-6fd5.up.railway.app/case-rapidlanyard.html</loc>
+    <loc>https://tibexa.com/case-rapidlanyard.html</loc>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://soothing-inspiration-production-6fd5.up.railway.app/case-selin-cikolata.html</loc>
+    <loc>https://tibexa.com/case-selin-cikolata.html</loc>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://soothing-inspiration-production-6fd5.up.railway.app/case-fema-bant.html</loc>
+    <loc>https://tibexa.com/case-fema-bant.html</loc>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://soothing-inspiration-production-6fd5.up.railway.app/case-naturagen.html</loc>
+    <loc>https://tibexa.com/case-naturagen.html</loc>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://soothing-inspiration-production-6fd5.up.railway.app/case-igrek.html</loc>
+    <loc>https://tibexa.com/case-igrek.html</loc>
+    <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tibexa.com/blog.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tibexa.com/blog-ihracata-nasil-baslanir.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tibexa.com/blog-yurt-disi-musteri-bulma.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tibexa.com/blog-hedef-pazar-belirleme.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tibexa.com/blog-soguk-eposta-ihracat.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tibexa.com/blog-ai-musteri-segmentasyonu.html</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
