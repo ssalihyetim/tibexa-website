@@ -31,9 +31,9 @@ Because Billr is pre-wedge, **the real job of this sprint is to convert TAM into
 **A note on strategic focus, before the hypothesis section:** Tibexa's own recommendation is to treat **logistics as the primary vertical** and concentrate here. Section 2.4 explains why. The multi-hypothesis design is a concession to the founder's preference to test breadth — but the sprint is structured so that if logistics confirms its pull (as we expect), the remaining budget compounds there rather than fragmenting across verticals.
 
 **Sprint funnel at 0.35% positive-reply baseline, scaled by package volume (3 active outreach months):**
-- **Small — Discovery** (10,000 sends/month → 30,000 sends total, ~20,000 accounts): 105 positive replies → 50–70 meetings → 10–17 closed deals
-- **Medium — Validation** (25,000 sends/month → 75,000 sends total, ~50,000 accounts): 262 positive replies → 125–175 meetings → 25–44 closed deals
-- **Large — Market Sweep** (50,000 sends/month → 150,000 sends total, ~100,000 accounts): 525 positive replies → 250–350 meetings → 50–88 closed deals
+- **Small — Discovery** (5,000 sends/month → 15,000 sends total, ~10,000 accounts): 52 positive replies → 25–35 meetings → 5–7 closed deals
+- **Medium — Validation** (10,000 sends/month → 30,000 sends total, ~20,000 accounts): 105 positive replies → 50–70 meetings → 10–14 closed deals
+- **Large — Market Sweep** (25,000 sends/month → 75,000 sends total, ~50,000 accounts): 262 positive replies → 125–175 meetings → 25–35 closed deals
 
 **Timing note:** Custom billing infrastructure has a 3–6 month sales cycle (see Section 8.2.1). Most closed deals from a sprint land in months 5–10 after sprint start, not during the sprint itself. The sprint's month-4 deliverable is the **ICP evidence + pipeline in flight**; closed-won ARR materializes across the following two quarters.
 
@@ -262,13 +262,23 @@ All numbers below are **steady-state monthly** figures for active outreach month
 
 | Metric | Monthly target | 3-month total |
 |---|---:|---:|
+| Accounts touched | ~3,300 | ~10,000 |
+| Contacts sent (primary + follow-up) | 5,000 | 15,000 |
+| Positive replies (L1+) at 0.35% | 17 | 52 |
+| Qualified replies (L2+) | 9 | 26 |
+| Booked meetings | 8–12 | 25–35 |
+
+**Medium Package — Validation Sprint** *(recommended)*
+
+| Metric | Monthly target | 3-month total |
+|---|---:|---:|
 | Accounts touched | ~6,700 | ~20,000 |
-| Contacts sent (primary + follow-up) | 10,000 | 30,000 |
+| Contacts sent | 10,000 | 30,000 |
 | Positive replies (L1+) at 0.35% | 35 | 105 |
 | Qualified replies (L2+) | 17 | 52 |
 | Booked meetings | 17–23 | 50–70 |
 
-**Medium Package — Validation Sprint** *(recommended)*
+**Large Package — Market Sweep**
 
 | Metric | Monthly target | 3-month total |
 |---|---:|---:|
@@ -278,17 +288,7 @@ All numbers below are **steady-state monthly** figures for active outreach month
 | Qualified replies (L2+) | 44 | 131 |
 | Booked meetings | 42–58 | 125–175 |
 
-**Large Package — Market Sweep**
-
-| Metric | Monthly target | 3-month total |
-|---|---:|---:|
-| Accounts touched | ~33,300 | ~100,000 |
-| Contacts sent | 50,000 | 150,000 |
-| Positive replies (L1+) at 0.35% | 175 | 525 |
-| Qualified replies (L2+) | 87 | 262 |
-| Booked meetings | 83–117 | 250–350 |
-
-**Response-rate assumption:** 0.35% positive-reply-to-contact ratio is our conservative baseline for high-volume segmented B2B outbound. Observed range for comparable operations in 2026 sits at 0.35%–0.80%. If the sprint outperforms, actual numbers scale linearly — a 0.55% rate on the Medium package produces ~412 positive replies instead of 262.
+**Response-rate assumption:** 0.35% positive-reply-to-contact ratio is our conservative baseline for high-volume segmented B2B outbound. Observed range for comparable operations in 2026 sits at 0.35%–0.80%. If the sprint outperforms, actual numbers scale linearly — a 0.55% rate on the Medium package produces ~165 positive replies instead of 105.
 
 ### 7.2 Conversion KPIs (Billr-side, tracked jointly)
 
@@ -326,30 +326,30 @@ Because the unit economics of lead-gen operations don't scale linearly (the setu
 ### 8.2 Package definitions
 
 **Package 1 — Discovery Sprint — €2,500/month**
-- 3-month active send volume: **10,000 sends/month** (30,000 total, ~20,000 accounts touched)
+- 3-month active send volume: **5,000 sends/month** (15,000 total, ~10,000 accounts touched)
 - Hypothesis coverage: **H1 logistics + H2 usage-based SaaS** (roughly 60/40 split)
 - Purpose: "Is outbound viable for Billr? Does logistics confirm as the wedge, or does H2 surprise?"
 - Best for: Billr wants a low-risk first engagement, ICP clarity weighted over pipeline volume
-- Expected booked meetings: 50–70 across 3 months
-- Expected closed deals (20% meeting-to-deal): 10–14
-- Note on close timing: sprint ends month 4; expect 2–3 deals to close during the sprint and the remainder to close in months 5–10 per the sales cycle below
+- Expected booked meetings: 25–35 across 3 months
+- Expected closed deals (20% meeting-to-deal): 5–7
+- Note on close timing: sprint ends month 4; expect 1–2 deals to close during the sprint and the remainder to close in months 5–10 per the sales cycle below
 
 **Package 2 — Validation Sprint — €3,500/month** *(recommended)*
-- 3-month active send volume: **25,000 sends/month** (75,000 total, ~50,000 accounts touched)
+- 3-month active send volume: **10,000 sends/month** (30,000 total, ~20,000 accounts touched)
 - Hypothesis coverage: **H1 logistics + H2 usage-based SaaS** (roughly 60/40 split, rebalanced post month-2 gate)
 - Purpose: "Validate and scale the winning hypothesis inside a single engagement"
 - Best for: Billr is ready to commit to learning *and* producing pipeline; the best signal-per-spend package
-- Expected booked meetings: 125–175 across 3 months
-- Expected closed deals: 25–35 (4–6 during sprint, remainder spread across months 5–12)
+- Expected booked meetings: 50–70 across 3 months
+- Expected closed deals: 10–14 (2–3 during sprint, remainder spread across months 5–12)
 
 **Package 3 — Market Sweep — €4,500/month**
-- 3-month active send volume: **50,000 sends/month** (150,000 total, ~100,000 accounts touched)
+- 3-month active send volume: **25,000 sends/month** (75,000 total, ~50,000 accounts touched)
 - Hypothesis coverage: **H1 logistics + H2 usage-based SaaS + H3 vertical SaaS** (roughly 55/30/15 split)
 - Purpose: "Talk to a large portion of the serviceable market in H1 and H2; probe H3 for 2027 directional insight."
 - Best for: Billr is ready to treat the sprint as a category-capture move and has capacity to onboard new customers steadily across the following 12 months
-- Expected booked meetings: 250–350 across 3 months
-- Expected closed deals: 50–70 (8–12 during sprint, remainder spread across months 5–15)
-- **Implementation-capacity note:** With Billr's 4-week implementation cycle, 50–70 deals cannot be onboarded simultaneously. The sales-cycle timing below spreads closes naturally across 12+ months — see Section 8.2.1.
+- Expected booked meetings: 125–175 across 3 months
+- Expected closed deals: 25–35 (4–6 during sprint, remainder spread across months 5–15)
+- **Implementation-capacity note:** With Billr's 4-week implementation cycle, 25–35 deals cannot be onboarded simultaneously. The sales-cycle timing below spreads closes naturally across 12+ months — see Section 8.2.1.
 
 **Pricing summary:**
 
@@ -396,34 +396,34 @@ This timing also means the **sprint's ICP evidence and objection dataset arrive 
 
 | Metric | Small Pkg | Medium Pkg | Large Pkg |
 |---|---:|---:|---:|
-| Sends over 3 months | 30,000 | 75,000 | 150,000 |
-| Positive replies (L1+) | 105 | 262 | 525 |
-| Qualified replies (L2+) | 52 | 131 | 262 |
-| Booked meetings | 50–70 | 125–175 | 250–350 |
-| Closed deals (at 20%) | 10–14 | 25–35 | 50–70 |
-| **Year-1 ARR** | **$100K–140K** | **$250K–350K** | **$500K–700K** |
-| **3-year LTV** | **$270K–378K** | **$675K–945K** | **$1.35M–1.89M** |
+| Sends over 3 months | 15,000 | 30,000 | 75,000 |
+| Positive replies (L1+) | 52 | 105 | 262 |
+| Qualified replies (L2+) | 26 | 52 | 131 |
+| Booked meetings | 25–35 | 50–70 | 125–175 |
+| Closed deals (at 20%) | 5–7 | 10–14 | 25–35 |
+| **Year-1 ARR** | **$50K–70K** | **$100K–140K** | **$250K–350K** |
+| **3-year LTV** | **$135K–189K** | **$270K–378K** | **$675K–945K** |
 
 ### 8.5 Outcome matrix — upside scenario (0.55% reply, 22% close)
 
 | Metric | Small Pkg | Medium Pkg | Large Pkg |
 |---|---:|---:|---:|
-| Positive replies | 165 | 412 | 825 |
-| Qualified replies | 82 | 206 | 412 |
-| Booked meetings | 82–115 | 206–288 | 412–577 |
-| Closed deals (at 22%) | 18–25 | 45–63 | 90–127 |
-| **Year-1 ARR** | **$180K–250K** | **$450K–630K** | **$900K–1.27M** |
-| **3-year LTV** | **$486K–675K** | **$1.22M–1.70M** | **$2.43M–3.43M** |
+| Positive replies | 82 | 165 | 412 |
+| Qualified replies | 41 | 82 | 206 |
+| Booked meetings | 41–57 | 82–115 | 206–288 |
+| Closed deals (at 22%) | 9–12 | 18–25 | 45–63 |
+| **Year-1 ARR** | **$90K–125K** | **$180K–250K** | **$450K–630K** |
+| **3-year LTV** | **$243K–337K** | **$486K–675K** | **$1.22M–1.70M** |
 
 ### 8.6 ROI framing
 
 | Package | 4-month cost | Conservative Year-1 ROI | Upside Year-1 ROI | Conservative 3yr LTV ROI |
 |---|---:|---:|---:|---:|
-| Small — Discovery | €10,000 | ~$100K–140K on €10K = **9–13×** | ~$180K–250K = **16–23×** | ~$270K–378K = **25–35×** |
-| Medium — Validation | €14,000 | ~$250K–350K = **17–24×** | ~$450K–630K = **30–43×** | ~$675K–945K = **46–65×** |
-| Large — Market Sweep | €18,000 | ~$500K–700K = **27–38×** | ~$900K–1.27M = **49–69×** | ~$1.35M–1.89M = **74–104×** |
+| Small — Discovery | €10,000 | ~$50K–70K on €10K = **4–6×** | ~$90K–125K = **8–11×** | ~$135K–189K = **12–17×** |
+| Medium — Validation | €14,000 | ~$100K–140K = **7–9×** | ~$180K–250K = **12–16×** | ~$270K–378K = **18–25×** |
+| Large — Market Sweep | €18,000 | ~$250K–350K = **13–19×** | ~$450K–630K = **25–35×** | ~$675K–945K = **37–52×** |
 
-These returns are intentionally striking — and they reflect why outbound remains the most capital-efficient GTM motion for an early-stage B2B infrastructure company *if it converts at all*. The critical uncertainty is reply rate and close rate, not the math once those land. The Small package is designed precisely to de-risk both.
+These returns reflect why outbound remains the most capital-efficient GTM motion for an early-stage B2B infrastructure company *if it converts at all*. The critical uncertainty is reply rate and close rate, not the math once those land. The Small package is designed precisely to de-risk both.
 
 **What to hold against these numbers:** Billr's actual close rate may start below 20% in the first sprint as positioning and objection-handling find their groove. We've modeled 20% because that's achievable with case-study-backed sales into a qualified pipeline; month-2 and month-3 replies refine this expectation in real time.
 
