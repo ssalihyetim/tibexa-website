@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pro Video × Tibexa — Lead Generation Stratejisi</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111318;
+    --card: #181c24;
+    --card2: #1e2330;
+    --border: rgba(255,255,255,0.07);
+    --white: #f4f4f0;
+    --muted: #8a8f9e;
+    --accent: #2ac866;       /* Pro Video green */
+    --accent2: #5ee08d;
+    --gold: #c9a84c;
+    --green: #3ecf8e;
+    --red: #f55;
+    --blue: #5b9cf6;
+    --amber: #e8a94c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Red Hat Display', sans-serif;
+    height: 100%;
+    width: 100%;
+  }
+
+  body { overflow: hidden; }
+
+  .slides-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .slide {
+    min-width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 48px 72px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide::-webkit-scrollbar { width: 3px; }
+  .slide::-webkit-scrollbar-track { background: transparent; }
+  .slide::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  .nav {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+    background: rgba(17,19,24,0.9);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 10px 18px;
+  }
+
+  .nav button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px 8px;
+    transition: color 0.2s;
+  }
+  .nav button:hover { color: var(--accent); }
+
+  .dots { display: flex; gap: 6px; }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .dot.active { background: var(--accent); width: 20px; border-radius: 3px; }
+
+  .slide-counter {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    min-width: 50px;
+    text-align: center;
+  }
+
+  .slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .slide-label {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-row .x {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+
+  /* Pro Video logo wordmark — beyaz arka planlı badge */
+  .pv-logo {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    padding: 6px 14px;
+    line-height: 0;
+    flex-shrink: 0;
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+  }
+  .pv-logo .pv-pro { color: #e85d3a; }
+  .pv-logo .pv-lens {
+    display: inline-block;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #7dd6ff 0%, #1a4d6e 55%, #0a1a26 100%);
+    border: 2px solid #c8c8cc;
+    box-shadow: inset 0 0 0 2px #0a0a0a, 0 0 0 1px rgba(0,0,0,0.3);
+    margin: 0 1px;
+    vertical-align: middle;
+    position: relative;
+  }
+  .pv-logo .pv-video { color: #2ac866; }
+  .pv-logo.lg { padding: 10px 18px; font-size: 26px; }
+  .pv-logo.lg .pv-lens { width: 30px; height: 30px; }
+
+  h1 {
+    font-size: clamp(36px, 6vw, 76px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  h2 {
+    font-size: clamp(26px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  h3 { font-size: 17px; font-weight: 700; }
+
+  p { font-size: 15px; line-height: 1.7; color: var(--muted); }
+
+  .accent { color: var(--accent); }
+  .white { color: var(--white); }
+  .green { color: var(--green); }
+  .gold { color: var(--gold); }
+  .red { color: var(--red); }
+  .amber { color: var(--amber); }
+  .muted { color: var(--muted); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .card-accent {
+    background: linear-gradient(135deg, rgba(42,200,102,0.13), rgba(42,200,102,0.04));
+    border: 1px solid rgba(42,200,102,0.28);
+  }
+  .card-green {
+    background: linear-gradient(135deg, rgba(62,207,142,0.10), rgba(62,207,142,0.03));
+    border: 1px solid rgba(62,207,142,0.25);
+  }
+  .card-red {
+    background: linear-gradient(135deg, rgba(255,85,85,0.08), rgba(255,85,85,0.02));
+    border: 1px solid rgba(255,85,85,0.22);
+  }
+  .card-amber {
+    background: linear-gradient(135deg, rgba(232,169,76,0.10), rgba(232,169,76,0.03));
+    border: 1px solid rgba(232,169,76,0.28);
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+  .big-stat {
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .segment-pill {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-size: 12px;
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .segment-pill .dot-pill {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .kv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+    gap: 16px;
+  }
+  .kv:last-child { border-bottom: none; }
+  .kv .k { color: var(--muted); flex-shrink: 0; }
+  .kv .v { font-weight: 600; text-align: right; }
+
+  .divider {
+    width: 48px; height: 2px;
+    background: var(--accent);
+    margin: 16px 0 20px;
+  }
+
+  #s1 {
+    justify-content: center;
+    padding: 64px 72px;
+  }
+  .cover-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .cover-label::before {
+    content: '';
+    display: block;
+    width: 36px; height: 1px;
+    background: var(--accent);
+  }
+  .cover-subtitle {
+    font-size: 17px;
+    color: var(--muted);
+    margin-bottom: 40px;
+    max-width: 680px;
+    line-height: 1.6;
+  }
+  .cover-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+  .cover-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item { font-size: 13px; }
+  .cover-deco {
+    position: absolute;
+    right: 0; top: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 60%, rgba(42,200,102,0.05) 100%);
+    pointer-events: none;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+  .data-table th {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+  .data-table td {
+    padding: 11px 12px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--white);
+    vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr.recommended td {
+    background: rgba(42,200,102,0.08);
+  }
+  .data-table tr.recommended td:first-child {
+    border-left: 2px solid var(--accent);
+  }
+
+  .rec-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--black);
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 6px;
+    text-transform: uppercase;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 26px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .tl-item { margin-bottom: 22px; position: relative; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -22px; top: 6px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(42,200,102,0.2);
+  }
+  .tl-step {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .btn {
+    padding: 13px 26px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+  }
+  .btn-primary { background: var(--accent); color: var(--black); }
+  .btn-primary:hover { background: var(--accent2); }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .tag-green { background: rgba(42,200,102,0.12); color: var(--accent2); border: 1px solid rgba(42,200,102,0.28); }
+  .tag-gold { background: rgba(201,168,76,0.12); color: #e8c96a; border: 1px solid rgba(201,168,76,0.25); }
+  .tag-blue { background: rgba(91,156,246,0.12); color: var(--blue); border: 1px solid rgba(91,156,246,0.25); }
+  .tag-amber { background: rgba(232,169,76,0.12); color: var(--amber); border: 1px solid rgba(232,169,76,0.3); }
+  .tag-red { background: rgba(255,85,85,0.12); color: var(--red); border: 1px solid rgba(255,85,85,0.3); }
+
+  .split-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .bullet-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .bullet-row:last-child { border-bottom: none; }
+  .bullet-row .ix {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .ix-red { background: rgba(255,85,85,0.15); color: var(--red); border: 1px solid rgba(255,85,85,0.3); }
+  .ix-green { background: rgba(62,207,142,0.15); color: var(--green); border: 1px solid rgba(62,207,142,0.3); }
+  .ix-accent { background: rgba(42,200,102,0.15); color: var(--accent2); border: 1px solid rgba(42,200,102,0.3); }
+  .ix-amber { background: rgba(232,169,76,0.15); color: var(--amber); border: 1px solid rgba(232,169,76,0.3); }
+
+  .lvl {
+    display: inline-flex; align-items: center;
+    gap: 6px;
+    padding: 3px 9px;
+    font-size: 11px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .lvl-1 { background: rgba(91,156,246,0.15); color: var(--blue); }
+  .lvl-2 { background: rgba(201,168,76,0.15); color: #e8c96a; }
+  .lvl-3 { background: rgba(42,200,102,0.15); color: var(--accent2); }
+  .lvl-4 { background: rgba(62,207,142,0.15); color: var(--green); }
+
+  .gtee-box {
+    background: linear-gradient(135deg, rgba(62,207,142,0.12), rgba(62,207,142,0.03));
+    border: 1px solid rgba(62,207,142,0.28);
+    border-radius: 14px;
+    padding: 20px 24px;
+  }
+
+  .skeptic-box {
+    background: linear-gradient(135deg, rgba(232,169,76,0.10), rgba(232,169,76,0.03));
+    border: 1px solid rgba(232,169,76,0.28);
+    border-radius: 14px;
+    padding: 20px 24px;
+  }
+
+  .price-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .price-card.featured {
+    background: linear-gradient(165deg, rgba(42,200,102,0.14), rgba(42,200,102,0.03));
+    border: 1px solid rgba(42,200,102,0.35);
+  }
+  .price-card .p-badge {
+    position: absolute;
+    top: -11px; left: 22px;
+    background: var(--accent);
+    color: var(--black);
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .price-card .p-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .price-card .p-name {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  .price-card .p-amount {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 2px;
+    line-height: 1;
+  }
+  .price-card.featured .p-amount { color: var(--accent); }
+  .price-card .p-sub { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+  .price-card .p-features { list-style: none; margin-top: auto; }
+  .price-card .p-features li {
+    font-size: 13px;
+    padding: 6px 0;
+    color: var(--white);
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .price-card .p-features li::before {
+    content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0;
+  }
+
+  .addon-card {
+    background: var(--card2);
+    border: 1px dashed rgba(201,168,76,0.35);
+    border-radius: 12px;
+    padding: 18px 22px;
+  }
+
+  /* ROI */
+  .roi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 16px; }
+  .roi-input-group { display: flex; flex-direction: column; gap: 5px; }
+  .roi-input-group label { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+  .roi-input-group input, .roi-input-group select {
+    background: var(--card2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 11px 14px; font-size: 14px; color: var(--white); font-family: 'Red Hat Display', sans-serif;
+    outline: none; transition: border-color 0.2s;
+  }
+  .roi-input-group input:focus, .roi-input-group select:focus { border-color: var(--accent); }
+
+  .roi-results { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+  .roi-result-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px; text-align: center;
+  }
+  .roi-result-card.highlight {
+    background: linear-gradient(135deg, rgba(62,207,142,0.14), rgba(62,207,142,0.04));
+    border-color: rgba(62,207,142,0.32);
+  }
+  .roi-result-card .roi-value {
+    font-size: 26px; font-weight: 800;
+    line-height: 1; margin-bottom: 5px;
+  }
+  .roi-result-card .roi-label { font-size: 10px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+
+  .roi-bar-wrap { margin-top: 16px; }
+  .roi-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+  .roi-bar { height: 8px; background: var(--card2); border-radius: 4px; overflow: hidden; }
+  .roi-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .roi-bar-fill.accent { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .roi-bar-fill.green { background: linear-gradient(90deg, var(--green), #5de8a8); }
+
+  .roi-toggle {
+    display: inline-flex;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3px;
+    margin-top: 2px;
+  }
+  .roi-toggle button {
+    padding: 8px 18px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    font-family: 'Red Hat Display', sans-serif;
+  }
+  .roi-toggle button.active {
+    background: var(--accent);
+    color: var(--black);
+  }
+
+  #s_final {
+    justify-content: center;
+    background: linear-gradient(135deg, var(--black) 0%, #0f1118 100%);
+  }
+  .final-box {
+    background: linear-gradient(135deg, rgba(42,200,102,0.12), rgba(42,200,102,0.03));
+    border: 1px solid rgba(42,200,102,0.28);
+    border-radius: 20px;
+    padding: 44px;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .slide > * {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .slide.active > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .slide.active > *:nth-child(1) { transition-delay: 0.05s; }
+  .slide.active > *:nth-child(2) { transition-delay: 0.12s; }
+  .slide.active > *:nth-child(3) { transition-delay: 0.19s; }
+  .slide.active > *:nth-child(4) { transition-delay: 0.26s; }
+  .slide.active > *:nth-child(5) { transition-delay: 0.33s; }
+  .slide.active > *:nth-child(6) { transition-delay: 0.40s; }
+
+  @media (max-width: 900px) {
+    body { overflow: auto; }
+    .slides-container { display: block; width: 100%; height: auto; transform: none !important; transition: none; }
+    .slide { min-width: 100%; width: 100%; height: auto; min-height: auto; padding: 40px 32px 56px; overflow: visible; scroll-margin-top: 16px; }
+    .slide + .slide { border-top: 1px solid var(--border); }
+    .slide > * { opacity: 1 !important; transform: none !important; }
+    .nav { padding: 8px 14px; gap: 8px; bottom: 16px; }
+    .nav .slide-counter { min-width: 40px; font-size: 11px; letter-spacing: 1px; }
+    .slide-header { margin-bottom: 28px; }
+    .grid-4 { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .roi-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .roi-results { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+    .roi-result-card { padding: 16px 12px; }
+    .roi-result-card .roi-value { font-size: 22px; }
+    .cover-meta { gap: 22px; }
+    .final-box { padding: 34px 26px; }
+  }
+
+  @media (max-width: 640px) {
+    .slide { padding: 28px 18px 44px; }
+    h1 { font-size: clamp(30px, 9vw, 52px); }
+    h2 { font-size: clamp(22px, 6.5vw, 32px); }
+    .big-stat { font-size: 38px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 14px; }
+    .grid-4 { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .roi-grid { grid-template-columns: 1fr; gap: 12px; }
+    .roi-results { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .data-table { font-size: 12px; }
+    .data-table th, .data-table td { padding: 9px 8px; }
+    .price-card { padding: 22px 20px; }
+    .slide-label { font-size: 9px; letter-spacing: 2px; }
+    .pv-logo { padding: 4px 10px; font-size: 15px; }
+    .pv-logo .pv-lens { width: 18px; height: 18px; }
+    .pv-logo.lg { padding: 8px 14px; font-size: 20px; }
+    .pv-logo.lg .pv-lens { width: 24px; height: 24px; }
+    .brand-row { gap: 10px; }
+    .cover-meta { gap: 16px; }
+    .final-box { padding: 26px 20px; }
+  }
+
+  @media (max-width: 400px) {
+    .slide-header { gap: 8px; }
+    .brand-row .x { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slides-container" id="slides">
+
+  <!-- ========== SLIDE 1 — COVER ========== -->
+  <div class="slide active" id="s1">
+    <div class="cover-deco"></div>
+
+    <div class="slide-header">
+      <div class="brand-row">
+        <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:34px; object-fit:contain;">
+        <span class="x">×</span>
+        <span class="pv-logo"><span class="pv-pro">pro</span><span class="pv-lens"></span><span class="pv-video">video</span></span>
+      </div>
+      <span class="slide-label">Gizli · Pro Video için hazırlandı</span>
+    </div>
+
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; max-width: 820px;">
+      <div class="cover-label">Lead Generation Stratejisi · Nisan 2026</div>
+
+      <h1 style="margin-bottom:22px;">
+        Referans gücüyle<br>
+        <span class="accent">yeni hesaplara ulaşıyoruz.</span>
+      </h1>
+
+      <p class="cover-subtitle">
+        Pro Video'nun 30+ yıllık entegratör deneyimini ve THY, Toyota, Boğaziçi, Petkim gibi referanslarını
+        kaldıraç kullanarak, hedef kurumsal iletişim ve UZEM karar vericilerine email + LinkedIn üzerinden
+        sistematik outbound operasyonu. Şüpheci varsayımlar açıkça masada.
+      </p>
+
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <div class="label">Hazırlayan</div>
+          <div class="white" style="font-weight:600;">Tibexa Global</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="label">Tarih</div>
+          <div class="white" style="font-weight:600;">Nisan 2026</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="label">Versiyon</div>
+          <div class="white" style="font-weight:600;">v2 (şüpheci revize)</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="label">Kapsam</div>
+          <div class="white" style="font-weight:600;">Email + LinkedIn Karma · 2 Segment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 2 — FIRSAT ========== -->
+  <div class="slide" id="s2">
+    <div class="slide-header">
+      <span class="slide-label">01 / Fırsat</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Referanslar güçlü.<br><span class="accent">Proaktif yeni hesap kanalı eksik.</span></h2>
+    <div class="divider"></div>
+
+    <p style="max-width:820px; margin-bottom:20px;">
+      Pro Video: 30+ yıllık profesyonel video sistem entegratörü —
+      <span class="white">anahtar teslim TV stüdyosu</span>, <span class="white">Greenbox / sanal stüdyo</span>,
+      <span class="white">Web TV</span> ve yayın altyapısı kurulumu.
+      100+ müşteri, 1000+ proje, 7 alt marka. Bugün iş akışı büyük oranda network, ihale ve organik kanallardan besleniyor —
+      yeni hesap avına çıkacak <span class="white">proaktif bir outbound fonksiyonu yok</span>.
+    </p>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card card-accent">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Referans Gücü</div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px;">
+          <span class="tag tag-green">Boğaziçi</span>
+          <span class="tag tag-green">Ankara Üni.</span>
+          <span class="tag tag-green">Bahçeşehir</span>
+          <span class="tag tag-green">KTÜ</span>
+          <span class="tag tag-green">Atatürk Üni.</span>
+          <span class="tag tag-blue">THY Teknik</span>
+          <span class="tag tag-blue">Toyota</span>
+          <span class="tag tag-blue">Petkim</span>
+          <span class="tag tag-blue">Şişecam Akademi</span>
+          <span class="tag tag-blue">TürkTraktör</span>
+          <span class="tag tag-blue">Osstem</span>
+        </div>
+        <p style="font-size:12px; margin-top:12px;">Bu isimler outbound açılışında <span class="white">birinci seviye sosyal kanıt</span>. Karar verici "bu entegratör kim" diye sormuyor.</p>
+      </div>
+
+      <div class="card card-red">
+        <div class="bullet-row" style="border:none; padding-top:0;">
+          <div class="ix ix-red">!</div>
+          <div>
+            <h3 style="margin-bottom:6px;">Proaktif kanal yok</h3>
+            <p style="font-size:13px;">Mevcut 1000+ proje network ve organikten geldi. Ama <span class="white">~2.000-2.500 kurum</span> Pro Video'yu hiç duymamış — bu hesaplara ulaşacak sistematik bir dış kanal bugün kurulu değil.</p>
+          </div>
+        </div>
+        <div class="bullet-row" style="border:none;">
+          <div class="ix ix-red">!</div>
+          <div>
+            <h3 style="margin-bottom:6px;">Satış ekibi yapısal olarak sınırlı</h3>
+            <p style="font-size:13px;">Entegratör modelinde ekibin çoğu proje yönetimi ve teknik destekle meşgul; yeni müşteri avı kurumsal bir fonksiyon olarak var değil.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:20px;">
+      <div class="card" style="text-align:center; padding:18px 14px;">
+        <div class="big-stat" style="font-size:28px;">30+</div>
+        <div style="font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:6px;">Yıllık Deneyim</div>
+      </div>
+      <div class="card" style="text-align:center; padding:18px 14px;">
+        <div class="big-stat" style="font-size:28px;">100+</div>
+        <div style="font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:6px;">Müşteri</div>
+      </div>
+      <div class="card" style="text-align:center; padding:18px 14px;">
+        <div class="big-stat" style="font-size:28px;">1000+</div>
+        <div style="font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:6px;">Tamamlanan Proje</div>
+      </div>
+      <div class="card" style="text-align:center; padding:18px 14px;">
+        <div class="big-stat" style="font-size:28px;">~2.5K</div>
+        <div style="font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:6px;">Ulaşılmamış Kurum</div>
+      </div>
+    </div>
+
+    <div class="card card-accent">
+      <p style="font-size:14px;">
+        <strong class="accent">Çözüm:</strong> Tibexa'nın lead generation hizmeti Pro Video'nun en güçlü olduğu
+        <span class="white">iki segmenti</span> — kurumsal Web TV + üniversite upgrade — karar vericilere
+        <span class="white">email + LinkedIn karma sequence</span> ile hedefliyor. Pozitif yanıt veren kurumları
+        <span class="white">30 dakika içinde</span> Pro Video'ya devrediyoruz.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 3 — ŞÜPHECI ÇERÇEVE (yeni) ========== -->
+  <div class="slide" id="s_skeptic">
+    <div class="slide-header">
+      <span class="slide-label">02 / Şüpheci Çerçeve</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Ticari sır tutmuyoruz.<br><span class="amber">Riskli varsayımlar açıkta.</span></h2>
+    <div class="divider" style="background:var(--amber);"></div>
+
+    <p style="max-width:820px; margin-bottom:18px;">
+      Bu teklifte Tibexa'nın dürüst duruşu: Pro Video'nun portföyünde ve Türkiye pazarının bugünkü durumunda
+      "emin olmadığımız" noktalar var. Bunları saklamak yerine açıkça listeliyor, <span class="white">ay 3 kapısında zorunlu bir test planına</span> bağlıyoruz.
+    </p>
+
+    <div class="grid-3" style="gap:14px; margin-bottom:16px;">
+      <div class="card card-amber">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--amber); text-transform:uppercase; margin-bottom:10px;">Risk 1 · Üniversite Doyması</div>
+        <h3 style="margin-bottom:8px; font-size:15px;">Pandemiden 4+ yıl geçti.</h3>
+        <p style="font-size:12.5px; line-height:1.7;">
+          Kurmayan üniversite neden şimdi kursun? Pro Video referans listesi (Boğaziçi, Ankara, Bahçeşehir, KTÜ, Atatürk)
+          segmentin <span class="white">premium katmanını tüketmiş</span> gibi görünüyor.
+        </p>
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid rgba(232,169,76,0.2);">
+          <div style="font-size:10px; color:var(--amber); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Çözüm</div>
+          <p style="font-size:12px; color:var(--white);">Mesaj <span class="white">"yeni kurulum"</span> yerine <span class="accent">"upgrade + UZEM genişletme"</span> eksenine kayıyor. HD→4K, eski chroma→sanal stüdyo, SDI→IP.</p>
+        </div>
+      </div>
+
+      <div class="card card-amber">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--amber); text-transform:uppercase; margin-bottom:10px;">Risk 2 · Yurt Dışı Kapasite</div>
+        <h3 style="margin-bottom:8px; font-size:15px;">Portföy "ürün" değil "hizmet".</h3>
+        <p style="font-size:12.5px; line-height:1.7;">
+          Distribütörlükler (Sony, Edius, Tricaster) ihraç edilemez — her ülkenin kendi distribütörü var.
+          Hizmet ihracı ise <span class="white">fiziksel kurulum kapasitesi + yerel taşeron + yurt dışı referans</span> ister.
+        </p>
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid rgba(232,169,76,0.2);">
+          <div style="font-size:10px; color:var(--amber); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Çözüm</div>
+          <p style="font-size:12px; color:var(--white);"><span class="accent">İlk 3 ay kapsam dışı.</span> Ay 3 fizibilitesi netleşince ayrı modül olarak teklif edilir.</p>
+        </div>
+      </div>
+
+      <div class="card card-green" style="background:linear-gradient(135deg,rgba(62,207,142,0.12),rgba(62,207,142,0.03)); border-color:rgba(62,207,142,0.28);">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--green); text-transform:uppercase; margin-bottom:10px;">Güçlü Dayanak</div>
+        <h3 style="margin-bottom:8px; font-size:15px;">Kurumsal Web TV net.</h3>
+        <p style="font-size:12.5px; line-height:1.7;">
+          YouTube / sosyal medya baskısı, L&D büyümesi, hibrit etkinlik kalıcılığı, employer branding —
+          "şimdi doğru zaman mı?" sorusunun cevabı <span class="white">net olarak evet</span>.
+        </p>
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid rgba(62,207,142,0.2);">
+          <div style="font-size:10px; color:var(--green); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">Sonuç</div>
+          <p style="font-size:12px; color:var(--white);">Kampanyanın <span class="accent">bel kemiği</span>. Hacmin ~%60'ı buraya.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="font-size:10px; letter-spacing:3px; color:var(--white); text-transform:uppercase; margin-bottom:12px;">Şüpheci Varsayım Testi — Üniversite Segmenti Detay</div>
+      <table class="data-table" style="margin-top:0;">
+        <thead>
+          <tr>
+            <th style="width:28%;">Şüpheci Soru</th>
+            <th>Lehte Argüman</th>
+            <th>Aleyhte Argüman</th>
+            <th>Test / Çözüm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Kurmayan neden şimdi kursun?</td>
+            <td style="color:var(--muted);">YÖK hibrit zorunluluğu, açıköğretim büyüyor</td>
+            <td style="color:var(--muted);">Pandemi şoku geçti, kalan üniversitelerde bütçe yok</td>
+            <td>"Yeni kurulum" yerine upgrade angle'ı</td>
+          </tr>
+          <tr>
+            <td>Premium katman tüketildi mi?</td>
+            <td style="color:var(--muted);">Hala 120+ aday var</td>
+            <td style="color:var(--muted);">Pro Video referansları premium'u tüketmiş</td>
+            <td>Referans çakışması kontrolü, kalan ~100'e odak</td>
+          </tr>
+          <tr>
+            <td>EKAP döngüsü çok uzun değil mi?</td>
+            <td style="color:var(--muted);">Vakıf üniversiteleri EKAP dışı, 3-6 ay döngü</td>
+            <td style="color:var(--muted);">Devlet tarafında 6-12 ay, nurture maliyeti yüksek</td>
+            <td>İlk 6 ay vakıf ağırlık, devlet nurture havuzu</td>
+          </tr>
+          <tr>
+            <td>Bütçe yoksa outreach çözer mi?</td>
+            <td style="color:var(--muted);">İletişim fak. özel bütçe, SEM/BAP projeleri</td>
+            <td style="color:var(--muted);">Bütçe yoksa ne kadar iyi mesaj da karar getirmez</td>
+            <td>Bütçesi yüksek birimlere (UZEM, İletişim, Akademi) odak</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="skeptic-box" style="margin-top:16px;">
+      <p style="font-size:13px; color:var(--white); line-height:1.75;">
+        <strong class="amber">Ay 3 kapısında zorunlu test kararları:</strong>
+        Kurumsal hedef tutuyor mu? · Üniversite upgrade angle'ı yanıt üretiyor mu? ·
+        Yurt dışı fizibilite netleşti mi (modül açılmalı mı)? · LED Wall / KOBİ akademi yedeği devreye alınmalı mı?
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 4 — ICP & SEGMENT AĞIRLIKLARI ========== -->
+  <div class="slide" id="s_icp">
+    <div class="slide-header">
+      <span class="slide-label">03 / Hedef Pazar</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Segment ağırlıkları<br><span class="accent">şüpheci çerçeveye göre dengelendi.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="margin-bottom:18px;">
+      <div class="card" style="border-left: 3px solid var(--green);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--green); text-transform:uppercase;">Ana Segment · ~%60</div>
+          <span class="tag tag-green">Bel Kemiği</span>
+        </div>
+        <h3 style="margin-bottom:10px; font-size:17px;">Kurumsal Web TV / İç İletişim</h3>
+        <div class="kv"><span class="k">Kurum tipi</span><span class="v" style="font-size:12px;">BIST 100, holdingler, bankalar, enerji, perakende</span></div>
+        <div class="kv"><span class="k">Birim</span><span class="v" style="font-size:12px;">Kurumsal İletişim, İç İletişim, L&amp;D, İK, Pazarlama</span></div>
+        <div class="kv"><span class="k">Karar verici</span><span class="v" style="font-size:12px;">Dir./Müdür seviyesi — LinkedIn'de aktif</span></div>
+        <div class="kv"><span class="k">Tahmini evren</span><span class="v">800–1.500</span></div>
+        <div class="kv"><span class="k">Satış döngüsü</span><span class="v">3–9 ay</span></div>
+        <div class="kv"><span class="k">Bilet aralığı</span><span class="v" style="font-size:12px;">800K – 2.5M TL</span></div>
+      </div>
+
+      <div class="card" style="border-left: 3px solid var(--amber);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--amber); text-transform:uppercase;">İkincil Segment · ~%30</div>
+          <span class="tag tag-amber">Upgrade Angle</span>
+        </div>
+        <h3 style="margin-bottom:10px; font-size:17px;">Üniversite Upgrade / UZEM</h3>
+        <div class="kv"><span class="k">Kurum tipi</span><span class="v" style="font-size:12px;">Vakıf + büyük devlet + açıköğretim veren</span></div>
+        <div class="kv"><span class="k">Birim</span><span class="v" style="font-size:12px;">UZEM, BİDB, İletişim Fak., SEM</span></div>
+        <div class="kv"><span class="k">Karar verici</span><span class="v" style="font-size:12px;">UZEM Müdürü, Dekan, Rektör Yrd.</span></div>
+        <div class="kv"><span class="k">Tahmini evren</span><span class="v">120–150 <span style="color:var(--muted);font-size:11px;">(çakışma düşük)</span></span></div>
+        <div class="kv"><span class="k">Satış döngüsü</span><span class="v" style="font-size:12px;">Vakıf 3–6 ay · Devlet 6–12 ay (EKAP)</span></div>
+        <div class="kv"><span class="k">Ana mesaj</span><span class="v" style="font-size:12px; color:var(--accent);">Upgrade + kapasite büyütme</span></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:14px; margin-bottom:14px;">
+      <div class="card card-amber">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--amber); text-transform:uppercase; margin-bottom:10px;">Yedek Segment · ~%10 · Pilot Test</div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px;">
+          <span class="segment-pill"><span class="dot-pill"></span>LED Wall / konferans salonu</span>
+          <span class="segment-pill"><span class="dot-pill"></span>KOBİ akademi / özel okul</span>
+          <span class="segment-pill"><span class="dot-pill"></span>Dini / kültürel yayıncılar</span>
+        </div>
+        <p style="font-size:12px; margin-top:10px;">Ay 3 kapısında ana segment performansına göre aktifleşir.</p>
+      </div>
+
+      <div class="card card-red">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--red); text-transform:uppercase; margin-bottom:10px;">Kapsam Dışı</div>
+        <p style="font-size:12px;">
+          <span class="white">TV kanalı kurulumu</span> — pazar dar, ihale/network işi ·
+          <span class="white">Ekipman e-ticareti</span> — Google Ads kanalı ·
+          <span class="white">Yazılım distribütörlüğü</span> — organik kanal ·
+          <span class="white">Yurt dışı (ilk 3 ay)</span> — fizibiliteye bağlı (bkz. ayrı modül).
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="padding:16px 20px;">
+      <h3 style="margin-bottom:10px; font-size:14px;">Kanal Ağırlıkları — Karma Sequence</h3>
+      <table class="data-table" style="margin-top:4px;">
+        <thead>
+          <tr><th>Segment</th><th>Birincil</th><th>İkincil</th><th>Gerekçe</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>BIST 100 Kurumsal İletişim</td><td class="accent">LinkedIn</td><td style="color:var(--muted);">Email (takip)</td><td style="color:var(--muted);">Dir./İK LinkedIn'de aktif</td></tr>
+          <tr><td>L&amp;D / Akademi Müdürü</td><td class="accent">LinkedIn</td><td style="color:var(--muted);">Email</td><td style="color:var(--muted);">LinkedIn'de yüksek profil</td></tr>
+          <tr><td>Üniversite UZEM / BİDB</td><td class="accent">Email</td><td style="color:var(--muted);">LinkedIn (takip)</td><td style="color:var(--muted);">Akademisyen LinkedIn'de pasif</td></tr>
+          <tr><td>İletişim Fak. Dekanlığı</td><td class="accent">Email</td><td style="color:var(--muted);">LinkedIn</td><td style="color:var(--muted);">Kurumsal mail aktif</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 5 — YURT DIŞI ŞÜPHECI MODÜLÜ ========== -->
+  <div class="slide" id="s_export">
+    <div class="slide-header">
+      <span class="slide-label">04 / Yurt Dışı · Şüpheci Modül</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Yurt dışı hedefini ciddiye alıyoruz.<br><span class="amber">İlk 3 ayda kampanyaya almıyoruz.</span></h2>
+    <div class="divider" style="background:var(--amber);"></div>
+
+    <p style="max-width:820px; margin-bottom:18px;">
+      Pro Video görüşmede yurt dışı satış hedefini dile getirdi. Bu hedefi ciddiye alıyoruz ama
+      <span class="white">fiziksel kurulum kapasitesi, yerel taşeron yapısı, dil kapasitesi ve yurt dışı referansı netleşmeden</span>
+      kampanyayı başlatmak hem Pro Video'nun parasını hem Tibexa'nın saygınlığını yakacak bir adım olur.
+    </p>
+
+    <div class="grid-2" style="margin-bottom:16px;">
+      <div class="card card-red">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--red); text-transform:uppercase; margin-bottom:12px;">7 Yapısal Engel</div>
+        <div class="bullet-row"><div class="ix ix-red">1</div><div><p style="font-size:12.5px; color:var(--white);">"Yurt dışı" somut ne demek? Ürün ihracı / hizmet ihracı / uzaktan satış — üçü farklı kampanya.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-red">2</div><div><p style="font-size:12.5px; color:var(--white);">Distribütörlükler (Sony, Edius, Tricaster, Adobe) ihraç edilemez — her ülkenin kendi distribütörü var.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-red">3</div><div><p style="font-size:12.5px; color:var(--white);">Hizmet ihracı fiziksel kapasite ister — yerel işçilik, vergi, sigorta avantajı siler.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-red">4</div><div><p style="font-size:12.5px; color:var(--white);">After-sales kırılgan — destek modeli tanımlı değil.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-red">5</div><div><p style="font-size:12.5px; color:var(--white);">Türkiye referansları yurt dışı karar vericisine "bunlar kim" geliyor.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-red">6</div><div><p style="font-size:12.5px; color:var(--white);">Dil kapasitesi belirsiz — Arapça / Rusça yoksa Körfez ve Orta Asya kapanır.</p></div></div>
+        <div class="bullet-row" style="border:none;"><div class="ix ix-red">7</div><div><p style="font-size:12.5px; color:var(--white);">Yurt dışı referans yok (veya bilinmiyor) — ilk 6-12 ay referanssız satış çok zor.</p></div></div>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:14px;">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">4 Olası Açı — Ay 3 Fizibilitesinde Değerlendirilir</div>
+          <table class="data-table" style="margin-top:0;">
+            <thead>
+              <tr><th>Açı</th><th>Hedef</th><th>Gerçekçilik</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong class="white">A</strong> Anahtar teslim stüdyo</td>
+                <td style="color:var(--muted); font-size:12px;">OD, K.Afrika, Balkanlar, Orta Asya · üni + devlet</td>
+                <td><span class="tag tag-amber">Orta</span></td>
+              </tr>
+              <tr>
+                <td><strong class="white">B</strong> Greenbox paketi</td>
+                <td style="color:var(--muted); font-size:12px;">Aynı coğrafya · uzaktan eğitim + dini/kültürel</td>
+                <td><span class="tag tag-amber">Orta</span></td>
+              </tr>
+              <tr>
+                <td><strong class="white">C</strong> Kurumsal Web TV</td>
+                <td style="color:var(--muted); font-size:12px;">OD + Balkanlar · holdingler, bankalar</td>
+                <td><span class="tag tag-red">Orta-düşük</span></td>
+              </tr>
+              <tr class="recommended">
+                <td><strong class="white">D</strong> Türk diaspora &amp; yatırım <span class="rec-badge">Öncelikli</span></td>
+                <td style="color:var(--muted); font-size:12px;">DE/NL diaspora medya · TR şirketlerin yurt dışı ofisleri</td>
+                <td><span class="tag tag-green">Yüksek</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="skeptic-box">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--amber); text-transform:uppercase; margin-bottom:8px;">Ay 3 Fizibilite Sorgulanacaklar</div>
+          <p style="font-size:12.5px; color:var(--white); line-height:1.75;">
+            1. Yurt dışı kurulum için ekip / yerel taşeron yapısı?<br>
+            2. İngilizce + Arapça + Rusça satış kapasitesi seviyesi?<br>
+            3. Yurt dışında tamamlanmış hiç proje var mı?<br>
+            4. Fuar, İhracatçı Birlikleri, TURQUALITY ilişkisi?<br>
+            5. Hangi coğrafya-açı (A/B/C/D) gerçekten kapasiteye uyuyor?
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-accent">
+      <p style="font-size:13px;">
+        <strong class="accent">Tavsiyemiz:</strong> İlk 3 ay yurt içi iki segmente odaklanalım. Ay 3'te Pro Video ile birlikte yukarıdaki 5 soruya cevap oluşturalım.
+        Cevaplar netleşirse <span class="white">yurt dışı modülü ayrı teklif</span> olarak gelir — seçilen 1-2 coğrafya, seçilen 1 açı, İngilizce + 1 bölgesel dilde outreach.
+        Bu duruş agresif değil, <span class="white">güven yaratan bir duruş</span>: "ucuz vaat satmıyoruz".
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 6 — DEĞER ÖNERİLERİ & MESAJ ========== -->
+  <div class="slide" id="s_value">
+    <div class="slide-header">
+      <span class="slide-label">05 / Değer &amp; Mesaj</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Altı değer önermesi.<br><span class="accent">Doğru segmente doğru kombinasyon.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="margin-bottom:18px;">
+      <div class="card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Kazanma Hikayesi (6 Direk)</div>
+        <div class="bullet-row"><div class="ix ix-accent">1</div><div><h3 style="font-size:13.5px; margin-bottom:3px;">30+ yıllık entegratör deneyimi</h3><p style="font-size:12px;">"İlk stüdyonu kuran değil, 1000'inciyi kuran ekip" — risk almak istemeyen kurumsallar</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">2</div><div><h3 style="font-size:13.5px; margin-bottom:3px;">Greenbox / sanal stüdyo uzmanlığı</h3><p style="font-size:12px;">Tek mekândan sınırsız dekor — üniversite upgrade + akademi birimleri</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">3</div><div><h3 style="font-size:13.5px; margin-bottom:3px;">Anahtar teslim Web TV</h3><p style="font-size:12px;">Yayın, içerik, altyapı, eğitim tek paket — kurumsal iç iletişim, L&amp;D</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">4</div><div><h3 style="font-size:13.5px; margin-bottom:3px;">Global marka ortaklıkları</h3><p style="font-size:12px;">Sony, Canon, Blackmagic, Tricaster, Newtek — orijinal ekipman + TR servis</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">5</div><div><h3 style="font-size:13.5px; margin-bottom:3px;">Referans yoğunluğu</h3><p style="font-size:12px;">THY Teknik, Toyota, Petkim, Boğaziçi, Ankara Üni. — her temasın açılışı</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">6</div><div><h3 style="font-size:13.5px; margin-bottom:3px;">Alt marka derinliği</h3><p style="font-size:12px;">EdiusTurkey, TricasterTurkey, GreenboxTurkiye, WebTvKur — teknik alıcıya</p></div></div>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:14px;">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Pain-Trigger Haritası</div>
+          <p style="font-size:12px; margin-bottom:10px;">
+            Mesaj açılışlarında hedefin aşağıdaki tetikleyicilerine değiniyoruz.
+            <span class="white">"Stüdyon yok mu, kuralım"</span> <span class="red">artık ana tetikleyici değil</span> — pandemi döneminde tükendi.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span class="tag tag-green">Upgrade eksikliği (HD→4K)</span>
+            <span class="tag tag-green">İç video üretim baskısı</span>
+            <span class="tag tag-green">Hibrit etkinlik kalıcılığı</span>
+            <span class="tag tag-green">Employer branding</span>
+            <span class="tag tag-green">UZEM kapasite genişletme</span>
+            <span class="tag tag-green">AKTS online zorunlulukları</span>
+          </div>
+        </div>
+
+        <div class="card card-accent">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--accent2); text-transform:uppercase; margin-bottom:10px;">Segment × Mesaj Matrisi</div>
+          <table class="data-table" style="margin-top:0;">
+            <thead>
+              <tr><th>Segment</th><th>Ana Direk</th><th>CTA</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>BIST 100 Kur. İletişim</td><td style="color:var(--muted);">THY, Toyota, Şişecam referans</td><td>ROI fizibilitesi</td></tr>
+              <tr><td>L&amp;D / Akademi</td><td style="color:var(--muted);">Osstem, TürkTraktör örneği</td><td>Show-reel + toplantı</td></tr>
+              <tr><td>İK / Marka</td><td style="color:var(--muted);">Web TV + sosyal medya sürekliliği</td><td>Pilot kurulum</td></tr>
+              <tr><td>Vakıf üni. UZEM (upgrade)</td><td style="color:var(--muted);">Boğaziçi/Bahçeşehir + 4K yenileme</td><td>2 haftalık fizibilite</td></tr>
+              <tr><td>Devlet üni. UZEM (upgrade)</td><td style="color:var(--muted);">Ankara/KTÜ + EKAP şartname</td><td>Keşif toplantısı</td></tr>
+              <tr><td>İletişim Fak.</td><td style="color:var(--muted);">30 yıl + akademik proje</td><td>Demo / ziyaret</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="padding:14px 20px;">
+      <p style="font-size:13px;">
+        <strong class="accent">Çalışma prensibi:</strong> Her segment için en az <span class="white">iki varyant</span> hazırlanır.
+        Kontak başına <span class="white">LinkedIn bağlantı + email + takip</span> karma sequence.
+        Tek kanala bağlı kalmayan yaklaşım bu segmentte <span class="white">%30-50 daha yüksek yanıt</span> üretir.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 7 — OPERASYONEL MODEL ========== -->
+  <div class="slide" id="s_ops">
+    <div class="slide-header">
+      <span class="slide-label">06 / Operasyonel Model</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Haftalık iş akışı.<br><span class="accent">Her adım ölçülebilir.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="gap:24px;">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-step">Adım 1</div>
+          <h3 style="margin-bottom:3px;">Liste inşası</h3>
+          <p style="font-size:12.5px;">YÖK verisi + LinkedIn Sales Navigator + ticari firma veritabanı. Referans çakışması kontrolü.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Adım 2</div>
+          <h3 style="margin-bottom:3px;">Veri zenginleştirme</h3>
+          <p style="font-size:12.5px;">Email, LinkedIn profili, kurum büyüklüğü, mevcut dijital yatırım izi (YouTube kanalı, UZEM portalı).</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Adım 3</div>
+          <h3 style="margin-bottom:3px;">Kişiselleştirme</h3>
+          <p style="font-size:12.5px;">Her kurum için <span class="white">2-3 cümle spesifik satır</span> (son proje, YouTube, UZEM portalı).</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Adım 4</div>
+          <h3 style="margin-bottom:3px;">Karma gönderim</h3>
+          <p style="font-size:12.5px;">LinkedIn bağlantı + email ana temas + follow-up sequence.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Adım 5</div>
+          <h3 style="margin-bottom:3px;">Yanıt sınıflandırma</h3>
+          <p style="font-size:12.5px;">4 seviye etiketleme (sağdaki karta bkz).</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Adım 6</div>
+          <h3 style="margin-bottom:3px;">Handoff</h3>
+          <p style="font-size:12.5px;">Pozitif yanıtlar <span class="white">30 dakika içinde</span> Pro Video'ya (veya inside sales modülü).</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Adım 7</div>
+          <h3 style="margin-bottom:3px;">Haftalık rapor + varsayım testi</h3>
+          <p style="font-size:12.5px;">Hacim, yanıt, seviye, handoff, blocker + <span class="white">şüpheci varsayımların test durumu</span>.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="card card-accent">
+          <h3 style="margin-bottom:12px;">Yanıt Sınıflandırma</h3>
+          <div class="kv"><span class="lvl lvl-1">Seviye 1</span><span class="v" style="font-size:12px;">İlgi beyanı / soru</span></div>
+          <div class="kv"><span class="lvl lvl-2">Seviye 2</span><span class="v" style="font-size:12px;">Referans / show-reel talebi</span></div>
+          <div class="kv"><span class="lvl lvl-3">Seviye 3</span><span class="v" style="font-size:12px;">Fizibilite / teklif sorgusu</span></div>
+          <div class="kv"><span class="lvl lvl-4">Seviye 4</span><span class="v" style="font-size:12px;">Toplantı / demo / ziyaret</span></div>
+          <p style="font-size:11.5px; margin-top:12px; padding-top:12px; border-top:1px solid var(--border);">Seviye 1+ tüm yanıtlar Pro Video'ya devredilir.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:12px;">Handoff SLA</h3>
+          <div class="kv"><span class="k">Pozitif yanıt → ilk bildirim</span><span class="v accent">30 dk</span></div>
+          <div class="kv"><span class="k">Lead'e ilk geri yanıt</span><span class="v">4 saat (iş saati)</span></div>
+          <div class="kv"><span class="k">Show-reel / fizibilite</span><span class="v">48 saat</span></div>
+          <div class="kv"><span class="k">Takip hatırlatması</span><span class="v" style="font-size:12px;">Periyodik (inside sales)</span></div>
+          <p style="font-size:11.5px; margin-top:12px; color:var(--muted); font-style:italic;">
+            Pro Video tarafındaki yanıt süresi 72 saati geçen lead'ler "soğuk" kabul edilir ve Tibexa'nın KPI hesabında tutulmaz.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 8 — İNSIDE SALES MODÜLÜ ========== -->
+  <div class="slide" id="s_is">
+    <div class="slide-header">
+      <span class="slide-label">07 / Inside Sales Modülü</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Bu segmentte nurture kritik.<br><span class="accent">Modülü güçlü öneriyoruz.</span></h2>
+    <div class="divider"></div>
+
+    <p style="max-width:780px; margin-bottom:20px;">
+      Bu segmentte satış döngüsü <span class="white">3-12 ay</span> — özellikle üniversite tarafında EKAP sürecinde
+      <span class="white">nurture olmadan pipeline ölür</span>. İç ekip bunu yapamıyorsa modül zorunlu hale gelir.
+    </p>
+
+    <div class="grid-2" style="margin-bottom:18px;">
+      <div class="card">
+        <h3 style="margin-bottom:14px;">Modül kapsamı</h3>
+        <div class="bullet-row"><div class="ix ix-green">✓</div><div><p style="font-size:13px; color:var(--white);">Pozitif yanıtlara <span class="accent">30 dakika içinde</span> ilk cevap</p></div></div>
+        <div class="bullet-row"><div class="ix ix-green">✓</div><div><p style="font-size:13px; color:var(--white);">Lead'leri arayarak telefonla bağlantı</p></div></div>
+        <div class="bullet-row"><div class="ix ix-green">✓</div><div><p style="font-size:13px; color:var(--white);">Show-reel, referans, fizibilite dosyası gönderimi + takibi</p></div></div>
+        <div class="bullet-row"><div class="ix ix-green">✓</div><div><p style="font-size:13px; color:var(--white);">Yanıtsızlara <span class="white">6-9 ay boyunca</span> periyodik nurture</p></div></div>
+        <div class="bullet-row" style="border:none;"><div class="ix ix-green">✓</div><div><p style="font-size:13px; color:var(--white);">Tüm aktivite ve durum raporlaması</p></div></div>
+      </div>
+
+      <div class="card card-accent">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Neden zorunlu yaklaşıyoruz?</div>
+        <p style="font-size:13.5px; line-height:1.8;">
+          Sektör benchmark'ları: Lead'e <span class="white">1 saat içinde</span> dönüş yapan firma, 24 saat sonra dönüş yapandan
+          <span class="white">7x daha fazla</span> kapanış yapıyor.
+        </p>
+        <p style="font-size:13.5px; line-height:1.8; margin-top:10px;">
+          Ama bu segmentin asıl problemi <span class="white">nurture uzunluğu</span>: 6-9 ay teklif aşamasına giden lead,
+          arada temas kesilince soğur ve teklif hiç gelmez.
+        </p>
+        <p style="font-size:13.5px; line-height:1.8; margin-top:10px;">
+          Pro Video'nun satış kaynağı bu hacmi kaldıramazsa, outbound'un değeri buharlaşır.
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="padding:14px 20px;">
+      <p style="font-size:13px;">
+        <strong class="accent">Esnek aktivasyon:</strong> Modül sözleşme başında veya ilk aydan sonra ayrı add-on olarak aktive edilebilir.
+        Pro Video kendi ekibi ile nurture yapabileceğine karar verirse, modül hiç kullanılmayabilir — ama bu durumda SLA sorumluluğu Pro Video tarafında.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 9 — KPI & GARANTİ ========== -->
+  <div class="slide" id="s_kpi">
+    <div class="slide-header">
+      <span class="slide-label">08 / KPI &amp; Garanti</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Aralıklar <span class="accent">tutucu.</span><br>Bağlayıcı hedefler. Risk Tibexa'da.</h2>
+    <div class="divider"></div>
+
+    <p style="font-size:12.5px; color:var(--muted); margin-bottom:14px;">
+      Aralıklar tipik B2B outreach benchmark'larından <span class="white">%20-30 daha tutucu</span> tutulmuştur — üniversite doyma riski ve yurt dışı belirsizliği yansıtmak için.
+    </p>
+
+    <h3 style="margin-bottom:10px;">Birincil KPI'lar (aylık)</h3>
+    <table class="data-table" style="margin-bottom:18px;">
+      <thead>
+        <tr>
+          <th>Metrik</th>
+          <th style="text-align:center;">Paket 1</th>
+          <th style="text-align:center;">Paket 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Gönderilen kontakt (email + LinkedIn, ana + follow-up)</td>
+          <td style="text-align:center; font-weight:600;">800</td>
+          <td style="text-align:center; font-weight:600;">1.600</td>
+        </tr>
+        <tr>
+          <td>Segment dağılımı (kur. / üni. / yedek)</td>
+          <td style="text-align:center; font-weight:600; font-size:12px;">~500 / ~240 / ~60</td>
+          <td style="text-align:center; font-weight:600; font-size:12px;">~1.000 / ~480 / ~120</td>
+        </tr>
+        <tr>
+          <td>Pozitif yanıt <span style="color:var(--muted); font-size:11px;">(Seviye 1+)</span></td>
+          <td style="text-align:center; color:var(--accent); font-weight:700;">16–32</td>
+          <td style="text-align:center; color:var(--accent); font-weight:700;">32–60</td>
+        </tr>
+        <tr>
+          <td>Kalifiye toplantı <span style="color:var(--muted); font-size:11px;">(Seviye 3+)</span></td>
+          <td style="text-align:center; font-weight:700;">6–12</td>
+          <td style="text-align:center; font-weight:700;">12–22</td>
+        </tr>
+        <tr>
+          <td>Show-reel / fizibilite gönderimi</td>
+          <td style="text-align:center; font-weight:600;">4–8</td>
+          <td style="text-align:center; font-weight:600;">8–14</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2" style="margin-bottom:18px;">
+      <div class="card">
+        <h3 style="margin-bottom:10px;">Dönüşüm KPI'ları (iki taraflı)</h3>
+        <div class="kv"><span class="k">Handoff → ilk yanıt</span><span class="v">Pro Video + Tibexa</span></div>
+        <div class="kv"><span class="k">Handoff → fizibilite gönderimi</span><span class="v">Pro Video</span></div>
+        <div class="kv"><span class="k">Fizibilite → teklif oranı</span><span class="v">Pro Video</span></div>
+        <div class="kv"><span class="k">Teklif → sipariş (tipik %10–15)</span><span class="v">Pro Video</span></div>
+        <div class="kv"><span class="k">Lead başı ciro</span><span class="v">Ciro payı temeli</span></div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:10px;">Raporlama + Kapılar</h3>
+        <div class="kv"><span class="k">Haftalık</span><span class="v" style="font-size:12px;">1 sayfa dashboard</span></div>
+        <div class="kv"><span class="k">Aylık</span><span class="v" style="font-size:12px;">Performans + varsayım test durumu</span></div>
+        <div class="kv"><span class="k">Ay 3 kapısı</span><span class="v" style="font-size:12px; color:var(--amber);">Zorunlu test kararları</span></div>
+        <div class="kv"><span class="k">Ay 6 kapısı</span><span class="v" style="font-size:12px;">Kanal / segment genişleme</span></div>
+      </div>
+    </div>
+
+    <div class="gtee-box">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <div style="width:28px; height:28px; border-radius:8px; background:rgba(62,207,142,0.2); display:flex; align-items:center; justify-content:center; color:var(--green); font-weight:800;">!</div>
+        <h3 style="color:var(--green);">Performans Garantisi</h3>
+      </div>
+      <p style="font-size:13.5px; color:var(--white); line-height:1.75;">
+        <span class="white">İlk ay</span> öğrenme-kalibrasyon periyodudur, KPI hesabı dışındadır.
+        <span class="white">2. aydan itibaren</span> herhangi bir ayda kalifiye toplantı sayısı alt aralığın altında kalırsa
+        (Paket 1 için 6'nın altı, Paket 2 için 12'nin altı), Pro Video iki seçenekten birini tercih edebilir:
+      </p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
+        <div class="card" style="padding:14px; background:rgba(62,207,142,0.05); border-color:rgba(62,207,142,0.2);">
+          <div style="font-size:10px; letter-spacing:2px; color:var(--green); text-transform:uppercase; margin-bottom:4px;">Seçenek 1</div>
+          <p style="font-size:12.5px; color:var(--white);">Hedef dolana kadar Tibexa'nın <span class="green">ücretsiz çalışması</span> (retainer ödenmez, ciro payı işler)</p>
+        </div>
+        <div class="card" style="padding:14px; background:rgba(62,207,142,0.05); border-color:rgba(62,207,142,0.2);">
+          <div style="font-size:10px; letter-spacing:2px; color:var(--green); text-transform:uppercase; margin-bottom:4px;">Seçenek 2</div>
+          <p style="font-size:12.5px; color:var(--white);">İlgili ayın retainer ödemesinin <span class="green">%100 iadesi</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 10 — FIYATLANDIRMA ========== -->
+  <div class="slide" id="s_price">
+    <div class="slide-header">
+      <span class="slide-label">09 / Fiyatlandırma</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Retainer paketleri.<br><span class="accent">İki segment paralel. Fark hacimde.</span></h2>
+    <p style="font-size:12.5px; color:var(--muted); margin-top:8px; margin-bottom:24px;">
+      Her iki paket <span class="white">kurumsal + üniversite</span> segmentlerini paralel kapsar. Aylık retainer olarak faturalanır. Fiyatlar görüşme sırasında paylaşılır.
+    </p>
+
+    <div class="grid-2" style="gap:18px; margin-bottom:18px;">
+      <div class="price-card">
+        <div class="p-label">Paket 1</div>
+        <div class="p-name">Başlangıç</div>
+        <div class="p-amount">Fiyat alınız</div>
+        <div class="p-sub">+ ciro payı</div>
+        <ul class="p-features">
+          <li><span><strong>800</strong> aylık kontakt (email + LinkedIn)</span></li>
+          <li><span>Segment dağılımı <strong>~500 / ~240 / ~60</strong></span></li>
+          <li><span>Hedef kalifiye toplantı <strong>6–12 / ay</strong></span></li>
+          <li><span>Karma sequence (email + LinkedIn + takip)</span></li>
+          <li><span>Haftalık + aylık raporlama</span></li>
+          <li><span>Ay 3 stratejik yeniden değerlendirme</span></li>
+          <li><span>Performans garantisi (2. aydan itibaren)</span></li>
+        </ul>
+      </div>
+
+      <div class="price-card featured">
+        <span class="p-badge">Önerilen</span>
+        <div class="p-label">Paket 2</div>
+        <div class="p-name">Büyüme</div>
+        <div class="p-amount">Fiyat alınız</div>
+        <div class="p-sub">+ ciro payı</div>
+        <ul class="p-features">
+          <li><span><strong>1.600</strong> aylık kontakt (<span class="accent">2x</span>)</span></li>
+          <li><span>Segment dağılımı <strong>~1.000 / ~480 / ~120</strong></span></li>
+          <li><span>Hedef kalifiye toplantı <strong>12–22 / ay</strong></span></li>
+          <li><span>Karma sequence (email + LinkedIn + takip)</span></li>
+          <li><span>Haftalık + aylık raporlama</span></li>
+          <li><span>Ay 3 stratejik yeniden değerlendirme</span></li>
+          <li><span>Performans garantisi (2. aydan itibaren)</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-3" style="gap:14px;">
+      <div class="addon-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:6px;">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--gold); text-transform:uppercase;">Setup Fee</div>
+          <div style="font-size:12px; font-weight:700; color:var(--muted); white-space:nowrap;">Fiyat alınız · Tek sefer</div>
+        </div>
+        <p style="font-size:12px;">Kickoff, ICP workshop, mesaj copy, liste hazırlığı, sending + LinkedIn altyapısı, show-reel formatı, raporlama setup.</p>
+      </div>
+
+      <div class="addon-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:6px;">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--gold); text-transform:uppercase;">Inside Sales Modülü</div>
+          <div style="font-size:12px; font-weight:700; color:var(--muted); white-space:nowrap;">Fiyat alınız · Aylık</div>
+        </div>
+        <p style="font-size:12px;">Pro Video adına çalışan inside sales: 30 dk ilk cevap, telefon, show-reel gönderimi, 6-9 ay nurture, raporlama.</p>
+      </div>
+
+      <div class="addon-card" style="border-color:rgba(232,169,76,0.4);">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:6px;">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--amber); text-transform:uppercase;">Yurt Dışı Modülü</div>
+          <div style="font-size:12px; font-weight:700; color:var(--amber); white-space:nowrap;">Ay 3 kapısı · Ayrı teklif</div>
+        </div>
+        <p style="font-size:12px;">Ay 3 fizibilitesi sonrası seçilen coğrafya + açı + dillerde outreach. İlk 3 ay kapsam dışı (bkz. slayt 04).</p>
+      </div>
+    </div>
+
+    <p style="font-size:11.5px; margin-top:16px; color:var(--muted); font-style:italic;">
+      <strong style="color:var(--white); font-style:normal;">Ciro payı tanımı:</strong> Tibexa'nın outreach'i sonucu Pro Video ile ticari ilişkiye giren kurumlarla yapılan satışların net cirosunun belirlenen %'si, aylık faturada ayrı kalem olarak yer alır. Takip mekanizması (CRM etiketi, lead kaynağı alanı, aylık sales review) sözleşme aşamasında netleştirilir.
+    </p>
+  </div>
+
+  <!-- ========== SLIDE 11 — ROI HESAPLAYICI ========== -->
+  <div class="slide" id="s_roi">
+    <div class="slide-header">
+      <span class="slide-label">10 / Getiri Hesaplayıcı</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Kalifiye toplantılar <span class="accent">ne getirir?</span></h2>
+    <p style="max-width:740px; margin-bottom:12px;">Paket seçiminize ve varsayımlarınıza göre 1. ve 2. yıllık getiri ile toplam ROI çarpanını gösteren interaktif hesaplayıcı. Bu segmentte bilet yüksek, konversiyon orta — girdileri gerçekçi tutun.</p>
+
+    <div class="roi-toggle" id="roi-toggle">
+      <button class="active" data-pkg="1" onclick="setPkg(1)">Paket 1 · 800 kontakt</button>
+      <button data-pkg="2" onclick="setPkg(2)">Paket 2 · 1.600 kontakt</button>
+    </div>
+
+    <div class="roi-grid">
+      <div class="roi-input-group">
+        <label>Kalifiye toplantı / ay</label>
+        <input type="number" id="roi-meetings" value="9" min="1" max="50" oninput="calcROI()" />
+      </div>
+      <div class="roi-input-group">
+        <label>Toplantı → Müşteri (%)</label>
+        <input type="number" id="roi-closerate" value="12" min="1" max="100" oninput="calcROI()" />
+      </div>
+      <div class="roi-input-group">
+        <label>Ort. proje bileti (TL)</label>
+        <input type="text" id="roi-contract" value="1.200.000" oninput="calcROI()" />
+      </div>
+      <div class="roi-input-group">
+        <label>Tekrar iş oranı (%)</label>
+        <input type="number" id="roi-retention" value="40" min="0" max="100" oninput="calcROI()" />
+      </div>
+    </div>
+
+    <div class="roi-results">
+      <div class="roi-result-card">
+        <div class="roi-value white" id="roi-deals">13</div>
+        <div class="roi-label">Yıllık Yeni Müşteri</div>
+      </div>
+      <div class="roi-result-card">
+        <div class="roi-value accent" id="roi-year1">₺15.6M</div>
+        <div class="roi-label">1. Yıl Gelir</div>
+      </div>
+      <div class="roi-result-card">
+        <div class="roi-value green" id="roi-year2">₺21.8M</div>
+        <div class="roi-label">2. Yıl Gelir (tekrar + yeni)</div>
+      </div>
+      <div class="roi-result-card highlight">
+        <div class="roi-value green" id="roi-total-main">₺37.4M</div>
+        <div class="roi-label">2 Yıl Toplam Getiri</div>
+      </div>
+    </div>
+
+    <div class="roi-bar-wrap" style="margin-top:16px;">
+      <div class="roi-bar-label">
+        <span>1. Yıl — <span id="roi-y1-detail">13 yeni müşteri</span></span>
+        <span id="roi-bar-y1-label">₺15.6M</span>
+      </div>
+      <div class="roi-bar">
+        <div class="roi-bar-fill accent" id="roi-bar-y1" style="width:72%;"></div>
+      </div>
+    </div>
+    <div class="roi-bar-wrap" style="margin-top:10px;">
+      <div class="roi-bar-label">
+        <span>2. Yıl — <span id="roi-y2-detail">5 tekrar + 13 yeni</span></span>
+        <span id="roi-bar-y2-label">₺21.8M</span>
+      </div>
+      <div class="roi-bar" style="display:flex; gap:2px;">
+        <div class="roi-bar-fill accent" id="roi-bar-y2-retain" style="width:28%; border-radius:4px 0 0 4px;"></div>
+        <div class="roi-bar-fill green" id="roi-bar-y2-new" style="width:72%; border-radius:0 4px 4px 0;"></div>
+      </div>
+      <div style="display:flex; gap:16px; margin-top:5px;">
+        <span style="font-size:10px; color:var(--accent2);">■ Tekrar iş: <span id="roi-y2-retain-val">₺6.2M</span></span>
+        <span style="font-size:10px; color:var(--green);">■ Yeni müşteri: <span id="roi-y2-new-val">₺15.6M</span></span>
+      </div>
+    </div>
+
+    <p style="font-size:11px; margin-top:16px; color:var(--muted); font-style:italic;">
+      * Hesaplama tahminidir. Ciro payı ve opsiyonel inside sales modülü hesaba dahil değildir. Bu segmentte satış döngüsü 3-12 ay — 1. yıl geliri fiilen ay 6'dan itibaren akar. Gerçek rakamlar ilk 90 günün verisiyle rekalibre edilir.
+    </p>
+  </div>
+
+  <!-- ========== SLIDE 12 — İMPLEMENTASYON & RİSK ========== -->
+  <div class="slide" id="s_impl">
+    <div class="slide-header">
+      <span class="slide-label">11 / Yol Haritası &amp; Risk</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>İlk 90 gün net planlı.<br><span class="accent">Varsayımlar ay 3'te test ediliyor.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-3" style="gap:14px; margin-bottom:16px;">
+      <div class="card" style="padding:18px 20px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:6px;">İlk 30 Gün</div>
+        <h3 style="margin-bottom:10px; font-size:15px;">Kurulum &amp; Kalibrasyon</h3>
+        <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+          <div><span class="white">Hafta 1:</span> Kickoff, ICP workshop, show-reel toplama, <span class="amber">yurt dışı kapasite sorgusu</span></div>
+          <div style="margin-top:4px;"><span class="white">Hafta 2:</span> Sending + LinkedIn altyapı + warmup, liste hazırlığı</div>
+          <div style="margin-top:4px;"><span class="white">Hafta 3:</span> Copy finalizasyonu, Pro Video onayı, pilot gönderim</div>
+          <div style="margin-top:4px;"><span class="white">Hafta 4:</span> Tam hızda outreach (kurumsal ağırlıklı)</div>
+        </div>
+      </div>
+      <div class="card" style="padding:18px 20px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:6px;">30–60 Gün</div>
+        <h3 style="margin-bottom:10px; font-size:15px;">Performans &amp; Optimizasyon</h3>
+        <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+          <div>Mesaj varyantları A/B test</div>
+          <div style="margin-top:4px;"><span class="amber">Üniversite upgrade angle</span> yanıt ölçümü — ana varsayım testi</div>
+          <div style="margin-top:4px;">Handoff SLA oturtulur, ilk fizibilite gönderimleri</div>
+          <div style="margin-top:4px;">Yurt dışı fizibilite için sync'ler başlar</div>
+        </div>
+      </div>
+      <div class="card card-amber" style="padding:18px 20px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--amber); text-transform:uppercase; margin-bottom:6px;">60–90 Gün</div>
+        <h3 style="margin-bottom:10px; font-size:15px;">Ay 3 Kapısı (Zorunlu)</h3>
+        <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+          <div>Varsayım test sonuçları raporlanır</div>
+          <div style="margin-top:4px;">Segment genişletme / daraltma kararı</div>
+          <div style="margin-top:4px;"><span class="white">Yurt dışı modülü açılır mı?</span> — ayrı teklif</div>
+          <div style="margin-top:4px;">Paket upgrade / downgrade masaya</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:14px;">
+      <div class="card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--red); text-transform:uppercase; margin-bottom:10px;">Riskler &amp; Azaltma</div>
+        <div class="kv"><span class="k">Üniversite segmenti doymuş çıkar</span><span class="v" style="font-size:12px;">Ana segment kurumsal · upgrade angle test</span></div>
+        <div class="kv"><span class="k">Kurumsal bütçe kesintisi</span><span class="v" style="font-size:12px;">Alt sektör çeşitlendirmesi</span></div>
+        <div class="kv"><span class="k">Yurt dışı heves baskısı</span><span class="v" style="font-size:12px;">İlk 3 ay kapsam dışı + fizibilite şart</span></div>
+        <div class="kv"><span class="k">Deliverability düşüklüğü</span><span class="v" style="font-size:12px;">Ayrı domain + warmup + kademeli hacim</span></div>
+        <div class="kv"><span class="k">Handoff yavaşlığı</span><span class="v" style="font-size:12px;">30 dk SLA · KPI ayrı raporlanır</span></div>
+        <div class="kv"><span class="k">Lead soğuması (6-9 ay nurture)</span><span class="v" style="font-size:12px;">Inside sales modülü güçlü önerilir</span></div>
+        <div class="kv"><span class="k">EKAP döngüsü</span><span class="v" style="font-size:12px;">Vakıf ağırlık + devlet nurture havuzu</span></div>
+        <div class="kv"><span class="k">Kanibal etki</span><span class="v" style="font-size:12px;">Referans çakışma kontrolü</span></div>
+        <div class="kv"><span class="k">KVKK / GDPR</span><span class="v" style="font-size:12px;">B2B legitimate interest + opt-out</span></div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Varsayımlar</div>
+        <div class="bullet-row"><div class="ix ix-accent">✓</div><div><p style="font-size:12.5px; color:var(--white);">Pro Video, 30 gün içinde lead'lere cevap verecek kaynak (kendi ekip veya inside sales modülü) hazırlar.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">✓</div><div><p style="font-size:12.5px; color:var(--white);">Show-reel, referans ve teknik şartname örnekleri Türkçe (+ İngilizce) olarak hazırdır veya ilk 30 günde hazırlanır.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">✓</div><div><p style="font-size:12.5px; color:var(--white);">Pro Video yönetimi haftalık 30-45 dk sync için müsaittir.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">✓</div><div><p style="font-size:12.5px; color:var(--white);">Ciro payı takibi için Pro Video, lead-deal eşleştirmesini aylık raporda paylaşır.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">✓</div><div><p style="font-size:12.5px; color:var(--white);">1000+ proje referans dosyası segment bazlı ayrıştırmaya hazırdır.</p></div></div>
+        <div class="bullet-row" style="border:none;"><div class="ix ix-amber">!</div><div><p style="font-size:12.5px; color:var(--white);"><span class="amber">Yurt dışı için</span> Pro Video ay 3'e kadar fiziksel kurulum kapasitesi, yerel taşeron, dil ve referans durumu hakkında bilgiyi netleştirir.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 13 — SONRAKİ ADIMLAR ========== -->
+  <div class="slide" id="s_final">
+    <div class="slide-header">
+      <span class="slide-label">12 / Sonraki Adımlar</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+      <div class="final-box">
+        <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:28px; flex-wrap:wrap;">
+          <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+          <span style="font-size:13px; color:var(--muted); letter-spacing:2px;">×</span>
+          <span class="pv-logo lg"><span class="pv-pro">pro</span><span class="pv-lens"></span><span class="pv-video">video</span></span>
+        </div>
+
+        <h2 style="margin-bottom:14px;">Birlikte başlayalım.</h2>
+
+        <p style="max-width:560px; margin: 0 auto 28px; font-size:14.5px;">
+          Pro Video'nun referans gücünü yeni hesap kazanımına çevirmek ve şüpheci varsayımları ay 3'te dürüstçe test etmek için altı soruya net cevap almamız yeterli.
+        </p>
+
+        <div style="text-align:left; max-width:520px; margin:0 auto;">
+          <div class="kv"><span class="k">1. Strateji onayı</span><span class="v" style="font-size:12px;">Şüpheci çerçeve üzerinde ortak görüş</span></div>
+          <div class="kv"><span class="k">2. Paket seçimi</span><span class="v" style="font-size:12px;">Paket 1 (800) · Paket 2 (1.600)</span></div>
+          <div class="kv"><span class="k">3. Inside sales modülü</span><span class="v" style="font-size:12px;">Dahil · Dahil değil</span></div>
+          <div class="kv"><span class="k">4. Yurt dışı fizibilite takvimi</span><span class="v" style="font-size:12px;">Ay 3'e kadar 5 sorunun cevabı</span></div>
+          <div class="kv"><span class="k">5. Satış kapasitesi değerlendirmesi</span><span class="v" style="font-size:12px;">Ekip · CRM · nurture disiplini</span></div>
+          <div class="kv"><span class="k">6. Ciro payı attribution</span><span class="v" style="font-size:12px;">CRM etiket · Lead kaynağı · Aylık review</span></div>
+        </div>
+
+        <p style="font-size:12px; color:var(--muted); margin-top:26px; font-style:italic;">
+          Sözleşme sonrası 30 günlük kurulum: kickoff, ICP workshop, sending + LinkedIn altyapısı, pilot gönderim. 4. haftadan itibaren tam hızda operasyon.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end slides-container -->
+
+<div class="nav">
+  <button onclick="prev()" title="Geri">←</button>
+  <div class="dots" id="dots"></div>
+  <button onclick="next()" title="İleri">→</button>
+  <span class="slide-counter" id="counter">1 / 13</span>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const container = document.getElementById('slides');
+  const dotsEl = document.getElementById('dots');
+  const counterEl = document.getElementById('counter');
+  let current = 0;
+  const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(n, slides.length - 1));
+
+    if (isMobile()) {
+      slides[current].classList.add('active');
+      slides[current].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      container.style.transform = `translateX(-${current * 100}vw)`;
+      slides[current].classList.add('active');
+      slides[current].scrollTop = 0;
+    }
+
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    counterEl.textContent = `${current + 1} / ${slides.length}`;
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next();
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev();
+  });
+
+  let startX = 0;
+  document.addEventListener('touchstart', e => {
+    if (isMobile()) return;
+    startX = e.touches[0].clientX;
+  });
+  document.addEventListener('touchend', e => {
+    if (isMobile()) return;
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
+  });
+
+  if (isMobile()) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && e.intersectionRatio > 0.4) {
+          const idx = Array.from(slides).indexOf(e.target);
+          if (idx >= 0 && idx !== current) {
+            slides[current].classList.remove('active');
+            current = idx;
+            slides[current].classList.add('active');
+            document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+            counterEl.textContent = `${current + 1} / ${slides.length}`;
+          }
+        }
+      });
+    }, { threshold: [0.4, 0.6] });
+    slides.forEach(s => observer.observe(s));
+  }
+
+  slides[0].classList.add('active');
+
+  // === ROI Hesaplayıcı (TL bazlı, Pro Video'ya göre) ===
+  const pkgDefaults = { 1: 9, 2: 17 };
+
+  function setPkg(n) {
+    document.querySelectorAll('#roi-toggle button').forEach(b => {
+      b.classList.toggle('active', parseInt(b.dataset.pkg) === n);
+    });
+    document.getElementById('roi-meetings').value = pkgDefaults[n];
+    calcROI();
+  }
+
+  function parseTL(str) {
+    return parseFloat(String(str).replace(/\./g, '').replace(',', '.')) || 0;
+  }
+
+  function formatTL(n) {
+    if (n >= 1000000) return '₺' + (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return '₺' + (n / 1000).toFixed(0) + 'K';
+    return '₺' + Math.round(n).toLocaleString('tr-TR');
+  }
+
+  function calcROI() {
+    const meetings = parseInt(document.getElementById('roi-meetings').value) || 0;
+    const closeRate = parseInt(document.getElementById('roi-closerate').value) || 0;
+    const contract = parseTL(document.getElementById('roi-contract').value);
+    const retention = parseInt(document.getElementById('roi-retention').value) || 0;
+
+    const dealsY1 = Math.round(meetings * 12 * closeRate / 100);
+    const year1 = dealsY1 * contract;
+
+    const retainedFromY1 = Math.round(dealsY1 * retention / 100);
+    const dealsY2 = dealsY1;
+    const y2Retain = retainedFromY1 * contract;
+    const y2New = dealsY2 * contract;
+    const year2 = y2Retain + y2New;
+    const total = year1 + year2;
+
+    document.getElementById('roi-deals').textContent = dealsY1;
+    document.getElementById('roi-year1').textContent = formatTL(year1);
+    document.getElementById('roi-year2').textContent = formatTL(year2);
+    document.getElementById('roi-total-main').textContent = formatTL(total);
+
+    document.getElementById('roi-y1-detail').textContent = dealsY1 + ' yeni müşteri';
+    document.getElementById('roi-y2-detail').textContent = retainedFromY1 + ' tekrar + ' + dealsY2 + ' yeni';
+    document.getElementById('roi-y2-retain-val').textContent = formatTL(y2Retain);
+    document.getElementById('roi-y2-new-val').textContent = formatTL(y2New);
+
+    const maxVal = Math.max(year1, year2, 1);
+    document.getElementById('roi-bar-y1').style.width = (year1 / maxVal * 100) + '%';
+    document.getElementById('roi-bar-y2-retain').style.width = (y2Retain / maxVal * 100) + '%';
+    document.getElementById('roi-bar-y2-new').style.width = (y2New / maxVal * 100) + '%';
+    document.getElementById('roi-bar-y1-label').textContent = formatTL(year1);
+    document.getElementById('roi-bar-y2-label').textContent = formatTL(year2);
+  }
+
+  calcROI();
+</script>
+
+</body>
+</html>
