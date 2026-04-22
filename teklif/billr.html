@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Billr × Tibexa — Go-to-Market Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111318;
+    --card: #181c24;
+    --card2: #1e2330;
+    --border: rgba(255,255,255,0.07);
+    --white: #f4f4f0;
+    --muted: #8a8f9e;
+    --accent: #5b9cf6;        /* Billr blue */
+    --accent2: #8bb9ff;
+    --gold: #c9a84c;
+    --green: #3ecf8e;
+    --red: #f55;
+    --blue: #5b9cf6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Red Hat Display', sans-serif;
+    height: 100%;
+    width: 100%;
+  }
+
+  body { overflow: hidden; }
+
+  .slides-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .slide {
+    min-width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 48px 72px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide::-webkit-scrollbar { width: 3px; }
+  .slide::-webkit-scrollbar-track { background: transparent; }
+  .slide::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  .nav {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+    background: rgba(17,19,24,0.9);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 10px 18px;
+  }
+  .nav button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px 8px;
+    transition: color 0.2s;
+  }
+  .nav button:hover { color: var(--accent); }
+  .dots { display: flex; gap: 6px; }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .dot.active { background: var(--accent); width: 20px; border-radius: 3px; }
+  .slide-counter {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    min-width: 50px;
+    text-align: center;
+  }
+
+  .slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .slide-label {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand-row .x {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+
+  /* Billr wordmark (no logo asset — rendered as styled text badge) */
+  .bl-logo {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent);
+    color: var(--black);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .bl-logo.lg { padding: 10px 20px; font-size: 24px; }
+
+  h1 {
+    font-size: clamp(36px, 6vw, 76px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  h2 {
+    font-size: clamp(26px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  h3 { font-size: 17px; font-weight: 700; }
+  p { font-size: 15px; line-height: 1.7; color: var(--muted); }
+
+  .accent { color: var(--accent); }
+  .white { color: var(--white); }
+  .green { color: var(--green); }
+  .gold { color: var(--gold); }
+  .red { color: var(--red); }
+  .muted { color: var(--muted); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .card-accent {
+    background: linear-gradient(135deg, rgba(91,156,246,0.13), rgba(91,156,246,0.04));
+    border: 1px solid rgba(91,156,246,0.28);
+  }
+  .card-green {
+    background: linear-gradient(135deg, rgba(62,207,142,0.10), rgba(62,207,142,0.03));
+    border: 1px solid rgba(62,207,142,0.25);
+  }
+  .card-red {
+    background: linear-gradient(135deg, rgba(255,85,85,0.08), rgba(255,85,85,0.02));
+    border: 1px solid rgba(255,85,85,0.22);
+  }
+  .card-gold {
+    background: linear-gradient(135deg, rgba(201,168,76,0.10), rgba(201,168,76,0.03));
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+  .big-stat {
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .segment-pill {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-size: 12px;
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .segment-pill .dot-pill {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .kv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+    gap: 16px;
+  }
+  .kv:last-child { border-bottom: none; }
+  .kv .k { color: var(--muted); flex-shrink: 0; }
+  .kv .v { font-weight: 600; text-align: right; }
+
+  .divider {
+    width: 48px; height: 2px;
+    background: var(--accent);
+    margin: 16px 0 20px;
+  }
+
+  #s1 {
+    justify-content: center;
+    padding: 64px 72px;
+  }
+  .cover-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .cover-label::before {
+    content: '';
+    display: block;
+    width: 36px; height: 1px;
+    background: var(--accent);
+  }
+  .cover-subtitle {
+    font-size: 17px;
+    color: var(--muted);
+    margin-bottom: 40px;
+    max-width: 640px;
+    line-height: 1.6;
+  }
+  .cover-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+  .cover-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item { font-size: 13px; }
+  .cover-deco {
+    position: absolute;
+    right: 0; top: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 60%, rgba(91,156,246,0.06) 100%);
+    pointer-events: none;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+  .data-table th {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+  .data-table td {
+    padding: 11px 12px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--white);
+    vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr.recommended td { background: rgba(91,156,246,0.08); }
+  .data-table tr.recommended td:first-child {
+    border-left: 2px solid var(--accent);
+  }
+
+  .rec-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--black);
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 6px;
+    text-transform: uppercase;
+  }
+
+  .timeline { position: relative; padding-left: 26px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .tl-item { margin-bottom: 22px; position: relative; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -22px; top: 6px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(91,156,246,0.2);
+  }
+  .tl-step {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .btn {
+    padding: 13px 26px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+  }
+  .btn-primary { background: var(--accent); color: var(--black); }
+  .btn-primary:hover { background: var(--accent2); }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .tag-blue { background: rgba(91,156,246,0.14); color: var(--accent2); border: 1px solid rgba(91,156,246,0.30); }
+  .tag-gold { background: rgba(201,168,76,0.12); color: #e8c96a; border: 1px solid rgba(201,168,76,0.25); }
+  .tag-orange { background: rgba(245,123,32,0.12); color: #ff9a52; border: 1px solid rgba(245,123,32,0.25); }
+  .tag-green { background: rgba(62,207,142,0.12); color: var(--green); border: 1px solid rgba(62,207,142,0.25); }
+
+  .split-col { display: flex; flex-direction: column; gap: 12px; }
+  .bullet-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .bullet-row:last-child { border-bottom: none; }
+  .bullet-row .ix {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .ix-red { background: rgba(255,85,85,0.15); color: var(--red); border: 1px solid rgba(255,85,85,0.3); }
+  .ix-green { background: rgba(62,207,142,0.15); color: var(--green); border: 1px solid rgba(62,207,142,0.3); }
+  .ix-blue { background: rgba(91,156,246,0.15); color: var(--accent2); border: 1px solid rgba(91,156,246,0.3); }
+  .ix-gold { background: rgba(201,168,76,0.15); color: #e8c96a; border: 1px solid rgba(201,168,76,0.3); }
+
+  .region-item {
+    display: grid;
+    grid-template-columns: 180px 100px 1fr;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 12.5px;
+    align-items: baseline;
+  }
+  .region-item:last-child { border-bottom: none; }
+  .region-item .rname { color: var(--accent); font-weight: 600; }
+  .region-item .rcountries { color: var(--white); }
+  .region-item .rpillar { color: var(--muted); font-size: 11.5px; }
+
+  .lvl {
+    display: inline-flex; align-items: center;
+    gap: 6px;
+    padding: 3px 9px;
+    font-size: 11px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .lvl-1 { background: rgba(91,156,246,0.15); color: var(--blue); }
+  .lvl-2 { background: rgba(201,168,76,0.15); color: #e8c96a; }
+  .lvl-3 { background: rgba(245,123,32,0.15); color: #ff9a52; }
+  .lvl-4 { background: rgba(62,207,142,0.15); color: var(--green); }
+
+  /* Pricing cards */
+  .price-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .price-card.featured {
+    background: linear-gradient(165deg, rgba(91,156,246,0.16), rgba(91,156,246,0.03));
+    border: 1px solid rgba(91,156,246,0.35);
+  }
+  .price-card .p-badge {
+    position: absolute;
+    top: -11px; left: 22px;
+    background: var(--accent);
+    color: var(--black);
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .price-card .p-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .price-card .p-name {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  .price-card .p-amount {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 2px;
+    line-height: 1;
+  }
+  .price-card .p-sub { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+  .price-card .p-features { list-style: none; margin-top: auto; }
+  .price-card .p-features li {
+    font-size: 13px;
+    padding: 6px 0;
+    color: var(--white);
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .price-card .p-features li::before {
+    content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0;
+  }
+
+  /* ROI */
+  .roi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 16px; }
+  .roi-input-group { display: flex; flex-direction: column; gap: 5px; }
+  .roi-input-group label { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+  .roi-input-group input, .roi-input-group select {
+    background: var(--card2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 11px 14px; font-size: 14px; color: var(--white); font-family: 'Red Hat Display', sans-serif;
+    outline: none; transition: border-color 0.2s;
+  }
+  .roi-input-group input:focus, .roi-input-group select:focus { border-color: var(--accent); }
+
+  .roi-results { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+  .roi-result-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px; text-align: center;
+  }
+  .roi-result-card.highlight {
+    background: linear-gradient(135deg, rgba(62,207,142,0.14), rgba(62,207,142,0.04));
+    border-color: rgba(62,207,142,0.32);
+  }
+  .roi-result-card .roi-value {
+    font-size: 26px; font-weight: 800;
+    line-height: 1; margin-bottom: 5px;
+  }
+  .roi-result-card .roi-label { font-size: 10px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+
+  .roi-bar-wrap { margin-top: 16px; }
+  .roi-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+  .roi-bar { height: 8px; background: var(--card2); border-radius: 4px; overflow: hidden; }
+  .roi-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .roi-bar-fill.blue { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .roi-bar-fill.green { background: linear-gradient(90deg, var(--green), #5de8a8); }
+
+  .roi-toggle {
+    display: inline-flex;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3px;
+    margin-top: 2px;
+    flex-wrap: wrap;
+  }
+  .roi-toggle button {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    font-family: 'Red Hat Display', sans-serif;
+  }
+  .roi-toggle button.active {
+    background: var(--accent);
+    color: var(--black);
+  }
+
+  #s_final {
+    justify-content: center;
+    background: linear-gradient(135deg, var(--black) 0%, #0f1118 100%);
+  }
+  .final-box {
+    background: linear-gradient(135deg, rgba(91,156,246,0.14), rgba(91,156,246,0.03));
+    border: 1px solid rgba(91,156,246,0.30);
+    border-radius: 20px;
+    padding: 44px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .slide > * {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .slide.active > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .slide.active > *:nth-child(1) { transition-delay: 0.05s; }
+  .slide.active > *:nth-child(2) { transition-delay: 0.12s; }
+  .slide.active > *:nth-child(3) { transition-delay: 0.19s; }
+  .slide.active > *:nth-child(4) { transition-delay: 0.26s; }
+  .slide.active > *:nth-child(5) { transition-delay: 0.33s; }
+  .slide.active > *:nth-child(6) { transition-delay: 0.40s; }
+
+  @media (max-width: 900px) {
+    body { overflow: auto; }
+    .slides-container { display: block; width: 100%; height: auto; transform: none !important; transition: none; }
+    .slide { min-width: 100%; width: 100%; height: auto; min-height: auto; padding: 40px 32px 56px; overflow: visible; scroll-margin-top: 16px; }
+    .slide + .slide { border-top: 1px solid var(--border); }
+    .slide > * { opacity: 1 !important; transform: none !important; }
+    .nav { padding: 8px 14px; gap: 8px; bottom: 16px; }
+    .nav .slide-counter { min-width: 40px; font-size: 11px; letter-spacing: 1px; }
+    .slide-header { margin-bottom: 28px; }
+    .grid-4 { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .roi-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .roi-results { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+    .roi-result-card { padding: 16px 12px; }
+    .roi-result-card .roi-value { font-size: 22px; }
+    .cover-meta { gap: 22px; }
+    .final-box { padding: 34px 26px; }
+    .region-item { grid-template-columns: 1fr; gap: 2px; padding: 10px 0; }
+  }
+
+  @media (max-width: 640px) {
+    .slide { padding: 28px 18px 44px; }
+    h1 { font-size: clamp(30px, 9vw, 52px); }
+    h2 { font-size: clamp(22px, 6.5vw, 32px); }
+    .big-stat { font-size: 38px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 14px; }
+    .grid-4 { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .roi-grid { grid-template-columns: 1fr; gap: 12px; }
+    .roi-results { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .roi-result-card { padding: 14px 10px; }
+    .roi-result-card .roi-value { font-size: 20px; }
+    .data-table { font-size: 12px; }
+    .data-table th, .data-table td { padding: 9px 8px; }
+    .price-card { padding: 22px 20px; }
+    .price-card .p-amount { font-size: 36px; }
+    .slide-label { font-size: 9px; letter-spacing: 2px; }
+    .bl-logo { padding: 4px 10px; font-size: 13px; }
+    .bl-logo.lg { padding: 8px 16px; font-size: 20px; }
+    .brand-row { gap: 10px; }
+    .cover-meta { gap: 16px; }
+    .final-box { padding: 26px 20px; }
+  }
+  @media (max-width: 400px) {
+    .slide-header { gap: 8px; }
+    .brand-row .x { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slides-container" id="slides">
+
+  <!-- ========== SLIDE 1 — COVER ========== -->
+  <div class="slide active" id="s1">
+    <div class="cover-deco"></div>
+
+    <div class="slide-header">
+      <div class="brand-row">
+        <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:34px; object-fit:contain;">
+        <span class="x">×</span>
+        <span class="bl-logo">billr</span>
+      </div>
+      <span class="slide-label">Confidential · Prepared for Billr</span>
+    </div>
+
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; max-width: 820px;">
+      <div class="cover-label">Go-to-Market Strategy · April 2026</div>
+
+      <h1 style="margin-bottom:22px;">
+        A 4-month sprint<br>
+        <span class="accent">designed as a market experiment.</span>
+      </h1>
+
+      <p class="cover-subtitle">
+        Billr has two strong logistics references and three open strategic questions.
+        This sprint converts outbound into the research instrument that produces pipeline <span class="white">and</span> ICP evidence —
+        simultaneously. Setup takes one month; the next three exhaust the serviceable market.
+      </p>
+
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <div class="label">Prepared by</div>
+          <div class="white" style="font-weight:600;">Tibexa Global</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="label">Date</div>
+          <div class="white" style="font-weight:600;">April 2026</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="label">Version</div>
+          <div class="white" style="font-weight:600;">v1 (draft for review)</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="label">Scope</div>
+          <div class="white" style="font-weight:600;">Outbound + ICP Discovery</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 2 — CONTEXT / THE EARLY-STAGE REALITY ========== -->
+  <div class="slide" id="s2">
+    <div class="slide-header">
+      <span class="slide-label">01 / Context</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Two customers, both 3PL.<br><span class="accent">Signal or coincidence?</span></h2>
+    <div class="divider"></div>
+
+    <p style="max-width:820px; margin-bottom:20px;">
+      Billr is a Vienna-based, 2024-founded startup building <span class="white">custom billing infrastructure</span> for companies whose pricing doesn't fit Chargebee, Stripe Billing, or Zuora. Two live references — <span class="white">Quivo</span> (€50M European 3PL, 800+ customers) and <span class="white">Ecomflow</span> (China-direct 3PL, 150+ brands, 25K+ daily shipments) — both land in the same vertical: third-party logistics.
+    </p>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card card-red">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--red); text-transform:uppercase; margin-bottom:8px;">Open Question 1</div>
+        <h3 style="margin-bottom:6px;">ICP clarity</h3>
+        <p style="font-size:12.5px;">Is 3PL the wedge, or a coincidence of who the founder knew? Which sub-segment — European mid-market, APAC D2C fulfillment, freight forwarders?</p>
+      </div>
+      <div class="card card-red">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--red); text-transform:uppercase; margin-bottom:8px;">Open Question 2</div>
+        <h3 style="margin-bottom:6px;">Offer clarity</h3>
+        <p style="font-size:12.5px;">"Custom billing infrastructure" vs. "replace your billing engineer" vs. "unlock pricing you can't bill today" — which angle actually converts?</p>
+      </div>
+      <div class="card card-red">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--red); text-transform:uppercase; margin-bottom:8px;">Open Question 3</div>
+        <h3 style="margin-bottom:6px;">Channel clarity</h3>
+        <p style="font-size:12.5px;">Does cold outbound produce conversations with CFOs, Heads of Finance, CTOs — and at what response rate?</p>
+      </div>
+    </div>
+
+    <div class="card card-accent">
+      <p style="font-size:14px;">
+        <strong class="accent">The reframe:</strong> rather than commit to one ICP and message up front, we run the sprint <span class="white">as a structured experiment</span>. It produces pipeline and ICP evidence simultaneously. Every reply, every objection, every meeting becomes data toward Billr's next-round ICP slide.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 3 — TIBEXA'S LOGISTICS-FIRST RECOMMENDATION ========== -->
+  <div class="slide" id="s3">
+    <div class="slide-header">
+      <span class="slide-label">02 / Tibexa's Recommendation</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Logistics should be the vertical.<br><span class="accent">Horizontal expansion comes later.</span></h2>
+    <div class="divider"></div>
+
+    <p style="max-width:820px; margin-bottom:20px;">
+      The multi-hypothesis sprint is structured to test the founder's preference for breadth. But Tibexa's professional view is that <span class="white">Billr should concentrate the next 18–24 months in logistics</span> and treat horizontal moves as deliberate, later-stage decisions. Five reasons:
+    </p>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="bullet-row" style="padding-top:0;">
+          <div class="ix ix-blue">1</div>
+          <div>
+            <h3 style="margin-bottom:4px;">Market size is already more than sufficient</h3>
+            <p style="font-size:12.5px;">~<span class="white">340,000</span> 3PL firms globally (IBISWorld / Speed Commerce 2024). US alone ~73K. Global 3PL market $1.41T in 2025, projected $1.54T in 2026. Capturing 0.1% of the signal-filtered SAM alone produces Series-B-grade revenue.</p>
+          </div>
+        </div>
+        <div class="bullet-row">
+          <div class="ix ix-blue">2</div>
+          <div>
+            <h3 style="margin-bottom:4px;">Operational complexity compounds non-linearly</h3>
+            <p style="font-size:12.5px;">Three ICP languages, three sales motions (CFO vs. CTO vs. Product), three implementation patterns, three scattered marketing presences. At 2–10 employees, this is a fatal distraction.</p>
+          </div>
+        </div>
+        <div class="bullet-row" style="border:none;">
+          <div class="ix ix-blue">3</div>
+          <div>
+            <h3 style="margin-bottom:4px;">Logistics has defensible moats that horizontal doesn't</h3>
+            <p style="font-size:12.5px;">In horizontal usage-based, Billr competes with Metronome, Orb, Lago, Togai, Stripe Billing — all well-funded. In logistics billing, incumbents are Extensiv, Hopstack, and spreadsheets. <span class="white">More winnable field.</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="split-col">
+        <div class="card">
+          <div class="bullet-row" style="padding-top:0;">
+            <div class="ix ix-blue">4</div>
+            <div>
+              <h3 style="margin-bottom:4px;">Vertical language is a sales unlock</h3>
+              <p style="font-size:12.5px;">Logistics CFOs speak pallets, pick fees, accessorials, peak-season surcharges, DIM-weight gotchas. A vendor using that language in the first email has a massive edge over generic "usage-based billing infrastructure" pitches.</p>
+            </div>
+          </div>
+          <div class="bullet-row" style="border:none;">
+            <div class="ix ix-blue">5</div>
+            <div>
+              <h3 style="margin-bottom:4px;">The horizontal option stays open later</h3>
+              <p style="font-size:12.5px;">Logistics-first doesn't close off usage-based SaaS — it sequences it. Once Billr has 15–25 logistics customers, expansion happens without duress or fragmentation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-accent">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--accent2); text-transform:uppercase; margin-bottom:8px;">What this means for the sprint</div>
+          <p style="font-size:13px;">We run all three hypotheses — but pre-weighted toward H1 logistics. Month-2 and Month-3 decision gates push remaining budget toward logistics unless H2 shows <span class="white">unusually</span> strong signal. H3 only runs in the Large package as a directional probe.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 4 — TAM / SAM / SOM ========== -->
+  <div class="slide" id="s4">
+    <div class="slide-header">
+      <span class="slide-label">03 / Market Sizing</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>TAM → SAM → SOM.<br><span class="accent">Find the buying-ready slice.</span></h2>
+    <div class="divider"></div>
+
+    <p style="max-width:820px; margin-bottom:20px;">
+      Early-stage ICP work fails when the TAM is defined too narrowly — we disqualify before we've observed. We define the <span class="white">full TAM</span> (anyone who plausibly fits), then a <span class="white">SAM</span> filter based on buying-readiness signals. The sprint targets SAM; the logic lets us expand back into TAM if needed.
+    </p>
+
+    <div class="grid-4" style="margin-bottom:20px;">
+      <div class="card" style="text-align:center; padding:20px 14px;">
+        <div class="big-stat" style="font-size:34px;">~440K</div>
+        <div style="font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:6px;">Total TAM (global)</div>
+      </div>
+      <div class="card" style="text-align:center; padding:20px 14px;">
+        <div class="big-stat" style="font-size:34px;">~37K</div>
+        <div style="font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:6px;">Signal-filtered SAM</div>
+      </div>
+      <div class="card card-accent" style="text-align:center; padding:20px 14px;">
+        <div class="big-stat" style="font-size:34px;">340K</div>
+        <div style="font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:6px;">3PL firms alone (H1)</div>
+      </div>
+      <div class="card" style="text-align:center; padding:20px 14px;">
+        <div class="big-stat" style="font-size:34px;">$1.54T</div>
+        <div style="font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:6px;">Global 3PL market (2026)</div>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Hypothesis</th>
+          <th>Role</th>
+          <th style="text-align:right;">TAM</th>
+          <th style="text-align:right;">SAM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="recommended">
+          <td><strong>H1 — Logistics</strong> (3PL, fulfillment, warehousing, freight)<span class="rec-badge">Primary</span></td>
+          <td style="color:var(--muted); font-size:12px;">Always included</td>
+          <td style="text-align:right; font-weight:700;">~340,000</td>
+          <td style="text-align:right; font-weight:700; color:var(--accent);">~22,000</td>
+        </tr>
+        <tr>
+          <td><strong>H2 — Usage-based SaaS / infra / AI</strong></td>
+          <td style="color:var(--muted); font-size:12px;">Always included (secondary)</td>
+          <td style="text-align:right; font-weight:600;">~50,000</td>
+          <td style="text-align:right; font-weight:600; color:var(--accent);">~8,000</td>
+        </tr>
+        <tr>
+          <td><strong>H3 — Vertical B2B SaaS</strong> (healthtech, energy, telco, construction)</td>
+          <td style="color:var(--muted); font-size:12px;">Large package only — exploration</td>
+          <td style="text-align:right; font-weight:600;">~50,000</td>
+          <td style="text-align:right; font-weight:600; color:var(--accent);">~7,000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2" style="margin-top:16px;">
+      <div class="card" style="padding:14px 18px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:8px;">What we don't pre-filter</div>
+        <p style="font-size:12px;"><span class="white">No employee-count ceiling</span> — a 30-person startup and a 2,000-person logistics group can have the same billing pain. <span class="white">No geography filter</span> — English-language reach; the heat-map from replies reveals where the wedge lives. <span class="white">No SaaS-only bias</span> — Quivo (operator) and Ecomflow (3PL-as-service) both work.</p>
+      </div>
+      <div class="card" style="padding:14px 18px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:8px;">Explicitly out of scope</div>
+        <p style="font-size:12px;"><span class="white">Pre-seed / &lt;$500K ARR</span> — can't afford custom. <span class="white">Consumer subscription</span> — Stripe/Recurly dominate. <span class="white">Regulated banking / payments</span> — compliance bar too high for a 2024-founded vendor. <span class="white">Public-sector billing</span> — RFP-driven, wrong channel for outbound.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 5 — VALUE ANGLES & MESSAGE MATRIX ========== -->
+  <div class="slide" id="s5">
+    <div class="slide-header">
+      <span class="slide-label">04 / Value Angles &amp; Messages</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Four angles.<br><span class="accent">Four buyer psychologies.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="margin-bottom:18px;">
+      <div class="card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">The four pitches we A/B test</div>
+        <div class="bullet-row"><div class="ix ix-blue">1</div><div><h3 style="font-size:13.5px; margin-bottom:3px;">Escape the middleware tax</h3><p style="font-size:12px;">"Chargebee/Stripe Billing forces you to build a middleware layer. We replace that layer." → CTO / VP Eng</p></div></div>
+        <div class="bullet-row"><div class="ix ix-blue">2</div><div><h3 style="font-size:13.5px; margin-bottom:3px;">Stop the revenue leak</h3><p style="font-size:12px;">"If a price isn't entered, you silently lose money. We flag it in real time, not month-end." (Quivo angle) → CFO</p></div></div>
+        <div class="bullet-row"><div class="ix ix-blue">3</div><div><h3 style="font-size:13.5px; margin-bottom:3px;">Billing in hours, not days</h3><p style="font-size:12px;">"Monthly billing takes 12+ hours with overnight test runs. We compress to 1 hour with zero test runs." → Head of Finance / Ops</p></div></div>
+        <div class="bullet-row" style="border:none;"><div class="ix ix-blue">4</div><div><h3 style="font-size:13.5px; margin-bottom:3px;">Price anything you can imagine</h3><p style="font-size:12px;">"Volume tiers, customer-specific overrides, mixed models, currency conversion — model it, don't build it." → Product / commercial</p></div></div>
+      </div>
+
+      <div>
+        <div class="card card-accent" style="margin-bottom:14px;">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--accent2); text-transform:uppercase; margin-bottom:10px;">Segment × Angle Matrix</div>
+          <table class="data-table" style="margin-top:0;">
+            <thead>
+              <tr><th>Segment</th><th>Primary Angle</th><th>CTA</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>EU 3PLs (H1)</td><td style="color:var(--muted);">#3 hours, not days</td><td>"See the Quivo setup"</td></tr>
+              <tr><td>US / global 3PLs (H1)</td><td style="color:var(--muted);">#2 revenue leak at scale</td><td>"Ecomflow 150-brand walk-through"</td></tr>
+              <tr><td>Usage-based infra / AI (H2)</td><td style="color:var(--muted);">#1 escape middleware</td><td>"How we replaced Chargebee"</td></tr>
+              <tr><td>Usage-based dev tools (H2)</td><td style="color:var(--muted);">#4 model any pricing</td><td>"Architecture review"</td></tr>
+              <tr><td>Vertical SaaS (H3, Pkg 3 only)</td><td style="color:var(--muted);">#3 or #2 (tested)</td><td>"Show your current flow"</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:10px;">Operating principle</div>
+          <p style="font-size:12.5px;">Each segment gets <span class="white">2–3 message variants</span> mapping to angles above. One primary touch + one follow-up per contact. Month-2 A/B testing narrows variants from 6 to 2–3; Month-3 concentrates on winners.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="padding:14px 20px;">
+      <p style="font-size:13px;">
+        <strong class="accent">Why these angles and not others:</strong> Angles #2 and #3 have <span class="white">concrete numbers</span> attached (1,170 price sheets → 1 hour; 12+ hours → 1 hour). Angles #1 and #4 are <span class="white">aspirational</span> — broader appeal, thinner proof. Early reply data will tell us which converts. We bias the first round toward the concrete ones, because case-study-anchored pitches start closer to "believable" on the cold-email curve.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 6 — OPERATIONAL MODEL ========== -->
+  <div class="slide" id="s6">
+    <div class="slide-header">
+      <span class="slide-label">05 / Operational Model</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Monthly workflow.<br><span class="accent">Every step measurable.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="gap:24px;">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-step">Step 1</div>
+          <h3 style="margin-bottom:3px;">List building</h3>
+          <p style="font-size:12.5px;">Accounts matching ICP filters pulled from Apollo / LinkedIn Sales Nav / Crunchbase / BuiltWith / job postings. Weekly batches.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Step 2</div>
+          <h3 style="margin-bottom:3px;">Enrichment</h3>
+          <p style="font-size:12.5px;">Decision-maker email, pricing page, recent funding, signals of billing pain ("hiring billing engineer," "migrating from X").</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Step 3</div>
+          <h3 style="margin-bottom:3px;">Personalization</h3>
+          <p style="font-size:12.5px;">Segment template + <span class="white">2–3 company-specific lines</span> per email.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Step 4</div>
+          <h3 style="margin-bottom:3px;">Send</h3>
+          <p style="font-size:12.5px;">Primary email + one follow-up 4–6 days later.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Step 5</div>
+          <h3 style="margin-bottom:3px;">Reply classification</h3>
+          <p style="font-size:12.5px;">Four levels (see card →); objections logged with tags.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Step 6</div>
+          <h3 style="margin-bottom:3px;">Handoff</h3>
+          <p style="font-size:12.5px;">L3+ replies handed to Billr within <span class="white">30 minutes</span>. Founder or sales lead takes it.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Step 7</div>
+          <h3 style="margin-bottom:3px;">Weekly report</h3>
+          <p style="font-size:12.5px;">Volume, replies, level distribution, meetings booked, <span class="white">objection themes</span> — the research output.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="card card-accent">
+          <h3 style="margin-bottom:12px;">Reply Classification</h3>
+          <div class="kv"><span class="lvl lvl-1">Level 1</span><span class="v" style="font-size:12px;">Interest / curiosity</span></div>
+          <div class="kv"><span class="lvl lvl-2">Level 2</span><span class="v" style="font-size:12px;">Info request (case study, architecture)</span></div>
+          <div class="kv"><span class="lvl lvl-3">Level 3</span><span class="v" style="font-size:12px;">Meeting-scheduling conversation</span></div>
+          <div class="kv"><span class="lvl lvl-4">Level 4</span><span class="v" style="font-size:12px;">Meeting booked</span></div>
+          <p style="font-size:11.5px; margin-top:12px; padding-top:12px; border-top:1px solid var(--border);">All L1+ replies handed to Billr; L3+ triggers the 30-min SLA.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:12px;">Why "objection themes" matter</h3>
+          <p style="font-size:12.5px; margin-bottom:8px;">For an early-stage company, the objections are the gold. Patterns we'll surface:</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span class="tag tag-blue">"We use Chargebee — works fine"</span>
+            <span class="tag tag-blue">"We built it in-house"</span>
+            <span class="tag tag-blue">"Your pricing is too opaque"</span>
+            <span class="tag tag-blue">"Locked in with Stripe for 18 months"</span>
+          </div>
+          <p style="font-size:11.5px; margin-top:10px; color:var(--muted); font-style:italic;">
+            After month 2, Billr has a concrete picture of who's ready to buy and what story unlocks them.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:10px;">Handoff SLA</h3>
+          <div class="kv"><span class="k">L3+ reply → Billr notified</span><span class="v accent">30 min</span></div>
+          <div class="kv"><span class="k">First reply to prospect</span><span class="v">2h (business hours)</span></div>
+          <div class="kv"><span class="k">Meeting confirmation</span><span class="v">24h</span></div>
+          <div class="kv"><span class="k">Post-meeting outcome log</span><span class="v">48h after</span></div>
+          <p style="font-size:11.5px; margin-top:10px; color:var(--muted); font-style:italic;">
+            Meetings where Billr response &gt; 48h are excluded from Tibexa's KPI accounting — transparency measure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 7 — KPI FRAMEWORK & DECISION GATES ========== -->
+  <div class="slide" id="s7">
+    <div class="slide-header">
+      <span class="slide-label">06 / KPI &amp; Decision Gates</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Monthly KPIs by package.<br><span class="accent">Checkpoints that rebalance the sprint.</span></h2>
+    <div class="divider"></div>
+
+    <h3 style="margin-bottom:10px;">Volume KPIs (steady state, months 2–4)</h3>
+    <table class="data-table" style="margin-bottom:18px;">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th style="text-align:center;">Small</th>
+          <th style="text-align:center;">Medium</th>
+          <th style="text-align:center;">Large</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sends / month</td>
+          <td style="text-align:center; font-weight:600;">10,000</td>
+          <td style="text-align:center; font-weight:600;">25,000</td>
+          <td style="text-align:center; font-weight:600;">50,000</td>
+        </tr>
+        <tr>
+          <td>Sends / 3 months</td>
+          <td style="text-align:center; font-weight:600;">30,000</td>
+          <td style="text-align:center; font-weight:600;">75,000</td>
+          <td style="text-align:center; font-weight:600;">150,000</td>
+        </tr>
+        <tr>
+          <td>Positive replies <span style="color:var(--muted); font-size:11px;">(L1+, 0.35%)</span></td>
+          <td style="text-align:center; color:var(--accent); font-weight:700;">105</td>
+          <td style="text-align:center; color:var(--accent); font-weight:700;">262</td>
+          <td style="text-align:center; color:var(--accent); font-weight:700;">525</td>
+        </tr>
+        <tr>
+          <td>Qualified replies <span style="color:var(--muted); font-size:11px;">(L2+)</span></td>
+          <td style="text-align:center; font-weight:600;">52</td>
+          <td style="text-align:center; font-weight:600;">131</td>
+          <td style="text-align:center; font-weight:600;">262</td>
+        </tr>
+        <tr>
+          <td>Booked meetings / 3 months</td>
+          <td style="text-align:center; font-weight:600;">50–70</td>
+          <td style="text-align:center; font-weight:600;">125–175</td>
+          <td style="text-align:center; font-weight:600;">250–350</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2" style="margin-bottom:14px;">
+      <div class="card card-accent">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent2); text-transform:uppercase; margin-bottom:10px;">Month 2 Decision Gate</div>
+        <p style="font-size:12.5px; margin-bottom:10px;">First hypothesis-ranking checkpoint. If one ICP is clearly underperforming (&lt;50% of target replies), budget reallocates to the strongest hypothesis for Month 3.</p>
+        <p style="font-size:12.5px;"><span class="white">Output:</span> preliminary hypothesis scorecard + objection-theme log (50+ tagged objections by this point in the Medium package).</p>
+      </div>
+      <div class="card card-accent">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent2); text-transform:uppercase; margin-bottom:10px;">Month 3 Wedge Lock</div>
+        <p style="font-size:12.5px; margin-bottom:10px;">Remaining Month-4 volume concentrates on the winning ICP. Message variants narrow from 6 to 2–3.</p>
+        <p style="font-size:12.5px;"><span class="white">Output:</span> wedge recommendation deck + message library + pipeline-in-flight dashboard.</p>
+      </div>
+    </div>
+
+    <div class="card" style="padding:14px 20px;">
+      <p style="font-size:13px;">
+        <strong class="accent">Response-rate baseline:</strong> 0.35% positive-reply-to-contact ratio is our conservative anchor for high-volume segmented B2B outbound. Observed range for comparable operations in 2026 sits at <span class="white">0.35%–0.80%</span>. If the sprint outperforms, numbers scale linearly — a 0.55% rate on the Medium package produces ~412 replies instead of 262.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 8 — PACKAGES &amp; PRICING ========== -->
+  <div class="slide" id="s8">
+    <div class="slide-header">
+      <span class="slide-label">07 / Packages</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Three packages, same methodology.<br><span class="accent">Volume scales. Signal strength scales.</span></h2>
+    <p style="font-size:12.5px; color:var(--muted); margin-top:8px; margin-bottom:20px;">Billed as monthly retainer. Month 1 is setup (no outbound volume). 4 months total.</p>
+
+    <div class="grid-3" style="gap:16px; margin-bottom:18px;">
+      <!-- Small -->
+      <div class="price-card">
+        <div class="p-label">Small</div>
+        <div class="p-name">Discovery Sprint</div>
+        <div class="p-amount">€2,500</div>
+        <div class="p-sub">per month · 4 months · €10,000 total</div>
+        <ul class="p-features">
+          <li><span><strong>10,000</strong> sends / month</span></li>
+          <li><span>H1 logistics + H2 usage-based SaaS</span></li>
+          <li><span>50–70 meetings / 3 months</span></li>
+          <li><span>Weekly + monthly reporting</span></li>
+          <li><span>Objection-theme log</span></li>
+          <li><span>ICP wedge recommendation</span></li>
+        </ul>
+      </div>
+
+      <!-- Medium (featured) -->
+      <div class="price-card featured">
+        <span class="p-badge">Recommended</span>
+        <div class="p-label">Medium</div>
+        <div class="p-name">Validation Sprint</div>
+        <div class="p-amount" style="color:var(--accent);">€3,500</div>
+        <div class="p-sub">per month · 4 months · €14,000 total</div>
+        <ul class="p-features">
+          <li><span><strong>25,000</strong> sends / month (2.5×)</span></li>
+          <li><span>H1 logistics + H2 usage-based SaaS</span></li>
+          <li><span>125–175 meetings / 3 months</span></li>
+          <li><span>Deeper A/B test coverage (6 variants)</span></li>
+          <li><span>Month-2 decision gate + Month-3 wedge lock</span></li>
+          <li><span>Full message library deliverable</span></li>
+        </ul>
+      </div>
+
+      <!-- Large -->
+      <div class="price-card">
+        <div class="p-label">Large</div>
+        <div class="p-name">Market Sweep</div>
+        <div class="p-amount">€4,500</div>
+        <div class="p-sub">per month · 4 months · €18,000 total</div>
+        <ul class="p-features">
+          <li><span><strong>50,000</strong> sends / month (5×)</span></li>
+          <li><span>H1 + H2 + H3 exploration slot</span></li>
+          <li><span>250–350 meetings / 3 months</span></li>
+          <li><span>Category-capture volume</span></li>
+          <li><span>2027 directional insight (H3 probe)</span></li>
+          <li><span>Wedge deck + Series-A-grade evidence</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:14px;">
+      <div class="card" style="padding:16px 20px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:8px;">Why pricing doesn't scale linearly</div>
+        <p style="font-size:12.5px;">Setup, strategy, copy, infrastructure, and reporting are roughly fixed. Medium delivers <span class="white">2.5× the volume</span> of Small at 1.4× the cost. Large delivers <span class="white">5× the volume</span> at 1.8× the cost. The per-send economics improve sharply with scale.</p>
+      </div>
+      <div class="card" style="padding:16px 20px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:8px;">What every package includes</div>
+        <p style="font-size:12.5px;">Dedicated sending infrastructure (2+ warmed domains), ICP workshop, message A/B testing, reply classification, 30-min handoff SLA, weekly dashboards, monthly strategic reviews, end-of-sprint wedge deck.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 9 — ROI CALCULATOR ========== -->
+  <div class="slide" id="s_roi">
+    <div class="slide-header">
+      <span class="slide-label">08 / ROI Calculator</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>What does pipeline <span class="accent">return?</span></h2>
+    <p style="max-width:800px; margin-bottom:12px;">Interactive view. Adjust reply rate, meeting-to-deal conversion, ARR, and retention to pressure-test the model.</p>
+
+    <div class="roi-toggle" id="roi-toggle">
+      <button class="active" data-pkg="1" onclick="setPkg(1)">Small · 10K / mo</button>
+      <button data-pkg="2" onclick="setPkg(2)">Medium · 25K / mo</button>
+      <button data-pkg="3" onclick="setPkg(3)">Large · 50K / mo</button>
+    </div>
+
+    <div class="roi-grid">
+      <div class="roi-input-group">
+        <label>Reply rate (%)</label>
+        <input type="number" id="roi-reply" value="0.35" min="0.1" max="2.0" step="0.05" oninput="calcROI()" />
+      </div>
+      <div class="roi-input-group">
+        <label>Meeting → Deal (%)</label>
+        <input type="number" id="roi-closerate" value="20" min="1" max="100" oninput="calcROI()" />
+      </div>
+      <div class="roi-input-group">
+        <label>Average ARR ($)</label>
+        <input type="text" id="roi-arr" value="10,000" oninput="calcROI()" />
+      </div>
+      <div class="roi-input-group">
+        <label>Gross retention (%)</label>
+        <input type="number" id="roi-retention" value="90" min="0" max="100" oninput="calcROI()" />
+      </div>
+    </div>
+
+    <div class="roi-results">
+      <div class="roi-result-card">
+        <div class="roi-value white" id="roi-deals">14</div>
+        <div class="roi-label">Closed Deals (sprint)</div>
+      </div>
+      <div class="roi-result-card">
+        <div class="roi-value accent" id="roi-year1">$140,000</div>
+        <div class="roi-label">Year-1 ARR</div>
+      </div>
+      <div class="roi-result-card">
+        <div class="roi-value green" id="roi-ltv">$378,000</div>
+        <div class="roi-label">3-Year LTV</div>
+      </div>
+      <div class="roi-result-card highlight">
+        <div class="roi-value green" id="roi-mult">13×</div>
+        <div class="roi-label">Year-1 ROI on Sprint</div>
+      </div>
+    </div>
+
+    <div class="roi-bar-wrap" style="margin-top:16px;">
+      <div class="roi-bar-label">
+        <span>Sprint cost — <span class="white" id="roi-cost-detail">€10,000</span></span>
+        <span id="roi-cost-label">€10,000</span>
+      </div>
+      <div class="roi-bar">
+        <div class="roi-bar-fill blue" id="roi-bar-cost" style="width:5%;"></div>
+      </div>
+    </div>
+    <div class="roi-bar-wrap" style="margin-top:10px;">
+      <div class="roi-bar-label">
+        <span>Year-1 ARR — <span id="roi-y1-detail">14 new customers</span></span>
+        <span id="roi-bar-y1-label">$140,000</span>
+      </div>
+      <div class="roi-bar">
+        <div class="roi-bar-fill blue" id="roi-bar-y1" style="width:55%;"></div>
+      </div>
+    </div>
+    <div class="roi-bar-wrap" style="margin-top:10px;">
+      <div class="roi-bar-label">
+        <span>3-Year LTV — retention compounding</span>
+        <span id="roi-bar-ltv-label">$378,000</span>
+      </div>
+      <div class="roi-bar">
+        <div class="roi-bar-fill green" id="roi-bar-ltv" style="width:100%;"></div>
+      </div>
+    </div>
+
+    <p style="font-size:11px; margin-top:16px; color:var(--muted); font-style:italic;">
+      * Sales-cycle timing spreads actual closes across months 5–15 after sprint start (see next slide). The model assumes conservative 20% meeting-to-deal, $10K ARR per Billr indication, 3-year compounding at stated retention. EUR/USD assumed ~1.10 for ROI multiple display.
+    </p>
+  </div>
+
+  <!-- ========== SLIDE 10 — SALES CYCLE & IMPLEMENTATION ========== -->
+  <div class="slide" id="s10">
+    <div class="slide-header">
+      <span class="slide-label">09 / Sales Cycle &amp; Timeline</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Most closes land <span class="accent">after the sprint ends.</span><br>By design.</h2>
+    <div class="divider"></div>
+
+    <p style="max-width:820px; margin-bottom:20px;">
+      Custom billing infrastructure is a <span class="white">considered B2B purchase</span> — CFO buy-in, security review, technical evaluation, SOC2 questions. Cold contact to live customer typically takes <span class="white">3–6 months</span>. The sprint produces pipeline and ICP evidence; ARR materializes across the following two quarters.
+    </p>
+
+    <table class="data-table" style="margin-bottom:18px;">
+      <thead>
+        <tr><th>Stage</th><th>Typical duration</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Positive reply → first meeting</td><td style="color:var(--accent); font-weight:600;">1–3 weeks</td></tr>
+        <tr><td>First meeting → qualified opportunity</td><td style="color:var(--accent); font-weight:600;">2–4 weeks</td></tr>
+        <tr><td>Qualified opportunity → signed contract</td><td style="color:var(--accent); font-weight:600;">4–12 weeks</td></tr>
+        <tr><td>Contract → kickoff → go-live (Billr 4-week implementation)</td><td style="color:var(--accent); font-weight:600;">4–6 weeks</td></tr>
+        <tr class="recommended"><td><strong>Total: cold contact → live customer</strong></td><td style="color:var(--accent); font-weight:700;">3–6 months</td></tr>
+      </tbody>
+    </table>
+
+    <div class="grid-3" style="gap:14px; margin-bottom:16px;">
+      <div class="card" style="padding:18px 20px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:6px;">Month 1</div>
+        <h3 style="margin-bottom:10px; font-size:15px;">Setup &amp; Calibration</h3>
+        <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+          <div><span class="white">Week 1:</span> Kickoff, ICP workshop across H1/H2 (H3 if Large), buyer-persona sync</div>
+          <div style="margin-top:4px;"><span class="white">Week 2:</span> Sending domains, DNS/SPF/DKIM/DMARC, warmup starts</div>
+          <div style="margin-top:4px;"><span class="white">Week 3:</span> Copy finalization (6 variants), list build, Billr approval</div>
+          <div style="margin-top:4px;"><span class="white">Week 4:</span> Pilot send 150–300 contacts to calibrate</div>
+        </div>
+      </div>
+      <div class="card" style="padding:18px 20px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:6px;">Months 2–4</div>
+        <h3 style="margin-bottom:10px; font-size:15px;">Active Outreach</h3>
+        <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+          <div><span class="white">Month 2:</span> Full volume launch; Month-2 decision gate mid-month</div>
+          <div style="margin-top:4px;"><span class="white">Month 3:</span> Rebalance toward winning hypothesis; wedge lock</div>
+          <div style="margin-top:4px;"><span class="white">Month 4:</span> Concentration on winner + best angle</div>
+          <div style="margin-top:4px;"><span class="white">End of Month 4:</span> Wedge deck + pipeline handoff</div>
+        </div>
+      </div>
+      <div class="card card-accent" style="padding:18px 20px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:6px;">Months 5–12</div>
+        <h3 style="margin-bottom:10px; font-size:15px;">Close &amp; Implement</h3>
+        <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+          <div>Pipeline from sprint closes across these months</div>
+          <div style="margin-top:4px;">Billr's 4-week implementation cycle fits naturally — ~1–2 onboardings/month across the Medium package; ~2–4/month at Large</div>
+          <div style="margin-top:4px;">Sprint-2 planning begins Month 5 based on wedge recommendation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-gold" style="padding:16px 22px;">
+      <p style="font-size:13px;">
+        <strong class="gold">Implementation capacity note:</strong> With a 4-week implementation cycle and deals spreading naturally across 8–12 months, even the Large package's 50–70 projected closes translate to <span class="white">~2–6 parallel onboardings at peak</span>. The sales cycle is a feature, not a bug — it matches Billr's delivery capacity to deal flow without forcing ramp hiring.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 11 — RISKS, ASSUMPTIONS, OPEN QUESTIONS ========== -->
+  <div class="slide" id="s11">
+    <div class="slide-header">
+      <span class="slide-label">10 / Risks &amp; Open Questions</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>What could go wrong.<br><span class="accent">And what we need from Billr.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="gap:14px; margin-bottom:14px;">
+      <div class="card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--red); text-transform:uppercase; margin-bottom:10px;">Risks &amp; Mitigations</div>
+        <div class="kv"><span class="k">Low deliverability (new Vienna sender)</span><span class="v" style="font-size:12px;">Multi-domain warmup + gradual volume</span></div>
+        <div class="kv"><span class="k">Founder reply bandwidth</span><span class="v" style="font-size:12px;">Pre-built L1/L2 templates · founder only on L3+</span></div>
+        <div class="kv"><span class="k">All three hypotheses underperform</span><span class="v" style="font-size:12px;">Month-2 gate catches; pivot to angle tests</span></div>
+        <div class="kv"><span class="k">Region-language fit (Vienna startup, US buyers)</span><span class="v" style="font-size:12px;">Quivo credibility for EU · Ecomflow for US</span></div>
+        <div class="kv"><span class="k">GDPR + CAN-SPAM compliance</span><span class="v" style="font-size:12px;">B2B legitimate-interest basis · central suppression</span></div>
+        <div class="kv"><span class="k">Close-attribution lag (sales cycle)</span><span class="v" style="font-size:12px;">Pipeline tracker from day 1 · Month-4 report includes pipeline-in-flight</span></div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Assumptions to Validate</div>
+        <div class="bullet-row"><div class="ix ix-blue">✓</div><div><p style="font-size:12.5px; color:var(--white);">ARR ~$10K per customer, net of implementation fees.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-blue">✓</div><div><p style="font-size:12.5px; color:var(--white);">Billr can handle ~1–2 parallel onboardings / month from Month 5, scaling with package selection.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-blue">✓</div><div><p style="font-size:12.5px; color:var(--white);">Founder or sales lead available for meetings starting Month 2 (4–20 / month by package).</p></div></div>
+        <div class="bullet-row"><div class="ix ix-blue">✓</div><div><p style="font-size:12.5px; color:var(--white);">Quivo and Ecomflow case studies are approved for direct use in outbound.</p></div></div>
+        <div class="bullet-row" style="border:none;"><div class="ix ix-blue">✓</div><div><p style="font-size:12.5px; color:var(--white);">Billr management available for weekly 30–45 min sync.</p></div></div>
+      </div>
+    </div>
+
+    <div class="card card-gold">
+      <div style="font-size:10px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:12px;">Open Questions — Input We Need Before Kickoff</div>
+      <div class="grid-2" style="gap:10px;">
+        <div class="split-col">
+          <div class="bullet-row" style="padding:6px 0;"><div class="ix ix-gold">?</div><div><p style="font-size:12px;"><span class="white">Stack signals:</span> any ERP / WMS / billing tool whose presence signals strong fit? (e.g., "anyone on Manhattan WMS" or "anyone on Extensiv Billing Manager").</p></div></div>
+          <div class="bullet-row" style="padding:6px 0;"><div class="ix ix-gold">?</div><div><p style="font-size:12px;"><span class="white">Titles beyond CFO/COO/CTO:</span> "Billing Operations Lead," "Head of Revenue Ops" — which titles have you seen convert?</p></div></div>
+          <div class="bullet-row" style="padding:6px 0;"><div class="ix ix-gold">?</div><div><p style="font-size:12px;"><span class="white">Events &amp; communities:</span> Manifest, Shoptalk, SaaStr, PTAK Forum, specific podcasts/Slacks where buyers hang out?</p></div></div>
+          <div class="bullet-row" style="padding:6px 0; border:none;"><div class="ix ix-gold">?</div><div><p style="font-size:12px;"><span class="white">Anti-signals:</span> patterns where a prospect looks great on paper but turns out bad?</p></div></div>
+        </div>
+        <div class="split-col">
+          <div class="bullet-row" style="padding:6px 0;"><div class="ix ix-gold">?</div><div><p style="font-size:12px;"><span class="white">Dream customer:</span> one real company name you'd want on your website in 12 months. We'll reverse-engineer SAM from there.</p></div></div>
+          <div class="bullet-row" style="padding:6px 0;"><div class="ix ix-gold">?</div><div><p style="font-size:12px;"><span class="white">Metronome / Orb / Lago positioning:</span> what's the sharper differentiator than "more custom"? Speed to go-live? Code ownership? EU data residency?</p></div></div>
+          <div class="bullet-row" style="padding:6px 0;"><div class="ix ix-gold">?</div><div><p style="font-size:12px;"><span class="white">Chargebee / Zuora objection handling:</span> rip-and-replace, middleware removal, or complement-for-hard-cases?</p></div></div>
+          <div class="bullet-row" style="padding:6px 0; border:none;"><div class="ix ix-gold">?</div><div><p style="font-size:12px;"><span class="white">Logistics-only openness:</span> if H1 confirms, are you open to dropping H2 in sprint 2 and going vertical-focused?</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 12 — NEXT STEPS ========== -->
+  <div class="slide" id="s_final">
+    <div class="slide-header">
+      <span class="slide-label">11 / Next Steps</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+      <div class="final-box">
+        <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:28px; flex-wrap:wrap;">
+          <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+          <span style="font-size:13px; color:var(--muted); letter-spacing:2px;">×</span>
+          <span class="bl-logo lg">billr</span>
+        </div>
+
+        <h2 style="margin-bottom:14px;">Let's start.</h2>
+
+        <p style="max-width:540px; margin: 0 auto 28px; font-size:14.5px;">
+          Four answers and a signed SOW, and we kick off Month 1 setup. The sprint is designed to give Billr a defensible wedge by end of Month 4.
+        </p>
+
+        <div style="text-align:left; max-width:480px; margin:0 auto;">
+          <div class="kv"><span class="k">1. Strategy approval</span><span class="v" style="font-size:12px;">Reviewed &amp; aligned with Billr leadership</span></div>
+          <div class="kv"><span class="k">2. Package selection</span><span class="v" style="font-size:12px;">Small €2.5K · Medium €3.5K · Large €4.5K</span></div>
+          <div class="kv"><span class="k">3. Open-question inputs</span><span class="v" style="font-size:12px;">Stack signals · titles · dream customer</span></div>
+          <div class="kv"><span class="k">4. Logistics-only openness</span><span class="v" style="font-size:12px;">Confirm direction for sprint 2</span></div>
+        </div>
+
+        <p style="font-size:12px; color:var(--muted); margin-top:26px; font-style:italic;">
+          Target sprint start: May 2026. Month 1 setup ends with pilot send; Month 2 launches full outreach volume. End of Month 4: wedge recommendation deck + pipeline-in-flight handoff.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end slides-container -->
+
+<!-- NAVIGATION -->
+<div class="nav">
+  <button onclick="prev()" title="Previous">←</button>
+  <div class="dots" id="dots"></div>
+  <button onclick="next()" title="Next">→</button>
+  <span class="slide-counter" id="counter">1 / 12</span>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const container = document.getElementById('slides');
+  const dotsEl = document.getElementById('dots');
+  const counterEl = document.getElementById('counter');
+  let current = 0;
+  const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(n, slides.length - 1));
+    if (isMobile()) {
+      slides[current].classList.add('active');
+      slides[current].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      container.style.transform = `translateX(-${current * 100}vw)`;
+      slides[current].classList.add('active');
+      slides[current].scrollTop = 0;
+    }
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    counterEl.textContent = `${current + 1} / ${slides.length}`;
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next();
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev();
+  });
+
+  let startX = 0;
+  document.addEventListener('touchstart', e => {
+    if (isMobile()) return;
+    startX = e.touches[0].clientX;
+  });
+  document.addEventListener('touchend', e => {
+    if (isMobile()) return;
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
+  });
+
+  if (isMobile()) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && e.intersectionRatio > 0.4) {
+          const idx = Array.from(slides).indexOf(e.target);
+          if (idx >= 0 && idx !== current) {
+            slides[current].classList.remove('active');
+            current = idx;
+            slides[current].classList.add('active');
+            document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+            counterEl.textContent = `${current + 1} / ${slides.length}`;
+          }
+        }
+      });
+    }, { threshold: [0.4, 0.6] });
+    slides.forEach(s => observer.observe(s));
+  }
+
+  slides[0].classList.add('active');
+
+  // === ROI Calculator ===
+  // Package config: { sends/month, 4-month-cost €, sprint total sends }
+  const pkgConfig = {
+    1: { sends: 10000, cost: 10000, label: '10K / mo' },
+    2: { sends: 25000, cost: 14000, label: '25K / mo' },
+    3: { sends: 50000, cost: 18000, label: '50K / mo' }
+  };
+  let currentPkg = 1;
+  const EUR_USD = 1.10;
+
+  function setPkg(n) {
+    currentPkg = n;
+    document.querySelectorAll('#roi-toggle button').forEach(b => {
+      b.classList.toggle('active', parseInt(b.dataset.pkg) === n);
+    });
+    calcROI();
+  }
+
+  function parseNum(str) {
+    return parseFloat(String(str).replace(/,/g, '')) || 0;
+  }
+  function formatUSD(n) {
+    return n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  }
+  function formatEUR(n) {
+    return n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  }
+
+  function calcROI() {
+    const pkg = pkgConfig[currentPkg];
+    const replyRate = parseFloat(document.getElementById('roi-reply').value) || 0.35;
+    const closeRate = parseInt(document.getElementById('roi-closerate').value) || 20;
+    const arr = parseNum(document.getElementById('roi-arr').value);
+    const retention = parseInt(document.getElementById('roi-retention').value) || 90;
+
+    const totalSends = pkg.sends * 3; // 3 active months
+    const positiveReplies = Math.round(totalSends * replyRate / 100);
+    const meetings = Math.round(positiveReplies * 0.65); // ~65% of L1+ convert to meetings via L2/L3
+    const deals = Math.round(meetings * closeRate / 100);
+    const year1 = deals * arr;
+
+    // 3-year LTV: Y1 + Y2 at retention + Y3 at retention^2
+    const r = retention / 100;
+    const ltvPerDeal = arr * (1 + r + r * r);
+    const ltv3yr = deals * ltvPerDeal;
+
+    const costUsd = pkg.cost * EUR_USD;
+    const mult = year1 > 0 && costUsd > 0 ? (year1 / costUsd) : 0;
+
+    document.getElementById('roi-deals').textContent = deals;
+    document.getElementById('roi-year1').textContent = '$' + formatUSD(year1);
+    document.getElementById('roi-ltv').textContent = '$' + formatUSD(ltv3yr);
+    document.getElementById('roi-mult').textContent = mult.toFixed(0) + '×';
+
+    document.getElementById('roi-cost-detail').textContent = '€' + formatEUR(pkg.cost);
+    document.getElementById('roi-cost-label').textContent = '€' + formatEUR(pkg.cost);
+    document.getElementById('roi-y1-detail').textContent = deals + ' new customers';
+    document.getElementById('roi-bar-y1-label').textContent = '$' + formatUSD(year1);
+    document.getElementById('roi-bar-ltv-label').textContent = '$' + formatUSD(ltv3yr);
+
+    const maxVal = Math.max(ltv3yr, 1);
+    document.getElementById('roi-bar-cost').style.width = Math.max((costUsd / maxVal * 100), 1) + '%';
+    document.getElementById('roi-bar-y1').style.width = (year1 / maxVal * 100) + '%';
+    document.getElementById('roi-bar-ltv').style.width = '100%';
+  }
+
+  calcROI();
+</script>
+
+</body>
+</html>
