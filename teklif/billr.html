@@ -125,20 +125,15 @@
     letter-spacing: 2px;
   }
 
-  /* Billr wordmark (no logo asset — rendered as styled text badge) */
+  /* Billr logo — inline SVG, scales via height */
   .bl-logo {
     display: inline-flex;
     align-items: center;
-    background: var(--accent);
-    color: var(--black);
-    border-radius: 8px;
-    padding: 6px 14px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    font-size: 16px;
     flex-shrink: 0;
+    line-height: 0;
   }
-  .bl-logo.lg { padding: 10px 20px; font-size: 24px; }
+  .bl-logo svg { display: block; height: 28px; width: auto; }
+  .bl-logo.lg svg { height: 48px; }
 
   h1 {
     font-size: clamp(36px, 6vw, 76px);
@@ -603,8 +598,8 @@
     .price-card { padding: 22px 20px; }
     .price-card .p-amount { font-size: 36px; }
     .slide-label { font-size: 9px; letter-spacing: 2px; }
-    .bl-logo { padding: 4px 10px; font-size: 13px; }
-    .bl-logo.lg { padding: 8px 16px; font-size: 20px; }
+    .bl-logo svg { height: 22px; }
+    .bl-logo.lg svg { height: 38px; }
     .brand-row { gap: 10px; }
     .cover-meta { gap: 16px; }
     .final-box { padding: 26px 20px; }
@@ -627,7 +622,7 @@
       <div class="brand-row">
         <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:34px; object-fit:contain;">
         <span class="x">×</span>
-        <span class="bl-logo">billr</span>
+        <span class="bl-logo"><svg viewBox="0 0 170 48" xmlns="http://www.w3.org/2000/svg" aria-label="billr"><g fill="#f4f4f0"><rect x="4" y="12" width="22" height="4" rx="2"/><rect x="10" y="22" width="28" height="4" rx="2"/><rect x="0" y="32" width="34" height="4" rx="2"/></g><g fill="#f4f4f0" font-family="'Red Hat Display', sans-serif" font-weight="800" font-size="40" letter-spacing="-1"><text x="52" y="37">billr</text></g></svg></span>
       </div>
       <span class="slide-label">Confidential · Prepared for Billr</span>
     </div>
@@ -1346,7 +1341,7 @@
         <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:28px; flex-wrap:wrap;">
           <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
           <span style="font-size:13px; color:var(--muted); letter-spacing:2px;">×</span>
-          <span class="bl-logo lg">billr</span>
+          <span class="bl-logo lg"><svg viewBox="0 0 170 48" xmlns="http://www.w3.org/2000/svg" aria-label="billr"><g fill="#f4f4f0"><rect x="4" y="12" width="22" height="4" rx="2"/><rect x="10" y="22" width="28" height="4" rx="2"/><rect x="0" y="32" width="34" height="4" rx="2"/></g><g fill="#f4f4f0" font-family="'Red Hat Display', sans-serif" font-weight="800" font-size="40" letter-spacing="-1"><text x="52" y="37">billr</text></g></svg></span>
         </div>
 
         <h2 style="margin-bottom:14px;">Let's start.</h2>
