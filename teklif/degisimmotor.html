@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Değişim Motor × Tibexa — Pazar Genişleme Sistemi</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111318;
+    --card: #181c24;
+    --card2: #1e2330;
+    --border: rgba(255,255,255,0.07);
+    --white: #f4f4f0;
+    --muted: #8a8f9e;
+    --accent: #e63946;       /* Değişim Motor kırmızısı */
+    --accent2: #ff6b78;
+    --gold: #c9a84c;
+    --green: #3ecf8e;
+    --red: #f55;
+    --blue: #5b9cf6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Red Hat Display', sans-serif;
+    height: 100%;
+    width: 100%;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  /* SLIDE SYSTEM */
+  .slides-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .slide {
+    min-width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 48px 72px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .slide::-webkit-scrollbar { width: 3px; }
+  .slide::-webkit-scrollbar-track { background: transparent; }
+  .slide::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  /* NAV */
+  .nav {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+    background: rgba(17,19,24,0.9);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 10px 18px;
+  }
+
+  .nav button {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px 8px;
+    transition: color 0.2s;
+  }
+  .nav button:hover { color: var(--accent); }
+
+  .dots { display: flex; gap: 6px; }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .dot.active { background: var(--accent); width: 20px; border-radius: 3px; }
+
+  .slide-counter {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    min-width: 50px;
+    text-align: center;
+  }
+
+  /* HEADER */
+  .slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .slide-label {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  /* Logo brand lockup */
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-row .x {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+
+  /* Değişim Motor tekstil badge (logo gelince img ile değiştirilir) */
+  .dm-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 8px 14px;
+    flex-shrink: 0;
+  }
+  .dm-logo .dm-mark {
+    width: 20px; height: 20px;
+    border-radius: 4px;
+    background: var(--accent);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 13px;
+    letter-spacing: 0;
+  }
+  .dm-logo .dm-text {
+    font-size: 13px;
+    font-weight: 800;
+    color: #0a0a0a;
+    letter-spacing: 0.5px;
+  }
+  .dm-logo .dm-sub {
+    font-size: 9px;
+    font-weight: 600;
+    color: #555;
+    letter-spacing: 1.5px;
+    margin-left: 2px;
+    text-transform: uppercase;
+  }
+  .dm-logo.lg { padding: 12px 20px; border-radius: 10px; }
+  .dm-logo.lg .dm-mark { width: 28px; height: 28px; font-size: 17px; }
+  .dm-logo.lg .dm-text { font-size: 17px; }
+  .dm-logo.lg .dm-sub { font-size: 10px; }
+
+  /* TYPOGRAPHY */
+  h1 {
+    font-size: clamp(36px, 6vw, 76px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  h2 {
+    font-size: clamp(26px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  h3 { font-size: 17px; font-weight: 700; }
+
+  p { font-size: 15px; line-height: 1.7; color: var(--muted); }
+
+  .accent { color: var(--accent); }
+  .white { color: var(--white); }
+  .green { color: var(--green); }
+  .gold { color: var(--gold); }
+  .red { color: var(--red); }
+  .muted { color: var(--muted); }
+  .blue { color: var(--blue); }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .card-accent {
+    background: linear-gradient(135deg, rgba(230,57,70,0.13), rgba(230,57,70,0.04));
+    border: 1px solid rgba(230,57,70,0.28);
+  }
+  .card-green {
+    background: linear-gradient(135deg, rgba(62,207,142,0.10), rgba(62,207,142,0.03));
+    border: 1px solid rgba(62,207,142,0.25);
+  }
+  .card-red {
+    background: linear-gradient(135deg, rgba(255,85,85,0.08), rgba(255,85,85,0.02));
+    border: 1px solid rgba(255,85,85,0.22);
+  }
+  .card-blue {
+    background: linear-gradient(135deg, rgba(91,156,246,0.10), rgba(91,156,246,0.03));
+    border: 1px solid rgba(91,156,246,0.25);
+  }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+  /* STATS */
+  .big-stat {
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .segment-pill {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-size: 12px;
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .segment-pill .dot-pill {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* KV */
+  .kv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+    gap: 16px;
+  }
+  .kv:last-child { border-bottom: none; }
+  .kv .k { color: var(--muted); flex-shrink: 0; }
+  .kv .v { font-weight: 600; text-align: right; }
+
+  /* DIVIDER */
+  .divider {
+    width: 48px; height: 2px;
+    background: var(--accent);
+    margin: 16px 0 20px;
+  }
+
+  /* COVER */
+  #s1 {
+    justify-content: center;
+    padding: 64px 72px;
+  }
+  .cover-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .cover-label::before {
+    content: '';
+    display: block;
+    width: 36px; height: 1px;
+    background: var(--accent);
+  }
+  .cover-subtitle {
+    font-size: 17px;
+    color: var(--muted);
+    margin-bottom: 40px;
+    max-width: 680px;
+    line-height: 1.6;
+  }
+  .cover-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+  .cover-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item { font-size: 13px; }
+  .cover-deco {
+    position: absolute;
+    right: 0; top: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 60%, rgba(230,57,70,0.05) 100%);
+    pointer-events: none;
+  }
+
+  /* TABLES */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+  .data-table th {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+  .data-table td {
+    padding: 11px 12px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--white);
+    vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr.recommended td {
+    background: rgba(230,57,70,0.08);
+  }
+  .data-table tr.recommended td:first-child {
+    border-left: 2px solid var(--accent);
+  }
+
+  .rec-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 6px;
+    text-transform: uppercase;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 26px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .tl-item { margin-bottom: 22px; position: relative; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -22px; top: 6px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(230,57,70,0.2);
+  }
+  .tl-step {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  /* BUTTON */
+  .btn {
+    padding: 13px 26px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent2); }
+
+  /* TAGS */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .tag-red { background: rgba(230,57,70,0.12); color: var(--accent2); border: 1px solid rgba(230,57,70,0.28); }
+  .tag-gold { background: rgba(201,168,76,0.12); color: #e8c96a; border: 1px solid rgba(201,168,76,0.25); }
+  .tag-blue { background: rgba(91,156,246,0.12); color: var(--blue); border: 1px solid rgba(91,156,246,0.25); }
+  .tag-green { background: rgba(62,207,142,0.12); color: var(--green); border: 1px solid rgba(62,207,142,0.25); }
+
+  /* Pain/Gain split */
+  .split-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .bullet-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .bullet-row:last-child { border-bottom: none; }
+  .bullet-row .ix {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .ix-red { background: rgba(255,85,85,0.15); color: var(--red); border: 1px solid rgba(255,85,85,0.3); }
+  .ix-green { background: rgba(62,207,142,0.15); color: var(--green); border: 1px solid rgba(62,207,142,0.3); }
+  .ix-accent { background: rgba(230,57,70,0.15); color: var(--accent2); border: 1px solid rgba(230,57,70,0.3); }
+  .ix-blue { background: rgba(91,156,246,0.15); color: var(--blue); border: 1px solid rgba(91,156,246,0.3); }
+
+  /* Region list */
+  .region-item {
+    display: grid;
+    grid-template-columns: 160px 1fr 1fr;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 12.5px;
+  }
+  .region-item:last-child { border-bottom: none; }
+  .region-item .rname { color: var(--accent); font-weight: 600; }
+  .region-item .rcountries { color: var(--white); }
+  .region-item .rpillar { color: var(--muted); font-size: 11.5px; }
+
+  /* Level badge */
+  .lvl {
+    display: inline-flex; align-items: center;
+    gap: 6px;
+    padding: 3px 9px;
+    font-size: 11px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .lvl-1 { background: rgba(91,156,246,0.15); color: var(--blue); }
+  .lvl-2 { background: rgba(201,168,76,0.15); color: #e8c96a; }
+  .lvl-3 { background: rgba(230,57,70,0.15); color: var(--accent2); }
+  .lvl-4 { background: rgba(62,207,142,0.15); color: var(--green); }
+
+  /* Guarantee card */
+  .gtee-box {
+    background: linear-gradient(135deg, rgba(62,207,142,0.12), rgba(62,207,142,0.03));
+    border: 1px solid rgba(62,207,142,0.28);
+    border-radius: 14px;
+    padding: 20px 24px;
+  }
+
+  /* Pricing cards */
+  .price-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .price-card.featured {
+    background: linear-gradient(165deg, rgba(230,57,70,0.14), rgba(230,57,70,0.03));
+    border: 1px solid rgba(230,57,70,0.35);
+  }
+  .price-card .p-badge {
+    position: absolute;
+    top: -11px; left: 22px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .price-card .p-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .price-card .p-name {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+  .price-card .p-amount {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 2px;
+    line-height: 1;
+  }
+  .price-card .p-sub { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+  .price-card .p-features { list-style: none; margin-top: auto; }
+  .price-card .p-features li {
+    font-size: 13px;
+    padding: 6px 0;
+    color: var(--white);
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .price-card .p-features li::before {
+    content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0;
+  }
+
+  .addon-card {
+    background: var(--card2);
+    border: 1px dashed rgba(201,168,76,0.35);
+    border-radius: 12px;
+    padding: 18px 22px;
+  }
+
+  /* Channel cards (3 kanal) */
+  .channel-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .channel-card .ch-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700;
+  }
+
+  /* ROI */
+  .roi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 16px; }
+  .roi-input-group { display: flex; flex-direction: column; gap: 5px; }
+  .roi-input-group label { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+  .roi-input-group input, .roi-input-group select {
+    background: var(--card2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 11px 14px; font-size: 14px; color: var(--white); font-family: 'Red Hat Display', sans-serif;
+    outline: none; transition: border-color 0.2s;
+  }
+  .roi-input-group input:focus, .roi-input-group select:focus { border-color: var(--accent); }
+  .roi-input-group select option { background: var(--card); color: var(--white); }
+
+  .roi-results { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+  .roi-result-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px; text-align: center;
+  }
+  .roi-result-card.highlight {
+    background: linear-gradient(135deg, rgba(62,207,142,0.14), rgba(62,207,142,0.04));
+    border-color: rgba(62,207,142,0.32);
+  }
+  .roi-result-card .roi-value {
+    font-size: 26px; font-weight: 800;
+    line-height: 1; margin-bottom: 5px;
+  }
+  .roi-result-card .roi-label { font-size: 10px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+
+  .roi-bar-wrap { margin-top: 16px; }
+  .roi-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+  .roi-bar { height: 8px; background: var(--card2); border-radius: 4px; overflow: hidden; }
+  .roi-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  .roi-bar-fill.accent-fill { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .roi-bar-fill.green { background: linear-gradient(90deg, var(--green), #5de8a8); }
+
+  .roi-toggle {
+    display: inline-flex;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3px;
+    margin-top: 2px;
+  }
+  .roi-toggle button {
+    padding: 8px 18px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    font-family: 'Red Hat Display', sans-serif;
+  }
+  .roi-toggle button.active {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* FINAL */
+  #s_final {
+    justify-content: center;
+    background: linear-gradient(135deg, var(--black) 0%, #0f1118 100%);
+  }
+  .final-box {
+    background: linear-gradient(135deg, rgba(230,57,70,0.12), rgba(230,57,70,0.03));
+    border: 1px solid rgba(230,57,70,0.28);
+    border-radius: 20px;
+    padding: 44px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* FADE-IN */
+  .slide > * {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .slide.active > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .slide.active > *:nth-child(1) { transition-delay: 0.05s; }
+  .slide.active > *:nth-child(2) { transition-delay: 0.12s; }
+  .slide.active > *:nth-child(3) { transition-delay: 0.19s; }
+  .slide.active > *:nth-child(4) { transition-delay: 0.26s; }
+  .slide.active > *:nth-child(5) { transition-delay: 0.33s; }
+  .slide.active > *:nth-child(6) { transition-delay: 0.40s; }
+
+  /* ===== TABLET / MOBILE ===== */
+  @media (max-width: 900px) {
+    body { overflow: auto; }
+    .slides-container { display: block; width: 100%; height: auto; transform: none !important; transition: none; }
+    .slide { min-width: 100%; width: 100%; height: auto; min-height: auto; padding: 40px 32px 56px; overflow: visible; scroll-margin-top: 16px; }
+    .slide + .slide { border-top: 1px solid var(--border); }
+    .slide > * { opacity: 1 !important; transform: none !important; }
+    .nav { padding: 8px 14px; gap: 8px; bottom: 16px; }
+    .nav .slide-counter { min-width: 40px; font-size: 11px; letter-spacing: 1px; }
+    .slide-header { margin-bottom: 28px; }
+    .grid-4 { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .roi-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .roi-results { grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; }
+    .roi-result-card { padding: 16px 12px; }
+    .roi-result-card .roi-value { font-size: 22px; }
+    .cover-meta { gap: 22px; }
+    .final-box { padding: 34px 26px; }
+  }
+
+  @media (max-width: 640px) {
+    .slide { padding: 28px 18px 44px; }
+    h1 { font-size: clamp(30px, 9vw, 52px); }
+    h2 { font-size: clamp(22px, 6.5vw, 32px); }
+    .big-stat { font-size: 38px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 14px; }
+    .grid-4 { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .roi-grid { grid-template-columns: 1fr; gap: 12px; }
+    .roi-results { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .roi-result-card { padding: 14px 10px; }
+    .roi-result-card .roi-value { font-size: 20px; }
+    .data-table { font-size: 12px; }
+    .data-table th, .data-table td { padding: 9px 8px; }
+    .region-item { grid-template-columns: 1fr; gap: 2px; padding: 10px 0; }
+    .region-item .rname { font-size: 13px; }
+    .region-item .rpillar { font-size: 11px; }
+    .price-card { padding: 22px 20px; }
+    .price-card .p-amount { font-size: 36px; }
+    .slide-label { font-size: 9px; letter-spacing: 2px; }
+    .dm-logo { padding: 6px 10px; }
+    .dm-logo .dm-text { font-size: 12px; }
+    .dm-logo.lg { padding: 10px 16px; }
+    .dm-logo.lg .dm-text { font-size: 15px; }
+    .brand-row { gap: 10px; }
+    .cover-meta { gap: 16px; }
+    .final-box { padding: 26px 20px; }
+  }
+
+  @media (max-width: 400px) {
+    .slide-header { gap: 8px; }
+    .brand-row .x { display: none; }
+    .dm-logo .dm-sub { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slides-container" id="slides">
+
+  <!-- ========== SLIDE 1 — COVER ========== -->
+  <div class="slide active" id="s1">
+    <div class="cover-deco"></div>
+
+    <div class="slide-header">
+      <div class="brand-row">
+        <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:34px; object-fit:contain;">
+        <span class="x">×</span>
+        <span class="dm-logo">
+          <span class="dm-mark">DM</span>
+          <span class="dm-text">Değişim Motor</span>
+          <span class="dm-sub">Koç Redüktör</span>
+        </span>
+      </div>
+      <span class="slide-label">Gizli · Değişim Motor için hazırlandı</span>
+    </div>
+
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; max-width: 820px;">
+      <div class="cover-label">Pazar Genişleme Sistemi · Nisan 2026</div>
+
+      <h1 style="margin-bottom:22px;">
+        Patentli bombeleme motoru<br>
+        <span class="accent">41 segmentlik evrene açılıyor.</span>
+      </h1>
+
+      <p class="cover-subtitle">
+        Değişim Motor'un CE Motors patentli bombeleme motoru (Kanal 1) ve motor–redüktör distribütörlük portföyü (Kanal 2)
+        için üç kanallı (Cold Email + LinkedIn + Cold Call) sistematik dış pazar erişim operasyonu.
+      </p>
+
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <div class="label">Hazırlayan</div>
+          <div class="white" style="font-weight:600;">Tibexa Global</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="label">Tarih</div>
+          <div class="white" style="font-weight:600;">Nisan 2026</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="label">Versiyon</div>
+          <div class="white" style="font-weight:600;">v2</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="label">Kapsam</div>
+          <div class="white" style="font-weight:600;">3 Kanallı Outbound + Opsiyonel Inside Sales</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 2 — FIRSAT ========== -->
+  <div class="slide" id="s2">
+    <div class="slide-header">
+      <span class="slide-label">01 / Fırsat</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>İki ürün hattı,<br><span class="accent">tek operasyonda birleşiyor.</span></h2>
+    <div class="divider"></div>
+
+    <p style="max-width:820px; margin-bottom:20px;">
+      Değişim Motor'un iki tamamlayıcı gücü var: <span class="white">CE Motors patentli bombeleme motoru</span> —
+      CNC abkant preslerde 0.3 kW'lık niş çözüm — ve <span class="white">geniş motor–redüktör distribütörlük portföyü</span>.
+      Bu iki hat aynı outbound operasyonunda çapraz çalıştırıldığında, her firma temasına iki farklı tekliften biri denk düşüyor.
+    </p>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card card-accent">
+        <div class="bullet-row" style="border:none; padding-top:0;">
+          <div class="ix ix-accent">1</div>
+          <div>
+            <h3 style="margin-bottom:6px;">Kanal 1 — CE Motors Bombeleme</h3>
+            <p style="font-size:13px;">Abkant pres OEM'leri, yenileme/retrofit firmaları ve sac metal makine distribütörlerinden oluşan <span class="white">245 firmalık</span> patentli niş pazar. 5 alt segment.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card card-blue">
+        <div class="bullet-row" style="border:none; padding-top:0;">
+          <div class="ix ix-blue">2</div>
+          <div>
+            <h3 style="margin-bottom:6px;">Kanal 2 — Motor + Redüktör Distribütörlüğü</h3>
+            <p style="font-size:13px;">Makine imalattan madenciliğe, vinç sistemlerinden tekstile 34 sektör + endüstriyel distribütörler. <span class="white">4.250 firmalık</span> yatay evren.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:20px;">
+      <div class="card" style="text-align:center; padding:18px 14px;">
+        <div class="big-stat" style="font-size:28px;">4.495</div>
+        <div style="font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:6px;">Toplam Hedef Firma</div>
+      </div>
+      <div class="card" style="text-align:center; padding:18px 14px;">
+        <div class="big-stat" style="font-size:28px;">41</div>
+        <div style="font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:6px;">Segment</div>
+      </div>
+      <div class="card" style="text-align:center; padding:18px 14px;">
+        <div class="big-stat" style="font-size:28px;">3</div>
+        <div style="font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:6px;">Aktif Kanal</div>
+      </div>
+      <div class="card" style="text-align:center; padding:18px 14px;">
+        <div class="big-stat" style="font-size:28px;">6</div>
+        <div style="font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:6px;">Ana Bölge</div>
+      </div>
+    </div>
+
+    <div class="card card-accent">
+      <p style="font-size:14px;">
+        <strong class="accent">Operasyonel mantık:</strong> Aynı firmaya gidilen mailde hangi kanaldan ilgi çıkarsa o taraftan ilerliyoruz.
+        Bombeleme motoru ilgisi çıkmazsa redüktör/motor talebi, redüktör kapanmıyorsa bombeleme — <span class="white">her temasta iki şans</span>.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 3 — ICP & HEDEF EVREN ========== -->
+  <div class="slide" id="s3">
+    <div class="slide-header">
+      <span class="slide-label">02 / Hedef Pazar</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>4.495 firma · 41 segment.<br><span class="accent">İki kanal, aynı evren.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card card-accent">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Kanal 1 — Bombeleme Motoru (245 firma)</div>
+        <div class="kv"><span class="k">BM-1 · Abkant Pres OEM (Balkan+D.Avrupa)</span><span class="v">55</span></div>
+        <div class="kv"><span class="k">BM-2 · Abkant Pres OEM (BDT+Türki)</span><span class="v">35</span></div>
+        <div class="kv"><span class="k">BM-3 · Abkant Pres OEM (OD+K.Afrika)</span><span class="v">25</span></div>
+        <div class="kv"><span class="k">BM-4 · Abkant Yenileme & Retrofit</span><span class="v">60</span></div>
+        <div class="kv"><span class="k">BM-5 · Sac Metal Makine Distribütörleri</span><span class="v">70</span></div>
+        <div class="kv" style="margin-top:4px; padding-top:10px; border-top:1px solid var(--border);">
+          <span class="k" style="color:var(--white);">Toplam</span>
+          <span class="v accent" style="font-size:15px;">245</span>
+        </div>
+      </div>
+
+      <div class="card card-blue">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--blue); text-transform:uppercase; margin-bottom:12px;">Kanal 2 — Motor + Redüktör (4.250 firma)</div>
+        <div class="kv"><span class="k">Makine İmalat (CNC, Pres, Özel Mak.)</span><span class="v">300</span></div>
+        <div class="kv"><span class="k">Madencilik (Kırma-Eleme-Taşıma)</span><span class="v">200</span></div>
+        <div class="kv"><span class="k">Vinç ve Kaldırma Sistemleri</span><span class="v">300</span></div>
+        <div class="kv"><span class="k">Konveyör ve Taşıma</span><span class="v">250</span></div>
+        <div class="kv"><span class="k">Tekstil, Ambalaj, Plastik, Gıda Mak.</span><span class="v">670</span></div>
+        <div class="kv"><span class="k">Demir-Çelik, Çimento, Petrokimya</span><span class="v">240</span></div>
+        <div class="kv"><span class="k">Endüstriyel Distribütör & Bayi</span><span class="v">350</span></div>
+        <div class="kv"><span class="k">Diğer 27 sektör</span><span class="v">1.940</span></div>
+        <div class="kv" style="margin-top:4px; padding-top:10px; border-top:1px solid var(--border);">
+          <span class="k" style="color:var(--white);">Toplam</span>
+          <span class="v blue" style="font-size:15px;">4.250</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:10px;">Aktif Hedef Coğrafyalar</h3>
+    <div class="card" style="padding:14px 20px; margin-bottom:14px;">
+      <div class="region-item">
+        <div class="rname">Balkanlar</div>
+        <div class="rcountries">Sırbistan, Romanya, Bulgaristan, Hırvatistan, Bosna, K. Makedonya, Arnavutluk, Kosova, Karadağ</div>
+        <div class="rpillar">Abkant OEM + karma portföy</div>
+      </div>
+      <div class="region-item">
+        <div class="rname">Doğu Avrupa (AB)</div>
+        <div class="rcountries">Polonya, Çek C., Slovakya, Macaristan, Slovenya</div>
+        <div class="rpillar">Madencilik + genel OEM</div>
+      </div>
+      <div class="region-item">
+        <div class="rname">Türki Ülkeler</div>
+        <div class="rcountries">Özbekistan, Kazakistan, Azerbaycan, Türkmenistan, Kırgızistan</div>
+        <div class="rpillar">Dil avantajı + genel OEM + distribütör</div>
+      </div>
+      <div class="region-item">
+        <div class="rname">BDT</div>
+        <div class="rcountries">Rusya, Belarus, Gürcistan, Ukrayna (bölge)</div>
+        <div class="rpillar">Vinç + demir-çelik · yaptırım kontrolü zorunlu</div>
+      </div>
+      <div class="region-item">
+        <div class="rname">Orta Doğu</div>
+        <div class="rcountries">BAE, Suudi Arabistan, Katar, Kuveyt, Umman, Irak, Ürdün</div>
+        <div class="rpillar">Vinç + HVAC + distribütör · SteelFab Dubai</div>
+      </div>
+      <div class="region-item">
+        <div class="rname">Kuzey Afrika</div>
+        <div class="rcountries">Mısır, Fas, Cezayir, Tunus + Libya (seçici)</div>
+        <div class="rpillar">Arapça template · gıda/tarım + madencilik</div>
+      </div>
+      <div class="region-item">
+        <div class="rname">Alt-Sahra Afrika</div>
+        <div class="rcountries">Güney Afrika, Nijerya, Kenya, Gana, Etiyopya</div>
+        <div class="rpillar">Madencilik + konveyör + vinç · ZA öncelikli</div>
+      </div>
+      <div class="region-item">
+        <div class="rname">Baltık</div>
+        <div class="rcountries">Litvanya, Letonya, Estonya</div>
+        <div class="rpillar">Küçük pazar test · 11. ay</div>
+      </div>
+      <div class="region-item">
+        <div class="rname">Güneydoğu Asya (pilot)</div>
+        <div class="rcountries">Vietnam, Endonezya, Tayland</div>
+        <div class="rpillar">Sadece email pilotu · 10. ay</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:14px;">
+      <div class="card" style="padding:14px 18px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:8px;">Kapsam Dışı</div>
+        <p style="font-size:12px;"><span class="white">İran &amp; Hindistan</span> — Değişim Motor'un stratejik kararıyla dışarıda. <span class="white">Çin, Singapur</span> — tedarik ekosistemi ters yönlü. <span class="white">Kuzey Amerika</span> — fase 2'ye bırakıldı.</p>
+      </div>
+      <div class="card" style="padding:14px 18px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:8px;">Elenen Profiller</div>
+        <p style="font-size:12px;"><span class="white">Manuel/mekanik abkant</span>, <span class="white">2.el trader</span>, <span class="white">kendi bombelemesi olan büyük OEM</span>, <span class="white">OFAC/EU yaptırım listesi</span> — BDT segmentinde mutlak eleme, <span class="white">devlet askeri tesisleri</span>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 4 — 3 KANAL STRATEJİSİ ========== -->
+  <div class="slide" id="s4">
+    <div class="slide-header">
+      <span class="slide-label">03 / Üç Kanal Stratejisi</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Üç kanal paralel çalışıyor.<br><span class="accent">Aynı firmaya farklı yönlerden.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-3" style="gap:16px; margin-bottom:18px;">
+      <div class="channel-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div class="ch-icon" style="background:rgba(230,57,70,0.15); color:var(--accent);">✉</div>
+          <span class="tag tag-red">Ana Kanal</span>
+        </div>
+        <div>
+          <h3 style="margin-bottom:4px;">Cold Email</h3>
+          <p style="font-size:12px;">Hacimli, sistematik. Ana mail + 2 follow-up (+3 gün, +7 gün).</p>
+        </div>
+        <div style="border-top:1px solid var(--border); padding-top:10px;">
+          <div class="kv"><span class="k">Aylık email</span><span class="v">3.300</span></div>
+          <div class="kv"><span class="k">Ulaşılan kişi</span><span class="v">1.100</span></div>
+          <div class="kv"><span class="k">Benzersiz firma</span><span class="v">846</span></div>
+          <div class="kv"><span class="k">Pozitif yanıt oranı</span><span class="v accent">%1</span></div>
+        </div>
+      </div>
+
+      <div class="channel-card" style="border-color:rgba(91,156,246,0.28); background:linear-gradient(165deg, rgba(91,156,246,0.08), rgba(91,156,246,0.02));">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div class="ch-icon" style="background:rgba(91,156,246,0.15); color:var(--blue);">in</div>
+          <span class="tag tag-blue">Hedefli</span>
+        </div>
+        <div>
+          <h3 style="margin-bottom:4px;">LinkedIn Otomasyon</h3>
+          <p style="font-size:12px;">AI kişiselleştirme ile connect + mesaj sekansı. En yüksek dönüşüm oranı.</p>
+        </div>
+        <div style="border-top:1px solid var(--border); padding-top:10px;">
+          <div class="kv"><span class="k">Aylık connect</span><span class="v">350</span></div>
+          <div class="kv"><span class="k">Kabul oranı</span><span class="v">~%30</span></div>
+          <div class="kv"><span class="k">Kabul edilen</span><span class="v">105</span></div>
+          <div class="kv"><span class="k">Pozitif yanıt oranı</span><span class="v blue">%2,5</span></div>
+        </div>
+      </div>
+
+      <div class="channel-card" style="border-color:rgba(62,207,142,0.28); background:linear-gradient(165deg, rgba(62,207,142,0.08), rgba(62,207,142,0.02));">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div class="ch-icon" style="background:rgba(62,207,142,0.15); color:var(--green);">☎</div>
+          <span class="tag tag-green">Yüksek Dönüşüm</span>
+        </div>
+        <div>
+          <h3 style="margin-bottom:4px;">Cold Call</h3>
+          <p style="font-size:12px;">Email açmayanlara, kabul etmeyenlere telefonla takip. Distribütörlerde öncelikli.</p>
+        </div>
+        <div style="border-top:1px solid var(--border); padding-top:10px;">
+          <div class="kv"><span class="k">Aylık arama</span><span class="v">350</span></div>
+          <div class="kv"><span class="k">Ulaşma oranı</span><span class="v">~%25</span></div>
+          <div class="kv"><span class="k">Konuşulan</span><span class="v">88</span></div>
+          <div class="kv"><span class="k">Pozitif yanıt oranı</span><span class="v green">%2,5</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:14px; margin-bottom:14px;">
+      <div class="card card-accent">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Aylık Birleşik Kapasite</div>
+        <div class="kv"><span class="k">Temas kişisi (3 kanal)</span><span class="v">1.800</span></div>
+        <div class="kv"><span class="k">Benzersiz firma (örtüşme hariç)</span><span class="v">~1.440</span></div>
+        <div class="kv"><span class="k">Pozitif yanıt (birleşik)</span><span class="v accent">~28,5 / ay</span></div>
+        <div class="kv"><span class="k">Toplantı / ilerleme</span><span class="v accent">~11,4 / ay</span></div>
+      </div>
+      <div class="card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:10px;">Neden üç kanal paralel?</div>
+        <p style="font-size:13px; margin-bottom:8px;">LinkedIn ilişki kurar, email hacim üretir, telefon kararı hızlandırır. Tek firmaya üç farklı temas yolu — hangisi çalışırsa ondan ilerleriz.</p>
+        <p style="font-size:12px;">Distribütör segmentinde (DP-35 · 350 firma) telefon öncelikli, OEM segmentinde email + LinkedIn ağırlıklı çalışır.</p>
+      </div>
+    </div>
+
+    <div class="card" style="padding:14px 20px;">
+      <p style="font-size:13px;">
+        <strong class="accent">AI kişiselleştirme:</strong> LinkedIn mesajları ve email açılımları hedef firmanın websitesinden, ürün odağından, ülke/sektör kesitinden üretilir —
+        "<span class="white">{company} websitesinde {ürün} gördüm</span>" tarzı firma-spesifik satırlar her temasa eklenir.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 5 — OPERASYONEL MODEL ========== -->
+  <div class="slide" id="s5">
+    <div class="slide-header">
+      <span class="slide-label">04 / Operasyonel Model</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Haftalık iş akışı.<br><span class="accent">Her adım ölçülebilir.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="gap:24px;">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-step">Adım 1</div>
+          <h3 style="margin-bottom:3px;">Liste inşası (WebRambo + Bitscale)</h3>
+          <p style="font-size:12.5px;">41 segment için anahtar kelime sözlükleri hazır. Haftalık batch'ler Balkan/BDT/MENA bazlı çıkarılır. Bitscale UYAR/UYMAZ kriterleri ile kalifikasyon.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Adım 2</div>
+          <h3 style="margin-bottom:3px;">Veri zenginleştirme</h3>
+          <p style="font-size:12.5px;">Karar verici (Purchasing / Production Manager / Technical Buyer), firma web sitesi, motor/redüktör kullanımı, yaptırım kontrolü.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Adım 3</div>
+          <h3 style="margin-bottom:3px;">Çok-kanallı kişiselleştirme</h3>
+          <p style="font-size:12.5px;">Her firma için email (3 varyant) + LinkedIn mesaj sekansı (3 adım) + arama scripti. AI ile <span class="white">firma-spesifik 2–3 satır</span> üretilir.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Adım 4</div>
+          <h3 style="margin-bottom:3px;">Paralel gönderim</h3>
+          <p style="font-size:12.5px;">Email: Ana → +3 gün FUP1 → +7 gün FUP2. LinkedIn: Connect → Thank You + Value → +5 gün FUP. Cold Call: Email/LinkedIn dönmeyenlere.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Adım 5</div>
+          <h3 style="margin-bottom:3px;">Yanıt sınıflandırma</h3>
+          <p style="font-size:12.5px;">Gelen yanıtlar dört seviyede etiketlenir (sağdaki karta bkz).</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Adım 6</div>
+          <h3 style="margin-bottom:3px;">Handoff</h3>
+          <p style="font-size:12.5px;">Tüm pozitif yanıtlar <span class="white">30 dakika içinde</span> Değişim Motor'a iletilir (veya inside sales modülü aktifse Tibexa içinde kalır).</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-step">Adım 7</div>
+          <h3 style="margin-bottom:3px;">Haftalık rapor</h3>
+          <p style="font-size:12.5px;">Gönderim hacmi, yanıt sayısı, seviye dağılımı, kanal kırılımı, devredilen lead'ler, numune talepleri, kurulan toplantılar raporlanır.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="card card-accent">
+          <h3 style="margin-bottom:12px;">Yanıt Sınıflandırma</h3>
+          <div class="kv"><span class="lvl lvl-1">Seviye 1</span><span class="v" style="font-size:12px;">İlgi beyanı / soru</span></div>
+          <div class="kv"><span class="lvl lvl-2">Seviye 2</span><span class="v" style="font-size:12px;">Numune veya katalog talebi</span></div>
+          <div class="kv"><span class="lvl lvl-3">Seviye 3</span><span class="v" style="font-size:12px;">Fiyat sorgusu</span></div>
+          <div class="kv"><span class="lvl lvl-4">Seviye 4</span><span class="v" style="font-size:12px;">Toplantı talebi</span></div>
+          <p style="font-size:11.5px; margin-top:12px; padding-top:12px; border-top:1px solid var(--border);">Seviye 1+ tüm yanıtlar Değişim Motor'a devredilir.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:12px;">Handoff SLA</h3>
+          <div class="kv"><span class="k">Pozitif yanıt → ilk bildirim</span><span class="v accent">30 dk</span></div>
+          <div class="kv"><span class="k">Lead'e ilk geri yanıt</span><span class="v">2 saat (iş saati)</span></div>
+          <div class="kv"><span class="k">Numune/teklif başlatma</span><span class="v">24 saat</span></div>
+          <div class="kv"><span class="k">Takip hatırlatması</span><span class="v" style="font-size:12px;">Periyodik (inside sales)</span></div>
+          <p style="font-size:11.5px; margin-top:12px; color:var(--muted); font-style:italic;">
+            Değişim Motor tarafındaki yanıt süresi 48 saati geçen lead'ler "soğuk" kabul edilir ve Tibexa'nın KPI hesabında tutulmaz — şeffaflık amacıyla.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 6 — 12 AYLIK TAKVİM ========== -->
+  <div class="slide" id="s6">
+    <div class="slide-header">
+      <span class="slide-label">05 / 12 Aylık Yol Haritası</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Dalga dalga coğrafya.<br><span class="accent">Her ayda farklı bölgeye odak.</span></h2>
+    <div class="divider"></div>
+
+    <p style="max-width:820px; margin-bottom:14px;">
+      Coğrafi fazlama 12 aylık takvime yayılır. İlk ay yarı kapasite warm-up, 2. aydan itibaren tam hızda. Dalgalar arası yeni DM listesi ve yeni mesaj varyantı ile tekrar ziyaret edilir.
+    </p>
+
+    <table class="data-table" style="margin-bottom:14px;">
+      <thead>
+        <tr>
+          <th style="width:40px;">Ay</th>
+          <th>Bölge</th>
+          <th style="text-align:right;">Firma</th>
+          <th style="text-align:right;">Temas</th>
+          <th style="text-align:right;">Poz. Yanıt</th>
+          <th style="text-align:right;">Toplantı</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Türki Ülkeler (UZ, KZ, AZ) · <span class="muted">warm-up</span></td><td style="text-align:right;">400</td><td style="text-align:right;">1.200</td><td style="text-align:right; color:var(--accent);">14,4</td><td style="text-align:right;">5,8</td></tr>
+        <tr><td>2</td><td>Balkanlar başlangıç (RS, RO, BG) + Türki devam</td><td style="text-align:right;">900</td><td style="text-align:right;">2.700</td><td style="text-align:right; color:var(--accent);">37,8</td><td style="text-align:right;">15,1</td></tr>
+        <tr><td>3</td><td>Balkan genişleme (BA, MK, HR, AL, XK, ME) + Retrofit kampanyası</td><td style="text-align:right;">900</td><td style="text-align:right;">2.700</td><td style="text-align:right; color:var(--accent);">37,8</td><td style="text-align:right;">15,1</td></tr>
+        <tr><td>4</td><td>Doğu Avrupa AB (PL, CZ, SK, HU, SI) · madencilik + OEM</td><td style="text-align:right;">900</td><td style="text-align:right;">2.700</td><td style="text-align:right; color:var(--accent);">37,8</td><td style="text-align:right;">15,1</td></tr>
+        <tr><td>5</td><td>Kuzey Afrika (EG, MA, DZ, TN) + Irak · Arapça template</td><td style="text-align:right;">900</td><td style="text-align:right;">2.700</td><td style="text-align:right; color:var(--accent);">32,4</td><td style="text-align:right;">13,0</td></tr>
+        <tr><td>6</td><td>BDT (RU, BY, GE) · Rusça template · yaptırım kontrolü</td><td style="text-align:right;">900</td><td style="text-align:right;">2.700</td><td style="text-align:right; color:var(--accent);">32,4</td><td style="text-align:right;">13,0</td></tr>
+        <tr><td>7</td><td>Orta Doğu (SA, AE, QA, KW, OM, IQ, JO) · SteelFab Dubai senkron</td><td style="text-align:right;">900</td><td style="text-align:right;">2.700</td><td style="text-align:right; color:var(--accent);">37,8</td><td style="text-align:right;">15,1</td></tr>
+        <tr><td>8</td><td>Afrika (ZA, NG, KE, GH, ET) · madencilik + konveyör</td><td style="text-align:right;">800</td><td style="text-align:right;">2.400</td><td style="text-align:right; color:var(--accent);">28,8</td><td style="text-align:right;">11,5</td></tr>
+        <tr class="recommended"><td>9</td><td><strong>2. Döngü başlangıcı</strong> · Dalga 1 ülkeleri yeni DM + yeni mesaj</td><td style="text-align:right;">900</td><td style="text-align:right;">2.700</td><td style="text-align:right; color:var(--accent);">43,2</td><td style="text-align:right;">17,3</td></tr>
+        <tr><td>10</td><td>2. döngü devam + <span class="muted">GDA pilot (VN, ID, TH)</span></td><td style="text-align:right;">900</td><td style="text-align:right;">2.700</td><td style="text-align:right; color:var(--accent);">43,2</td><td style="text-align:right;">17,3</td></tr>
+        <tr><td>11</td><td>Tüm bölgeler 2. döngü + Baltık (LT, LV, EE) ekleme</td><td style="text-align:right;">900</td><td style="text-align:right;">2.700</td><td style="text-align:right; color:var(--accent);">43,2</td><td style="text-align:right;">17,3</td></tr>
+        <tr><td>12</td><td>Yıl sonu taraması + performans raporu + Yıl 2 planı</td><td style="text-align:right;">900</td><td style="text-align:right;">2.700</td><td style="text-align:right; color:var(--accent);">43,2</td><td style="text-align:right;">17,3</td></tr>
+      </tbody>
+    </table>
+
+    <div class="grid-4" style="gap:12px;">
+      <div class="card" style="text-align:center; padding:16px 12px;">
+        <div class="big-stat" style="font-size:24px;">10.200</div>
+        <div style="font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:4px;">Yıl 1 Firma</div>
+      </div>
+      <div class="card" style="text-align:center; padding:16px 12px;">
+        <div class="big-stat" style="font-size:24px;">30.600</div>
+        <div style="font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:4px;">Yıl 1 Temas</div>
+      </div>
+      <div class="card" style="text-align:center; padding:16px 12px;">
+        <div class="big-stat" style="font-size:24px;">432</div>
+        <div style="font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:4px;">Yıl 1 Pozitif Yanıt</div>
+      </div>
+      <div class="card" style="text-align:center; padding:16px 12px;">
+        <div class="big-stat" style="font-size:24px;">173</div>
+        <div style="font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; margin-top:4px;">Yıl 1 Toplantı</div>
+      </div>
+    </div>
+
+    <p style="font-size:11.5px; margin-top:14px; color:var(--muted); font-style:italic;">
+      ⚠ Rakamlar sektör benchmark'ına dayalı varsayımsal hedeflerdir. İlk 30 günlük kalibrasyon sonrası gerçek veriyle güncellenir.
+    </p>
+  </div>
+
+  <!-- ========== SLIDE 7 — İNSIDE SALES MODÜLÜ ========== -->
+  <div class="slide" id="s7">
+    <div class="slide-header">
+      <span class="slide-label">06 / Inside Sales Modülü</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Pozitif yanıtı <span class="accent">işleyen ekip</span><br>opsiyonel olarak bizde.</h2>
+    <div class="divider"></div>
+
+    <p style="max-width:780px; margin-bottom:20px;">
+      Değişim Motor satış ekibi sevkiyat, tahsilat ve mevcut müşteri servisiyle meşgulse, Tibexa bünyesinde Değişim Motor adına çalışan bir inside sales personeli modülü aktifleştirilebilir.
+      Değişim Motor <span class="white">satış süreci sahibi</span>, Tibexa <span class="white">operasyonel uygulayıcı</span> konumundadır.
+    </p>
+
+    <div class="grid-2" style="margin-bottom:18px;">
+      <div class="card">
+        <h3 style="margin-bottom:14px;">Modül kapsamı</h3>
+        <div class="bullet-row"><div class="ix ix-green">✓</div><div><p style="font-size:13px; color:var(--white);">Değişim Motor'a gelen pozitif yanıtlara <span class="accent">30 dakika içinde</span> ilk cevabı vermek</p></div></div>
+        <div class="bullet-row"><div class="ix ix-green">✓</div><div><p style="font-size:13px; color:var(--white);">Lead'leri arayarak telefonla bağlantı kurmak</p></div></div>
+        <div class="bullet-row"><div class="ix ix-green">✓</div><div><p style="font-size:13px; color:var(--white);">Yanıt vermeyen lead'lere periyodik hatırlatma göndermek</p></div></div>
+        <div class="bullet-row"><div class="ix ix-green">✓</div><div><p style="font-size:13px; color:var(--white);">Tüm aktivite ve durumu Değişim Motor'a raporlamak</p></div></div>
+      </div>
+
+      <div class="card card-accent">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Neden önemli?</div>
+        <p style="font-size:13.5px; line-height:1.8;">
+          Sektör benchmark'ları: Lead'e <span class="white">1 saat içinde</span> dönüş yapan firma, 24 saat sonra dönüş yapandan
+          <span class="white">7x daha fazla</span> kapanış yapıyor.
+        </p>
+        <p style="font-size:13.5px; line-height:1.8; margin-top:10px;">
+          Özellikle Balkan ve Orta Doğu gibi telefon kültürü güçlü pazarlarda bu pencere kritik. Inside sales modülü bu riski sıfırlar.
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="padding:14px 20px;">
+      <p style="font-size:13px;">
+        <strong class="accent">Esnek aktivasyon:</strong> Modül sözleşme başında veya ilk aydan sonra ayrı add-on olarak aktive edilebilir.
+        Değişim Motor kendi ekibi ile dönüş yapabileceğine karar verirse, modül hiç kullanılmayabilir.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 8 — KPI & GARANTİ ========== -->
+  <div class="slide" id="s8">
+    <div class="slide-header">
+      <span class="slide-label">07 / KPI &amp; Garanti</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Hedefler <span class="accent">bağlayıcı.</span><br>Riski biz alıyoruz.</h2>
+    <div class="divider"></div>
+
+    <h3 style="margin-bottom:10px;">Birincil KPI'lar (aylık)</h3>
+    <table class="data-table" style="margin-bottom:18px;">
+      <thead>
+        <tr>
+          <th>Metrik</th>
+          <th style="text-align:center;">Paket 1 · Tek Kanal</th>
+          <th style="text-align:center;">Paket 2 · 3 Kanal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Aktif kanallar</td>
+          <td style="text-align:center; font-weight:600;">Email</td>
+          <td style="text-align:center; font-weight:600;">Email + LinkedIn + Call</td>
+        </tr>
+        <tr>
+          <td>Ulaşılan kişi (ana mail + follow-up + LI + call)</td>
+          <td style="text-align:center; font-weight:600;">~1.100</td>
+          <td style="text-align:center; font-weight:600;">~1.800</td>
+        </tr>
+        <tr>
+          <td>Benzersiz firma</td>
+          <td style="text-align:center; font-weight:600;">~850</td>
+          <td style="text-align:center; font-weight:600;">~1.440</td>
+        </tr>
+        <tr class="recommended">
+          <td>Pozitif yanıt <span style="color:var(--muted); font-size:11px;">(Seviye 1+)</span> <span class="rec-badge">Ana KPI</span></td>
+          <td style="text-align:center; color:var(--accent); font-weight:700;">8–15</td>
+          <td style="text-align:center; color:var(--accent); font-weight:700;">22–35</td>
+        </tr>
+        <tr>
+          <td>Kalifiye pozitif <span style="color:var(--muted); font-size:11px;">(Seviye 2+)</span></td>
+          <td style="text-align:center; font-weight:600;">4–8</td>
+          <td style="text-align:center; font-weight:600;">11–18</td>
+        </tr>
+        <tr>
+          <td>Toplantı / numune talebi</td>
+          <td style="text-align:center; font-weight:600;">3–6</td>
+          <td style="text-align:center; font-weight:600;">8–15</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2" style="margin-bottom:18px;">
+      <div class="card">
+        <h3 style="margin-bottom:10px;">Dönüşüm KPI'ları (iki taraflı)</h3>
+        <div class="kv"><span class="k">Handoff → ilk yanıt süresi</span><span class="v">DM + Tibexa</span></div>
+        <div class="kv"><span class="k">Handoff → ilk teklif süresi</span><span class="v">Değişim Motor</span></div>
+        <div class="kv"><span class="k">Teklif → ilk sipariş oranı</span><span class="v">Değişim Motor</span></div>
+        <div class="kv"><span class="k">Lead başı ciro</span><span class="v">Ciro payı temeli</span></div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:10px;">Raporlama Ritmi</h3>
+        <div class="kv"><span class="k">Haftalık</span><span class="v" style="font-size:12px;">1 sayfalık dashboard (kanal kırılımlı)</span></div>
+        <div class="kv"><span class="k">Aylık</span><span class="v" style="font-size:12px;">Performans + segment + mesaj raporu</span></div>
+        <div class="kv"><span class="k">Çeyreklik</span><span class="v" style="font-size:12px;">Stratejik gözden geçirme</span></div>
+      </div>
+    </div>
+
+    <div class="gtee-box">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <div style="width:28px; height:28px; border-radius:8px; background:rgba(62,207,142,0.2); display:flex; align-items:center; justify-content:center; color:var(--green); font-weight:800;">!</div>
+        <h3 style="color:var(--green);">Performans Garantisi</h3>
+      </div>
+      <p style="font-size:13.5px; color:var(--white); line-height:1.75;">
+        <span class="white">İlk ay</span> öğrenme-kalibrasyon periyodudur, KPI hesabı dışındadır.
+        <span class="white">2. aydan itibaren</span> herhangi bir ayda pozitif yanıt sayısı pakete karşılık gelen alt aralığın altında kalırsa
+        (Paket 1 için 8'in altı, Paket 2 için 22'nin altı), Değişim Motor iki seçenekten birini tercih edebilir:
+      </p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
+        <div class="card" style="padding:14px; background:rgba(62,207,142,0.05); border-color:rgba(62,207,142,0.2);">
+          <div style="font-size:10px; letter-spacing:2px; color:var(--green); text-transform:uppercase; margin-bottom:4px;">Seçenek 1</div>
+          <p style="font-size:12.5px; color:var(--white);">Hedef dolana kadar Tibexa'nın <span class="green">ücretsiz çalışması</span> (retainer ödenmez, ciro payı işler)</p>
+        </div>
+        <div class="card" style="padding:14px; background:rgba(62,207,142,0.05); border-color:rgba(62,207,142,0.2);">
+          <div style="font-size:10px; letter-spacing:2px; color:var(--green); text-transform:uppercase; margin-bottom:4px;">Seçenek 2</div>
+          <p style="font-size:12.5px; color:var(--white);">İlgili ayın retainer ödemesinin <span class="green">%100 iadesi</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 9 — NEDEN TİBEXA & KANAL GENİŞLETME ========== -->
+  <div class="slide" id="s9">
+    <div class="slide-header">
+      <span class="slide-label">08 / Neden Tibexa</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Partner olarak çalışıyoruz.<br><span class="accent">Hedefe biz de sahip çıkıyoruz.</span></h2>
+    <div class="divider"></div>
+
+    <div class="grid-2" style="margin-bottom:18px;">
+      <div>
+        <div class="bullet-row">
+          <div class="ix ix-accent">✦</div>
+          <div>
+            <h3 style="margin-bottom:3px;">Sektör uyumu &amp; ICP netleştirme</h3>
+            <p style="font-size:12.5px;">41 segmentlik ICP listesini Değişim Motor'un kendi satış ekibi ile gözden geçirdik. Keyword sözlükleri, UYAR/UYMAZ kriterleri ve tier bazlı önceliklendirme hazır.</p>
+          </div>
+        </div>
+        <div class="bullet-row">
+          <div class="ix ix-accent">✦</div>
+          <div>
+            <h3 style="margin-bottom:3px;">Veri odaklı segmentasyon</h3>
+            <p style="font-size:12.5px;">WebRambo + Bitscale + gümrük verisi kombinasyonu. Firma seviyesi kalifikasyon. Listenizi büyük tutmak değil, doğru tutmak önceliğimiz.</p>
+          </div>
+        </div>
+        <div class="bullet-row">
+          <div class="ix ix-accent">✦</div>
+          <div>
+            <h3 style="margin-bottom:3px;">Çok dilli mesaj altyapısı</h3>
+            <p style="font-size:12.5px;">Her hedef dilde native speaker review: Balkan dilleri, Rusça (BDT), Arapça (K.Afrika + OD), İngilizce (AB + Afrika), İspanyolca (LatAm pilot).</p>
+          </div>
+        </div>
+        <div class="bullet-row">
+          <div class="ix ix-accent">✦</div>
+          <div>
+            <h3 style="margin-bottom:3px;">Deliverability + LinkedIn altyapısı</h3>
+            <p style="font-size:12.5px;">Ayrı sending domain, warmup, kademeli hacim. LinkedIn: Expandi/Dripify + Sales Navigator + AI messaging. 3. haftada tam hız.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="card">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:10px;">Birlikte büyüdüğümüz markalar</div>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span class="tag tag-red">Naturagen</span>
+            <span class="tag tag-blue">Rapid Lanyard</span>
+            <span class="tag tag-gold">Arınç Tekstil</span>
+            <span class="tag tag-blue">İgrek</span>
+            <span class="tag tag-red">Selin Çikolata</span>
+            <span class="tag tag-green">Fema Bant</span>
+            <span class="tag tag-gold">Pro Parts</span>
+          </div>
+        </div>
+
+        <div class="card card-accent">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Kanal &amp; Pazar Genişletme</div>
+          <div class="kv"><span class="k"><strong class="white">Ay 3 kapısı</strong></span><span class="v" style="font-size:12px;">ICP/mesaj rekalibrasyonu · Retrofit (BM-4) derinleştirme</span></div>
+          <div class="kv"><span class="k"><strong class="white">Ay 6 kapısı</strong></span><span class="v" style="font-size:12px;">SteelFab Dubai senkron · GDA pilot kararı</span></div>
+          <div class="kv"><span class="k"><strong class="white">Ay 9 kapısı</strong></span><span class="v" style="font-size:12px;">2. döngü başlar · Baltık + GDA genişleme</span></div>
+          <p style="font-size:11.5px; color:var(--muted); margin-top:10px; font-style:italic;">
+            3. ve 6. ay sonunda performansa göre paket upgrade, ek coğrafya ve ek kanal (örn. WhatsApp Business API) değerlendirilir.
+          </p>
+        </div>
+
+        <div class="card card-accent" style="padding:16px 20px;">
+          <p style="font-size:13px; color:var(--white); line-height:1.75;">
+            <strong class="accent">Çalışma prensibimiz:</strong> Sizi müşteri olarak değil, <span class="white">partner</span> olarak görüyoruz.
+            Değişim Motor'un dış pazar payı bizim de başarımızdır. Performans düşükse, stratejiyi biz revize ederiz.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 10 — FIYATLANDIRMA ========== -->
+  <div class="slide" id="s10">
+    <div class="slide-header">
+      <span class="slide-label">09 / Fiyatlandırma</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Retainer paketleri.<br><span class="accent">Şeffaf ve performansa bağlı.</span></h2>
+    <p style="font-size:12.5px; color:var(--muted); margin-top:8px; margin-bottom:24px;">Aylık retainer olarak faturalanır. Fiyatlar görüşme sırasında paylaşılır.</p>
+
+    <div class="grid-2" style="gap:18px; margin-bottom:18px;">
+      <!-- Paket 1 -->
+      <div class="price-card">
+        <div class="p-label">Paket 1</div>
+        <div class="p-name">Tek Kanal · Email</div>
+        <div class="p-amount" style="font-size:22px; font-weight:700; color:var(--muted);">Fiyat alınız</div>
+        <div class="p-sub">+ %1 ciro payı</div>
+        <ul class="p-features">
+          <li><span><strong>1.100</strong> ulaşılan kişi / ay</span></li>
+          <li><span>Ana mail + 2 follow-up sekansı</span></li>
+          <li><span>Hedef pozitif yanıt <strong>8–15 / ay</strong></span></li>
+          <li><span>Kalifiye pozitif <strong>4–8 / ay</strong> (Seviye 2+)</span></li>
+          <li><span>Haftalık + aylık raporlama</span></li>
+          <li><span>Native speaker dil kontrolü</span></li>
+          <li><span>Performans garantisi (2. aydan itibaren)</span></li>
+        </ul>
+      </div>
+
+      <!-- Paket 2 -->
+      <div class="price-card featured">
+        <span class="p-badge">Önerilen</span>
+        <div class="p-label">Paket 2</div>
+        <div class="p-name">3 Kanal · Email + LinkedIn + Call</div>
+        <div class="p-amount" style="font-size:22px; font-weight:700; color:var(--accent);">Fiyat alınız</div>
+        <div class="p-sub">+ %1 ciro payı</div>
+        <ul class="p-features">
+          <li><span><strong>1.800</strong> ulaşılan kişi / ay (<span class="accent">3 kanal birleşik</span>)</span></li>
+          <li><span>Email 3.300 + LinkedIn 350 connect + 350 arama</span></li>
+          <li><span>Hedef pozitif yanıt <strong>22–35 / ay</strong></span></li>
+          <li><span>Kalifiye pozitif <strong>11–18 / ay</strong> (Seviye 2+)</span></li>
+          <li><span>AI destekli kişiselleştirme (LinkedIn + Email)</span></li>
+          <li><span>Cold call: distribütör segmentinde öncelikli</span></li>
+          <li><span>Performans garantisi (2. aydan itibaren)</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:14px;">
+      <div class="addon-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:6px;">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--gold); text-transform:uppercase;">Setup Fee</div>
+          <div style="font-size:13px; font-weight:700; color:var(--muted); white-space:nowrap;">Fiyat alınız · Tek seferlik</div>
+        </div>
+        <p style="font-size:12px;">Kickoff çalıştayı, 41 segment ICP finalizasyonu, keyword sözlükleri, mesaj copy'si (3 kanal × çoklu dil), sending altyapısı, LinkedIn otomasyon kurulumu, call script, raporlama setup'ı.</p>
+      </div>
+
+      <div class="addon-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:6px;">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--gold); text-transform:uppercase;">Inside Sales Modülü</div>
+          <div style="font-size:13px; font-weight:700; color:var(--muted); white-space:nowrap;">Fiyat alınız · Aylık</div>
+        </div>
+        <p style="font-size:12px;">Tibexa bünyesinde Değişim Motor adına çalışan inside sales: 30 dk içinde ilk cevap, telefon ile bağlantı, hatırlatma takibi, aktivite raporlama.</p>
+      </div>
+    </div>
+
+    <p style="font-size:11.5px; margin-top:16px; color:var(--muted); font-style:italic;">
+      <strong style="color:var(--white); font-style:normal;">Ciro payı tanımı:</strong> Tibexa'nın outreach'i sonucu Değişim Motor ile ticari ilişkiye giren firmalarla yapılan satışların net cirosunun %1'i, aylık faturada ayrı kalem olarak yer alır. Takip mekanizması (CRM etiketi, lead kaynağı alanı, aylık sales review) sözleşme aşamasında netleştirilir.
+    </p>
+  </div>
+
+  <!-- ========== SLIDE 11 — ROI HESAPLAYICI ========== -->
+  <div class="slide" id="s_roi">
+    <div class="slide-header">
+      <span class="slide-label">10 / Getiri Hesaplayıcı</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>Pozitif yanıtlar <span class="accent">ne getirir?</span></h2>
+    <p style="max-width:740px; margin-bottom:12px;">Paket seçiminize ve varsayımlarınıza göre 1. ve 2. yıllık getiri ile ROI çarpanını görmeniz için interaktif hesaplayıcı.</p>
+
+    <div class="roi-toggle" id="roi-toggle">
+      <button class="active" data-pkg="1" onclick="setPkg(1)">Paket 1 · Tek Kanal</button>
+      <button data-pkg="2" onclick="setPkg(2)">Paket 2 · 3 Kanal</button>
+    </div>
+
+    <div class="roi-grid">
+      <div class="roi-input-group">
+        <label>Pozitif yanıt / ay</label>
+        <input type="number" id="roi-replies" value="28" min="1" max="100" oninput="calcROI()" />
+      </div>
+      <div class="roi-input-group">
+        <label>Pozitif → Müşteri (%)</label>
+        <input type="number" id="roi-closerate" value="8" min="1" max="100" oninput="calcROI()" />
+      </div>
+      <div class="roi-input-group">
+        <label>Ort. müşteri yıllık ciro ($)</label>
+        <input type="text" id="roi-contract" value="20.000" oninput="calcROI()" />
+      </div>
+      <div class="roi-input-group">
+        <label>Müşteri tutma oranı (%)</label>
+        <input type="number" id="roi-retention" value="75" min="0" max="100" oninput="calcROI()" />
+      </div>
+    </div>
+
+    <div class="roi-results">
+      <div class="roi-result-card">
+        <div class="roi-value white" id="roi-deals">27</div>
+        <div class="roi-label">Yıllık Yeni Müşteri</div>
+      </div>
+      <div class="roi-result-card">
+        <div class="roi-value accent" id="roi-year1">$540.000</div>
+        <div class="roi-label">1. Yıl Gelir</div>
+      </div>
+      <div class="roi-result-card">
+        <div class="roi-value green" id="roi-year2">$940.000</div>
+        <div class="roi-label">2. Yıl Gelir (tekrar + yeni)</div>
+      </div>
+      <div class="roi-result-card highlight">
+        <div class="roi-value green" id="roi-total-main">$1.480.000</div>
+        <div class="roi-label">2 Yıl Toplam Getiri</div>
+      </div>
+    </div>
+
+    <div class="roi-bar-wrap" style="margin-top:16px;">
+      <div class="roi-bar-label">
+        <span>1. Yıl — <span id="roi-y1-detail">27 yeni müşteri</span></span>
+        <span id="roi-bar-y1-label">$540.000</span>
+      </div>
+      <div class="roi-bar">
+        <div class="roi-bar-fill accent-fill" id="roi-bar-y1" style="width:57%;"></div>
+      </div>
+    </div>
+    <div class="roi-bar-wrap" style="margin-top:10px;">
+      <div class="roi-bar-label">
+        <span>2. Yıl — <span id="roi-y2-detail">20 tekrar + 27 yeni</span></span>
+        <span id="roi-bar-y2-label">$940.000</span>
+      </div>
+      <div class="roi-bar" style="display:flex; gap:2px;">
+        <div class="roi-bar-fill accent-fill" id="roi-bar-y2-retain" style="width:43%; border-radius:4px 0 0 4px;"></div>
+        <div class="roi-bar-fill green" id="roi-bar-y2-new" style="width:57%; border-radius:0 4px 4px 0;"></div>
+      </div>
+      <div style="display:flex; gap:16px; margin-top:5px;">
+        <span style="font-size:10px; color:var(--accent2);">■ Tekrar sipariş: <span id="roi-y2-retain-val">$400.000</span></span>
+        <span style="font-size:10px; color:var(--green);">■ Yeni müşteri: <span id="roi-y2-new-val">$540.000</span></span>
+      </div>
+    </div>
+
+    <p style="font-size:11px; margin-top:16px; color:var(--muted); font-style:italic;">
+      * Hesaplama tahminidir. Müşteri başına yıllık ciro $20K varsayımı muhafazakardır; ürün miks ve sözleşme yapılarıyla rekalibre edilir. Ciro payı (%1) ve opsiyonel inside sales hesaba dahil değildir.
+    </p>
+  </div>
+
+  <!-- ========== SLIDE 12 — İMPLEMENTASYON & RİSK ========== -->
+  <div class="slide" id="s12">
+    <div class="slide-header">
+      <span class="slide-label">11 / Yol Haritası &amp; Risk</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <h2>İlk 90 gün <span class="accent">net planlı.</span><br>Riskler biliniyor, azaltılıyor.</h2>
+    <div class="divider"></div>
+
+    <div class="grid-3" style="gap:14px; margin-bottom:16px;">
+      <div class="card" style="padding:18px 20px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:6px;">İlk 30 Gün</div>
+        <h3 style="margin-bottom:10px; font-size:15px;">Kurulum &amp; Warm-up</h3>
+        <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+          <div><span class="white">Hafta 1:</span> Kickoff, 41 segment ICP finalizasyonu, Türki Ülke önceliklendirmesi</div>
+          <div style="margin-top:4px;"><span class="white">Hafta 2:</span> Email domain warmup + LinkedIn hesap hazırlığı + call script</div>
+          <div style="margin-top:4px;"><span class="white">Hafta 3:</span> Mesaj copy finalizasyonu (3 kanal × 3 dil), pilot gönderim</div>
+          <div style="margin-top:4px;"><span class="white">Hafta 4:</span> Yarı kapasite warm-up operasyon (Ay 1)</div>
+        </div>
+      </div>
+      <div class="card" style="padding:18px 20px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:6px;">30–60 Gün</div>
+        <h3 style="margin-bottom:10px; font-size:15px;">Tam Kapasite</h3>
+        <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+          <div>Balkanlar başlangıç (RS, RO, BG) + Türki devam</div>
+          <div style="margin-top:4px;">3 kanal paralel tam hızda</div>
+          <div style="margin-top:4px;">Handoff süreci Değişim Motor tarafıyla test edilir ve SLA oturtulur</div>
+          <div style="margin-top:4px;">Yanıt verisiyle mesaj varyantları değerlendirilir</div>
+        </div>
+      </div>
+      <div class="card card-accent" style="padding:18px 20px;">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:6px;">60–90 Gün</div>
+        <h3 style="margin-bottom:10px; font-size:15px;">Ay 3 Kapısı</h3>
+        <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+          <div>Balkan genişleme (BA, MK, HR, AL, XK, ME)</div>
+          <div style="margin-top:4px;">Retrofit (BM-4) özel kampanyası</div>
+          <div style="margin-top:4px;">Performans değerlendirmesi</div>
+          <div style="margin-top:4px;">Paket upgrade / downgrade seçeneği masaya yatırılır</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap:14px;">
+      <div class="card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--red); text-transform:uppercase; margin-bottom:10px;">Riskler &amp; Azaltma</div>
+        <div class="kv"><span class="k">Deliverability düşüklüğü</span><span class="v" style="font-size:12px;">Ayrı domain + warmup + kademeli hacim</span></div>
+        <div class="kv"><span class="k">LinkedIn hesap kısıtlaması</span><span class="v" style="font-size:12px;">Günlük limit kontrol + Sales Navigator</span></div>
+        <div class="kv"><span class="k">Handoff yavaşlığı</span><span class="v" style="font-size:12px;">30 dk SLA · KPI ayrı raporlanır</span></div>
+        <div class="kv"><span class="k">BDT yaptırım riski</span><span class="v" style="font-size:12px;">OFAC/EU listesi otomatik tarama · mutlak eleme</span></div>
+        <div class="kv"><span class="k">Dil / çeviri kalitesi</span><span class="v" style="font-size:12px;">Her hedef dilde native review</span></div>
+        <div class="kv"><span class="k">Yanıt oranı hedef altı</span><span class="v" style="font-size:12px;">İlk ay kalibrasyon · garanti ikinci aydan</span></div>
+        <div class="kv"><span class="k">GDPR / KVKK</span><span class="v" style="font-size:12px;">B2B legitimate interest + opt-out</span></div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Varsayımlar</div>
+        <div class="bullet-row"><div class="ix ix-accent">✓</div><div><p style="font-size:12.5px; color:var(--white);">Değişim Motor, sözleşme sonrası 30 gün içinde lead'lere cevap verecek bir kaynağı (kendi ekibi veya inside sales modülü) hazır bulundurur.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">✓</div><div><p style="font-size:12.5px; color:var(--white);">CE Motors bombeleme motoru teknik dokümanları, ürün katalogları ve referans listesi İngilizce + Rusça + 1 Balkan dili olarak hazırdır.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">✓</div><div><p style="font-size:12.5px; color:var(--white);">Değişim Motor yönetimi haftalık 30–45 dk sync için müsaittir.</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">✓</div><div><p style="font-size:12.5px; color:var(--white);">Müşteri başına yıllık ciro varsayımı ($20K) muhafazakardır; ürün miksi ve fiyat teyidi ile rekalibre edilir.</p></div></div>
+        <div class="bullet-row" style="border:none;"><div class="ix ix-accent">✓</div><div><p style="font-size:12.5px; color:var(--white);">Ciro payı takibi için Değişim Motor, lead-deal eşleştirmesini aylık satış raporunda paylaşır.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 13 — SONRAKİ ADIMLAR ========== -->
+  <div class="slide" id="s_final">
+    <div class="slide-header">
+      <span class="slide-label">12 / Sonraki Adımlar</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+      <div class="final-box">
+        <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:28px; flex-wrap:wrap;">
+          <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+          <span style="font-size:13px; color:var(--muted); letter-spacing:2px;">×</span>
+          <span class="dm-logo lg">
+            <span class="dm-mark">DM</span>
+            <span class="dm-text">Değişim Motor</span>
+            <span class="dm-sub">Koç Redüktör</span>
+          </span>
+        </div>
+
+        <h2 style="margin-bottom:14px;">Birlikte başlayalım.</h2>
+
+        <p style="max-width:540px; margin: 0 auto 28px; font-size:14.5px;">
+          41 segmentlik evrene, üç kanalla paralel açılmak için beş soruya net cevap almamız yeterli.
+        </p>
+
+        <div style="text-align:left; max-width:480px; margin:0 auto;">
+          <div class="kv"><span class="k">1. Strateji onayı</span><span class="v" style="font-size:12px;">Değişim Motor yönetimi ile onaylandı</span></div>
+          <div class="kv"><span class="k">2. Paket seçimi</span><span class="v" style="font-size:12px;">Paket 1 (Email) · Paket 2 (3 Kanal)</span></div>
+          <div class="kv"><span class="k">3. Inside sales modülü</span><span class="v" style="font-size:12px;">Dahil · Dahil değil</span></div>
+          <div class="kv"><span class="k">4. Başlangıç dalgası</span><span class="v" style="font-size:12px;">Türki Ülkeler · Balkanlar · Diğer</span></div>
+          <div class="kv"><span class="k">5. Ciro payı attribution</span><span class="v" style="font-size:12px;">CRM etiket · Lead kaynağı alanı · Aylık review</span></div>
+        </div>
+
+        <p style="font-size:12px; color:var(--muted); margin-top:26px; font-style:italic;">
+          Sözleşme imzası sonrası 30 günlük kurulum: Kickoff, ICP finalizasyonu, 3 kanal altyapı, pilot gönderim. 4. haftadan itibaren tam hızda operasyon.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end slides-container -->
+
+<!-- NAVIGATION -->
+<div class="nav">
+  <button onclick="prev()" title="Geri">←</button>
+  <div class="dots" id="dots"></div>
+  <button onclick="next()" title="İleri">→</button>
+  <span class="slide-counter" id="counter">1 / 13</span>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const container = document.getElementById('slides');
+  const dotsEl = document.getElementById('dots');
+  const counterEl = document.getElementById('counter');
+  let current = 0;
+  const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(n, slides.length - 1));
+
+    if (isMobile()) {
+      slides[current].classList.add('active');
+      slides[current].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      container.style.transform = `translateX(-${current * 100}vw)`;
+      slides[current].classList.add('active');
+      slides[current].scrollTop = 0;
+    }
+
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    counterEl.textContent = `${current + 1} / ${slides.length}`;
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next();
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev();
+  });
+
+  let startX = 0;
+  document.addEventListener('touchstart', e => {
+    if (isMobile()) return;
+    startX = e.touches[0].clientX;
+  });
+  document.addEventListener('touchend', e => {
+    if (isMobile()) return;
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
+  });
+
+  if (isMobile()) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && e.intersectionRatio > 0.4) {
+          const idx = Array.from(slides).indexOf(e.target);
+          if (idx >= 0 && idx !== current) {
+            slides[current].classList.remove('active');
+            current = idx;
+            slides[current].classList.add('active');
+            document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+            counterEl.textContent = `${current + 1} / ${slides.length}`;
+          }
+        }
+      });
+    }, { threshold: [0.4, 0.6] });
+    slides.forEach(s => observer.observe(s));
+  }
+
+  slides[0].classList.add('active');
+
+  // === ROI Hesaplayıcı (USD — müşteri bazlı varsayım) ===
+  const pkgDefaults = { 1: 11, 2: 28 };
+
+  function setPkg(n) {
+    document.querySelectorAll('#roi-toggle button').forEach(b => {
+      b.classList.toggle('active', parseInt(b.dataset.pkg) === n);
+    });
+    document.getElementById('roi-replies').value = pkgDefaults[n];
+    calcROI();
+  }
+
+  function parseNum(str) {
+    return parseFloat(String(str).replace(/\./g, '').replace(',', '.')) || 0;
+  }
+
+  function formatNum(n) {
+    return n.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  }
+
+  function calcROI() {
+    const replies = parseInt(document.getElementById('roi-replies').value) || 0;
+    const closeRate = parseInt(document.getElementById('roi-closerate').value) || 0;
+    const contract = parseNum(document.getElementById('roi-contract').value);
+    const retention = parseInt(document.getElementById('roi-retention').value) || 0;
+
+    const dealsY1 = Math.round(replies * 12 * closeRate / 100);
+    const year1 = dealsY1 * contract;
+
+    const retainedFromY1 = Math.round(dealsY1 * retention / 100);
+    const dealsY2 = dealsY1;
+    const y2Retain = retainedFromY1 * contract;
+    const y2New = dealsY2 * contract;
+    const year2 = y2Retain + y2New;
+    const total = year1 + year2;
+
+    document.getElementById('roi-deals').textContent = dealsY1;
+    document.getElementById('roi-year1').textContent = '$' + formatNum(year1);
+    document.getElementById('roi-year2').textContent = '$' + formatNum(year2);
+    document.getElementById('roi-total-main').textContent = '$' + formatNum(total);
+
+    document.getElementById('roi-y1-detail').textContent = dealsY1 + ' yeni müşteri';
+    document.getElementById('roi-y2-detail').textContent = retainedFromY1 + ' tekrar + ' + dealsY2 + ' yeni';
+    document.getElementById('roi-y2-retain-val').textContent = '$' + formatNum(y2Retain);
+    document.getElementById('roi-y2-new-val').textContent = '$' + formatNum(y2New);
+
+    const maxVal = Math.max(year1, year2, 1);
+    document.getElementById('roi-bar-y1').style.width = (year1 / maxVal * 100) + '%';
+    document.getElementById('roi-bar-y2-retain').style.width = (y2Retain / maxVal * 100) + '%';
+    document.getElementById('roi-bar-y2-new').style.width = (y2New / maxVal * 100) + '%';
+    document.getElementById('roi-bar-y1-label').textContent = '$' + formatNum(year1);
+    document.getElementById('roi-bar-y2-label').textContent = '$' + formatNum(year2);
+  }
+
+  calcROI();
+</script>
+
+</body>
+</html>
