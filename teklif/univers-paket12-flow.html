@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ünverler Makine ERP — Paket 1+2 Uçtan Uca Sipariş Akışı</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --bg: #0a0c10;
+    --surface: #12151c;
+    --surface-2: #1a1e28;
+    --surface-3: #222834;
+    --border: #2a3040;
+    --border-light: #353d50;
+    --text: #e8ecf4;
+    --text-dim: #8891a5;
+    --text-muted: #5c6478;
+    --accent: #4f8cff;
+    --accent-dim: #2d5db3;
+    --green: #34d399;
+    --green-dim: rgba(52,211,153,0.12);
+    --yellow: #fbbf24;
+    --yellow-dim: rgba(251,191,36,0.12);
+    --orange: #fb923c;
+    --orange-dim: rgba(251,146,60,0.12);
+    --red: #f87171;
+    --red-dim: rgba(248,113,113,0.12);
+    --blue: #60a5fa;
+    --blue-dim: rgba(96,165,250,0.12);
+    --purple: #a78bfa;
+    --purple-dim: rgba(167,139,250,0.12);
+    --cyan: #22d3ee;
+    --cyan-dim: rgba(34,211,238,0.12);
+    --pink: #f472b6;
+    --pink-dim: rgba(244,114,182,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: linear-gradient(165deg, #0f1520 0%, #111827 50%, #0c1220 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 0 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(79,140,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+  }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(79,140,255,0.1);
+    border: 1px solid rgba(79,140,255,0.2);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .header-badge .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .page-header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #e8ecf4 0%, #a0aec0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .page-header .subtitle {
+    font-size: 17px;
+    color: var(--text-dim);
+    font-weight: 400;
+    max-width: 700px;
+    line-height: 1.7;
+  }
+  .header-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .header-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* ── LAYOUT ── */
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 56px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 16px;
+  }
+  .section > p {
+    color: var(--text-dim);
+    font-size: 15px;
+    max-width: 800px;
+    margin-bottom: 28px;
+  }
+
+  /* ── OVERVIEW GRID ── */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .overview-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .overview-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .overview-card.blue::before { background: var(--blue); }
+  .overview-card.green::before { background: var(--green); }
+  .overview-card.yellow::before { background: var(--yellow); }
+  .overview-card.purple::before { background: var(--purple); }
+  .overview-card.orange::before { background: var(--orange); }
+  .overview-card.cyan::before { background: var(--cyan); }
+  .overview-card .oc-number {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .overview-card.blue .oc-number { color: var(--blue); }
+  .overview-card.green .oc-number { color: var(--green); }
+  .overview-card.yellow .oc-number { color: var(--yellow); }
+  .overview-card.purple .oc-number { color: var(--purple); }
+  .overview-card.orange .oc-number { color: var(--orange); }
+  .overview-card.cyan .oc-number { color: var(--cyan); }
+  .overview-card .oc-label {
+    font-size: 13px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  /* ── MEGA FLOW ── */
+  .mega-flow {
+    position: relative;
+    padding: 0;
+  }
+
+  .flow-phase {
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-top: 8px;
+  }
+  .phase-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .phase-header h3 {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .phase-header .phase-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  /* Phase colors */
+  .phase-blue .phase-number { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(96,165,250,0.25); }
+  .phase-green .phase-number { background: var(--green-dim); color: var(--green); border: 1px solid rgba(52,211,153,0.25); }
+  .phase-yellow .phase-number { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(251,191,36,0.25); }
+  .phase-orange .phase-number { background: var(--orange-dim); color: var(--orange); border: 1px solid rgba(251,146,60,0.25); }
+  .phase-purple .phase-number { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(167,139,250,0.25); }
+  .phase-cyan .phase-number { background: var(--cyan-dim); color: var(--cyan); border: 1px solid rgba(34,211,238,0.25); }
+  .phase-red .phase-number { background: var(--red-dim); color: var(--red); border: 1px solid rgba(248,113,113,0.25); }
+  .phase-pink .phase-number { background: var(--pink-dim); color: var(--pink); border: 1px solid rgba(244,114,182,0.25); }
+
+  /* Step cards */
+  .steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-left: 24px;
+    padding-left: 32px;
+    border-left: 2px solid var(--border);
+    padding-bottom: 40px;
+    position: relative;
+  }
+
+  .step-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .step-card:hover {
+    border-color: var(--border-light);
+  }
+
+  /* connector dot */
+  .step-card::before {
+    content: '';
+    position: absolute;
+    left: -42px;
+    top: 28px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--surface-3);
+    border: 2px solid var(--border-light);
+  }
+
+  .step-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .step-role {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 6px;
+  }
+  .role-pm { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(96,165,250,0.2); }
+  .role-sat { background: var(--cyan-dim); color: var(--cyan); border: 1px solid rgba(34,211,238,0.2); }
+  .role-tas { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(167,139,250,0.2); }
+  .role-sa { background: var(--orange-dim); color: var(--orange); border: 1px solid rgba(251,146,60,0.2); }
+  .role-yon { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(251,191,36,0.2); }
+  .role-muh { background: var(--pink-dim); color: var(--pink); border: 1px solid rgba(244,114,182,0.2); }
+  .role-fas { background: var(--green-dim); color: var(--green); border: 1px solid rgba(52,211,153,0.2); }
+  .role-system { background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border); }
+
+  .step-screen {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--surface-2);
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .step-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .step-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  .step-details {
+    margin-top: 12px;
+    background: var(--surface-2);
+    border-radius: 8px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+  }
+  .step-details ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .step-details li {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    padding-left: 18px;
+    position: relative;
+  }
+  .step-details li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-family: monospace;
+  }
+
+  /* data-flow indicator */
+  .data-flow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 10px;
+    padding: 4px 10px;
+    background: rgba(79,140,255,0.08);
+    border-radius: 6px;
+    border: 1px solid rgba(79,140,255,0.15);
+  }
+  .data-flow .arrow { font-size: 14px; }
+
+  /* Decision diamond */
+  .decision-card {
+    background: var(--surface);
+    border: 1px solid var(--yellow);
+    border-radius: 12px;
+    padding: 20px 24px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(251,191,36,0.05);
+  }
+  .decision-card::before {
+    content: '';
+    position: absolute;
+    left: -42px;
+    top: 28px;
+    width: 12px;
+    height: 12px;
+    background: var(--yellow);
+    transform: rotate(45deg);
+    border: none;
+    border-radius: 2px;
+  }
+  .decision-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 6px;
+  }
+  .decision-paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .decision-path {
+    font-size: 12.5px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .decision-path.path-yes {
+    background: var(--green-dim);
+    border-color: rgba(52,211,153,0.25);
+    color: var(--green);
+  }
+  .decision-path.path-no {
+    background: var(--red-dim);
+    border-color: rgba(248,113,113,0.25);
+    color: var(--red);
+  }
+  .decision-path strong {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+
+  /* Phase connector arrow */
+  .phase-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px 0 8px 24px;
+    padding-left: 32px;
+  }
+  .phase-connector .connector-line {
+    width: 2px;
+    height: 32px;
+    background: var(--border);
+    position: relative;
+  }
+  .phase-connector .connector-line::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid var(--border-light);
+  }
+
+  /* ── ROLE LEGEND ── */
+  .role-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .role-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+  .role-legend-item .role-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .role-legend-item .role-name {
+    font-weight: 600;
+  }
+  .role-legend-item .role-desc {
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+
+  /* ── SUMMARY TABLE ── */
+  .summary-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .summary-table th {
+    background: var(--surface-2);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 14px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .summary-table td {
+    font-size: 13.5px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .summary-table tr:last-child td {
+    border-bottom: none;
+  }
+  .summary-table .phase-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* ── ENTITY FLOW DIAGRAM ── */
+  .entity-flow {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    overflow-x: auto;
+  }
+  .entity-flow pre {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text-dim);
+    white-space: pre;
+  }
+  .entity-flow .ef-highlight { color: var(--accent); font-weight: 600; }
+  .entity-flow .ef-green { color: var(--green); font-weight: 600; }
+  .entity-flow .ef-yellow { color: var(--yellow); font-weight: 600; }
+  .entity-flow .ef-orange { color: var(--orange); font-weight: 600; }
+  .entity-flow .ef-purple { color: var(--purple); font-weight: 600; }
+
+  /* ── WARNING CALLOUT ── */
+  .callout {
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .callout-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .callout-body { flex: 1; }
+  .callout-body strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .callout-body p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+  .callout.info {
+    background: var(--blue-dim);
+    border: 1px solid rgba(96,165,250,0.2);
+  }
+  .callout.info .callout-icon { color: var(--blue); }
+  .callout.info strong { color: var(--blue); }
+  .callout.warning {
+    background: var(--yellow-dim);
+    border: 1px solid rgba(251,191,36,0.2);
+  }
+  .callout.warning .callout-icon { color: var(--yellow); }
+  .callout.warning strong { color: var(--yellow); }
+  .callout.critical {
+    background: var(--red-dim);
+    border: 1px solid rgba(248,113,113,0.2);
+  }
+  .callout.critical .callout-icon { color: var(--red); }
+  .callout.critical strong { color: var(--red); }
+
+  /* ── SWIMLANE ── */
+  .swimlane-container {
+    overflow-x: auto;
+    margin-bottom: 32px;
+  }
+  .swimlane {
+    display: grid;
+    grid-template-columns: 100px repeat(8, minmax(120px, 1fr));
+    gap: 2px;
+    min-width: 1100px;
+    background: var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .swim-header {
+    background: var(--surface-2);
+    padding: 12px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .swim-role-header {
+    background: var(--surface-3);
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    writing-mode: horizontal-tb;
+  }
+  .swim-cell {
+    background: var(--surface);
+    padding: 8px;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .swim-action {
+    font-size: 10.5px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 2px 0;
+  }
+  .sa-blue { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(96,165,250,0.2); }
+  .sa-green { background: var(--green-dim); color: var(--green); border: 1px solid rgba(52,211,153,0.2); }
+  .sa-purple { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(167,139,250,0.2); }
+  .sa-orange { background: var(--orange-dim); color: var(--orange); border: 1px solid rgba(251,146,60,0.2); }
+  .sa-yellow { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(251,191,36,0.2); }
+  .sa-cyan { background: var(--cyan-dim); color: var(--cyan); border: 1px solid rgba(34,211,238,0.2); }
+  .sa-red { background: var(--red-dim); color: var(--red); border: 1px solid rgba(248,113,113,0.2); }
+  .sa-pink { background: var(--pink-dim); color: var(--pink); border: 1px solid rgba(244,114,182,0.2); }
+
+  /* ── TIMELINE ── */
+  .timeline-bar {
+    display: flex;
+    gap: 0;
+    margin-bottom: 32px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    height: 56px;
+  }
+  .timeline-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-align: center;
+    padding: 0 12px;
+    position: relative;
+  }
+  .timeline-segment::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .timeline-segment:last-child::after { display: none; }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    margin-top: 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .content { padding: 24px 20px 60px; }
+    .page-header { padding: 32px 0 28px; }
+    .header-inner { padding: 0 20px; }
+    .page-header h1 { font-size: 24px; }
+    .overview-grid { grid-template-columns: repeat(2, 1fr); }
+    .decision-paths { grid-template-columns: 1fr; }
+    .header-meta { flex-direction: column; gap: 8px; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; color: #111; }
+    .step-card, .overview-card, .role-legend, .entity-flow, .callout, .summary-table {
+      border-color: #ddd;
+      background: #fff;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════ HEADER ════════════════════════════════════════════════ -->
+<header class="page-header">
+  <div class="header-inner">
+    <div class="header-badge"><span class="dot"></span> Operasyonel Referans Dokümanı</div>
+    <h1>Paket 1+2: Uçtan Uca Sipariş Akışı</h1>
+    <p class="subtitle">
+      Müşteriden teklif talebi geldiğinde, sipariş onaylanıp malzeme depoya girene kadar
+      izlenecek tüm adımlar, sorumluluklar, ekranlar ve veri akışı.
+    </p>
+    <div class="header-meta">
+      <span>Ünverler Makine ERP</span>
+      <span>Paket 1 (Satış & Teklif) + Paket 2 (Satın Alma & Tedarik)</span>
+      <span>17 Ekran &middot; 24 Fonksiyon &middot; 15 Entity</span>
+    </div>
+  </div>
+</header>
+
+<div class="content">
+
+<!-- ════════════════════════════════════ OVERVIEW ════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Genel Bakış</div>
+  <h2>Akış Özeti: 8 Faz, 1 Sipariş Döngüsü</h2>
+  <p>Bir sipariş talebi geldiğinde aşağıdaki 8 fazdan sırayla geçer. Her faz kendi sorumlusu, ekranı ve çıktılarıyla tanımlıdır.</p>
+
+  <div class="overview-grid">
+    <div class="overview-card blue">
+      <div class="oc-number">1</div>
+      <div class="oc-label">Talep Kaydı & Proje Açma</div>
+    </div>
+    <div class="overview-card purple">
+      <div class="oc-number">2</div>
+      <div class="oc-label">Tasarım & Malzeme Çalışması</div>
+    </div>
+    <div class="overview-card orange">
+      <div class="oc-number">3</div>
+      <div class="oc-label">Satın Alma Fiyat Girişi</div>
+    </div>
+    <div class="overview-card yellow">
+      <div class="oc-number">4</div>
+      <div class="oc-label">Fiyatlandırma & Karar</div>
+    </div>
+    <div class="overview-card cyan">
+      <div class="oc-number">5</div>
+      <div class="oc-label">PDF & Teklif Gönderimi</div>
+    </div>
+    <div class="overview-card green">
+      <div class="oc-number">6</div>
+      <div class="oc-label">Sipariş Onayı & USA Açılması</div>
+    </div>
+    <div class="overview-card orange">
+      <div class="oc-number">7</div>
+      <div class="oc-label">Satın Alma Sipariş Döngüsü</div>
+    </div>
+    <div class="overview-card green">
+      <div class="oc-number">8</div>
+      <div class="oc-label">Malzeme Takip & Teslim</div>
+    </div>
+  </div>
+
+  <!-- TIMELINE BAR -->
+  <div class="timeline-bar">
+    <div class="timeline-segment" style="flex:1.2; background: var(--blue-dim); color: var(--blue);">Faz 1<br>Talep</div>
+    <div class="timeline-segment" style="flex:1.5; background: var(--purple-dim); color: var(--purple);">Faz 2<br>Tasarım</div>
+    <div class="timeline-segment" style="flex:1.2; background: var(--orange-dim); color: var(--orange);">Faz 3<br>SA Fiyat</div>
+    <div class="timeline-segment" style="flex:1.5; background: var(--yellow-dim); color: var(--yellow);">Faz 4<br>Fiyat Karar</div>
+    <div class="timeline-segment" style="flex:1; background: var(--cyan-dim); color: var(--cyan);">Faz 5<br>Teklif</div>
+    <div class="timeline-segment" style="flex:1.5; background: var(--green-dim); color: var(--green);">Faz 6<br>Onay+USA</div>
+    <div class="timeline-segment" style="flex:2; background: var(--orange-dim); color: var(--orange);">Faz 7<br>SA Sipariş</div>
+    <div class="timeline-segment" style="flex:1.5; background: var(--green-dim); color: var(--green);">Faz 8<br>Malzeme Takip</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ ROLE LEGEND ════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Roller</div>
+  <h2>Kim Ne Yapar?</h2>
+  <div class="role-legend">
+    <div class="role-legend-item">
+      <div class="role-dot" style="background: var(--blue);"></div>
+      <span class="role-name">PM</span>
+      <span class="role-desc">Proje Müdürü</span>
+    </div>
+    <div class="role-legend-item">
+      <div class="role-dot" style="background: var(--cyan);"></div>
+      <span class="role-name">SAT</span>
+      <span class="role-desc">Satışçı</span>
+    </div>
+    <div class="role-legend-item">
+      <div class="role-dot" style="background: var(--purple);"></div>
+      <span class="role-name">TAS</span>
+      <span class="role-desc">Tasarımcı (AR-GE)</span>
+    </div>
+    <div class="role-legend-item">
+      <div class="role-dot" style="background: var(--orange);"></div>
+      <span class="role-name">SA</span>
+      <span class="role-desc">Satın Almacı</span>
+    </div>
+    <div class="role-legend-item">
+      <div class="role-dot" style="background: var(--yellow);"></div>
+      <span class="role-name">YÖN</span>
+      <span class="role-desc">Yönetim</span>
+    </div>
+    <div class="role-legend-item">
+      <div class="role-dot" style="background: var(--pink);"></div>
+      <span class="role-name">MUH</span>
+      <span class="role-desc">Muhasebe</span>
+    </div>
+    <div class="role-legend-item">
+      <div class="role-dot" style="background: var(--green);"></div>
+      <span class="role-name">FAS</span>
+      <span class="role-desc">Fason Takip</span>
+    </div>
+    <div class="role-legend-item">
+      <div class="role-dot" style="background: var(--text-muted);"></div>
+      <span class="role-name">SİSTEM</span>
+      <span class="role-desc">Otomatik İşlem</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ SWIMLANE ════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Sorumluluk Matrisi</div>
+  <h2>Roller x Fazlar (RACI Görünümü)</h2>
+  <p>Her fazda kimin ne yaptığını tek bakışta görebildiğiniz swimlane diyagramı.</p>
+
+  <div class="swimlane-container">
+    <div class="swimlane">
+      <!-- Header row -->
+      <div class="swim-header" style="background: var(--surface-3);">ROL</div>
+      <div class="swim-header">Faz 1<br>Talep</div>
+      <div class="swim-header">Faz 2<br>Tasarım</div>
+      <div class="swim-header">Faz 3<br>SA Fiyat</div>
+      <div class="swim-header">Faz 4<br>Fiy. Karar</div>
+      <div class="swim-header">Faz 5<br>Teklif</div>
+      <div class="swim-header">Faz 6<br>Onay+USA</div>
+      <div class="swim-header">Faz 7<br>SA Sipariş</div>
+      <div class="swim-header">Faz 8<br>Malzeme</div>
+
+      <!-- PM row -->
+      <div class="swim-role-header">PM</div>
+      <div class="swim-cell"><span class="swim-action sa-blue">Proje aç<br>Kalem tanımla</span></div>
+      <div class="swim-cell"><span class="swim-action sa-blue" style="opacity:0.4">Bilgilendirilir</span></div>
+      <div class="swim-cell"><span class="swim-action sa-blue" style="opacity:0.4">Bilgilendirilir</span></div>
+      <div class="swim-cell"><span class="swim-action sa-blue">3 yöntem<br>Fiyat seç</span></div>
+      <div class="swim-cell"><span class="swim-action sa-blue">PDF oluştur<br>Mail gönder</span></div>
+      <div class="swim-cell"><span class="swim-action sa-blue">Sipariş onayla<br>Fiyat müzakere</span></div>
+      <div class="swim-cell"><span class="swim-action sa-blue" style="opacity:0.4">Takip eder</span></div>
+      <div class="swim-cell"><span class="swim-action sa-blue" style="opacity:0.4">Takip eder</span></div>
+
+      <!-- TAS row -->
+      <div class="swim-role-header">TAS</div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"><span class="swim-action sa-purple">UTA oluştur<br>Temiz ölçü gir</span></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"><span class="swim-action sa-purple">USA hazırla<br>Nihai tasarım</span></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"></div>
+
+      <!-- SA row -->
+      <div class="swim-role-header">SA</div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"><span class="swim-action sa-orange">Ham ölçü gir<br>Fiyat gir</span></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"><span class="swim-action sa-orange">Talep al<br>Firma seç<br>Sipariş ver</span></div>
+      <div class="swim-cell"><span class="swim-action sa-orange">Geldi işaretle<br>Durum takip</span></div>
+
+      <!-- YÖN row -->
+      <div class="swim-role-header">YÖN</div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"><span class="swim-action sa-yellow">Onay / Fiyat<br>override</span></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"><span class="swim-action sa-yellow">Dashboard<br>izleme</span></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"><span class="swim-action sa-yellow">Dashboard<br>izleme</span></div>
+
+      <!-- MUH row -->
+      <div class="swim-role-header">MUH</div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"></div>
+      <div class="swim-cell"><span class="swim-action sa-pink">Muhasebe<br>onayı</span></div>
+      <div class="swim-cell"><span class="swim-action sa-pink" style="opacity:0.4">ETA aktarım</span></div>
+      <div class="swim-cell"></div>
+
+      <!-- SİSTEM row -->
+      <div class="swim-role-header">SİSTEM</div>
+      <div class="swim-cell"><span class="swim-action" style="background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--border);">P no. üret</span></div>
+      <div class="swim-cell"><span class="swim-action" style="background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--border);">Versiyon aç</span></div>
+      <div class="swim-cell"><span class="swim-action" style="background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--border);">Fiyat çek<br>(madde kartı)</span></div>
+      <div class="swim-cell"><span class="swim-action" style="background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--border);">3 yöntem<br>hesapla</span></div>
+      <div class="swim-cell"><span class="swim-action" style="background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--border);">PDF üret<br>Tick ilerle</span></div>
+      <div class="swim-cell"><span class="swim-action" style="background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--border);">Versiyon<br>kilitle + aç</span></div>
+      <div class="swim-cell"><span class="swim-action" style="background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--border);">Otom. talep<br>oluştur</span></div>
+      <div class="swim-cell"><span class="swim-action" style="background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--border);">Renk uyarı<br>Süre takip</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ DETAILED FLOW ════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Detaylı Akış</div>
+  <h2>Adım Adım: Talebin Hayat Döngüsü</h2>
+  <p>Aşağıda her faz, sorumluluk, kullanılan ekran ve veri akışıyla birlikte detaylı olarak anlatılmıştır.</p>
+
+  <div class="mega-flow">
+
+    <!-- ─────── FAZ 1 ─────── -->
+    <div class="flow-phase phase-blue">
+      <div class="phase-header">
+        <div class="phase-number">1</div>
+        <div>
+          <h3>Talep Kaydı & Proje Açma</h3>
+          <div class="phase-sub">Müşteriden gelen talep sisteme girilir, proje ve kalemler tanımlanır</div>
+        </div>
+      </div>
+      <div class="steps-container">
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-pm">PM</span>
+            <span class="step-screen">E01 Proje Listesi</span>
+          </div>
+          <div class="step-title">Yeni proje oluştur</div>
+          <div class="step-desc">
+            Müşteri mail, telefon veya toplantı yoluyla teklif talep eder. PM, E01 ekranında "Yeni Proje" butonuna tıklar.
+            Sistem otomatik olarak artan proje numarası atar (ör: P-112).
+          </div>
+          <div class="step-details">
+            <ul>
+              <li>Firma seçilir (E09'dan veya yeni firma oluşturulur)</li>
+              <li>Talep tarihi, para birimi (EUR/TRY/USD), dil (TR/EN/DE) belirlenir</li>
+              <li>Form tipi seçilir: Teklif / Proforma / Sipariş Onay</li>
+              <li>Ödeme koşulları ve teslimat süresi girilir</li>
+            </ul>
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> Firma, Proje entity'leri oluşturulur
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-pm">PM</span>
+            <span class="step-screen">E02 Proje Detay</span>
+          </div>
+          <div class="step-title">Kalemleri tanımla</div>
+          <div class="step-desc">
+            Projeye ait her ürün/silindir bir kalem olarak eklenir. Her kalemin montaj numarası, ürün tanımı,
+            tip kodu (HS1K, HS4K vb.), adet, termin tarihi girilir. Montaj numarası tüm sistemin omurgasıdır
+            &mdash; satın alma, üretim, fason, maliyet her şey bu numara üzerinden yürür.
+          </div>
+          <div class="step-details">
+            <ul>
+              <li>Kalem no otomatik: P112-1, P112-2... formatında</li>
+              <li>Bir projede 1 ile 20+ arası kalem olabilir</li>
+              <li>Her kalemin bağımsız termin tarihi ve durumu vardır</li>
+              <li>Proje notları ve ek açıklamalar girilir</li>
+            </ul>
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> Kalem, BoyutParametreleri entity'leri oluşturulur
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-pm">PM</span>
+            <span class="step-screen">E03 Kalem Detay</span>
+          </div>
+          <div class="step-title">Boyut parametrelerini gir</div>
+          <div class="step-desc">
+            Her kalem için 6 ölçü kutucuğu doldurulur: temiz dış çap, temiz iç çap, temiz boy (bitmiş ürün)
+            ve ham dış çap, ham iç çap, ham boy (satın alınacak malzeme). Temiz ölçüleri PM/TAS girer.
+            Bu ölçüler formül motorunun temelidir &mdash; hacim, talaş miktarı ve teorik süre bunlardan hesaplanır.
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> BoyutParametreleri güncellenir, AdminFormülleri referans alınır
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────── FAZ 2 ─────── -->
+    <div class="flow-phase phase-purple">
+      <div class="phase-header">
+        <div class="phase-number">2</div>
+        <div>
+          <h3>Tasarım & Malzeme Çalışması (UTA)</h3>
+          <div class="phase-sub">Tasarımcı ürünün parçalarını ve malzeme listesini oluşturur</div>
+        </div>
+      </div>
+      <div class="steps-container">
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-tas">TAS</span>
+            <span class="step-screen">E04 Malzeme Listesi</span>
+          </div>
+          <div class="step-title">UTA (Teklif) malzeme listesi oluştur</div>
+          <div class="step-desc">
+            Tasarımcı, kalemin hangi parçalardan oluştuğunu tanımlar. Her parça (boru, kapak, mil, keçe vb.)
+            bir malzeme kalemi olarak eklenir. Sistem otomatik olarak v1 [teklif] versiyonunu açar.
+          </div>
+          <div class="step-details">
+            <ul>
+              <li>Her malzeme kalemi için: malzeme grubu (imalat/keçe/standart/sarf), madde kodu, tanım, adet, birim</li>
+              <li>Temiz ölçüler (dış çap, iç çap, boy) tasarımcı tarafından girilir</li>
+              <li>Malzeme grubu fiyatlandırmayı etkiler: imalat=hacim&times;kg, keçe/standart=birim fiyat</li>
+              <li>Bir kalemin malzeme listesinde tipik olarak 5-15 satır bulunur</li>
+            </ul>
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> MalzemeListesi (v1, teklif, taslak) + MalzemeKalemi'leri oluşturulur
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-tas">TAS</span>
+            <span class="step-screen">E04</span>
+          </div>
+          <div class="step-title">"Satın Almaya Gönder" butonuna tıkla</div>
+          <div class="step-desc">
+            Malzeme listesi tamamlandığında TAS "Satın Almaya Gönder" butonuna tıklar.
+            Satın almacının ekranında bu malzeme listesi görünür hale gelir. Workflow'da "Tasarım Bitti" adımı otomatik tiklenir.
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> ProjeTakipAdımları: "tasarım_bitti" tiklenir
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────── FAZ 3 ─────── -->
+    <div class="flow-phase phase-orange">
+      <div class="phase-header">
+        <div class="phase-number">3</div>
+        <div>
+          <h3>Satın Alma Fiyat Girişi</h3>
+          <div class="phase-sub">Satın almacı ham ölçüleri ve malzeme fiyatlarını girer</div>
+        </div>
+      </div>
+      <div class="steps-container">
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-sa">SA</span>
+            <span class="step-screen">E04 Malzeme Listesi (SA Görünümü)</span>
+          </div>
+          <div class="step-title">Ham ölçüleri ve fiyatları gir</div>
+          <div class="step-desc">
+            Satın almacı, tasarımcının hazırladığı malzeme listesini alır. Her malzeme kalemi için
+            ham ölçüleri (satın alınacak malzemenin boyutları) ve birim fiyatları girer. Fiyat kaynağı
+            madde kartından otomatik çekilebilir veya manuel girilebilir.
+          </div>
+          <div class="step-details">
+            <ul>
+              <li><strong>Madde kartından çek:</strong> Madde kodu girildiğinde ETA'dan senkronize edilen fiyat otomatik gelir</li>
+              <li><strong>Son alış fiyatı:</strong> Bu malzemenin en son satın alma fiyatını getirir</li>
+              <li><strong>Manuel giriş:</strong> SA piyasadan aldığı güncel fiyatı girer</li>
+              <li>İmalat malzemeleri: hacim &times; kg fiyatı ile otomatik hesap</li>
+              <li>Keçe/Standart: birim fiyat &times; adet</li>
+            </ul>
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> MalzemeKalemi fiyat alanları güncellenir, MaddeKartı referans alınır
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-sa">SA</span>
+            <span class="step-screen">E04</span>
+          </div>
+          <div class="step-title">Alt toplamları kontrol et ve kaydet</div>
+          <div class="step-desc">
+            Ekranın altında malzeme grubu bazında alt toplamlar görünür:
+            imalat malzeme toplamı, keçe toplamı, standart toplam ve genel toplam.
+            SA fiyatları tamamlayıp kaydettiğinde workflow'da "SA Fiyat Girdi" adımı tiklenir.
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> ProjeTakipAdımları: "satin_alma_fiyat_girdi" tiklenir
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────── FAZ 4 ─────── -->
+    <div class="flow-phase phase-yellow">
+      <div class="phase-header">
+        <div class="phase-number">4</div>
+        <div>
+          <h3>Fiyatlandırma & Karar</h3>
+          <div class="phase-sub">3 yöntemle fiyat hesaplanır, geçmiş projelerle karşılaştırılır, karar verilir</div>
+        </div>
+      </div>
+      <div class="steps-container">
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-pm">PM</span>
+            <span class="step-role role-yon">YÖN</span>
+            <span class="step-screen">E05 Fiyatlandırma</span>
+          </div>
+          <div class="step-title">3 yöntem ile fiyat hesapla</div>
+          <div class="step-desc">
+            Sistem her kalem için 3 farklı fiyatlandırma yöntemini otomatik hesaplayıp yan yana gösterir.
+            PM veya yönetim bu fiyatları karşılaştırarak karar verir.
+          </div>
+          <div class="step-details">
+            <ul>
+              <li><strong>Yöntem 1 &mdash; Çarpan:</strong> Toplam malzeme fiyatı &times; seçilen çarpan (ör: 2.0, 2.5). Slider ile ayarlanabilir</li>
+              <li><strong>Yöntem 2 &mdash; Hacim:</strong> Boyut parametrelerinden hesaplanan toplam hacim &times; birim fiyat</li>
+              <li><strong>Yöntem 3 &mdash; Süre:</strong> Formül motorunun hesapladığı teorik işleme süresi (gün) &times; gün ücreti</li>
+              <li><strong>Geçmiş referanslar:</strong> Aynı tip kodundaki (ör: HS1K) geçmiş tüm projeler &mdash; proje no, firma, tarih, ölçüler, çarpan, fiyat</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-pm">PM</span>
+            <span class="step-screen">E05</span>
+          </div>
+          <div class="step-title">Fiyat seç ve kaleme yaz</div>
+          <div class="step-desc">
+            3 yöntemden birini seçer veya manuel fiyat override eder. Seçilen fiyat kaleme yazılır.
+            Her kalem için bu işlem tekrarlanır. Tüm kalemler fiyatlandığında proje toplamı hesaplanır.
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> FiyatlandırmaÇalışması kaydedilir, Kalem.birim_fiyat güncellenir
+          </div>
+        </div>
+
+        <!-- Decision: Muhasebe -->
+        <div class="decision-card">
+          <div class="decision-label">Karar Noktası</div>
+          <div class="step-title">Muhasebe onayı gerekli mi?</div>
+          <div class="step-desc">
+            Yönetim kuralına göre muhasebe onayı olmadan satın alma/üretime geçilemez.
+            Uyarıyla esnetilebilir ama log tutulur.
+          </div>
+          <div class="decision-paths">
+            <div class="decision-path path-yes">
+              <strong>Onaylandı</strong>
+              Muhasebe onay verir, akış devam eder
+            </div>
+            <div class="decision-path path-no">
+              <strong>Beklemede</strong>
+              MUH onay verene kadar teklif gönderilmez (uyarıyla override edilebilir)
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────── FAZ 5 ─────── -->
+    <div class="flow-phase phase-cyan">
+      <div class="phase-header">
+        <div class="phase-number">5</div>
+        <div>
+          <h3>PDF Üretimi & Teklif Gönderimi</h3>
+          <div class="phase-sub">Teklif formu oluşturulur, müşteriye gönderilir</div>
+        </div>
+      </div>
+      <div class="steps-container">
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-pm">PM</span>
+            <span class="step-role role-sat">SAT</span>
+            <span class="step-screen">E02 Proje Detay</span>
+          </div>
+          <div class="step-title">Toplamları kontrol et</div>
+          <div class="step-desc">
+            E02'ye dönülür. Tüm kalemlerin fiyatları görülür. Ara toplam, nakliye/paketleme, iskonto,
+            KDV, gümrük işlemleri ve genel toplam kontrol edilir.
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-pm">PM</span>
+            <span class="step-screen">E06 PDF Oluştur</span>
+          </div>
+          <div class="step-title">PDF oluştur ve gönder</div>
+          <div class="step-desc">
+            Form tipi (teklif/proforma/sipariş onay) ve dil (TR/EN/DE) seçilir. Sistem otomatik
+            naming convention ile dosya adı oluşturur (ör: P112-FirmaAdı-2026.05.08-Teklif).
+            PDF önizleme yapılır, sunucu havuzuna kaydedilir ve mail ile müşteriye gönderilir.
+          </div>
+          <div class="step-details">
+            <ul>
+              <li>4-5 şablon tipi &times; 2-3 dil = her kombinasyon hazır</li>
+              <li>Mail: firma email adresine, şablon konu + gövde, PDF ek</li>
+              <li>Alternatif: Outlook trigger ile gönderm</li>
+            </ul>
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> PDFŞablonu kullanılır, ProjeTakipAdımları: "teklif_gonderildi" tiklenir
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-system">SİSTEM</span>
+            <span class="step-screen">E07 Takip Tablosu &middot; E10 Sipariş Onay</span>
+          </div>
+          <div class="step-title">Bekleme süresini takip et</div>
+          <div class="step-desc">
+            Teklif gönderildikten sonra E10 ekranında "Bekleyen Teklifler" listesine düşer.
+            Sistem bekleme süresini takip eder. 1 hafta geçtiyse satır kırmızıya döner.
+            PM/SAT bu ekrandan müşteriyi takip eder.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────── DECISION: Müşteri Cevabı ─────── -->
+    <div class="flow-phase phase-yellow" style="margin-top: -16px;">
+      <div class="steps-container" style="border-left-color: var(--yellow); padding-top: 0;">
+        <div class="decision-card">
+          <div class="decision-label">Kritik Karar Noktası</div>
+          <div class="step-title">Müşteri cevabı ne?</div>
+          <div class="step-desc">
+            Müşteriden 3 olası dönüş gelebilir. Her biri farklı bir akışı tetikler.
+          </div>
+          <div class="decision-paths">
+            <div class="decision-path path-yes">
+              <strong>Onaylandı</strong>
+              Faz 6'ya geç &mdash; sipariş onayı ve USA açılır
+            </div>
+            <div class="decision-path path-no">
+              <strong>Revizyon / İptal</strong>
+              Revizyon &rarr; yeni versiyon açılır, Faz 2'ye dön<br>
+              İptal &rarr; tarih + neden girilir, proje kapatılır
+            </div>
+          </div>
+        </div>
+
+        <div class="callout warning">
+          <div class="callout-icon">!</div>
+          <div class="callout-body">
+            <strong>Fiyat Müzakeresi Olabilir</strong>
+            <p>
+              Müşteri farklı bir fiyat teklif edebilir (ör: "44 bin liraya veririm" durumu).
+              E10 ekranında teklif fiyatı vs anlaşma fiyatı yan yana gösterilir, fark hesaplanır.
+              PM yeni fiyatı kabul edip kaleme yazabilir.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────── FAZ 6 ─────── -->
+    <div class="flow-phase phase-green">
+      <div class="phase-header">
+        <div class="phase-number">6</div>
+        <div>
+          <h3>Sipariş Onayı & USA Hazırlığı</h3>
+          <div class="phase-sub">Teklif siparişe dönüşür, nihai tasarım ve malzeme listesi hazırlanır</div>
+        </div>
+      </div>
+      <div class="steps-container">
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-pm">PM</span>
+            <span class="step-screen">E10 Sipariş Onay Döngüsü</span>
+          </div>
+          <div class="step-title">Siparişi onayla</div>
+          <div class="step-desc">
+            E10'da "Sipariş Onayla" butonuna tıklanır. Anlaşma fiyatı girilir (teklif fiyatından farklıysa).
+            Onay tarihi ve kısmi onay durumu (10 kalemden 5'i onaylanabilir) kaydedilir.
+          </div>
+          <div class="step-details">
+            <ul>
+              <li>Kısmi onay desteklenir: "10 kalem var, 5'i onaylandı" durumu mümkün</li>
+              <li>Onaylanan kalemler "sipariş" durumuna geçer, diğerleri "teklif"te kalır</li>
+              <li>Sipariş Onay Formu PDF'i otomatik oluşturulabilir</li>
+            </ul>
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> Proje.durum = "onaylandi", onaylanan Kalem.durum = "siparis"
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-system">SİSTEM</span>
+            <span class="step-screen">E03 Versiyon Zinciri</span>
+          </div>
+          <div class="step-title">Otomatik versiyon geçişi (teklif &rarr; sipariş)</div>
+          <div class="step-desc">
+            Sipariş onaylandığında sistem otomatik olarak:
+            <br>1) Son teklif versiyonunu kilitler (artık değiştirilemez)
+            <br>2) Yeni bir sipariş versiyonu açar (öncekinin kopyası)
+            <br>3) Değişiklik nedeni: "aşamadan geçiş" olarak işaretlenir
+          </div>
+          <div class="step-details">
+            <ul>
+              <li>Versiyon zinciri: v1[teklif] &rarr; v2[teklif/kilitli] &rarr; v3[sipariş/aktif]</li>
+              <li>Teklif finali ile sipariş finali her zaman karşılaştırılabilir (kârlılık analizi)</li>
+              <li>Hiçbir zaman overwrite yapılmaz, her değişiklik yeni kayıt</li>
+            </ul>
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> Yeni MalzemeListesi (sipariş, aktif), parent_id = önceki versiyon
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-tas">TAS</span>
+            <span class="step-screen">E04 Malzeme Listesi</span>
+          </div>
+          <div class="step-title">USA (Sipariş) malzeme listesini hazırla</div>
+          <div class="step-desc">
+            Tasarımcı yeni sipariş versiyonunda nihai tasarıma göre malzeme listesini revize eder.
+            Gerekirse ölçüler güncellenir, malzeme eklenip çıkarılır. Tamamlandığında versiyonu kilitler
+            ve "Satın Almaya Talep Gönder" butonuna tıklar.
+          </div>
+          <div class="step-details">
+            <ul>
+              <li>USA kilitleme = nihai satın alma emri anlamına gelir</li>
+              <li>Kilitlenen versiyondaki her malzeme kalemi için otomatik satın alma talebi oluşur</li>
+              <li>Bu, Paket 1'den Paket 2'ye geçiş noktasıdır</li>
+            </ul>
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> MalzemeListesi kilitlenir &rarr; SatınAlmaTalebi otomatik oluşur (F15)
+          </div>
+        </div>
+
+        <div class="callout info">
+          <div class="callout-icon">i</div>
+          <div class="callout-body">
+            <strong>Paket 1 &rarr; Paket 2 Geçiş Noktası</strong>
+            <p>
+              USA kilitlendiğinde satın alma talepleri otomatik olarak oluşur ve Paket 2 akışı başlar.
+              Bu noktadan itibaren satın alma ekranları devreye girer.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────── FAZ 7 ─────── -->
+    <div class="flow-phase phase-orange">
+      <div class="phase-header">
+        <div class="phase-number">7</div>
+        <div>
+          <h3>Satın Alma Sipariş Döngüsü</h3>
+          <div class="phase-sub">Talepler incelenir, firmalardan teklif alınır, siparişler verilir</div>
+        </div>
+      </div>
+      <div class="steps-container">
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-sa">SA</span>
+            <span class="step-screen">E12 Satın Alma Talep</span>
+          </div>
+          <div class="step-title">Talepleri incele ve gruplandır</div>
+          <div class="step-desc">
+            E12'de düşen talepler incelenir. Malzemeler gruplara ayrılır:
+            imalat malzemeleri (boru, mil vb.) ayrı, keçe grubu ayrı, standart malzemeler ayrı.
+            Her grup için uygun tedarikçi firmalar belirlenir.
+          </div>
+          <div class="step-details">
+            <ul>
+              <li>Talep tipleri: proje bazlı (USA'dan otomatik), genel (sarf malzeme), acil</li>
+              <li>Öncelik durumuna göre sıralama: acil talepler üstte</li>
+              <li>Aynı malzemeyi birden fazla firmadan teklif isteyebilir</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-sa">SA</span>
+            <span class="step-screen">E13 Sipariş Takibi</span>
+          </div>
+          <div class="step-title">Tedarikçiye sipariş ver</div>
+          <div class="step-desc">
+            E13'te "Yeni Sipariş Oluştur" ile tedarikçi firma seçilir, miktar, fiyat ve hedef teslim tarihi girilir.
+            Aynı talep birden fazla firmaya kırılabilir (ör: 3 farklı firmadan farklı malzemeler).
+          </div>
+          <div class="step-details">
+            <ul>
+              <li>Tedarikçi firma, madde kodu, miktar, birim fiyat, toplam fiyat</li>
+              <li>Hedef teslim tarihi girilir &mdash; bu tarih geçerse kırmızıya döner</li>
+              <li>Sipariş durumu: sipariş verildi &rarr; yolda &rarr; geldi &rarr; eksik</li>
+            </ul>
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> SatınAlmaSiparişi oluşturulur, SatınAlmaTalebi.durum = "siparis_verildi"
+          </div>
+        </div>
+
+        <!-- Decision: ETA -->
+        <div class="decision-card">
+          <div class="decision-label">ETA Entegrasyonu</div>
+          <div class="step-title">Sipariş ETA'ya aktarılacak mı?</div>
+          <div class="step-desc">
+            Onaylanan satın alma siparişleri fatura kesilmesi için ETA muhasebe sistemine aktarılabilir (F22).
+            Bu opsiyonel bir adımdır &mdash; ETA yazma erişimi gerektirir.
+          </div>
+          <div class="decision-paths">
+            <div class="decision-path path-yes">
+              <strong>Evet</strong>
+              SQL INSERT ile ETA'ya sipariş kaydı yazılır
+            </div>
+            <div class="decision-path path-no">
+              <strong>Manuel</strong>
+              Muhasebe ETA'ya manuel giriş yapar
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-sa">SA</span>
+            <span class="step-screen">E16 Fason İş Takibi</span>
+          </div>
+          <div class="step-title">Fason iş varsa gönderim yap</div>
+          <div class="step-desc">
+            Eğer malzemelerden bazıları fason işlem gerektiriyorsa (kaplama, ısıl işlem vb.)
+            E16'da fason iş takibi başlatılır. Fasona gönderim tarihi, beklenen dönüş tarihi kaydedilir.
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> FasonİşTakibi oluşturulur
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────── FAZ 8 ─────── -->
+    <div class="flow-phase phase-green">
+      <div class="phase-header">
+        <div class="phase-number">8</div>
+        <div>
+          <h3>Malzeme Takip & Montaj Hazırlık</h3>
+          <div class="phase-sub">Malzeme gelişleri takip edilir, montaj hazırlığı kontrol edilir</div>
+        </div>
+      </div>
+      <div class="steps-container">
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-sa">SA</span>
+            <span class="step-screen">E13 Sipariş Takibi</span>
+          </div>
+          <div class="step-title">Malzeme gelişlerini işaretle</div>
+          <div class="step-desc">
+            Malzeme geldiğinde SA "Geldi" butonuna tıklar. Kısmi gelişler desteklenir
+            (10 parçadan 6'sı geldi, 4'ü bekleniyor). Gelmemiş ve hedef tarihi geçmiş siparişler
+            kırmızı renkte uyarı verir.
+          </div>
+          <div class="step-details">
+            <ul>
+              <li>Kısmi geldi: miktar girilir, kalan otomatik hesaplanır</li>
+              <li>Renk sistemi: beyaz=beklemede, mavi=yolda, yeşil=geldi, kırmızı=gecikmiş</li>
+              <li>Hedef tarih aşım uyarıları otomatik çalışır</li>
+            </ul>
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> SatınAlmaSiparişi.durum güncellenir, MalzemeKalemi durumu yansır
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-sa">SA</span>
+            <span class="step-role role-pm">PM</span>
+            <span class="step-screen">E14 Malzeme Durum (Ofis)</span>
+          </div>
+          <div class="step-title">Proje bazlı malzeme durumunu izle</div>
+          <div class="step-desc">
+            E14'te proje no veya montaj no ile sorgulama yapılır. Bir projenin TÜM malzemelerinin
+            güncel durumu tek tabloda görünür: sipariş verildi mi, geldi mi, fiyat ne.
+            Grup bazında progress bar ile tamamlanma yüzdesi gösterilir.
+          </div>
+          <div class="step-details">
+            <ul>
+              <li>İmalat: 6/10 alındı (%60) &mdash; progress bar ile görsel</li>
+              <li>Keçe: 3/3 alındı (%100) &mdash; tamamlandı</li>
+              <li>Standart: 0/5 alındı (%0) &mdash; henüz başlanmadı</li>
+              <li>Ofis versiyonunda fiyat bilgileri görünür</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-system">SİSTEM</span>
+            <span class="step-screen">E15 Malzeme Durum (Atölye)</span>
+          </div>
+          <div class="step-title">Atölye ekranında malzeme durumu</div>
+          <div class="step-desc">
+            E15, E14'ün basitleştirilmiş versiyonudur. Fiyat bilgileri gizlidir.
+            Operatörler ve üretim sorumlusu montaj no ile sorgulayarak hangi malzemelerin
+            geldiğini/gelmediğini görebilir. Beklenen geliş tarihleri görünür.
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-system">SİSTEM</span>
+            <span class="step-screen">E14/E15</span>
+          </div>
+          <div class="step-title">Montaj hazırlık kontrolü</div>
+          <div class="step-desc">
+            Bir kalemin TÜM malzemeleri geldiğinde sistem otomatik olarak "Montaja Hazır" durumuna geçirir (F19).
+            Bu durum Paket 3'te iş emri bağımlılık motorunu tetikler &mdash; Paket 2 kapsamında hazırlık
+            bilgisi E14/E15'te görünür.
+          </div>
+          <div class="data-flow">
+            <span class="arrow">&rarr;</span> Kalem durumu güncellenir, Paket 3 bağımlılık motoru için hazır
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-role role-sa">SA</span>
+            <span class="step-screen">E17 Madde Kartı Yönetimi</span>
+          </div>
+          <div class="step-title">Madde kartlarını güncel tut</div>
+          <div class="step-desc">
+            E17'de ETA'dan periyodik olarak madde kartları senkronize edilir. Programda kullanılan
+            ancak ETA'da olmayan madde kodları eksik kontrolü ile tespit edilir. Fiyat güncellemeleri
+            bu ekrandan yapılır.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /mega-flow -->
+</section>
+
+<!-- ════════════════════════════════════ ENTITY FLOW ════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Veri Akışı</div>
+  <h2>Entity Yaşam Döngüsü Diyagramı</h2>
+  <p>Bir sipariş talebinin veri katmanında bıraktığı iz. Her entity ne zaman oluşur, ne zaman güncellenir.</p>
+
+  <div class="entity-flow">
+    <pre>
+  <span class="ef-highlight">MÜŞTERİ TALEBİ</span>
+       │
+       ▼
+  ┌─────────────┐     ┌──────────┐
+  │ <span class="ef-highlight">Firma</span>        │◄────│ E09      │  Firma yoksa yeni oluşturulur
+  └──────┬──────┘     └──────────┘
+         │ 1:N
+         ▼
+  ┌─────────────┐     ┌──────────┐
+  │ <span class="ef-highlight">Proje</span>        │◄────│ E01, E02 │  P-112 numarası otomatik atanır
+  │ (P-112)     │     └──────────┘
+  └──────┬──────┘
+         │ 1:N
+         ▼
+  ┌─────────────────────────────────────────────────────────┐
+  │ <span class="ef-highlight">Kalem</span> (P112-1, P112-2, P112-3...)                       │
+  │                                                         │
+  │  montaj_no = Tüm Sistemin Omurgası                     │◄── E02, E03
+  │  Her kalem bağımsız yaşam döngüsüne sahip               │
+  └────────┬──────────────────┬──────────────┬──────────────┘
+           │                  │              │
+           ▼                  ▼              ▼
+  ┌────────────────┐  ┌──────────────┐  ┌──────────────────────┐
+  │ <span class="ef-purple">BoyutParametreleri</span>│  │ <span class="ef-yellow">Fiyatlandırma</span> │  │ <span class="ef-green">ProjeTakipAdımları</span>    │
+  │ 6 ölçü kutusu  │  │ Çalışması    │  │ 14 workflow tick     │
+  │ temiz + ham    │  │ 3 yöntem     │  │ tarih otomatik       │
+  └────────────────┘  └──────────────┘  └──────────────────────┘
+           │
+           ▼
+  ┌──────────────────────────────────────────────────────────┐
+  │ <span class="ef-purple">MalzemeListesi</span> (Versiyon Zinciri)                        │
+  │                                                          │
+  │  v1[teklif/taslak] → v2[teklif/kilitli] → v3[sipariş]  │◄── E03, E04
+  │  Her versiyon parent_id ile öncekine bağlı               │
+  │  Hiçbir zaman overwrite yok, sadece yeni kayıt           │
+  └──────────┬───────────────────────────────────────────────┘
+             │ 1:N
+             ▼
+  ┌──────────────────────────────────────────────────────────┐
+  │ <span class="ef-purple">MalzemeKalemi</span> (BOM satırları)                            │
+  │                                                          │
+  │  Malzeme grubu: imalat / keçe / standart / sarf         │◄── E04
+  │  TAS: temiz ölçü girer | SA: ham ölçü + fiyat girer     │
+  │  Fiyat kaynağı: madde kartı / manuel / son alış          │
+  └──────────┬────────────────────────┬──────────────────────┘
+             │                        │
+             ▼                        ▼
+  ┌──────────────────┐     ┌──────────────────────────────┐
+  │ <span class="ef-orange">MaddeKartı</span>        │     │ <span class="ef-orange">SatınAlmaTalebi</span>              │
+  │ ETA'dan sync     │     │ USA kilitleme → otomatik     │◄── E12
+  │ Periyodik çekme  │     │ Proje/genel/sarf tipleri     │
+  └──────────────────┘     └──────────┬───────────────────┘
+                                      │ 1:N
+                                      ▼
+                           ┌──────────────────────────────┐
+                           │ <span class="ef-orange">SatınAlmaSiparişi</span>             │
+                           │ Tedarikçi + fiyat + hedef    │◄── E13
+                           │ sipariş → yolda → geldi      │
+                           └──────────┬───────────────────┘
+                                      │
+                                      ▼
+                           ┌──────────────────────────────┐
+                           │ <span class="ef-green">FasonİşTakibi</span>                │
+                           │ (varsa)                      │◄── E16
+                           │ gönderildi → fasonda → döndü │
+                           └──────────────────────────────┘
+    </pre>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ SCREEN MAP ════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Ekran Haritası</div>
+  <h2>17 Ekran: Hangi Fazda, Kim Kullanır?</h2>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>Ekran</th>
+        <th>Ad</th>
+        <th>Faz</th>
+        <th>Kullanan</th>
+        <th>Temel İşlev</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>E01</strong></td>
+        <td>Proje Listesi</td>
+        <td><span class="phase-tag" style="background: var(--blue-dim); color: var(--blue);">Faz 1</span></td>
+        <td>PM, SAT, YÖN</td>
+        <td>Tüm projelerin filtrelenebilir ana listesi, durum renkleri</td>
+      </tr>
+      <tr>
+        <td><strong>E02</strong></td>
+        <td>Proje Detay</td>
+        <td><span class="phase-tag" style="background: var(--blue-dim); color: var(--blue);">Faz 1, 5</span></td>
+        <td>PM, SAT</td>
+        <td>Tek projenin tüm kalemleri, toplamlar, kalem yönetimi</td>
+      </tr>
+      <tr>
+        <td><strong>E03</strong></td>
+        <td>Kalem Detay & Versiyon</td>
+        <td><span class="phase-tag" style="background: var(--purple-dim); color: var(--purple);">Faz 1, 2, 6</span></td>
+        <td>PM, TAS, SA</td>
+        <td>Ölçüler, versiyon zinciri, diff, malzeme listesi geçişi</td>
+      </tr>
+      <tr>
+        <td><strong>E04</strong></td>
+        <td>Malzeme Listesi</td>
+        <td><span class="phase-tag" style="background: var(--purple-dim); color: var(--purple);">Faz 2, 3, 6</span></td>
+        <td>TAS, SA</td>
+        <td>UTA/USA malzeme kalemleri, ölçü girişi, fiyat girişi</td>
+      </tr>
+      <tr>
+        <td><strong>E05</strong></td>
+        <td>Fiyatlandırma</td>
+        <td><span class="phase-tag" style="background: var(--yellow-dim); color: var(--yellow);">Faz 4</span></td>
+        <td>PM, YÖN</td>
+        <td>3 yöntem hesaplama, geçmiş karşılaştırma, karar</td>
+      </tr>
+      <tr>
+        <td><strong>E06</strong></td>
+        <td>PDF Oluştur & Gönder</td>
+        <td><span class="phase-tag" style="background: var(--cyan-dim); color: var(--cyan);">Faz 5</span></td>
+        <td>PM, SAT</td>
+        <td>Çok dilli/tipli belge üretimi, mail gönderimi</td>
+      </tr>
+      <tr>
+        <td><strong>E07</strong></td>
+        <td>Proje Takip Tablosu</td>
+        <td><span class="phase-tag" style="background: var(--green-dim); color: var(--green);">Tüm Fazlar</span></td>
+        <td>PM, YÖN</td>
+        <td>Workflow board, tick bazlı ilerleme, otomatik tarih</td>
+      </tr>
+      <tr>
+        <td><strong>E08</strong></td>
+        <td>Admin Formül Yönetimi</td>
+        <td><span class="phase-tag" style="background: var(--yellow-dim); color: var(--yellow);">Kurulum</span></td>
+        <td>YÖN</td>
+        <td>Hacim/talaş/süre formülleri, çarpanlar</td>
+      </tr>
+      <tr>
+        <td><strong>E09</strong></td>
+        <td>Firma Yönetimi</td>
+        <td><span class="phase-tag" style="background: var(--blue-dim); color: var(--blue);">Faz 1</span></td>
+        <td>PM, SAT, YÖN</td>
+        <td>Müşteri bilgileri, geçmiş, firma bazlı analiz</td>
+      </tr>
+      <tr>
+        <td><strong>E10</strong></td>
+        <td>Sipariş Onay Döngüsü</td>
+        <td><span class="phase-tag" style="background: var(--green-dim); color: var(--green);">Faz 5, 6</span></td>
+        <td>PM, SAT</td>
+        <td>Bekleyen teklifler, bekleme süresi, fiyat müzakeresi</td>
+      </tr>
+      <tr>
+        <td><strong>E11</strong></td>
+        <td>Yönetim Dashboard</td>
+        <td><span class="phase-tag" style="background: var(--yellow-dim); color: var(--yellow);">Tüm Fazlar</span></td>
+        <td>YÖN (TV)</td>
+        <td>Satış hunisi, dikkat gerektiren, dönem özeti</td>
+      </tr>
+      <tr style="background: rgba(251,146,60,0.03);">
+        <td><strong>E12</strong></td>
+        <td>Satın Alma Talep</td>
+        <td><span class="phase-tag" style="background: var(--orange-dim); color: var(--orange);">Faz 7</span></td>
+        <td>SA, TAS, ÜS</td>
+        <td>Tasarım/üretimden gelen taleplerin yönetimi</td>
+      </tr>
+      <tr style="background: rgba(251,146,60,0.03);">
+        <td><strong>E13</strong></td>
+        <td>Sipariş Takibi</td>
+        <td><span class="phase-tag" style="background: var(--orange-dim); color: var(--orange);">Faz 7, 8</span></td>
+        <td>SA, PM</td>
+        <td>Firmalardan alınan malzemelerin durumu</td>
+      </tr>
+      <tr style="background: rgba(251,146,60,0.03);">
+        <td><strong>E14</strong></td>
+        <td>Malzeme Durum (Ofis)</td>
+        <td><span class="phase-tag" style="background: var(--green-dim); color: var(--green);">Faz 8</span></td>
+        <td>SA, PM, ÜS</td>
+        <td>Proje bazlı malzeme checklist, fiyat dahil</td>
+      </tr>
+      <tr style="background: rgba(251,146,60,0.03);">
+        <td><strong>E15</strong></td>
+        <td>Malzeme Durum (Atölye)</td>
+        <td><span class="phase-tag" style="background: var(--green-dim); color: var(--green);">Faz 8</span></td>
+        <td>OP, ÜS</td>
+        <td>E14'ün fiyatsız versiyonu, atölye kullanımı</td>
+      </tr>
+      <tr style="background: rgba(251,146,60,0.03);">
+        <td><strong>E16</strong></td>
+        <td>Fason İş Takibi</td>
+        <td><span class="phase-tag" style="background: var(--orange-dim); color: var(--orange);">Faz 7</span></td>
+        <td>FAS, PM</td>
+        <td>Dışarıya gönderilen işlerin takibi</td>
+      </tr>
+      <tr style="background: rgba(251,146,60,0.03);">
+        <td><strong>E17</strong></td>
+        <td>Madde Kartı Yönetimi</td>
+        <td><span class="phase-tag" style="background: var(--orange-dim); color: var(--orange);">Sürekli</span></td>
+        <td>SA, MUH</td>
+        <td>ETA sync, eksik kontrol, fiyat güncelleme</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ════════════════════════════════════ CRITICAL RULES ════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Kritik Kurallar</div>
+  <h2>Akış Boyunca Geçerli İş Kuralları</h2>
+
+  <div class="callout critical">
+    <div class="callout-icon">!</div>
+    <div class="callout-body">
+      <strong>Montaj Numarası = Sistemin Omurgası</strong>
+      <p>
+        Tüm üretim, tüm satın alma, tüm veri ilişkileri montaj numarası üzerinden yürür.
+        Satın alma siparişi, fason iş, malzeme durumu, iş emri &mdash; her şey montaj no ile sorgulanır.
+      </p>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-icon">!</div>
+    <div class="callout-body">
+      <strong>Versiyon Zinciri: Hiçbir Zaman Overwrite Yok</strong>
+      <p>
+        UTA ve USA aynı tabloda, tek bir versiyon zincirinde yaşar. Her değişiklik yeni kayıt oluşturur.
+        Aktif versiyon editlenebilir, kilitli versiyona dokunulmaz. Herhangi iki versiyon arasında diff yapılabilir.
+        Teklif finali vs sipariş finali karşılaştırılarak kârlılık analizi yapılır.
+      </p>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-icon">!</div>
+    <div class="callout-body">
+      <strong>Kısmi Onay / Kısmi Sevkiyat</strong>
+      <p>
+        10 kalemlik bir projede sadece 5 kalem onaylanabilir. Aynı kalemin adetleri kısmi sevk edilebilir.
+        Her sevk kendi faturasını tetikler. Kalem bazında bağımsız yaşam döngüsü vardır.
+      </p>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-icon">i</div>
+    <div class="callout-body">
+      <strong>Muhasebe Kapısı</strong>
+      <p>
+        Muhasebe onayı olmadan satın alma veya üretime geçilmemelidir. Bu kural uyarıyla esnetilebilir
+        ancak log tutulur. Vade takibi ve ödeme kontrolü ETA tarafında kalır.
+      </p>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-icon">i</div>
+    <div class="callout-body">
+      <strong>Renk Sistemi (Tüm Ekranlarda Ortak)</strong>
+      <p>
+        <span style="color: var(--green);">Yeşil</span> = Tamamlandı/Hazır &nbsp;|&nbsp;
+        <span style="color: var(--blue);">Mavi</span> = Devam Ediyor/Yolda &nbsp;|&nbsp;
+        <span style="color: var(--yellow);">Turuncu</span> = Dikkat/Beklemede &nbsp;|&nbsp;
+        <span style="color: var(--red);">Kırmızı</span> = Gecikmiş/Kritik &nbsp;|&nbsp;
+        <span style="color: var(--text-muted);">Gri</span> = Henüz Başlanmadı
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ ALTERNATIVE FLOWS ════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Alternatif Senaryolar</div>
+  <h2>Normal Akıştan Sapma Durumları</h2>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>Senaryo</th>
+        <th>Tetikleyen</th>
+        <th>Ne Olur?</th>
+        <th>Hangi Faza Döner?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Müşteri Revizyon</strong></td>
+        <td>Müşteri ölçü/malzeme değişikliği ister</td>
+        <td>Mevcut versiyon kilitlenir, yeni versiyon açılır (neden: müşteri talebi)</td>
+        <td>Faz 2 (Tasarım)</td>
+      </tr>
+      <tr>
+        <td><strong>Tasarım Revizyonu</strong></td>
+        <td>TAS tasarımda hata/değişiklik bulur</td>
+        <td>Aynı aşamada yeni versiyon açılır (neden: tasarım revizyonu)</td>
+        <td>Faz 2</td>
+      </tr>
+      <tr>
+        <td><strong>Fiyat Değişikliği</strong></td>
+        <td>Malzeme fiyatı güncellenir</td>
+        <td>Yeni versiyon, fiyatlandırma tekrar yapılır</td>
+        <td>Faz 3-4</td>
+      </tr>
+      <tr>
+        <td><strong>Teklif İptali</strong></td>
+        <td>Müşteri iptal eder</td>
+        <td>Proje.durum = "iptal", iptal tarihi + neden zorunlu girilir</td>
+        <td>Akış biter</td>
+      </tr>
+      <tr>
+        <td><strong>Kısmi Sipariş</strong></td>
+        <td>10 kalemden 5'i onaylanır</td>
+        <td>5 kalem sipariş akışına girer, 5'i teklif durumunda kalır</td>
+        <td>Faz 6 (sadece onaylananlar)</td>
+      </tr>
+      <tr>
+        <td><strong>Malzeme Gecikmesi</strong></td>
+        <td>Hedef tarih geçer, malzeme gelmez</td>
+        <td>E13'te kırmızı uyarı, SA takip eder, alternatif firma aranır</td>
+        <td>Faz 8'de kalır</td>
+      </tr>
+      <tr>
+        <td><strong>Fason Gecikmesi</strong></td>
+        <td>Fason iş beklenen tarihte dönmez</td>
+        <td>E16'da kırmızı uyarı, FAS fasoncuyu takip eder</td>
+        <td>Faz 7'de kalır</td>
+      </tr>
+      <tr>
+        <td><strong>Genel Talep (Proje Dışı)</strong></td>
+        <td>Üretim sarf malzeme ister (elmas, yağ vb.)</td>
+        <td>E12'de "Genel Talep" olarak girilir, proje bağlantısı yok</td>
+        <td>Doğrudan Faz 7</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ════════════════════════════════════ QUICK REFERENCE ════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Hızlı Referans</div>
+  <h2>Faz Bazlı Checklist</h2>
+  <p>Her faz tamamlandığında aşağıdaki çıktılar oluşmuş olmalıdır.</p>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th style="width: 60px;">#</th>
+        <th>Faz</th>
+        <th>Giriş Koşulu</th>
+        <th>Çıktı</th>
+        <th>Sorumlu</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td>Talep Kaydı</td>
+        <td>Müşteriden talep geldi</td>
+        <td>Proje + kalemler + ölçüler sisteme girildi</td>
+        <td>PM</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td>Tasarım</td>
+        <td>Kalemler tanımlı</td>
+        <td>UTA malzeme listesi hazır, SA'ya gönderildi</td>
+        <td>TAS</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td>SA Fiyat</td>
+        <td>UTA SA'ya düştü</td>
+        <td>Ham ölçüler ve malzeme fiyatları girildi</td>
+        <td>SA</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td>Fiyatlandırma</td>
+        <td>Malzeme fiyatları hazır</td>
+        <td>Kalem fiyatı kesinleşti, muhasebe onayı alındı</td>
+        <td>PM, YÖN</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td>Teklif</td>
+        <td>Fiyatlar kesinleşti</td>
+        <td>PDF üretildi, müşteriye gönderildi</td>
+        <td>PM, SAT</td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td>Onay + USA</td>
+        <td>Müşteri onayladı</td>
+        <td>Sipariş onaylandı, USA hazırlandı ve kilitlendi, SA talepleri düştü</td>
+        <td>PM, TAS</td>
+      </tr>
+      <tr>
+        <td><strong>7</strong></td>
+        <td>SA Sipariş</td>
+        <td>Talepler düştü</td>
+        <td>Tedarikçilere siparişler verildi, fason varsa gönderildi</td>
+        <td>SA, FAS</td>
+      </tr>
+      <tr>
+        <td><strong>8</strong></td>
+        <td>Malzeme Takip</td>
+        <td>Siparişler verildi</td>
+        <td>Tüm malzemeler geldi, montaja hazır durumu aktif</td>
+        <td>SA</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ════════════════════════════════════ FOOTER ════════════════════════════════════ -->
+<div class="doc-footer">
+  Ünverler Makine ERP &mdash; Paket 1+2 Operasyonel Akış Dokümanı &middot; Tibexa &middot; Mayıs 2026<br>
+  <span style="color: var(--text-muted);">Kaynak: univers-veri-modeli.md + univers-ekran-envanteri.md + univers-scope-document.md</span>
+</div>
+
+</div><!-- /content -->
+</body>
+</html>

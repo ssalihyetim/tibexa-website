@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Tibexa — Ünverler Makine Fiyat Teklifi</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; color: #1a1a2e; background: #fff; -webkit-font-smoothing: antialiased; }
+
+  .page { width: 210mm; min-height: 297mm; margin: 0 auto; padding: 40px 48px; position: relative; page-break-after: always; }
+  .page:last-child { page-break-after: avoid; }
+
+  /* Header */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 36px; padding-bottom: 20px; border-bottom: 2px solid #1a1a2e; }
+  .header-left { }
+  .header-logo { font-size: 24px; font-weight: 800; letter-spacing: 1px; color: #1a1a2e; margin-bottom: 4px; }
+  .header-sub { font-size: 11px; color: #64748b; letter-spacing: 0.5px; }
+  .header-right { text-align: right; font-size: 11px; color: #64748b; line-height: 1.8; }
+  .header-right strong { color: #1a1a2e; font-weight: 600; }
+
+  /* Doc title */
+  .doc-title { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 6px; color: #1a1a2e; }
+  .doc-subtitle { font-size: 14px; color: #64748b; margin-bottom: 28px; }
+
+  /* Info grid */
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+  .info-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px 20px; }
+  .info-box-title { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin-bottom: 10px; }
+  .info-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 12px; border-bottom: 1px solid #f1f5f9; }
+  .info-row:last-child { border-bottom: none; }
+  .info-row .label { color: #64748b; }
+  .info-row .value { font-weight: 600; color: #1a1a2e; }
+
+  /* Section */
+  .section-title { font-size: 16px; font-weight: 700; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0; color: #1a1a2e; }
+
+  /* Main table */
+  .main-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+  .main-table th { background: #1e293b; color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 12px; text-align: left; }
+  .main-table th:first-child { border-radius: 8px 0 0 0; }
+  .main-table th:last-child { border-radius: 0 8px 0 0; text-align: right; }
+  .main-table td { padding: 10px 12px; font-size: 12px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  .main-table tr:last-child td { border-bottom: 2px solid #e2e8f0; }
+  .main-table .col-right { text-align: right; }
+  .main-table .row-group { background: #f8fafc; font-weight: 600; }
+
+  /* Totals */
+  .totals { display: flex; justify-content: flex-end; margin-bottom: 28px; }
+  .totals-box { width: 280px; }
+  .total-row { display: flex; justify-content: space-between; padding: 7px 0; font-size: 13px; border-bottom: 1px solid #f1f5f9; }
+  .total-row .label { color: #64748b; }
+  .total-row .value { font-weight: 600; }
+  .total-row.grand { border-top: 2px solid #1e293b; border-bottom: none; padding-top: 10px; margin-top: 4px; }
+  .total-row.grand .label { font-weight: 800; color: #1a1a2e; font-size: 15px; }
+  .total-row.grand .value { font-weight: 800; color: #1a1a2e; font-size: 15px; }
+
+  /* Highlight box */
+  .highlight-box { background: linear-gradient(135deg, #eff6ff, #f0f9ff); border: 1px solid #bfdbfe; border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+  .highlight-box h4 { font-size: 13px; font-weight: 700; color: #1d4ed8; margin-bottom: 8px; }
+  .highlight-box p { font-size: 12px; color: #475569; line-height: 1.7; }
+
+  /* Feature list */
+  .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; margin-bottom: 24px; }
+  .feature-item { font-size: 11.5px; padding: 5px 0; padding-left: 18px; position: relative; color: #334155; line-height: 1.5; }
+  .feature-item::before { content: '✓'; position: absolute; left: 0; color: #16a34a; font-weight: 700; font-size: 11px; }
+
+  /* Terms */
+  .terms { margin-bottom: 24px; }
+  .terms h4 { font-size: 13px; font-weight: 700; margin-bottom: 10px; color: #1a1a2e; }
+  .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .term-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; }
+  .term-item .t-label { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #94a3b8; margin-bottom: 4px; }
+  .term-item .t-value { font-size: 12px; font-weight: 600; color: #1a1a2e; }
+
+  /* Timeline */
+  .timeline-compact { margin-bottom: 24px; }
+  .tl-row { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; border-bottom: 1px solid #f1f5f9; font-size: 12px; }
+  .tl-row:last-child { border-bottom: none; }
+  .tl-week { width: 52px; flex-shrink: 0; font-weight: 700; color: #3b82f6; font-size: 11px; }
+  .tl-desc { color: #334155; flex: 1; }
+  .tl-output { color: #64748b; font-size: 11px; flex-shrink: 0; }
+
+  /* Signature */
+  .signature-area { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+  .sig-block { }
+  .sig-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #94a3b8; margin-bottom: 6px; }
+  .sig-name { font-size: 13px; font-weight: 600; color: #1a1a2e; margin-bottom: 2px; }
+  .sig-title { font-size: 11px; color: #64748b; }
+  .sig-line { width: 180px; height: 1px; background: #cbd5e1; margin-top: 48px; }
+
+  /* Footer */
+  .page-footer { position: absolute; bottom: 28px; left: 48px; right: 48px; display: flex; justify-content: space-between; font-size: 9px; color: #94a3b8; }
+
+  /* Notes */
+  .notes { margin-top: 20px; }
+  .notes h4 { font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .notes ol { padding-left: 18px; font-size: 11px; color: #475569; line-height: 1.9; }
+  .notes ol li { padding-left: 4px; }
+
+  /* Excluded */
+  .excluded { margin-bottom: 20px; }
+  .excluded h4 { font-size: 12px; font-weight: 700; margin-bottom: 8px; color: #1a1a2e; }
+  .excluded-list { font-size: 11px; color: #64748b; line-height: 1.8; padding-left: 16px; }
+  .excluded-list li { padding-left: 4px; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ SAYFA 1 ═══════════════ -->
+<div class="page">
+  <div class="header">
+    <div class="header-left">
+      <div class="header-logo">TIBEXA</div>
+      <div class="header-sub">Dijital Dönüşüm & Yazılım Çözümleri</div>
+    </div>
+    <div class="header-right">
+      <strong>Teklif No:</strong> TBX-2026-UNV-001<br>
+      <strong>Tarih:</strong> 08.05.2026<br>
+      <strong>Geçerlilik:</strong> 30 gün
+    </div>
+  </div>
+
+  <div class="doc-title">Fiyat Teklifi</div>
+  <div class="doc-subtitle">Ünverler Makine — Sipariş Bazlı Üretim Yönetim Platformu / Senaryo B</div>
+
+  <div class="info-grid">
+    <div class="info-box">
+      <div class="info-box-title">Müşteri Bilgileri</div>
+      <div class="info-row"><span class="label">Firma</span><span class="value">Ünverler Makine San. ve Tic. A.Ş.</span></div>
+      <div class="info-row"><span class="label">İlgili Kişi</span><span class="value">Mert Bey</span></div>
+      <div class="info-row"><span class="label">Konu</span><span class="value">ERP Yazılım Geliştirme</span></div>
+    </div>
+    <div class="info-box">
+      <div class="info-box-title">Tedarikçi Bilgileri</div>
+      <div class="info-row"><span class="label">Firma</span><span class="value">Tibexa</span></div>
+      <div class="info-row"><span class="label">İlgili Kişi</span><span class="value">Salih Yetim</span></div>
+      <div class="info-row"><span class="label">E-posta</span><span class="value">salih@tibexa.com</span></div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h4>Senaryo B — Paket 1 + Paket 2</h4>
+    <p>
+      Teklif talebinden sipariş onayına, satın alma sürecinden malzeme takibine kadar uçtan uca dijitalleştirme.
+      17 ekran, 24 fonksiyon, 15 entity. Excel'den tam kurtuluş: teklif, fiyatlandırma, versiyon yönetimi,
+      satın alma, malzeme durumu ve yönetim dashboard'u tek platformda.
+    </p>
+  </div>
+
+  <div class="section-title">Kapsam Detayı</div>
+  <table class="main-table">
+    <thead>
+      <tr>
+        <th style="width:45%;">Kalem</th>
+        <th>Detay</th>
+        <th style="width:15%;">Tutar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-group">
+        <td colspan="3" style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#3b82f6;">Paket 1 — Satış & Teklif Yönetimi</td>
+      </tr>
+      <tr>
+        <td><strong>Proje & Kalem Yönetimi</strong></td>
+        <td style="font-size:11px; color:#64748b;">E01 Proje Listesi, E02 Proje Detay, E09 Firma Yönetimi</td>
+        <td class="col-right"></td>
+      </tr>
+      <tr>
+        <td><strong>Malzeme & Versiyon Sistemi</strong></td>
+        <td style="font-size:11px; color:#64748b;">E03 Kalem Detay & Versiyon Zinciri, E04 Malzeme Listesi (UTA/USA)</td>
+        <td class="col-right"></td>
+      </tr>
+      <tr>
+        <td><strong>Fiyatlandırma Motoru</strong></td>
+        <td style="font-size:11px; color:#64748b;">E05 3 yöntem hesaplama, geçmiş referans, E08 Admin Formüller</td>
+        <td class="col-right"></td>
+      </tr>
+      <tr>
+        <td><strong>Belge & Workflow</strong></td>
+        <td style="font-size:11px; color:#64748b;">E06 PDF üretimi & mail, E07 Takip Tablosu, E10 Sipariş Onay</td>
+        <td class="col-right"></td>
+      </tr>
+      <tr>
+        <td><strong>Dashboard & Altyapı</strong></td>
+        <td style="font-size:11px; color:#64748b;">E11 Yönetim Dashboard, kimlik doğrulama, rol sistemi, ETA okuma</td>
+        <td class="col-right"></td>
+      </tr>
+      <tr>
+        <td style="text-align:right; font-weight:700; color:#1a1a2e;">Paket 1 Ara Toplam</td>
+        <td></td>
+        <td class="col-right" style="font-weight:700;">200.000 ₺</td>
+      </tr>
+
+      <tr class="row-group">
+        <td colspan="3" style="font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#16a34a;">Paket 2 — Satın Alma & Tedarik Zinciri</td>
+      </tr>
+      <tr>
+        <td><strong>Satın Alma Talep & Sipariş</strong></td>
+        <td style="font-size:11px; color:#64748b;">E12 Talep Ekranı, E13 Sipariş Takibi, otomatik talep oluşturma</td>
+        <td class="col-right"></td>
+      </tr>
+      <tr>
+        <td><strong>Malzeme Durum Takibi</strong></td>
+        <td style="font-size:11px; color:#64748b;">E14 Ofis Versiyonu (fiyatlı), E15 Atölye Versiyonu (fiyatsız)</td>
+        <td class="col-right"></td>
+      </tr>
+      <tr>
+        <td><strong>Fason & Madde Kartı</strong></td>
+        <td style="font-size:11px; color:#64748b;">E16 Fason İş Takibi, E17 Madde Kartı Yönetimi, ETA yazma</td>
+        <td class="col-right"></td>
+      </tr>
+      <tr>
+        <td style="text-align:right; font-weight:700; color:#1a1a2e;">Paket 2 Ara Toplam</td>
+        <td></td>
+        <td class="col-right" style="font-weight:700;">120.000 ₺</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <div class="totals-box">
+      <div class="total-row"><span class="label">Paket 1</span><span class="value">200.000 ₺</span></div>
+      <div class="total-row"><span class="label">Paket 2</span><span class="value">120.000 ₺</span></div>
+      <div class="total-row grand"><span class="label">Genel Toplam</span><span class="value">320.000 ₺</span></div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Tibexa — Gizli</span>
+    <span>Sayfa 1 / 2</span>
+  </div>
+</div>
+
+<!-- ═══════════════ SAYFA 2 ═══════════════ -->
+<div class="page">
+  <div class="header">
+    <div class="header-left">
+      <div class="header-logo">TIBEXA</div>
+      <div class="header-sub">Dijital Dönüşüm & Yazılım Çözümleri</div>
+    </div>
+    <div class="header-right">
+      <strong>Teklif No:</strong> TBX-2026-UNV-001<br>
+      <strong>Sayfa:</strong> 2 / 2
+    </div>
+  </div>
+
+  <div class="section-title">Teslim Edilen Fonksiyonlar (24 adet)</div>
+  <div class="feature-grid">
+    <div class="feature-item">Proje oluşturma & otomatik P numarası</div>
+    <div class="feature-item">Kalem yönetimi & kısmi sevk takibi</div>
+    <div class="feature-item">Versiyon zinciri (UTA/USA) & diff</div>
+    <div class="feature-item">Malzeme listesi girişi (TAS + SA)</div>
+    <div class="feature-item">Madde kartından otomatik fiyat çekme</div>
+    <div class="feature-item">Admin formül motoru (hacim, talaş, süre)</div>
+    <div class="feature-item">3 yöntem fiyatlandırma & geçmiş referans</div>
+    <div class="feature-item">Çok dilli PDF üretimi (TR/EN/DE)</div>
+    <div class="feature-item">Mail gönderimi (SMTP / Outlook)</div>
+    <div class="feature-item">Workflow takip tablosu (14 adım)</div>
+    <div class="feature-item">Sipariş onay döngüsü & bekleme uyarısı</div>
+    <div class="feature-item">Yönetim dashboard (TV ekranı)</div>
+    <div class="feature-item">Rol bazlı erişim kontrolü (8 rol)</div>
+    <div class="feature-item">ETA madde kartı senkronizasyonu</div>
+    <div class="feature-item">Otomatik satın alma talebi oluşturma</div>
+    <div class="feature-item">Genel talep girişi (sarf, elmas vb.)</div>
+    <div class="feature-item">Satın alma sipariş & takip</div>
+    <div class="feature-item">Malzeme geldi işaretleme (kısmi/tam)</div>
+    <div class="feature-item">Montaj hazırlık kontrolü</div>
+    <div class="feature-item">Fason gönderim & dönüş takibi</div>
+    <div class="feature-item">Hedef tarih aşım uyarıları (renk)</div>
+    <div class="feature-item">ETA sipariş aktarımı (yazma)</div>
+    <div class="feature-item">Madde kartı tam yönetimi & eksik kontrol</div>
+    <div class="feature-item">Atölye erişim modu (fiyatsız görünüm)</div>
+  </div>
+
+  <div class="section-title">Tahmini Termin Planı</div>
+  <div class="timeline-compact">
+    <div class="tl-row"><span class="tl-week">Hf 1-2</span><span class="tl-desc">Altyapı, veritabanı, kimlik doğrulama, Firma Yönetimi</span><span class="tl-output">E09</span></div>
+    <div class="tl-row"><span class="tl-week">Hf 3-4</span><span class="tl-desc">Proje & Kalem çekirdeği, Versiyon zinciri</span><span class="tl-output">E01, E02, E03</span></div>
+    <div class="tl-row"><span class="tl-week">Hf 5-6</span><span class="tl-desc">Malzeme listesi, Fiyatlandırma, Formül motoru</span><span class="tl-output">E04, E05, E08</span></div>
+    <div class="tl-row"><span class="tl-week">Hf 7-8</span><span class="tl-desc">PDF üretimi, Workflow, Sipariş Onay + Paket 2 altyapısı başlar</span><span class="tl-output">E06, E07, E10</span></div>
+    <div class="tl-row"><span class="tl-week">Hf 9</span><span class="tl-desc">Dashboard, ETA sync, roller + Paket 2 talep/sipariş</span><span class="tl-output">E11, E12, E13</span></div>
+    <div class="tl-row"><span class="tl-week">Hf 10</span><span class="tl-desc">Paket 1 test & go-live + Malzeme durum ekranları</span><span class="tl-output">E14, E15</span></div>
+    <div class="tl-row"><span class="tl-week">Hf 11-12</span><span class="tl-desc">Fason takibi, Madde kartı yönetimi, ETA yazma</span><span class="tl-output">E16, E17</span></div>
+    <div class="tl-row"><span class="tl-week">Hf 13-14</span><span class="tl-desc">Paket 2 test, eğitim, veri migration, go-live</span><span class="tl-output">UAT</span></div>
+  </div>
+
+  <div class="terms">
+    <h4>Koşullar</h4>
+    <div class="terms-grid">
+      <div class="term-item">
+        <div class="t-label">Ödeme Planı</div>
+        <div class="t-value">Toplantıda belirlenecek</div>
+      </div>
+      <div class="term-item">
+        <div class="t-label">Tahmini Süre</div>
+        <div class="t-value">~14 hafta (kısmen paralel)</div>
+      </div>
+      <div class="term-item">
+        <div class="t-label">Platform</div>
+        <div class="t-value">Web tabanlı (SPA), PostgreSQL</div>
+      </div>
+      <div class="term-item">
+        <div class="t-label">Geçerlilik</div>
+        <div class="t-value">Bu tarihten itibaren 30 gün</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="excluded">
+    <h4>Kapsam Dışı</h4>
+    <ol class="excluded-list">
+      <li>Üretim katı: İş emri, tezgah ekranı, barkod sistemi (Paket 3)</li>
+      <li>Üretim planlama (Gantt) ve gerçek maliyet analizi (Paket 3)</li>
+      <li>Fatura kesme/tahsilat takibi (ETA'da kalır)</li>
+      <li>Mobil uygulama, IoT tezgah entegrasyonu</li>
+      <li>Sunucu/hosting maliyetleri (müşteri tarafı)</li>
+    </ol>
+  </div>
+
+  <div class="notes">
+    <h4>Notlar</h4>
+    <ol>
+      <li>KDV dahil değildir.</li>
+      <li>Geçmiş proje verilerinin migration'ı kapsama dahildir (veri temizleme müşteri sorumluluğunda).</li>
+      <li>ETA SQL erişimi müşteri IT tarafından sağlanacaktır.</li>
+      <li>Eğitim (kullanıcı rolleri bazında) kapsama dahildir.</li>
+      <li>Go-live sonrası 1 ay destek kapsama dahildir.</li>
+      <li>Kapsam dışı talepler değişiklik talebi (CR) olarak ayrıca fiyatlandırılır.</li>
+    </ol>
+  </div>
+
+  <div class="signature-area">
+    <div class="sig-block">
+      <div class="sig-label">Tedarikçi</div>
+      <div class="sig-name">Salih Yetim</div>
+      <div class="sig-title">Tibexa</div>
+      <div class="sig-line"></div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-label">Müşteri</div>
+      <div class="sig-name">&nbsp;</div>
+      <div class="sig-title">Ünverler Makine San. ve Tic. A.Ş.</div>
+      <div class="sig-line"></div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Tibexa — Gizli</span>
+    <span>Sayfa 2 / 2</span>
+  </div>
+</div>
+
+</body>
+</html>

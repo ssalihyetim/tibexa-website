@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Ünverler Makine × Tibexa — Sipariş Bazlı Üretim Yönetim Platformu</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111318;
+    --card: #181c24;
+    --card2: #1e2330;
+    --border: rgba(255,255,255,0.07);
+    --white: #f4f4f0;
+    --muted: #8a8f9e;
+    --accent: #3b82f6;
+    --accent2: #60a5fa;
+    --gold: #c9a84c;
+    --green: #3ecf8e;
+    --red: #f55;
+    --orange: #f59e0b;
+    --blue: #5b9cf6;
+    --purple: #a78bfa;
+    --cyan: #22d3ee;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: var(--black); color: var(--white); font-family: 'Red Hat Display', sans-serif; height: 100%; width: 100%; }
+  body { overflow: hidden; }
+
+  .slides-container { display: flex; width: 100%; height: 100vh; transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1); }
+  .slide { min-width: 100vw; height: 100vh; overflow-y: auto; padding: 40px 64px; position: relative; display: flex; flex-direction: column; }
+  .slide::-webkit-scrollbar { width: 3px; }
+  .slide::-webkit-scrollbar-track { background: transparent; }
+  .slide::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  .nav { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; z-index: 100; background: rgba(17,19,24,0.92); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 50px; padding: 10px 18px; }
+  .nav button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 18px; padding: 4px 8px; transition: color 0.2s; }
+  .nav button:hover { color: var(--accent); }
+  .dots { display: flex; gap: 4px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); transition: all 0.3s; cursor: pointer; }
+  .dot.active { background: var(--accent); width: 16px; border-radius: 3px; }
+  .slide-counter { font-size: 12px; color: var(--muted); letter-spacing: 2px; min-width: 55px; text-align: center; }
+
+  .slide-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 12px; }
+  .slide-label { font-size: 10px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; }
+
+  h1 { font-size: clamp(32px, 5vw, 64px); font-weight: 800; line-height: 1.05; letter-spacing: -1px; }
+  h2 { font-size: clamp(24px, 3.5vw, 40px); font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; }
+  h3 { font-size: 16px; font-weight: 700; }
+  p { font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+  .accent { color: var(--accent); }
+  .white { color: var(--white); }
+  .green { color: var(--green); }
+  .gold { color: var(--gold); }
+  .red { color: var(--red); }
+  .muted { color: var(--muted); }
+  .blue { color: var(--blue); }
+  .purple { color: var(--purple); }
+  .orange { color: var(--orange); }
+  .cyan { color: var(--cyan); }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .card-accent { background: linear-gradient(135deg, rgba(59,130,246,0.13), rgba(59,130,246,0.04)); border: 1px solid rgba(59,130,246,0.28); }
+  .card-green { background: linear-gradient(135deg, rgba(62,207,142,0.10), rgba(62,207,142,0.03)); border: 1px solid rgba(62,207,142,0.25); }
+  .card-orange { background: linear-gradient(135deg, rgba(245,158,11,0.10), rgba(245,158,11,0.03)); border: 1px solid rgba(245,158,11,0.25); }
+  .card-purple { background: linear-gradient(135deg, rgba(167,139,250,0.10), rgba(167,139,250,0.03)); border: 1px solid rgba(167,139,250,0.25); }
+  .card-gold { background: linear-gradient(135deg, rgba(201,168,76,0.10), rgba(201,168,76,0.03)); border: 1px solid rgba(201,168,76,0.25); }
+  .card-red { background: linear-gradient(135deg, rgba(255,85,85,0.10), rgba(255,85,85,0.03)); border: 1px solid rgba(255,85,85,0.25); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+  .big-stat { font-size: 44px; font-weight: 800; letter-spacing: -1px; line-height: 1; }
+  .kv { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 12px; gap: 12px; }
+  .kv:last-child { border-bottom: none; }
+  .kv .k { color: var(--muted); flex-shrink: 0; }
+  .kv .v { font-weight: 600; text-align: right; }
+  .divider { width: 48px; height: 2px; background: var(--accent); margin: 12px 0 16px; }
+
+  .tag { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 20px; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; white-space: nowrap; }
+  .tag-blue { background: rgba(59,130,246,0.15); color: var(--accent2); border: 1px solid rgba(59,130,246,0.3); }
+  .tag-green { background: rgba(62,207,142,0.12); color: var(--green); border: 1px solid rgba(62,207,142,0.25); }
+  .tag-orange { background: rgba(245,158,11,0.12); color: var(--orange); border: 1px solid rgba(245,158,11,0.25); }
+  .tag-purple { background: rgba(167,139,250,0.12); color: var(--purple); border: 1px solid rgba(167,139,250,0.25); }
+  .tag-red { background: rgba(255,85,85,0.12); color: var(--red); border: 1px solid rgba(255,85,85,0.25); }
+  .tag-gold { background: rgba(201,168,76,0.12); color: #e8c96a; border: 1px solid rgba(201,168,76,0.25); }
+  .tag-gray { background: rgba(138,143,158,0.12); color: var(--muted); border: 1px solid rgba(138,143,158,0.25); }
+
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); padding: 8px 8px; text-align: left; border-bottom: 1px solid var(--border); font-weight: 600; }
+  .data-table td { padding: 7px 8px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--white); vertical-align: middle; }
+  .data-table tr:last-child td { border-bottom: none; }
+
+  .screen-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .screen-row:last-child { border-bottom: none; }
+  .screen-row .s-num { width: 32px; height: 32px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; background: rgba(59,130,246,0.15); color: var(--accent2); border: 1px solid rgba(59,130,246,0.3); }
+  .screen-row .s-num.s-green { background: rgba(62,207,142,0.15); color: var(--green); border-color: rgba(62,207,142,0.3); }
+  .screen-row .s-info { flex: 1; }
+  .screen-row .s-name { font-size: 12px; font-weight: 600; }
+  .screen-row .s-desc { font-size: 10px; color: var(--muted); }
+
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--accent), var(--green), var(--purple)); }
+  .tl-item { margin-bottom: 16px; position: relative; }
+  .tl-item::before { content: ''; position: absolute; left: -20px; top: 5px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(59,130,246,0.2); }
+  .tl-item.green-dot::before { background: var(--green); box-shadow: 0 0 0 3px rgba(62,207,142,0.2); }
+  .tl-step { font-size: 9px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 2px; }
+
+  .flow-arrow { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+  .flow-step { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; text-align: center; min-width: 90px; }
+  .flow-step.active-step { background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(59,130,246,0.05)); border-color: rgba(59,130,246,0.35); }
+  .flow-connector { color: var(--muted); font-size: 16px; padding: 0 3px; }
+
+  /* ===== MOCKUP / BROWSER FRAME STYLES ===== */
+  .browser-frame { background: #f8f9fb; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+  .browser-bar { background: #e8eaed; padding: 8px 14px; display: flex; align-items: center; gap: 10px; }
+  .browser-dots { display: flex; gap: 5px; }
+  .browser-dots span { width: 9px; height: 9px; border-radius: 50%; }
+  .browser-dots .d-r { background: #ff5f57; }
+  .browser-dots .d-y { background: #febc2e; }
+  .browser-dots .d-g { background: #28c840; }
+  .browser-url { flex: 1; background: #fff; border-radius: 5px; padding: 4px 10px; font-size: 10px; color: #666; font-family: monospace; }
+  .browser-body { display: flex; min-height: 280px; max-height: 52vh; color: #1a1a2e; font-size: 11px; }
+
+  .app-sidebar { width: 160px; background: #1e293b; padding: 12px 0; flex-shrink: 0; display: flex; flex-direction: column; }
+  .app-sidebar .app-logo { padding: 4px 14px 12px; font-size: 12px; font-weight: 800; color: #fff; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 8px; }
+  .app-sidebar a { display: flex; align-items: center; gap: 8px; padding: 7px 14px; color: #94a3b8; font-size: 11px; text-decoration: none; transition: all 0.15s; }
+  .app-sidebar a:hover { background: rgba(255,255,255,0.05); color: #e2e8f0; }
+  .app-sidebar a.active { background: rgba(59,130,246,0.15); color: #60a5fa; border-left: 2px solid #3b82f6; }
+
+  .app-content { flex: 1; padding: 14px 18px; overflow: hidden; background: #f8f9fb; display: flex; flex-direction: column; }
+  .app-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .app-header-bar h4 { font-size: 14px; font-weight: 700; color: #1e293b; }
+  .app-btn { display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; border-radius: 6px; font-size: 10px; font-weight: 600; border: none; cursor: default; }
+  .app-btn-primary { background: #3b82f6; color: #fff; }
+  .app-btn-outline { background: #fff; color: #475569; border: 1px solid #e2e8f0; }
+
+  .app-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; }
+  .app-table th { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #64748b; padding: 8px 8px; text-align: left; background: #f8fafc; border-bottom: 1px solid #e2e8f0; font-weight: 600; }
+  .app-table td { padding: 7px 8px; font-size: 11px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+  .app-table tr:last-child td { border-bottom: none; }
+
+  .status-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 9px; font-weight: 600; white-space: nowrap; }
+  .sb-blue { background: #dbeafe; color: #1d4ed8; }
+  .sb-green { background: #dcfce7; color: #15803d; }
+  .sb-orange { background: #fef3c7; color: #b45309; }
+  .sb-red { background: #fee2e2; color: #dc2626; }
+  .sb-gray { background: #f1f5f9; color: #64748b; }
+  .sb-purple { background: #ede9fe; color: #7c3aed; }
+
+  .app-filter-bar { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .app-filter { padding: 4px 10px; border-radius: 5px; font-size: 10px; background: #fff; border: 1px solid #e2e8f0; color: #64748b; }
+  .app-filter.active { background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; }
+
+  .app-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; }
+  .app-kpi { text-align: center; padding: 10px; }
+  .app-kpi .kpi-val { font-size: 22px; font-weight: 800; color: #1e293b; }
+  .app-kpi .kpi-label { font-size: 9px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+  .app-kpi .kpi-change { font-size: 10px; font-weight: 600; }
+  .app-kpi .kpi-up { color: #16a34a; }
+  .app-kpi .kpi-down { color: #dc2626; }
+
+  .app-progress { height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
+  .app-progress-fill { height: 100%; border-radius: 3px; }
+
+  .mockup-note { font-size: 11px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+  .mockup-features { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+  .mockup-features span { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 4px; }
+  .mockup-features span::before { content: '✓'; color: var(--accent); font-weight: 700; font-size: 10px; }
+
+  .version-item { display: flex; gap: 8px; align-items: flex-start; padding: 6px 8px; border-left: 2px solid #e2e8f0; margin-left: 4px; margin-bottom: 2px; }
+  .version-item.v-active { border-left-color: #3b82f6; background: #eff6ff; border-radius: 0 6px 6px 0; }
+  .version-item.v-locked { border-left-color: #f59e0b; }
+
+  .measure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .measure-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px 8px; text-align: center; }
+  .measure-box .m-label { font-size: 8px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+  .measure-box .m-val { font-size: 13px; font-weight: 700; color: #1e293b; }
+
+  .group-band { padding: 2px 6px; border-radius: 3px; font-size: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .gb-imalat { background: #dbeafe; color: #1d4ed8; }
+  .gb-kece { background: #dcfce7; color: #15803d; }
+  .gb-standart { background: #ede9fe; color: #7c3aed; }
+
+  .price-method-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; text-align: center; }
+  .price-method-card.selected { border-color: #3b82f6; background: #eff6ff; box-shadow: 0 0 0 2px rgba(59,130,246,0.2); }
+  .price-method-card .pm-label { font-size: 9px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+  .price-method-card .pm-val { font-size: 16px; font-weight: 800; color: #1e293b; margin: 4px 0; }
+  .price-method-card .pm-formula { font-size: 9px; color: #94a3b8; }
+
+  .workflow-cell { width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; }
+  .wf-done { background: #dcfce7; color: #15803d; }
+  .wf-current { background: #fef3c7; color: #b45309; }
+  .wf-pending { background: #f1f5f9; color: #cbd5e1; }
+
+  .atelier-card { background: #fff; border-radius: 10px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; border: 1px solid #e2e8f0; }
+  .atelier-card .at-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .at-green { background: #dcfce7; }
+  .at-yellow { background: #fef3c7; }
+  .at-red { background: #fee2e2; }
+
+  /* Cover */
+  #s1 { justify-content: center; padding: 56px 64px; }
+  .cover-label { font-size: 10px; letter-spacing: 5px; color: var(--accent); text-transform: uppercase; margin-bottom: 32px; display: flex; align-items: center; gap: 14px; }
+  .cover-label::before { content: ''; display: block; width: 36px; height: 1px; background: var(--accent); }
+  .cover-subtitle { font-size: 16px; color: var(--muted); margin-bottom: 36px; max-width: 720px; line-height: 1.6; }
+  .cover-meta { display: flex; gap: 36px; flex-wrap: wrap; }
+  .cover-meta-item .label { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
+  .cover-meta-item { font-size: 13px; }
+  .cover-deco { position: absolute; right: 0; top: 0; width: 40%; height: 100%; background: linear-gradient(135deg, transparent 60%, rgba(59,130,246,0.06) 100%); pointer-events: none; }
+
+  /* Final */
+  .final-box { background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(59,130,246,0.03)); border: 1px solid rgba(59,130,246,0.28); border-radius: 20px; padding: 40px; text-align: center; max-width: 700px; margin: 0 auto; }
+
+  /* Animations */
+  .slide > * { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .slide.active > * { opacity: 1; transform: translateY(0); }
+  .slide.active > *:nth-child(1) { transition-delay: 0.05s; }
+  .slide.active > *:nth-child(2) { transition-delay: 0.12s; }
+  .slide.active > *:nth-child(3) { transition-delay: 0.19s; }
+  .slide.active > *:nth-child(4) { transition-delay: 0.26s; }
+  .slide.active > *:nth-child(5) { transition-delay: 0.33s; }
+
+  /* Price cards */
+  .price-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; display: flex; flex-direction: column; position: relative; }
+  .price-card.featured { background: linear-gradient(165deg, rgba(59,130,246,0.14), rgba(59,130,246,0.03)); border: 1px solid rgba(59,130,246,0.35); }
+  .price-card .p-badge { position: absolute; top: -11px; left: 20px; background: var(--accent); color: #fff; font-size: 9px; letter-spacing: 2px; padding: 4px 10px; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
+  .price-card .p-label { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+  .price-card .p-name { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+  .price-card .p-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
+  .price-card .p-stat { display: flex; gap: 16px; margin-bottom: 12px; flex-wrap: wrap; }
+  .price-card .p-stat-item .p-stat-num { font-size: 24px; font-weight: 800; line-height: 1; }
+  .price-card .p-stat-item .p-stat-label { font-size: 9px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+  .price-card .p-features { list-style: none; margin-top: auto; }
+  .price-card .p-features li { font-size: 11px; padding: 4px 0; color: var(--white); display: flex; align-items: flex-start; gap: 7px; }
+  .price-card .p-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+  @media (max-width: 900px) {
+    body { overflow: auto; }
+    .slides-container { display: block; width: 100%; height: auto; transform: none !important; transition: none; }
+    .slide { min-width: 100%; width: 100%; height: auto; min-height: auto; padding: 32px 22px 48px; overflow: visible; scroll-margin-top: 16px; }
+    .slide + .slide { border-top: 1px solid var(--border); }
+    .slide > * { opacity: 1 !important; transform: none !important; }
+    .nav { padding: 8px 14px; gap: 6px; bottom: 12px; }
+    .slide-header { margin-bottom: 20px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 12px; }
+    .browser-body { min-height: 200px; }
+    .app-sidebar { width: 120px; }
+    .flow-connector { display: none; }
+    .flow-arrow { gap: 6px; }
+    .cover-meta { gap: 16px; }
+    .final-box { padding: 28px 18px; }
+  }
+  @media (max-width: 640px) {
+    .slide { padding: 24px 16px 40px; }
+    h1 { font-size: clamp(26px, 8vw, 44px); }
+    h2 { font-size: clamp(20px, 6vw, 30px); }
+    .big-stat { font-size: 32px; }
+    .browser-body { flex-direction: column; }
+    .app-sidebar { width: 100%; flex-direction: row; overflow-x: auto; padding: 6px; }
+    .app-sidebar a { padding: 4px 8px; font-size: 9px; white-space: nowrap; }
+    .data-table th, .data-table td { padding: 6px 4px; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="slides-container" id="slides">
+
+<!-- ===== S1: COVER ===== -->
+<div class="slide active" id="s1">
+  <div class="cover-deco"></div>
+  <div class="slide-header">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+      <span style="font-size:11px; color:var(--muted); letter-spacing:2px;">&times;</span>
+      <span style="font-size:15px; font-weight:700; letter-spacing:1px;">&Uuml;NVERLER MAKİNE</span>
+    </div>
+    <span class="slide-label">Gizli &middot; &Uuml;nverler Makine i&ccedil;in hazırlandı</span>
+  </div>
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; max-width:840px;">
+    <div class="cover-label">Sipariş Bazlı &Uuml;retim Y&ouml;netim Platformu &middot; Mayıs 2026</div>
+    <h1 style="margin-bottom:24px;">Excel tablolarından<br><span class="accent">u&ccedil;tan u&ccedil;a dijital &uuml;retime.</span></h1>
+    <p class="cover-subtitle">Teklif talebinden sevkiyata kadar t&uuml;m s&uuml;re&ccedil;lerinizi tek platformda y&ouml;netin. Malzeme listesi, fiyatlandırma, satın alma, &uuml;retim takibi ve y&ouml;netim dashboard'u — birbirine bağlı, ger&ccedil;ek zamanlı, montaj numarası merkezli.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><div class="label">Hazırlayan</div><div class="white" style="font-weight:600;">Tibexa</div></div>
+      <div class="cover-meta-item"><div class="label">Tarih</div><div class="white" style="font-weight:600;">Mayıs 2026</div></div>
+      <div class="cover-meta-item"><div class="label">Kapsam</div><div class="white" style="font-weight:600;">2 Paket &middot; 17 Ekran &middot; 24 Fonksiyon</div></div>
+      <div class="cover-meta-item"><div class="label">&Ouml;nerilen Senaryo</div><div class="white" style="font-weight:600;">Paket 1 + 2</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== S2: PROBLEM ===== -->
+<div class="slide" id="s2">
+  <div class="slide-header">
+    <span class="slide-label">01 / Mevcut Durum</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2>Her birim kendi Excel'ini tutuyor.<br><span class="accent">Veriler birbirine bağlı değil.</span></h2>
+  <div class="divider"></div>
+  <div class="grid-3" style="margin-bottom:16px;">
+    <div class="card card-red">
+      <h3 class="red" style="margin-bottom:6px;">Veri Kopukluğu</h3>
+      <p style="font-size:12px;">SA fiyatı girdi mi? Tasarım bitti mi? Malzeme geldi mi? — Her soru telefon veya mail. "Manuel, dumanla, g&uuml;vercinle."</p>
+    </div>
+    <div class="card card-orange">
+      <h3 class="orange" style="margin-bottom:6px;">İnsan Kaynaklı Hata</h3>
+      <p style="font-size:12px;">Kopyala-yapıştır, koşullu bi&ccedil;imlendirme bozulmaları, Excel şişmesi. Veri g&uuml;venilirliği d&uuml;ş&uuml;k.</p>
+    </div>
+    <div class="card card-purple">
+      <h3 class="purple" style="margin-bottom:6px;">G&ouml;r&uuml;nmez Maliyet</h3>
+      <p style="font-size:12px;">"&Ccedil;arpı 2 ile karlı sandığımız iş, elmas ve mesai maliyetini koyduğumuzda zarar ediyoruz."</p>
+    </div>
+  </div>
+  <div class="card" style="padding:12px 16px;">
+    <div style="display:flex; gap:24px; flex-wrap:wrap; font-size:12px;">
+      <div><span class="muted">Mevcut:</span> <span class="white">7+ Excel, ETA, mail, telefon</span></div>
+      <div><span class="muted">Haberleşme:</span> <span class="white">Manuel — "bazen unutarak"</span></div>
+      <div><span class="muted">At&ouml;lye:</span> <span class="white">"Par&ccedil;a tezgahta mı yoksa unutuldu mu?" — bilinmiyor</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== S3: ÇÖZÜM ===== -->
+<div class="slide" id="s3">
+  <div class="slide-header">
+    <span class="slide-label">02 / &Ccedil;&ouml;z&uuml;m: Tek Veri Havuzu</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2>Tek veri havuzu, <span class="accent">farklı ekranlar.</span></h2>
+  <div class="divider"></div>
+  <p style="max-width:780px; margin-bottom:20px;">Aynı merkezden giden farklı ekranlar, farklı yetkilendirmeler. Montaj numarası her şeyin omurgası. Bir yere girilen veri, diğer t&uuml;m ekranlarda anında g&ouml;r&uuml;l&uuml;r.</p>
+  <div class="flow-arrow" style="margin-bottom:20px;">
+    <div class="flow-step active-step"><div style="font-size:9px; letter-spacing:2px; color:var(--accent); text-transform:uppercase;">Teklif</div><div style="font-size:11px; font-weight:600; margin-top:3px;">Talep &rarr; Fiyat</div></div>
+    <div class="flow-connector">&rarr;</div>
+    <div class="flow-step"><div style="font-size:9px; letter-spacing:2px; color:var(--green); text-transform:uppercase;">Satın Alma</div><div style="font-size:11px; font-weight:600; margin-top:3px;">Talep &rarr; Sipariş</div></div>
+    <div class="flow-connector">&rarr;</div>
+    <div class="flow-step"><div style="font-size:9px; letter-spacing:2px; color:var(--purple); text-transform:uppercase;">&Uuml;retim</div><div style="font-size:11px; font-weight:600; margin-top:3px;">İş Emri &rarr; Sevk</div></div>
+    <div class="flow-connector">&rarr;</div>
+    <div class="flow-step"><div style="font-size:9px; letter-spacing:2px; color:var(--gold); text-transform:uppercase;">Dashboard</div><div style="font-size:11px; font-weight:600; margin-top:3px;">Ger&ccedil;ek Zamanlı</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h3 style="margin-bottom:10px;">Montaj Numarası = Omurga</h3>
+      <p style="font-size:12px; margin-bottom:8px;">T&uuml;m &uuml;retim, satın alma, fason, maliyet — her şey montaj numarası &uuml;zerinden y&uuml;r&uuml;r.</p>
+      <div class="kv"><span class="k">Teklif</span><span class="v">P-127-1</span></div>
+      <div class="kv"><span class="k">Malzeme listesi</span><span class="v">P-127-1 / v3</span></div>
+      <div class="kv"><span class="k">Satın alma</span><span class="v">P-127-1 / boru sipariş</span></div>
+      <div class="kv"><span class="k">Maliyet</span><span class="v">P-127-1 / k&acirc;r analizi</span></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:10px;">Versiyon Zinciri</h3>
+      <p style="font-size:12px; margin-bottom:8px;">UTA ve USA aynı zincirde. Hi&ccedil;bir veri silinmez. T&uuml;m ge&ccedil;miş g&ouml;r&uuml;l&uuml;r, karşılaştırılır.</p>
+      <div style="font-size:11px; line-height:2.2;">
+        <span class="tag tag-blue">v1 teklif</span> &rarr; <span class="tag tag-blue">v2 teklif</span> &rarr; <span class="tag tag-gold">v3 kilitli</span> &rarr; <span class="tag tag-green">v4 sipariş</span> &rarr; <span class="tag tag-gold">v5 final</span>
+      </div>
+      <p style="font-size:10px; margin-top:8px;">Her versiyon: kim, ne zaman, neden değiştirdi. Herhangi iki versiyon diff'lenebilir.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== S4: VERSİYON ZİNCİRİ ===== -->
+<div class="slide" id="s4">
+  <div class="slide-header">
+    <span class="slide-label">03 / Versiyon Zinciri Konsepti</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2>UTA ve USA <span class="accent">aynı zincirde.</span></h2>
+  <div class="divider"></div>
+  <div class="grid-2">
+    <div>
+      <p style="font-size:13px; margin-bottom:14px;">Teklif &ccedil;alışması (UTA) ve sipariş &ccedil;alışması (USA) ayrı tablolar değil, <span class="white">aynı malzeme listesinin farklı versiyonları.</span> Hi&ccedil;bir veri silinmez veya &uuml;zerine yazılmaz.</p>
+      <div class="card" style="margin-bottom:12px;">
+        <h3 style="margin-bottom:8px; font-size:13px;">Versiyon A&ccedil;ılma Nedenleri</h3>
+        <div class="kv"><span class="k">M&uuml;şteri talebi</span><span class="v">"60mm değil 110mm"</span></div>
+        <div class="kv"><span class="k">Tasarım revizyonu</span><span class="v">Malzeme değişikliği</span></div>
+        <div class="kv"><span class="k">Fiyat değişikliği</span><span class="v">Tedarik&ccedil;i fiyat artışı</span></div>
+        <div class="kv"><span class="k">Aşama ge&ccedil;işi</span><span class="v">Teklif &rarr; sipariş</span></div>
+      </div>
+      <div class="card card-accent">
+        <h3 class="accent" style="margin-bottom:6px; font-size:13px;">Diff &amp; Karşılaştırma</h3>
+        <p style="font-size:11px;">Herhangi iki versiyon se&ccedil;ip eklenen/silinen/değişen satırları g&ouml;r&uuml;n. Teklif finali vs sipariş finali &rarr; k&acirc;rlılık analizi.</p>
+      </div>
+    </div>
+    <div class="card" style="padding:16px;">
+      <h3 style="margin-bottom:10px; font-size:13px; color:var(--muted);">&Ouml;rnek Zincir: P-127-1</h3>
+      <div style="border-left:2px solid var(--accent); padding-left:14px;">
+        <div style="margin-bottom:10px;">
+          <span class="tag tag-blue" style="margin-bottom:3px;">v1 Teklif</span>
+          <div style="font-size:11px; color:var(--muted);">28.04 &middot; TAS: Mert &middot; "İlk UTA &ccedil;alışması"</div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <span class="tag tag-blue" style="margin-bottom:3px;">v2 Teklif</span>
+          <div style="font-size:11px; color:var(--muted);">30.04 &middot; TAS: Mert &middot; "M&uuml;şteri 160&rarr;180mm"</div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <span class="tag tag-gold" style="margin-bottom:3px;">v3 Teklif — Kilitli</span>
+          <div style="font-size:11px; color:var(--muted);">02.05 &middot; PM: Ahmet &middot; "Teklif g&ouml;nderildi, kilitleme"</div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <span class="tag tag-green" style="margin-bottom:3px;">v4 Sipariş</span>
+          <div style="font-size:11px; color:var(--muted);">05.05 &middot; TAS: Mert &middot; "USA a&ccedil;ıldı, aşama ge&ccedil;işi"</div>
+        </div>
+        <div>
+          <span class="tag tag-gold" style="margin-bottom:3px;">v5 Sipariş — Final</span>
+          <div style="font-size:11px; color:var(--muted);">07.05 &middot; PM: Ahmet &middot; "Nihai tasarım kilitleme"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== S5: PAKET 1 GENEL BAKIŞ ===== -->
+<div class="slide" id="s5">
+  <div class="slide-header">
+    <span class="slide-label">04 / Paket 1 — Satış &amp; Teklif</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2>Birinci &ouml;ncelik: <span class="accent">teklif s&uuml;recini dijitalleştir.</span></h2>
+  <div class="divider"></div>
+  <div class="grid-2">
+    <div>
+      <div class="card card-accent" style="margin-bottom:12px; padding:16px;">
+        <div style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+          <div><div class="big-stat accent">11</div><div style="font-size:9px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Ekran</div></div>
+          <div><div class="big-stat white">14</div><div style="font-size:9px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Fonksiyon</div></div>
+          <div><div class="big-stat white">10</div><div style="font-size:9px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Hafta</div></div>
+        </div>
+      </div>
+      <div class="screen-row"><div class="s-num">01</div><div class="s-info"><div class="s-name">Proje Listesi</div><div class="s-desc">T&uuml;m projeler, filtre, durum renkleri</div></div></div>
+      <div class="screen-row"><div class="s-num">02</div><div class="s-info"><div class="s-name">Proje Detay &amp; Kalemler</div><div class="s-desc">Kalem y&ouml;netimi, toplamlar, nakliye, KDV</div></div></div>
+      <div class="screen-row"><div class="s-num">03</div><div class="s-info"><div class="s-name">Kalem Detay &amp; Versiyon</div><div class="s-desc">&Ouml;l&ccedil;&uuml;ler, versiyon timeline, diff</div></div></div>
+      <div class="screen-row"><div class="s-num">04</div><div class="s-info"><div class="s-name">Malzeme Listesi</div><div class="s-desc">Tasarımcı + satın almacı ortak ekranı</div></div></div>
+      <div class="screen-row"><div class="s-num">05</div><div class="s-info"><div class="s-name">Fiyatlandırma</div><div class="s-desc">3 y&ouml;ntem, ge&ccedil;miş referans, karar</div></div></div>
+      <div class="screen-row"><div class="s-num">06</div><div class="s-info"><div class="s-name">PDF &amp; Mail</div><div class="s-desc">&Ccedil;ok dilli belge, naming, g&ouml;nderim</div></div></div>
+    </div>
+    <div>
+      <div class="screen-row"><div class="s-num">07</div><div class="s-info"><div class="s-name">Proje Takip (Workflow)</div><div class="s-desc">Tick bazlı ilerleme, otomatik tarih</div></div></div>
+      <div class="screen-row"><div class="s-num">08</div><div class="s-info"><div class="s-name">Admin Form&uuml;ller</div><div class="s-desc">Hacim, talaş, s&uuml;re form&uuml;lleri</div></div></div>
+      <div class="screen-row"><div class="s-num">09</div><div class="s-info"><div class="s-name">Firma Y&ouml;netimi</div><div class="s-desc">M&uuml;şteri bilgileri, ge&ccedil;miş timeline</div></div></div>
+      <div class="screen-row"><div class="s-num">10</div><div class="s-info"><div class="s-name">Sipariş Onay D&ouml;ng&uuml;s&uuml;</div><div class="s-desc">Bekleme takibi, 1 hafta uyarı</div></div></div>
+      <div class="screen-row"><div class="s-num">11</div><div class="s-info"><div class="s-name">Y&ouml;netim Dashboard</div><div class="s-desc">Satış hunisi, dikkat gerektiren, TV</div></div></div>
+      <div class="card card-green" style="margin-top:12px; padding:14px;">
+        <h3 class="green" style="margin-bottom:4px; font-size:13px;">Tek başına değer &uuml;retir</h3>
+        <p style="font-size:11px;">Bu paket canlıya alındığında Excel'den kurtulma başlar. Teklif s&uuml;reci %80 dijital olur.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== S6: E01 — PROJE LİSTESİ ===== -->
+<div class="slide" id="s6">
+  <div class="slide-header">
+    <span class="slide-label">Paket 1 &mdash; Ekran 01</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Proje Listesi</h2>
+  <p style="margin-bottom:10px;">T&uuml;m projelerin filtrelenebilir ana listesi. Durum renkleriyle tek bakışta t&uuml;m pipeline g&ouml;r&uuml;n&uuml;r.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+      <div class="browser-url">app.unverlermakine.com/projeler</div>
+    </div>
+    <div class="browser-body">
+      <div class="app-sidebar">
+        <div class="app-logo">&#9670; &Uuml;nverler</div>
+        <a class="active">&#9776; Projeler</a>
+        <a>&#128196; Firma</a>
+        <a>&#128200; Dashboard</a>
+        <a>&#9881; Admin</a>
+      </div>
+      <div class="app-content">
+        <div class="app-header-bar">
+          <h4>Projeler</h4>
+          <div class="app-btn app-btn-primary">+ Yeni Proje</div>
+        </div>
+        <div class="app-filter-bar">
+          <div class="app-filter active">T&uuml;m&uuml;</div>
+          <div class="app-filter">A&ccedil;ık</div>
+          <div class="app-filter">Beklemede</div>
+          <div class="app-filter">Onaylı</div>
+          <div class="app-filter">&#128269; Firma ara...</div>
+        </div>
+        <table class="app-table">
+          <thead><tr><th>Proje No</th><th>Firma</th><th>Tarih</th><th>Kalem</th><th>Tutar</th><th>PB</th><th>Durum</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:700;">P-127</td><td>Rupi Atlas</td><td>28.04</td><td>3</td><td>&euro;24.500</td><td>EUR</td><td><span class="status-badge sb-blue">Teklif G&ouml;nderildi</span></td></tr>
+            <tr><td style="font-weight:700;">P-126</td><td>Bosch Rexroth</td><td>25.04</td><td>5</td><td>&euro;48.200</td><td>EUR</td><td><span class="status-badge sb-orange">Cevap Bekliyor</span></td></tr>
+            <tr><td style="font-weight:700;">P-125</td><td>Hema End&uuml;stri</td><td>20.04</td><td>2</td><td>&#8378;185.000</td><td>TRY</td><td><span class="status-badge sb-green">Onaylandı</span></td></tr>
+            <tr><td style="font-weight:700;">P-124</td><td>Parker Hannifin</td><td>15.04</td><td>8</td><td>&euro;92.100</td><td>EUR</td><td><span class="status-badge sb-red">1+ Hafta Cevapsız</span></td></tr>
+            <tr><td style="font-weight:700;">P-123</td><td>Hidromek</td><td>10.04</td><td>1</td><td>&#8378;45.000</td><td>TRY</td><td><span class="status-badge sb-gray">İptal</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features">
+    <span>Durum renk kodları</span>
+    <span>Filtre &amp; arama</span>
+    <span>1+ hafta cevapsız kırmızıya d&ouml;ner</span>
+    <span>Otomatik P numarası</span>
+  </div>
+</div>
+
+<!-- ===== S7: E02 — PROJE DETAY ===== -->
+<div class="slide" id="s7">
+  <div class="slide-header">
+    <span class="slide-label">Paket 1 &mdash; Ekran 02</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Proje Detay &amp; Kalemler</h2>
+  <p style="margin-bottom:10px;">Tek projenin t&uuml;m kalemleriyle birlikte y&ouml;netimi. Toplamlar, nakliye, KDV otomatik hesaplanır.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+      <div class="browser-url">app.unverlermakine.com/projeler/P-127</div>
+    </div>
+    <div class="browser-body">
+      <div class="app-sidebar">
+        <div class="app-logo">&#9670; &Uuml;nverler</div>
+        <a class="active">&#9776; Projeler</a>
+        <a>&#128196; Firma</a>
+        <a>&#128200; Dashboard</a>
+        <a>&#9881; Admin</a>
+      </div>
+      <div class="app-content">
+        <div style="background:#eff6ff; border-radius:8px; padding:10px 14px; margin-bottom:10px; display:flex; gap:20px; flex-wrap:wrap; font-size:11px; align-items:center;">
+          <span style="font-weight:800; font-size:14px; color:#1e293b;">P-127</span>
+          <span style="color:#64748b;">Rupi Atlas Hidrolik</span>
+          <span class="status-badge sb-blue">Teklif G&ouml;nderildi</span>
+          <span style="color:#64748b;">EUR &middot; Talep: 28.04.2026</span>
+          <div style="margin-left:auto; display:flex; gap:6px;">
+            <div class="app-btn app-btn-primary">PDF Oluştur</div>
+            <div class="app-btn app-btn-outline">Teklif G&ouml;nder</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <div style="flex:1;">
+            <table class="app-table">
+              <thead><tr><th>Kalem</th><th>Montaj</th><th>&Uuml;r&uuml;n</th><th>Tip</th><th>Adet</th><th>Birim</th><th>Toplam</th><th>Termin</th><th>Durum</th></tr></thead>
+              <tbody>
+                <tr><td style="font-weight:700;">P127-1</td><td>M-4521</td><td>HS4K G&ouml;vde Silindiri</td><td>HS4K</td><td>2</td><td>&euro;4.800</td><td>&euro;9.600</td><td>22.hf</td><td><span class="status-badge sb-blue">Teklif</span></td></tr>
+                <tr><td style="font-weight:700;">P127-2</td><td>M-4522</td><td>HS1K Piston Silindiri</td><td>HS1K</td><td>4</td><td>&euro;2.200</td><td>&euro;8.800</td><td>24.hf</td><td><span class="status-badge sb-blue">Teklif</span></td></tr>
+                <tr><td style="font-weight:700;">P127-3</td><td>M-4523</td><td>Teleskopik Silindir</td><td>TEL3</td><td>1</td><td>&euro;6.100</td><td>&euro;6.100</td><td>26.hf</td><td><span class="status-badge sb-blue">Teklif</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="width:140px; flex-shrink:0;">
+            <div class="app-card" style="padding:10px; font-size:10px;">
+              <div style="font-weight:700; margin-bottom:6px; color:#1e293b;">Toplamlar</div>
+              <div style="display:flex; justify-content:space-between; padding:3px 0; color:#64748b;"><span>Ara Toplam</span><span style="color:#1e293b; font-weight:600;">&euro;24.500</span></div>
+              <div style="display:flex; justify-content:space-between; padding:3px 0; color:#64748b;"><span>Nakliye</span><span style="color:#1e293b; font-weight:600;">&euro;800</span></div>
+              <div style="display:flex; justify-content:space-between; padding:3px 0; color:#64748b;"><span>KDV %20</span><span style="color:#1e293b; font-weight:600;">&euro;5.060</span></div>
+              <div style="display:flex; justify-content:space-between; padding:5px 0; border-top:1px solid #e2e8f0; margin-top:4px; font-weight:800; color:#1e293b;"><span>Toplam</span><span>&euro;30.360</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features">
+    <span>Kalem ekleme/silme</span>
+    <span>Otomatik toplam hesaplama</span>
+    <span>PDF oluştur &amp; g&ouml;nder</span>
+    <span>Kısmi sevk takibi</span>
+  </div>
+</div>
+
+<!-- ===== S8: E03 — KALEM DETAY ===== -->
+<div class="slide" id="s8">
+  <div class="slide-header">
+    <span class="slide-label">Paket 1 &mdash; Ekran 03</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Kalem Detay &amp; Versiyon Zinciri</h2>
+  <p style="margin-bottom:10px;">Tek kalemin &ouml;l&ccedil;&uuml;leri, hesaplanan değerleri ve t&uuml;m versiyon ge&ccedil;mişi.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+      <div class="browser-url">app.unverlermakine.com/kalem/P127-1</div>
+    </div>
+    <div class="browser-body">
+      <div class="app-sidebar">
+        <div class="app-logo">&#9670; &Uuml;nverler</div>
+        <a>&#9776; Projeler</a>
+        <a class="active">&#128270; Kalem</a>
+        <a>&#128200; Dashboard</a>
+        <a>&#9881; Admin</a>
+      </div>
+      <div class="app-content" style="display:flex; gap:12px;">
+        <div style="flex:1;">
+          <div style="background:#eff6ff; border-radius:8px; padding:10px; margin-bottom:10px; font-size:11px;">
+            <span style="font-weight:800; font-size:13px; color:#1e293b;">M-4521</span> &middot; HS4K G&ouml;vde Silindiri &middot; Adet: 2 &middot; <span class="status-badge sb-blue">Teklif</span>
+          </div>
+          <div style="font-size:9px; font-weight:600; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">&Ouml;l&ccedil;&uuml; Parametreleri</div>
+          <div class="measure-grid" style="margin-bottom:10px;">
+            <div class="measure-box"><div class="m-label">Temiz Dış &Ccedil;ap</div><div class="m-val">180mm</div></div>
+            <div class="measure-box"><div class="m-label">Ham Dış &Ccedil;ap</div><div class="m-val">195mm</div></div>
+            <div class="measure-box"><div class="m-label">Temiz İ&ccedil; &Ccedil;ap</div><div class="m-val">120mm</div></div>
+            <div class="measure-box"><div class="m-label">Ham İ&ccedil; &Ccedil;ap</div><div class="m-val">115mm</div></div>
+            <div class="measure-box"><div class="m-label">Temiz Boy</div><div class="m-val">850mm</div></div>
+            <div class="measure-box"><div class="m-label">Ham Boy</div><div class="m-val">880mm</div></div>
+          </div>
+          <div style="display:flex; gap:6px; margin-bottom:8px;">
+            <div class="app-card" style="flex:1; padding:8px; text-align:center;"><div style="font-size:8px; color:#64748b; text-transform:uppercase;">Hacim</div><div style="font-size:14px; font-weight:800; color:#1e293b;">0.0142 m&sup3;</div></div>
+            <div class="app-card" style="flex:1; padding:8px; text-align:center;"><div style="font-size:8px; color:#64748b; text-transform:uppercase;">Talaş</div><div style="font-size:14px; font-weight:800; color:#1e293b;">3.8 kg</div></div>
+            <div class="app-card" style="flex:1; padding:8px; text-align:center;"><div style="font-size:8px; color:#64748b; text-transform:uppercase;">Teorik S&uuml;re</div><div style="font-size:14px; font-weight:800; color:#1e293b;">2.4 g&uuml;n</div></div>
+          </div>
+          <div style="display:flex; gap:6px;">
+            <div class="app-btn app-btn-primary" style="font-size:9px;">Yeni Versiyon</div>
+            <div class="app-btn app-btn-outline" style="font-size:9px;">Diff G&ouml;ster</div>
+            <div class="app-btn app-btn-outline" style="font-size:9px;">Fiyat &Ccedil;alışması</div>
+          </div>
+        </div>
+        <div style="width:180px; flex-shrink:0; border-left:1px solid #e2e8f0; padding-left:12px;">
+          <div style="font-size:9px; font-weight:600; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Versiyon Zinciri</div>
+          <div class="version-item"><div><span class="status-badge sb-gray" style="font-size:8px;">v1 Teklif</span><div style="font-size:9px; color:#94a3b8; margin-top:2px;">28.04 &middot; Mert</div><div style="font-size:9px; color:#94a3b8;">"İlk UTA"</div></div></div>
+          <div class="version-item v-active"><div><span class="status-badge sb-blue" style="font-size:8px;">v2 Teklif</span><div style="font-size:9px; color:#3b82f6; margin-top:2px;">30.04 &middot; Mert</div><div style="font-size:9px; color:#3b82f6;">"160&rarr;180mm"</div></div></div>
+          <div class="version-item v-locked"><div><span class="status-badge sb-orange" style="font-size:8px;">v3 Kilitli</span><div style="font-size:9px; color:#94a3b8; margin-top:2px;">02.05 &middot; Ahmet</div><div style="font-size:9px; color:#94a3b8;">"Kilitleme"</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features">
+    <span>6 &ouml;l&ccedil;&uuml; kutusu (temiz + ham)</span>
+    <span>Form&uuml;lle hesaplanan değerler</span>
+    <span>Versiyon ge&ccedil;mişi</span>
+    <span>Diff karşılaştırma</span>
+  </div>
+</div>
+
+<!-- ===== S9: E04 — MALZEME LİSTESİ ===== -->
+<div class="slide" id="s9">
+  <div class="slide-header">
+    <span class="slide-label">Paket 1 &mdash; Ekran 04</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Malzeme Listesi D&uuml;zenleme</h2>
+  <p style="margin-bottom:10px;">Tasarımcı ve satın almacı aynı ekranda, farklı s&uuml;tunları doldurur. Grup renkleriyle ayrışır.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+      <div class="browser-url">app.unverlermakine.com/malzeme/M-4521/v2</div>
+    </div>
+    <div class="browser-body">
+      <div class="app-sidebar">
+        <div class="app-logo">&#9670; &Uuml;nverler</div>
+        <a>&#9776; Projeler</a>
+        <a class="active">&#128230; Malzeme</a>
+        <a>&#128200; Dashboard</a>
+      </div>
+      <div class="app-content">
+        <div style="background:#eff6ff; border-radius:8px; padding:8px 12px; margin-bottom:8px; font-size:11px; display:flex; gap:14px; align-items:center;">
+          <span style="font-weight:800; color:#1e293b;">M-4521 v2</span>
+          <span style="color:#64748b;">Aşama: Teklif</span>
+          <span class="status-badge sb-blue">Aktif</span>
+          <div style="margin-left:auto; display:flex; gap:6px;">
+            <div class="app-btn app-btn-outline" style="font-size:9px;">+ Satır Ekle</div>
+            <div class="app-btn app-btn-outline" style="font-size:9px;">Fiyat &Ccedil;ek</div>
+            <div class="app-btn app-btn-primary" style="font-size:9px;">SA'ya G&ouml;nder</div>
+          </div>
+        </div>
+        <table class="app-table" style="font-size:10px;">
+          <thead><tr><th>#</th><th>Grup</th><th>Madde Kodu</th><th>Tanım</th><th>Ad.</th><th>Temiz D&Ccedil;</th><th>Temiz İ&Ccedil;</th><th>Temiz Boy</th><th>Ham D&Ccedil;</th><th>Ham İ&Ccedil;</th><th>Ham Boy</th><th>B.Fiyat</th><th>Toplam</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><span class="group-band gb-imalat">İmalat</span></td><td style="font-weight:600;">BOR-180</td><td>&Ccedil;elik Boru &Oslash;180&times;120</td><td>1</td><td>180</td><td>120</td><td>850</td><td>195</td><td>115</td><td>880</td><td>&#8378;12.400</td><td style="font-weight:700;">&#8378;12.400</td></tr>
+            <tr><td>2</td><td><span class="group-band gb-imalat">İmalat</span></td><td style="font-weight:600;">DSK-085</td><td>Piston Disk &Oslash;85</td><td>2</td><td>85</td><td>-</td><td>45</td><td>90</td><td>-</td><td>50</td><td>&#8378;1.800</td><td style="font-weight:700;">&#8378;3.600</td></tr>
+            <tr><td>3</td><td><span class="group-band gb-kece">Ke&ccedil;e</span></td><td style="font-weight:600;">KEC-180</td><td>Piston Ke&ccedil;esi &Oslash;180</td><td>2</td><td colspan="3" style="color:#94a3b8; text-align:center;">-</td><td colspan="3" style="color:#94a3b8; text-align:center;">-</td><td>&#8378;320</td><td style="font-weight:700;">&#8378;640</td></tr>
+            <tr><td>4</td><td><span class="group-band gb-standart">Standart</span></td><td style="font-weight:600;">CIV-M12</td><td>M12&times;35 Civata 8.8</td><td>8</td><td colspan="3" style="color:#94a3b8; text-align:center;">-</td><td colspan="3" style="color:#94a3b8; text-align:center;">-</td><td>&#8378;4.50</td><td style="font-weight:700;">&#8378;36</td></tr>
+          </tbody>
+        </table>
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <div class="app-card" style="flex:1; padding:8px; text-align:center;"><div style="font-size:8px; color:#1d4ed8; text-transform:uppercase;">İmalat</div><div style="font-size:13px; font-weight:800; color:#1e293b;">&#8378;16.000</div></div>
+          <div class="app-card" style="flex:1; padding:8px; text-align:center;"><div style="font-size:8px; color:#15803d; text-transform:uppercase;">Ke&ccedil;e</div><div style="font-size:13px; font-weight:800; color:#1e293b;">&#8378;640</div></div>
+          <div class="app-card" style="flex:1; padding:8px; text-align:center;"><div style="font-size:8px; color:#7c3aed; text-transform:uppercase;">Standart</div><div style="font-size:13px; font-weight:800; color:#1e293b;">&#8378;36</div></div>
+          <div class="app-card" style="flex:1; padding:8px; text-align:center; background:#f0f9ff; border-color:#93c5fd;"><div style="font-size:8px; color:#1d4ed8; text-transform:uppercase;">Toplam</div><div style="font-size:13px; font-weight:800; color:#1d4ed8;">&#8378;16.676</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features">
+    <span>Grup renk bantları</span>
+    <span>TAS temiz &ouml;l&ccedil;&uuml; / SA ham &ouml;l&ccedil;&uuml; + fiyat</span>
+    <span>Madde kartından otomatik fiyat</span>
+    <span>Kilitleme &amp; versiyon</span>
+  </div>
+</div>
+
+<!-- ===== S10: E05 — FİYATLANDIRMA ===== -->
+<div class="slide" id="s10">
+  <div class="slide-header">
+    <span class="slide-label">Paket 1 &mdash; Ekran 05</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Fiyatlandırma &Ccedil;alışması</h2>
+  <p style="margin-bottom:10px;">3 farklı y&ouml;ntemle hesaplanan fiyat yan yana. Ge&ccedil;miş referanslarla karşılaştırma. PM birini se&ccedil;er.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+      <div class="browser-url">app.unverlermakine.com/fiyat/M-4521</div>
+    </div>
+    <div class="browser-body">
+      <div class="app-sidebar">
+        <div class="app-logo">&#9670; &Uuml;nverler</div>
+        <a>&#9776; Projeler</a>
+        <a class="active">&#128176; Fiyat</a>
+        <a>&#128200; Dashboard</a>
+      </div>
+      <div class="app-content">
+        <div style="background:#eff6ff; border-radius:8px; padding:8px 12px; margin-bottom:10px; font-size:11px;">
+          <span style="font-weight:800; color:#1e293b;">M-4521</span> &middot; HS4K G&ouml;vde &middot; Toplam Malzeme: <span style="font-weight:700;">&#8378;16.676</span>
+        </div>
+        <div style="display:flex; gap:8px; margin-bottom:10px;">
+          <div class="price-method-card selected" style="flex:1;">
+            <div class="pm-label">&Ccedil;arpan</div>
+            <div class="pm-val">&#8378;40.022</div>
+            <div class="pm-formula">&#8378;16.676 &times; 2.4</div>
+            <div style="font-size:8px; color:#3b82f6; margin-top:4px;">&#10003; Se&ccedil;ili</div>
+          </div>
+          <div class="price-method-card" style="flex:1;">
+            <div class="pm-label">Hacim</div>
+            <div class="pm-val">&#8378;45.440</div>
+            <div class="pm-formula">0.0142 m&sup3; &times; &#8378;3.200/m&sup3;</div>
+          </div>
+          <div class="price-method-card" style="flex:1;">
+            <div class="pm-label">S&uuml;re</div>
+            <div class="pm-val">&#8378;43.200</div>
+            <div class="pm-formula">2.4 g&uuml;n &times; &#8378;18.000/g&uuml;n</div>
+          </div>
+        </div>
+        <div style="font-size:9px; font-weight:600; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Ge&ccedil;miş Referanslar (HS4K)</div>
+        <table class="app-table" style="font-size:10px;">
+          <thead><tr><th>Proje</th><th>Firma</th><th>&Ouml;l&ccedil;&uuml;</th><th>&Ccedil;arpan</th><th>Fiyat</th><th>Tarih</th></tr></thead>
+          <tbody>
+            <tr><td>P-098</td><td>Hema</td><td>170&times;110&times;800</td><td>&times;2.3</td><td>&#8378;42.500</td><td>2025-11</td></tr>
+            <tr><td>P-085</td><td>Rupi</td><td>190&times;130&times;900</td><td>&times;2.5</td><td>&#8378;52.000</td><td>2025-08</td></tr>
+            <tr><td>P-071</td><td>Parker</td><td>160&times;100&times;750</td><td>&times;2.2</td><td>&#8378;38.800</td><td>2025-05</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:8px; text-align:right;"><div class="app-btn app-btn-primary" style="font-size:10px;">Fiyat Se&ccedil; &amp; Kaleme Yaz</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features">
+    <span>3 y&ouml;ntem yan yana</span>
+    <span>Ge&ccedil;miş benzer projeler</span>
+    <span>&Ccedil;arpan slider ayarı</span>
+    <span>Se&ccedil;ilen fiyat kaleme yazılır</span>
+  </div>
+</div>
+
+<!-- ===== S11: E06 — PDF OLUŞTUR ===== -->
+<div class="slide" id="s11">
+  <div class="slide-header">
+    <span class="slide-label">Paket 1 &mdash; Ekran 06</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">PDF Oluştur &amp; G&ouml;nder</h2>
+  <p style="margin-bottom:10px;">&Ccedil;ok dilli / &ccedil;ok tipli belge &uuml;retimi. Otomatik dosya adı, mail g&ouml;nderim, havuza kayıt.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+      <div class="browser-url">app.unverlermakine.com/pdf/P-127</div>
+    </div>
+    <div class="browser-body">
+      <div class="app-sidebar">
+        <div class="app-logo">&#9670; &Uuml;nverler</div>
+        <a>&#9776; Projeler</a>
+        <a class="active">&#128196; PDF</a>
+        <a>&#128200; Dashboard</a>
+      </div>
+      <div class="app-content" style="display:flex; gap:14px;">
+        <div style="width:200px; flex-shrink:0;">
+          <div style="font-size:9px; font-weight:600; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Ayarlar</div>
+          <div class="app-card" style="padding:10px; margin-bottom:8px;">
+            <div style="font-size:10px; color:#64748b; margin-bottom:4px;">Form Tipi</div>
+            <div style="background:#f1f5f9; border-radius:5px; padding:5px 8px; font-size:11px; color:#1e293b;">Teklif &#9660;</div>
+          </div>
+          <div class="app-card" style="padding:10px; margin-bottom:8px;">
+            <div style="font-size:10px; color:#64748b; margin-bottom:4px;">Dil</div>
+            <div style="background:#f1f5f9; border-radius:5px; padding:5px 8px; font-size:11px; color:#1e293b;">T&uuml;rk&ccedil;e &#9660;</div>
+          </div>
+          <div class="app-card" style="padding:10px; margin-bottom:8px;">
+            <div style="font-size:10px; color:#64748b; margin-bottom:4px;">Dosya Adı</div>
+            <div style="background:#f1f5f9; border-radius:5px; padding:5px 8px; font-size:10px; color:#1e293b; word-break:break-all;">P127-RupiAtlas-20260502-Teklif.pdf</div>
+          </div>
+          <div class="app-card" style="padding:10px; margin-bottom:8px;">
+            <div style="font-size:10px; color:#64748b; margin-bottom:4px;">Mail G&ouml;nder</div>
+            <div style="font-size:10px; color:#1e293b;">&#9745; Evet</div>
+            <div style="font-size:9px; color:#64748b; margin-top:3px;">Kime: procurement@rupiatlas.com</div>
+          </div>
+          <div style="display:flex; gap:6px;">
+            <div class="app-btn app-btn-primary" style="font-size:9px; flex:1; justify-content:center;">Oluştur</div>
+            <div class="app-btn app-btn-outline" style="font-size:9px;">&#11015; İndir</div>
+          </div>
+        </div>
+        <div style="flex:1; background:#fff; border:1px solid #e2e8f0; border-radius:8px; padding:16px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <div style="width:90%; max-width:280px; border:1px solid #e2e8f0; border-radius:4px; padding:14px; font-size:9px; color:#334155;">
+            <div style="text-align:center; margin-bottom:10px;">
+              <div style="font-size:11px; font-weight:800; letter-spacing:1px;">&Uuml;NVERLER MAKİNE</div>
+              <div style="font-size:8px; color:#94a3b8;">Hidrolik Silindir İmalatı</div>
+            </div>
+            <div style="border-bottom:1px solid #e2e8f0; padding-bottom:6px; margin-bottom:6px;">
+              <span style="font-weight:600;">TEKLİF</span> &middot; P-127 &middot; 02.05.2026
+            </div>
+            <div style="font-size:8px; line-height:1.6; color:#64748b;">
+              Firma: Rupi Atlas Hidrolik<br>
+              Kalem: 3 adet silindir<br>
+              Toplam: &euro;24.500 + KDV<br>
+              Ge&ccedil;erlilik: 30 g&uuml;n
+            </div>
+            <div style="border-top:1px solid #e2e8f0; margin-top:8px; padding-top:6px; font-size:8px; color:#94a3b8; text-align:center;">
+              [Tablo &ouml;nizleme &middot; İmza alanı]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features">
+    <span>Teklif / proforma / sipariş onay</span>
+    <span>TR / EN / DE dil desteği</span>
+    <span>Otomatik naming convention</span>
+    <span>SMTP mail g&ouml;nderim</span>
+  </div>
+</div>
+
+<!-- ===== S12: E07 — WORKFLOW BOARD ===== -->
+<div class="slide" id="s12">
+  <div class="slide-header">
+    <span class="slide-label">Paket 1 &mdash; Ekran 07</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Proje Takip Tablosu</h2>
+  <p style="margin-bottom:10px;">Her kalem sat&icirc;rda, her adım s&uuml;tunda. Tick bazlı ilerleme, otomatik tarih.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+      <div class="browser-url">app.unverlermakine.com/takip/P-127</div>
+    </div>
+    <div class="browser-body">
+      <div class="app-sidebar">
+        <div class="app-logo">&#9670; &Uuml;nverler</div>
+        <a>&#9776; Projeler</a>
+        <a class="active">&#9745; Takip</a>
+        <a>&#128200; Dashboard</a>
+      </div>
+      <div class="app-content">
+        <div class="app-header-bar"><h4>P-127 &mdash; Proje Takip</h4></div>
+        <div style="overflow-x:auto;">
+          <table class="app-table" style="font-size:9px; white-space:nowrap;">
+            <thead><tr><th>Kalem</th><th>TAS Başla</th><th>TAS Bitti</th><th>SA Fiyat</th><th>Teklif Hazır</th><th>Teklif G&ouml;n.</th><th>Sipariş</th><th>USA Başla</th><th>USA Bitti</th><th>SA Talep</th><th>&Uuml;retim</th><th>Montaj</th><th>Sevk</th><th>Fatura</th></tr></thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:700;">P127-1</td>
+                <td><div class="workflow-cell wf-done">&#10003;</div></td>
+                <td><div class="workflow-cell wf-done">&#10003;</div></td>
+                <td><div class="workflow-cell wf-done">&#10003;</div></td>
+                <td><div class="workflow-cell wf-done">&#10003;</div></td>
+                <td><div class="workflow-cell wf-done">&#10003;</div></td>
+                <td><div class="workflow-cell wf-current">&#9675;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;">P127-2</td>
+                <td><div class="workflow-cell wf-done">&#10003;</div></td>
+                <td><div class="workflow-cell wf-done">&#10003;</div></td>
+                <td><div class="workflow-cell wf-current">&#9675;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;">P127-3</td>
+                <td><div class="workflow-cell wf-done">&#10003;</div></td>
+                <td><div class="workflow-cell wf-current">&#9675;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+                <td><div class="workflow-cell wf-pending">&mdash;</div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:8px; font-size:9px;">
+          <span style="display:flex; align-items:center; gap:4px;"><div class="workflow-cell wf-done" style="width:14px;height:14px;font-size:7px;">&#10003;</div> Tamamlandı</span>
+          <span style="display:flex; align-items:center; gap:4px;"><div class="workflow-cell wf-current" style="width:14px;height:14px;font-size:7px;">&#9675;</div> Sıradaki</span>
+          <span style="display:flex; align-items:center; gap:4px;"><div class="workflow-cell wf-pending" style="width:14px;height:14px;font-size:7px;">&mdash;</div> Bekliyor</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features">
+    <span>14 adım &times; N kalem matrisi</span>
+    <span>Otomatik tarih damgası</span>
+    <span>Renk kodlu durum</span>
+  </div>
+</div>
+
+<!-- ===== S13: E08 — ADMIN FORMÜL ===== -->
+<div class="slide" id="s13">
+  <div class="slide-header">
+    <span class="slide-label">Paket 1 &mdash; Ekran 08</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Admin Form&uuml;l Y&ouml;netimi</h2>
+  <p style="margin-bottom:10px;">Hacim, talaş, s&uuml;re hesaplama form&uuml;lleri ve varsayılan &ccedil;arpanlar. Y&ouml;netim tanımlar, sistem hesaplar.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+      <div class="browser-url">app.unverlermakine.com/admin/formuller</div>
+    </div>
+    <div class="browser-body">
+      <div class="app-sidebar">
+        <div class="app-logo">&#9670; &Uuml;nverler</div>
+        <a>&#9776; Projeler</a>
+        <a>&#128200; Dashboard</a>
+        <a class="active">&#9881; Admin</a>
+      </div>
+      <div class="app-content" style="display:flex; gap:12px;">
+        <div style="flex:1;">
+          <div class="app-header-bar"><h4>Form&uuml;ller</h4><div class="app-btn app-btn-primary" style="font-size:9px;">+ Yeni</div></div>
+          <table class="app-table" style="font-size:10px;">
+            <thead><tr><th>Form&uuml;l Adı</th><th>İfade</th><th>&Ccedil;arpan</th><th>Tip</th><th>Aktif</th></tr></thead>
+            <tbody>
+              <tr style="background:#eff6ff;"><td style="font-weight:600;">Hacim Hesaplama</td><td style="font-family:monospace; font-size:9px;">&pi;&times;(D&Ccedil;&sup2;-İ&Ccedil;&sup2;)&times;Boy/4</td><td>&mdash;</td><td>T&uuml;m&uuml;</td><td style="color:#16a34a;">&#10003;</td></tr>
+              <tr><td style="font-weight:600;">Talaş Hesaplama</td><td style="font-family:monospace; font-size:9px;">(ham_hacim - temiz_hacim) &times; 7.85</td><td>&mdash;</td><td>T&uuml;m&uuml;</td><td style="color:#16a34a;">&#10003;</td></tr>
+              <tr><td style="font-weight:600;">S&uuml;re (HS4K)</td><td style="font-family:monospace; font-size:9px;">hacim &times; 168 + 0.5</td><td>&mdash;</td><td>HS4K</td><td style="color:#16a34a;">&#10003;</td></tr>
+              <tr><td style="font-weight:600;">Varsayılan &Ccedil;arpan</td><td>&mdash;</td><td style="font-weight:700;">2.4</td><td>HS4K</td><td style="color:#16a34a;">&#10003;</td></tr>
+              <tr><td style="font-weight:600;">Varsayılan &Ccedil;arpan</td><td>&mdash;</td><td style="font-weight:700;">1.8</td><td>HS1K</td><td style="color:#16a34a;">&#10003;</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="width:170px; flex-shrink:0; border-left:1px solid #e2e8f0; padding-left:12px;">
+          <div style="font-size:9px; font-weight:600; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Test Alanı</div>
+          <div class="app-card" style="padding:10px; font-size:10px;">
+            <div style="color:#64748b; margin-bottom:4px;">Form&uuml;l: Hacim</div>
+            <div style="font-size:9px; margin-bottom:6px;">D&Ccedil;=180, İ&Ccedil;=120, Boy=850</div>
+            <div style="background:#dcfce7; border-radius:5px; padding:6px; text-align:center;">
+              <div style="font-size:8px; color:#15803d;">Sonu&ccedil;</div>
+              <div style="font-size:14px; font-weight:800; color:#15803d;">0.0142 m&sup3;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features">
+    <span>Admin tanımlı form&uuml;ller</span>
+    <span>Tip kodu bazlı &ccedil;arpanlar</span>
+    <span>Test alanı ile doğrulama</span>
+  </div>
+</div>
+
+<!-- ===== S14: E09 — FİRMA YÖNETİMİ ===== -->
+<div class="slide" id="s14">
+  <div class="slide-header">
+    <span class="slide-label">Paket 1 &mdash; Ekran 09</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Firma Y&ouml;netimi</h2>
+  <p style="margin-bottom:10px;">M&uuml;şteri bilgileri, ge&ccedil;miş projeler, &ouml;deme koşulları. Firma bazlı analiz.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+      <div class="browser-url">app.unverlermakine.com/firmalar</div>
+    </div>
+    <div class="browser-body">
+      <div class="app-sidebar">
+        <div class="app-logo">&#9670; &Uuml;nverler</div>
+        <a>&#9776; Projeler</a>
+        <a class="active">&#128196; Firma</a>
+        <a>&#128200; Dashboard</a>
+      </div>
+      <div class="app-content" style="display:flex; gap:12px;">
+        <div style="flex:1;">
+          <table class="app-table">
+            <thead><tr><th>Firma</th><th>&Uuml;lke</th><th>Proje</th><th>Ciro</th></tr></thead>
+            <tbody>
+              <tr style="background:#eff6ff;"><td style="font-weight:700;">Rupi Atlas Hidrolik</td><td>Yurtdışı</td><td>12</td><td>&euro;285.000</td></tr>
+              <tr><td style="font-weight:700;">Bosch Rexroth</td><td>Yurtdışı</td><td>8</td><td>&euro;412.000</td></tr>
+              <tr><td style="font-weight:700;">Hema End&uuml;stri</td><td>Yurti&ccedil;i</td><td>15</td><td>&#8378;2.4M</td></tr>
+              <tr><td style="font-weight:700;">Parker Hannifin</td><td>Yurtdışı</td><td>6</td><td>&euro;198.000</td></tr>
+              <tr><td style="font-weight:700;">Hidromek</td><td>Yurti&ccedil;i</td><td>22</td><td>&#8378;4.1M</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="width:200px; flex-shrink:0; border-left:1px solid #e2e8f0; padding-left:12px;">
+          <div style="font-size:9px; font-weight:600; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Rupi Atlas Detay</div>
+          <div class="app-card" style="padding:10px; font-size:10px; margin-bottom:8px;">
+            <div style="display:flex; justify-content:space-between; padding:2px 0;"><span style="color:#64748b;">&Uuml;lke</span><span style="font-weight:600;">Almanya</span></div>
+            <div style="display:flex; justify-content:space-between; padding:2px 0;"><span style="color:#64748b;">PB</span><span style="font-weight:600;">EUR</span></div>
+            <div style="display:flex; justify-content:space-between; padding:2px 0;"><span style="color:#64748b;">&Ouml;deme</span><span style="font-weight:600;">30 g&uuml;n vade</span></div>
+            <div style="display:flex; justify-content:space-between; padding:2px 0;"><span style="color:#64748b;">İletişim</span><span style="font-weight:600;">H. M&uuml;ller</span></div>
+          </div>
+          <div style="font-size:9px; font-weight:600; color:#64748b; margin-bottom:4px;">Son 3 Proje</div>
+          <div style="font-size:9px; color:#334155; line-height:1.8;">
+            P-127 &middot; 28.04 &middot; &euro;24.5K<br>
+            P-115 &middot; 12.03 &middot; &euro;38.2K<br>
+            P-098 &middot; 15.11 &middot; &euro;42.5K
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features">
+    <span>Firma bazlı proje ge&ccedil;mişi</span>
+    <span>&Ouml;deme koşulları</span>
+    <span>Ciro analizi</span>
+  </div>
+</div>
+
+<!-- ===== S15: E10 — SİPARİŞ ONAY ===== -->
+<div class="slide" id="s15">
+  <div class="slide-header">
+    <span class="slide-label">Paket 1 &mdash; Ekran 10</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Sipariş Onay D&ouml;ng&uuml;s&uuml;</h2>
+  <p style="margin-bottom:10px;">Bekleyen teklifler, bekleme s&uuml;resi uyarıları, fiyat m&uuml;zakeresi. 1+ hafta = kırmızı.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+      <div class="browser-url">app.unverlermakine.com/onay</div>
+    </div>
+    <div class="browser-body">
+      <div class="app-sidebar">
+        <div class="app-logo">&#9670; &Uuml;nverler</div>
+        <a>&#9776; Projeler</a>
+        <a class="active">&#128276; Onay</a>
+        <a>&#128200; Dashboard</a>
+      </div>
+      <div class="app-content">
+        <div class="app-header-bar"><h4>Bekleyen Teklifler</h4></div>
+        <table class="app-table" style="margin-bottom:10px;">
+          <thead><tr><th>Proje</th><th>Firma</th><th>G&ouml;nderim</th><th>Bekleme</th><th>Tutar</th><th>Durum</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:700;">P-126</td><td>Bosch Rexroth</td><td>25.04</td><td style="color:#dc2626; font-weight:700;">12 g&uuml;n</td><td>&euro;48.200</td><td><span class="status-badge sb-red">1+ Hafta</span></td></tr>
+            <tr><td style="font-weight:700;">P-124</td><td>Parker Hannifin</td><td>15.04</td><td style="color:#dc2626; font-weight:700;">22 g&uuml;n</td><td>&euro;92.100</td><td><span class="status-badge sb-red">1+ Hafta</span></td></tr>
+            <tr><td style="font-weight:700;">P-127</td><td>Rupi Atlas</td><td>02.05</td><td>5 g&uuml;n</td><td>&euro;24.500</td><td><span class="status-badge sb-blue">Normal</span></td></tr>
+          </tbody>
+        </table>
+        <div class="app-card" style="padding:10px;">
+          <div style="font-size:10px; font-weight:700; color:#1e293b; margin-bottom:6px;">P-126 &mdash; Fiyat M&uuml;zakeresi</div>
+          <div style="display:flex; gap:14px; font-size:11px; align-items:center;">
+            <div><span style="color:#64748b;">Teklif:</span> <span style="font-weight:700;">&euro;48.200</span></div>
+            <div style="color:#64748b;">&rarr;</div>
+            <div><span style="color:#64748b;">Anlaşma:</span> <span style="font-weight:700; color:#16a34a;">&euro;46.000</span></div>
+            <div style="color:#dc2626; font-size:10px;">-&euro;2.200 (-4.6%)</div>
+            <div style="margin-left:auto; display:flex; gap:6px;">
+              <div class="app-btn app-btn-primary" style="font-size:9px;">Onayla</div>
+              <div class="app-btn app-btn-outline" style="font-size:9px;">Fiyat G&uuml;ncelle</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features">
+    <span>Bekleme s&uuml;resi otomatik</span>
+    <span>1+ hafta kırmızı uyarı</span>
+    <span>Anlaşma fiyatı girişi</span>
+  </div>
+</div>
+
+<!-- ===== S16: E11 — DASHBOARD ===== -->
+<div class="slide" id="s16">
+  <div class="slide-header">
+    <span class="slide-label">Paket 1 &mdash; Ekran 11</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Y&ouml;netim Dashboard</h2>
+  <p style="margin-bottom:10px;">Satış hunisi, KPI'lar, dikkat gerektiren konular. TV ekranına yansıtılacak.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar">
+      <div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div>
+      <div class="browser-url">app.unverlermakine.com/dashboard</div>
+    </div>
+    <div class="browser-body">
+      <div class="app-sidebar">
+        <div class="app-logo">&#9670; &Uuml;nverler</div>
+        <a>&#9776; Projeler</a>
+        <a class="active">&#128200; Dashboard</a>
+        <a>&#9881; Admin</a>
+      </div>
+      <div class="app-content">
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; margin-bottom:10px;">
+          <div class="app-kpi"><div class="kpi-val">12</div><div class="kpi-label">Bu Ay Teklif</div><div class="kpi-change kpi-up">&uarr;3</div></div>
+          <div class="app-kpi"><div class="kpi-val">%68</div><div class="kpi-label">Onay Oranı</div><div class="kpi-change kpi-up">&uarr;5%</div></div>
+          <div class="app-kpi"><div class="kpi-val">4</div><div class="kpi-label">Bekleyen</div><div class="kpi-change kpi-down">&darr;1</div></div>
+          <div class="app-kpi"><div class="kpi-val">&euro;142K</div><div class="kpi-label">Aylık Ciro</div><div class="kpi-change kpi-up">&uarr;12%</div></div>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <div style="flex:1;">
+            <div style="font-size:9px; font-weight:600; color:#64748b; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Satış Hunisi</div>
+            <div style="margin-bottom:5px;"><div style="display:flex; justify-content:space-between; font-size:9px; color:#334155; margin-bottom:2px;"><span>Gelen Talep</span><span style="font-weight:700;">12</span></div><div class="app-progress"><div class="app-progress-fill" style="width:100%; background:#3b82f6;"></div></div></div>
+            <div style="margin-bottom:5px;"><div style="display:flex; justify-content:space-between; font-size:9px; color:#334155; margin-bottom:2px;"><span>Teklif Hazırlanıyor</span><span style="font-weight:700;">4</span></div><div class="app-progress"><div class="app-progress-fill" style="width:33%; background:#f59e0b;"></div></div></div>
+            <div style="margin-bottom:5px;"><div style="display:flex; justify-content:space-between; font-size:9px; color:#334155; margin-bottom:2px;"><span>Teklif G&ouml;nderildi</span><span style="font-weight:700;">6</span></div><div class="app-progress"><div class="app-progress-fill" style="width:50%; background:#8b5cf6;"></div></div></div>
+            <div style="margin-bottom:5px;"><div style="display:flex; justify-content:space-between; font-size:9px; color:#334155; margin-bottom:2px;"><span>Cevap Bekliyor</span><span style="font-weight:700;">3</span></div><div class="app-progress"><div class="app-progress-fill" style="width:25%; background:#f97316;"></div></div></div>
+            <div><div style="display:flex; justify-content:space-between; font-size:9px; color:#334155; margin-bottom:2px;"><span>Onaylandı</span><span style="font-weight:700;">8</span></div><div class="app-progress"><div class="app-progress-fill" style="width:67%; background:#22c55e;"></div></div></div>
+          </div>
+          <div style="width:160px; flex-shrink:0;">
+            <div style="font-size:9px; font-weight:600; color:#dc2626; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">&#9888; Dikkat</div>
+            <div style="font-size:10px; color:#334155; line-height:1.8;">
+              <div style="padding:4px 6px; background:#fee2e2; border-radius:4px; margin-bottom:4px;">Cevapsız 1+ hf: <b>2</b></div>
+              <div style="padding:4px 6px; background:#fef3c7; border-radius:4px; margin-bottom:4px;">Muhasebe onay: <b>1</b></div>
+              <div style="padding:4px 6px; background:#fef3c7; border-radius:4px;">Termin yaklaşan: <b>3</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features">
+    <span>TV ekranına uygun</span>
+    <span>Satış hunisi</span>
+    <span>Dikkat gerektiren uyarılar</span>
+    <span>D&ouml;nem &ouml;zeti</span>
+  </div>
+</div>
+
+<!-- ===== S17: PAKET 1 İŞ AKIŞI ===== -->
+<div class="slide" id="s17">
+  <div class="slide-header">
+    <span class="slide-label">05 / Paket 1 &mdash; İş Akışı</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2>Teklif talebinden <span class="accent">sipariş onayına.</span></h2>
+  <div class="divider"></div>
+  <div class="grid-2">
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-step">1 &mdash; Talep Gelir</div><h3 style="font-size:13px;">PM yeni proje a&ccedil;ar</h3><p style="font-size:11px;">P numarası otomatik. Firma se&ccedil;, kalem tanımla.</p></div>
+      <div class="tl-item"><div class="tl-step">2 &mdash; Tasarım</div><h3 style="font-size:13px;">Tasarımcı malzeme listesi oluşturur</h3><p style="font-size:11px;">UTA v1 — par&ccedil;alar, temiz &ouml;l&ccedil;&uuml;ler. "SA'ya g&ouml;nder" tıklar.</p></div>
+      <div class="tl-item"><div class="tl-step">3 &mdash; SA Fiyat</div><h3 style="font-size:13px;">SA ham &ouml;l&ccedil;&uuml; ve fiyat girer</h3><p style="font-size:11px;">Madde kartından otomatik veya manuel. Toplam hesaplanır.</p></div>
+      <div class="tl-item"><div class="tl-step">4 &mdash; Fiyatlandırma</div><h3 style="font-size:13px;">3 y&ouml;ntem yan yana</h3><p style="font-size:11px;">&Ccedil;arpan, hacim, s&uuml;re. Ge&ccedil;miş projelerle karşılaştır. PM se&ccedil;er.</p></div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item green-dot"><div class="tl-step" style="color:var(--green);">5 &mdash; Teklif G&ouml;nderim</div><h3 style="font-size:13px;">PDF oluştur, mail at</h3><p style="font-size:11px;">Şablon &times; dil se&ccedil;. Naming otomatik. Workflow tick atılır.</p></div>
+      <div class="tl-item green-dot"><div class="tl-step" style="color:var(--green);">6 &mdash; Onay Bekleme</div><h3 style="font-size:13px;">1 hafta ge&ccedil;erse kırmızı uyarı</h3><p style="font-size:11px;">Fiyat m&uuml;zakeresi: teklif &rarr; anlaşma &rarr; g&uuml;ncelle.</p></div>
+      <div class="tl-item green-dot"><div class="tl-step" style="color:var(--green);">7 &mdash; Sipariş Onay</div><h3 style="font-size:13px;">Versiyon zinciri devam eder</h3><p style="font-size:11px;">Son teklif kilitlenir. USA a&ccedil;ılır. SA + &uuml;retim tetiklenir.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== S18: PAKET 2 GENEL BAKIŞ ===== -->
+<div class="slide" id="s18">
+  <div class="slide-header">
+    <span class="slide-label">06 / Paket 2 &mdash; Satın Alma</span>
+    <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;">
+  </div>
+  <h2>Malzeme takibi <span class="green">otomatik.</span></h2>
+  <div class="divider"></div>
+  <div class="grid-2">
+    <div>
+      <div class="card card-green" style="margin-bottom:12px; padding:16px;">
+        <div style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+          <div><div class="big-stat green">6</div><div style="font-size:9px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Ekran</div></div>
+          <div><div class="big-stat white">10</div><div style="font-size:9px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Fonksiyon</div></div>
+          <div><div class="big-stat white">6</div><div style="font-size:9px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Hafta</div></div>
+        </div>
+      </div>
+      <div class="screen-row"><div class="s-num s-green">12</div><div class="s-info"><div class="s-name">SA Talep Ekranı</div><div class="s-desc">Tasarım + &uuml;retimden gelen talepler</div></div></div>
+      <div class="screen-row"><div class="s-num s-green">13</div><div class="s-info"><div class="s-name">Sipariş Takibi</div><div class="s-desc">Firma, fiyat, hedef tarih, geldi/gelmedi</div></div></div>
+      <div class="screen-row"><div class="s-num s-green">14</div><div class="s-info"><div class="s-name">Malzeme Durum (Ofis)</div><div class="s-desc">Proje bazlı checklist, fiyat dahil</div></div></div>
+      <div class="screen-row"><div class="s-num s-green">15</div><div class="s-info"><div class="s-name">Malzeme Durum (At&ouml;lye)</div><div class="s-desc">Fiyatsız, b&uuml;y&uuml;k font, geldi/gelmedi</div></div></div>
+      <div class="screen-row"><div class="s-num s-green">16</div><div class="s-info"><div class="s-name">Fason İş Takibi</div><div class="s-desc">Dışarıya giden, d&ouml;n&uuml;ş takibi</div></div></div>
+      <div class="screen-row"><div class="s-num s-green">17</div><div class="s-info"><div class="s-name">Madde Kartı Y&ouml;netimi</div><div class="s-desc">ETA sync, eksik kontrol</div></div></div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:12px;">
+        <h3 style="margin-bottom:8px;">Otomatik Akış</h3>
+        <div class="kv"><span class="k">USA kilitlendi</span><span class="v green">&rarr; SA talepleri otomatik d&uuml;şer</span></div>
+        <div class="kv"><span class="k">Malzeme geldi</span><span class="v green">&rarr; İş emri yapılabilir olur</span></div>
+        <div class="kv"><span class="k">Hedef tarih ge&ccedil;ti</span><span class="v red">&rarr; Satır kırmızıya d&ouml;ner</span></div>
+        <div class="kv"><span class="k">T&uuml;m malzeme tamam</span><span class="v green">&rarr; Montaja hazır</span></div>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">ETA Entegrasyonu</h3>
+        <div class="kv"><span class="k">Madde kartları</span><span class="v">ETA &rarr; Program (periyodik)</span></div>
+        <div class="kv"><span class="k">Siparişler</span><span class="v">Program &rarr; ETA (fatura)</span></div>
+        <div class="kv"><span class="k">Y&ouml;ntem</span><span class="v">SQL erişimi</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== S19: E12 — SA TALEP ===== -->
+<div class="slide" id="s19">
+  <div class="slide-header"><span class="slide-label">Paket 2 &mdash; Ekran 12</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Satın Alma Talep Ekranı</h2>
+  <p style="margin-bottom:10px;">Tasarım ve &uuml;retimden d&uuml;şen talepler. Proje bazlı + genel + sarf talepleri tek listede.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">app.unverlermakine.com/satin-alma/talepler</div></div>
+    <div class="browser-body">
+      <div class="app-sidebar"><div class="app-logo">&#9670; &Uuml;nverler</div><a>&#9776; Projeler</a><a class="active">&#128722; SA Talep</a><a>&#128230; Sipariş</a><a>&#128200; Dashboard</a></div>
+      <div class="app-content">
+        <div class="app-header-bar"><h4>Satın Alma Talepleri</h4></div>
+        <div class="app-filter-bar"><div class="app-filter active">T&uuml;m&uuml;</div><div class="app-filter">Proje</div><div class="app-filter">Genel</div><div class="app-filter">Sarf</div></div>
+        <table class="app-table">
+          <thead><tr><th>Talep No</th><th>Talep Eden</th><th>Tarih</th><th>Proje</th><th>Malzeme</th><th>Miktar</th><th>&Ouml;ncelik</th><th>Durum</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:700;">T-0451</td><td>Mert (TAS)</td><td>03.05</td><td>P-125</td><td>BOR-180 &Ccedil;elik Boru</td><td>2 ad.</td><td>Normal</td><td><span class="status-badge sb-blue">Yeni</span></td></tr>
+            <tr><td style="font-weight:700;">T-0450</td><td>Mert (TAS)</td><td>03.05</td><td>P-125</td><td>KEC-180 Ke&ccedil;e</td><td>4 ad.</td><td>Normal</td><td><span class="status-badge sb-blue">Yeni</span></td></tr>
+            <tr><td style="font-weight:700;">T-0449</td><td>&Uuml;retim</td><td>02.05</td><td>&mdash;</td><td>ELM-D10 Elmas U&ccedil;</td><td>5 ad.</td><td><span style="color:#dc2626; font-weight:600;">Acil</span></td><td><span class="status-badge sb-green">Sipariş Verildi</span></td></tr>
+            <tr><td style="font-weight:700;">T-0448</td><td>Mert (TAS)</td><td>01.05</td><td>P-124</td><td>DSK-090 Disk</td><td>8 ad.</td><td>Normal</td><td><span class="status-badge sb-green">Sipariş Verildi</span></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:8px; display:flex; gap:6px;"><div class="app-btn app-btn-primary" style="font-size:9px;">Kabul Et</div><div class="app-btn app-btn-outline" style="font-size:9px;">Sipariş Oluştur</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features"><span>USA kilidinde otomatik talep</span><span>Proje/Genel/Sarf ayrımı</span><span>&Ouml;ncelik sistemi</span></div>
+</div>
+
+<!-- ===== S20: E13 — SİPARİŞ TAKİBİ ===== -->
+<div class="slide" id="s20">
+  <div class="slide-header"><span class="slide-label">Paket 2 &mdash; Ekran 13</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Sipariş Takibi</h2>
+  <p style="margin-bottom:10px;">Dışarıya verilen siparişlerin durumu. Renk kodlu — geciken kırmızıya d&ouml;ner.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">app.unverlermakine.com/satin-alma/siparisler</div></div>
+    <div class="browser-body">
+      <div class="app-sidebar"><div class="app-logo">&#9670; &Uuml;nverler</div><a>&#9776; Projeler</a><a>&#128722; SA Talep</a><a class="active">&#128230; Sipariş</a><a>&#128200; Dashboard</a></div>
+      <div class="app-content">
+        <div class="app-header-bar"><h4>SA Siparişleri</h4><div class="app-btn app-btn-primary" style="font-size:9px;">+ Yeni Sipariş</div></div>
+        <table class="app-table">
+          <thead><tr><th>Sipariş</th><th>Tedarik&ccedil;i</th><th>Madde</th><th>Proje/Montaj</th><th>Miktar</th><th>Fiyat</th><th>Hedef</th><th>Durum</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:700;">SA-0312</td><td>&Ccedil;elik-İş</td><td>BOR-180</td><td>P-125/M-4521</td><td>2</td><td>&#8378;24.800</td><td>08.05</td><td><span class="status-badge sb-blue">Yolda</span></td></tr>
+            <tr><td style="font-weight:700;">SA-0311</td><td>Ke&ccedil;e-Tek</td><td>KEC-180</td><td>P-125/M-4521</td><td>4</td><td>&#8378;1.280</td><td>05.05</td><td><span class="status-badge sb-green">Geldi</span></td></tr>
+            <tr><td style="font-weight:700;">SA-0310</td><td>Boru-San</td><td>BOR-160</td><td>P-124/M-4515</td><td>8</td><td>&#8378;86.400</td><td style="color:#dc2626;">03.05</td><td><span class="status-badge sb-red">Gecikmiş</span></td></tr>
+            <tr><td style="font-weight:700;">SA-0309</td><td>Standart-Ltd</td><td>CIV-M12</td><td>P-124/M-4515</td><td>64</td><td>&#8378;288</td><td>30.04</td><td><span class="status-badge sb-green">Geldi</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features"><span>Hedef tarih aşım uyarısı</span><span>Kısmi/tam geldi işaretleme</span><span>Montaj no ile ilişkilendirme</span></div>
+</div>
+
+<!-- ===== S21: E14 — MALZEME DURUM OFİS ===== -->
+<div class="slide" id="s21">
+  <div class="slide-header"><span class="slide-label">Paket 2 &mdash; Ekran 14</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Malzeme Durum (Ofis)</h2>
+  <p style="margin-bottom:10px;">Proje bazlı malzeme checklist. Grup progress barlarıyla montaj hazırlık durumu.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">app.unverlermakine.com/malzeme-durum/P-125/M-4521</div></div>
+    <div class="browser-body">
+      <div class="app-sidebar"><div class="app-logo">&#9670; &Uuml;nverler</div><a>&#9776; Projeler</a><a class="active">&#128230; Malzeme</a><a>&#128200; Dashboard</a></div>
+      <div class="app-content">
+        <div style="background:#eff6ff; border-radius:8px; padding:8px 12px; margin-bottom:8px; font-size:11px;">P-125 / M-4521 &mdash; HS4K G&ouml;vde Silindiri</div>
+        <table class="app-table" style="font-size:10px; margin-bottom:8px;">
+          <thead><tr><th>Malzeme</th><th>Grup</th><th>Ad.</th><th>Sipariş?</th><th>Tedarik&ccedil;i</th><th>Hedef</th><th>Geldi?</th><th>Fiyat</th></tr></thead>
+          <tbody>
+            <tr><td>BOR-180 &Ccedil;elik Boru</td><td><span class="group-band gb-imalat">İml.</span></td><td>2</td><td style="color:#16a34a;">&#10003;</td><td>&Ccedil;elik-İş</td><td>08.05</td><td><span class="status-badge sb-blue">Yolda</span></td><td>&#8378;24.800</td></tr>
+            <tr><td>DSK-085 Piston Disk</td><td><span class="group-band gb-imalat">İml.</span></td><td>4</td><td style="color:#16a34a;">&#10003;</td><td>&Ccedil;elik-İş</td><td>08.05</td><td><span class="status-badge sb-blue">Yolda</span></td><td>&#8378;7.200</td></tr>
+            <tr><td>KEC-180 Ke&ccedil;e</td><td><span class="group-band gb-kece">Ke&ccedil;e</span></td><td>4</td><td style="color:#16a34a;">&#10003;</td><td>Ke&ccedil;e-Tek</td><td>05.05</td><td><span class="status-badge sb-green">Geldi</span></td><td>&#8378;1.280</td></tr>
+            <tr><td>CIV-M12 Civata</td><td><span class="group-band gb-standart">Std.</span></td><td>8</td><td style="color:#16a34a;">&#10003;</td><td>Standart</td><td>30.04</td><td><span class="status-badge sb-green">Geldi</span></td><td>&#8378;36</td></tr>
+          </tbody>
+        </table>
+        <div style="display:flex; gap:8px; margin-bottom:8px;">
+          <div class="app-card" style="flex:1; padding:8px;"><div style="font-size:8px; color:#64748b; margin-bottom:3px;">İmalat: 0/2</div><div class="app-progress"><div class="app-progress-fill" style="width:0%; background:#3b82f6;"></div></div></div>
+          <div class="app-card" style="flex:1; padding:8px;"><div style="font-size:8px; color:#64748b; margin-bottom:3px;">Ke&ccedil;e: 1/1</div><div class="app-progress"><div class="app-progress-fill" style="width:100%; background:#22c55e;"></div></div></div>
+          <div class="app-card" style="flex:1; padding:8px;"><div style="font-size:8px; color:#64748b; margin-bottom:3px;">Standart: 1/1</div><div class="app-progress"><div class="app-progress-fill" style="width:100%; background:#22c55e;"></div></div></div>
+        </div>
+        <div style="background:#fee2e2; border-radius:6px; padding:8px 12px; font-size:11px; color:#dc2626; font-weight:600;">&#10060; Eksik malzeme var &mdash; montaja hazır değil</div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features"><span>Grup progress barları</span><span>Montaj hazırlık kontrolü</span><span>Fiyat dahil (ofis)</span></div>
+</div>
+
+<!-- ===== S22: E15 — MALZEME DURUM ATÖLYE ===== -->
+<div class="slide" id="s22">
+  <div class="slide-header"><span class="slide-label">Paket 2 &mdash; Ekran 15</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Malzeme Durum (At&ouml;lye)</h2>
+  <p style="margin-bottom:10px;">B&uuml;y&uuml;k font, basit liste. <span class="red">Fiyat bilgisi yok</span> &mdash; operat&ouml;r g&ouml;r&uuml;n&uuml;m&uuml;.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">app.unverlermakine.com/atolye/malzeme/M-4521</div></div>
+    <div class="browser-body">
+      <div class="app-sidebar"><div class="app-logo">&#9670; &Uuml;nverler</div><a class="active">&#128230; Malzeme</a></div>
+      <div class="app-content" style="padding:16px;">
+        <div style="font-size:13px; font-weight:800; color:#1e293b; margin-bottom:10px;">P-125 / M-4521 &mdash; HS4K G&ouml;vde</div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:12px;">
+          <div class="atelier-card"><div class="at-icon at-green">&#128994;</div><div><div style="font-size:13px; font-weight:700; color:#1e293b;">KEC-180 Piston Ke&ccedil;esi</div><div style="font-size:12px; color:#16a34a; font-weight:600;">GELDİ (05.05)</div></div></div>
+          <div class="atelier-card"><div class="at-icon at-green">&#128994;</div><div><div style="font-size:13px; font-weight:700; color:#1e293b;">CIV-M12 Civata M12</div><div style="font-size:12px; color:#16a34a; font-weight:600;">GELDİ (30.04)</div></div></div>
+          <div class="atelier-card"><div class="at-icon at-yellow">&#128993;</div><div><div style="font-size:13px; font-weight:700; color:#1e293b;">BOR-180 &Ccedil;elik Boru</div><div style="font-size:12px; color:#b45309; font-weight:600;">YOLDA (beklenen: 08.05)</div></div></div>
+          <div class="atelier-card"><div class="at-icon at-yellow">&#128993;</div><div><div style="font-size:13px; font-weight:700; color:#1e293b;">DSK-085 Piston Disk</div><div style="font-size:12px; color:#b45309; font-weight:600;">YOLDA (beklenen: 08.05)</div></div></div>
+        </div>
+        <div style="background:#fef3c7; border-radius:8px; padding:12px 16px; text-align:center; font-size:14px; font-weight:800; color:#92400e;">&#9203; MONTAJA HAZIR DE&#286;İL &mdash; 2 malzeme bekleniyor</div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features"><span>B&uuml;y&uuml;k font, touch-friendly</span><span>Fiyat bilgisi gizli</span><span>Montaj no ile sorgulama</span></div>
+</div>
+
+<!-- ===== S23: E16 — FASON İŞ ===== -->
+<div class="slide" id="s23">
+  <div class="slide-header"><span class="slide-label">Paket 2 &mdash; Ekran 16</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Fason İş Takibi</h2>
+  <p style="margin-bottom:10px;">Dışarıya g&ouml;nderilen işlerin durumu. Gecikmiş kırmızıya d&ouml;ner.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">app.unverlermakine.com/fason</div></div>
+    <div class="browser-body">
+      <div class="app-sidebar"><div class="app-logo">&#9670; &Uuml;nverler</div><a>&#9776; Projeler</a><a class="active">&#127981; Fason</a><a>&#128200; Dashboard</a></div>
+      <div class="app-content">
+        <div class="app-header-bar"><h4>Fason İşler</h4></div>
+        <table class="app-table">
+          <thead><tr><th>Montaj/Par&ccedil;a</th><th>İşlem</th><th>Fasoncu</th><th>G&ouml;nderim</th><th>Beklenen</th><th>Durum</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:700;">M-4515/G&ouml;vde</td><td>Krom Kaplama</td><td>Kaplama-Tek</td><td>28.04</td><td>05.05</td><td><span class="status-badge sb-blue">Fasonda</span></td></tr>
+            <tr><td style="font-weight:700;">M-4515/Piston</td><td>Nitr&uuml;rasyon</td><td>Isıl-San</td><td>25.04</td><td style="color:#dc2626;">02.05</td><td><span class="status-badge sb-red">Gecikmiş</span></td></tr>
+            <tr><td style="font-weight:700;">M-4510/Rod</td><td>Krom Kaplama</td><td>Kaplama-Tek</td><td>20.04</td><td>28.04</td><td><span class="status-badge sb-green">D&ouml;nd&uuml;</span></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:8px; display:flex; gap:6px;"><div class="app-btn app-btn-outline" style="font-size:9px;">G&ouml;nderildi İşaretle</div><div class="app-btn app-btn-outline" style="font-size:9px;">D&ouml;nd&uuml; İşaretle</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features"><span>Fasoncu firma takibi</span><span>Gecikme uyarısı</span><span>D&ouml;n&uuml;ş sonrası sonraki adım aktif</span></div>
+</div>
+
+<!-- ===== S24: E17 — MADDE KARTI ===== -->
+<div class="slide" id="s24">
+  <div class="slide-header"><span class="slide-label">Paket 2 &mdash; Ekran 17</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2 style="font-size:clamp(20px,3vw,32px);">Madde Kartı Y&ouml;netimi</h2>
+  <p style="margin-bottom:10px;">ETA'dan madde kartı senkronizasyonu. Eksik kontrol ve fiyat g&uuml;ncelleme.</p>
+  <div class="browser-frame" style="flex:1;">
+    <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">app.unverlermakine.com/madde-karti</div></div>
+    <div class="browser-body">
+      <div class="app-sidebar"><div class="app-logo">&#9670; &Uuml;nverler</div><a>&#9776; Projeler</a><a class="active">&#128451; Madde K.</a><a>&#128200; Dashboard</a></div>
+      <div class="app-content">
+        <div class="app-header-bar"><h4>Madde Kartları</h4><div class="app-btn app-btn-primary" style="font-size:9px;">ETA'dan &Ccedil;ek</div></div>
+        <table class="app-table" style="margin-bottom:8px;">
+          <thead><tr><th>Madde Kodu</th><th>Tanım</th><th>Grup</th><th>Birim</th><th>Fiyat</th><th>G&uuml;ncelleme</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:700;">BOR-180</td><td>&Ccedil;elik Boru &Oslash;180</td><td><span class="group-band gb-imalat">İml.</span></td><td>kg</td><td>&#8378;62.00/kg</td><td>15.04.2026</td></tr>
+            <tr><td style="font-weight:700;">KEC-180</td><td>Piston Ke&ccedil;esi &Oslash;180</td><td><span class="group-band gb-kece">Ke&ccedil;e</span></td><td>adet</td><td>&#8378;320.00</td><td>01.03.2026</td></tr>
+            <tr><td style="font-weight:700;">CIV-M12</td><td>M12&times;35 Civata 8.8</td><td><span class="group-band gb-standart">Std.</span></td><td>adet</td><td>&#8378;4.50</td><td>01.01.2026</td></tr>
+            <tr><td style="font-weight:700;">DSK-085</td><td>Piston Disk &Oslash;85</td><td><span class="group-band gb-imalat">İml.</span></td><td>kg</td><td>&#8378;58.00/kg</td><td>15.04.2026</td></tr>
+          </tbody>
+        </table>
+        <div style="display:flex; gap:10px;">
+          <div class="app-card" style="flex:1; padding:8px; font-size:10px;"><span style="color:#64748b;">Son sync:</span> <span style="font-weight:600;">15.04.2026</span></div>
+          <div class="app-card" style="flex:1; padding:8px; font-size:10px; background:#fef3c7; border-color:#fcd34d;"><span style="color:#92400e;">&#9888; 2 madde kodu programda var, ETA'da yok</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mockup-features"><span>ETA periyodik sync</span><span>Eksik madde kodu uyarısı</span><span>Fiyat g&uuml;ncelleme</span></div>
+</div>
+
+<!-- ===== S25: PAKET 1+2 OTOMATİK AKIŞ ===== -->
+<div class="slide" id="s25">
+  <div class="slide-header"><span class="slide-label">07 / Paket 1+2 Otomatik Akış</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2>Sipariş onayından <span class="green">malzeme takibine</span> otomatik.</h2>
+  <div class="divider"></div>
+  <p style="margin-bottom:16px; max-width:780px;">USA kilitlendiğinde satın alma talepleri otomatik d&uuml;şer. Malzeme geldiğinde iş emri yapılabilir olur. Hi&ccedil;bir manuel tetikleme gerekmez.</p>
+  <div class="card" style="padding:18px;">
+    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center; font-size:11px;">
+      <div style="background:#dbeafe; border-radius:8px; padding:10px 14px; text-align:center;"><div style="font-size:9px; color:#1d4ed8; font-weight:600;">1</div><div style="font-weight:700; color:#1e293b;">USA Kilitlendi</div></div>
+      <span style="color:var(--muted);">&rarr;</span>
+      <div style="background:#dcfce7; border-radius:8px; padding:10px 14px; text-align:center;"><div style="font-size:9px; color:#15803d; font-weight:600;">2</div><div style="font-weight:700; color:#1e293b;">SA Talep Otomatik</div></div>
+      <span style="color:var(--muted);">&rarr;</span>
+      <div style="background:#fef3c7; border-radius:8px; padding:10px 14px; text-align:center;"><div style="font-size:9px; color:#b45309; font-weight:600;">3</div><div style="font-weight:700; color:#1e293b;">Sipariş Verildi</div></div>
+      <span style="color:var(--muted);">&rarr;</span>
+      <div style="background:#dcfce7; border-radius:8px; padding:10px 14px; text-align:center;"><div style="font-size:9px; color:#15803d; font-weight:600;">4</div><div style="font-weight:700; color:#1e293b;">Malzeme Geldi</div></div>
+      <span style="color:var(--muted);">&rarr;</span>
+      <div style="background:#ede9fe; border-radius:8px; padding:10px 14px; text-align:center;"><div style="font-size:9px; color:#7c3aed; font-weight:600;">5</div><div style="font-weight:700; color:#1e293b;">&Uuml;retime Hazır</div></div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:14px;">
+    <div class="card card-green">
+      <h3 class="green" style="margin-bottom:6px; font-size:13px;">Ne kazanılır?</h3>
+      <div class="kv"><span class="k">Telefon / mail</span><span class="v">&rarr; Otomatik bildirim</span></div>
+      <div class="kv"><span class="k">"SA'ya s&ouml;yledim mi?"</span><span class="v">&rarr; Sistem tetikler</span></div>
+      <div class="kv"><span class="k">"Malzeme geldi mi?"</span><span class="v">&rarr; Ger&ccedil;ek zamanlı g&ouml;r&uuml;n&uuml;r</span></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:6px; font-size:13px;">Uyarı Sistemi</h3>
+      <div class="kv"><span class="k">Hedef tarih ge&ccedil;ti</span><span class="v red">Satır kırmızıya d&ouml;ner</span></div>
+      <div class="kv"><span class="k">T&uuml;m malzeme tamam</span><span class="v green">Montaja hazır bildirimi</span></div>
+      <div class="kv"><span class="k">Fason gecikme</span><span class="v red">Otomatik uyarı</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== S26: ROLLER ===== -->
+<div class="slide" id="s26">
+  <div class="slide-header"><span class="slide-label">08 / Roller &amp; Erişim</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2>Herkes <span class="accent">kendi ekranını</span> g&ouml;r&uuml;r.</h2>
+  <div class="divider"></div>
+  <table class="data-table" style="margin-bottom:16px;">
+    <thead><tr><th>Rol</th><th>Kişi</th><th>G&ouml;rebildiği</th><th>G&ouml;remediği</th></tr></thead>
+    <tbody>
+      <tr><td style="font-weight:700;">Y&ouml;netim</td><td>2</td><td>Her şey + dashboard + form&uuml;l y&ouml;netimi</td><td>&mdash;</td></tr>
+      <tr><td style="font-weight:700;">Proje M&uuml;d&uuml;r&uuml;</td><td>2-3</td><td>Proje, kalem, fiyatlandırma, PDF, workflow</td><td>Admin form&uuml;ller</td></tr>
+      <tr><td style="font-weight:700;">Satışcı</td><td>2-3</td><td>Teklif formu, PDF, firma bilgileri</td><td>Fiyatlandırma detayı</td></tr>
+      <tr><td style="font-weight:700;">Tasarımcı</td><td>2-3</td><td>Malzeme listesi, &ouml;l&ccedil;&uuml;ler</td><td>Fiyatlar, satış bilgileri</td></tr>
+      <tr><td style="font-weight:700;">Satın Almacı</td><td>2-3</td><td>Talep, sipariş, madde kartı, fiyat</td><td>Teklif fiyatı, k&acirc;r</td></tr>
+      <tr><td style="font-weight:700;">Operat&ouml;r</td><td>5-10</td><td>Malzeme durumu (fiyatsız)</td><td class="red">T&uuml;m fiyatlar</td></tr>
+    </tbody>
+  </table>
+  <div class="card" style="padding:12px 16px;"><p style="font-size:12px;"><span class="white" style="font-weight:600;">Toplam ~15-25 kullanıcı.</span> <span class="muted">Web tabanlı &mdash; kurulum gerektirmez. Ofis, at&ouml;lye ve TV ekranı aynı platformdan &ccedil;alışır.</span></p></div>
+</div>
+
+<!-- ===== S27: SENARYO B ===== -->
+<div class="slide" id="s27">
+  <div class="slide-header"><span class="slide-label">09 / &Ouml;nerilen Senaryo</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2>Senaryo B: <span class="accent">Paket 1 + 2</span></h2>
+  <div class="divider"></div>
+  <div class="grid-2" style="margin-bottom:16px;">
+    <div class="price-card featured">
+      <div class="p-badge">&Ouml;nerilen</div>
+      <div class="p-label">Senaryo B</div>
+      <div class="p-name">Paket 1 + 2</div>
+      <div class="p-desc">Teklif + satın alma dijital. Malzeme geldi/gelmedi otomatik. At&ouml;lyede bile g&ouml;r&uuml;l&uuml;r.</div>
+      <div class="p-stat">
+        <div class="p-stat-item"><div class="p-stat-num accent">17</div><div class="p-stat-label">Ekran</div></div>
+        <div class="p-stat-item"><div class="p-stat-num white">24</div><div class="p-stat-label">Fonksiyon</div></div>
+        <div class="p-stat-item"><div class="p-stat-num white">16</div><div class="p-stat-label">Hafta (sıralı)</div></div>
+      </div>
+      <ul class="p-features">
+        <li>Proje &amp; kalem y&ouml;netimi</li>
+        <li>Versiyon zinciri &amp; diff</li>
+        <li>Fiyatlandırma (3 y&ouml;ntem)</li>
+        <li>PDF &uuml;retimi &amp; mail</li>
+        <li>Satın alma talep &amp; sipariş</li>
+        <li>Malzeme durum takibi</li>
+        <li>Fason iş y&ouml;netimi</li>
+        <li>ETA entegrasyonu</li>
+        <li>Y&ouml;netim dashboard</li>
+      </ul>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:12px;">
+        <h3 style="margin-bottom:8px;">Kim mutlu olur?</h3>
+        <div class="kv"><span class="k">PM &amp; SAT</span><span class="v green">Teklif s&uuml;reci dijital</span></div>
+        <div class="kv"><span class="k">TAS</span><span class="v green">Malzeme listesi dijital</span></div>
+        <div class="kv"><span class="k">SA</span><span class="v green">Sipariş &amp; malzeme takibi</span></div>
+        <div class="kv"><span class="k">Y&Ouml;N</span><span class="v green">Dashboard + analiz</span></div>
+        <div class="kv"><span class="k">At&ouml;lye</span><span class="v green">Malzeme durumu g&ouml;r&uuml;n&uuml;r</span></div>
+      </div>
+      <div class="card card-accent">
+        <h3 class="accent" style="margin-bottom:6px; font-size:13px;">Kısmen Paralel</h3>
+        <p style="font-size:11px;">Paket 2 altyapısı, Paket 1'in 7. haftasında başlayabilir &rarr; toplam s&uuml;re <span class="white" style="font-weight:700;">~14 haftaya</span> d&uuml;şer.</p>
+      </div>
+      <div class="card" style="margin-top:12px;">
+        <h3 style="margin-bottom:6px; font-size:13px;">Paket 3 ne olur?</h3>
+        <p style="font-size:11px;">Paket 1+2 canlıyken adaptasyon s&uuml;reci yaşanır. Paket 3 (&uuml;retim, barkod, maliyet) ihtiya&ccedil; duyulduğunda eklenir.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== S28: ALTERNATİF SENARYOLAR ===== -->
+<div class="slide" id="s28">
+  <div class="slide-header"><span class="slide-label">10 / T&uuml;m Senaryolar</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2>3 senaryo, <span class="accent">sizin tercihiniz.</span></h2>
+  <div class="divider"></div>
+  <div class="grid-3" style="margin-bottom:14px;">
+    <!-- SENARYO A -->
+    <div class="price-card">
+      <div class="p-label">Senaryo A</div>
+      <div class="p-name">Sadece Paket 1</div>
+      <div class="p-desc">Teklif s&uuml;recini dijitalleştir. Excel'den kurtulmanın ilk adımı.</div>
+      <div class="p-stat">
+        <div class="p-stat-item"><div class="p-stat-num white">11</div><div class="p-stat-label">Ekran</div></div>
+        <div class="p-stat-item"><div class="p-stat-num white">14</div><div class="p-stat-label">Fonksiyon</div></div>
+        <div class="p-stat-item"><div class="p-stat-num white">10</div><div class="p-stat-label">Hafta</div></div>
+      </div>
+      <ul class="p-features">
+        <li>Proje &amp; kalem y&ouml;netimi</li>
+        <li>Versiyon zinciri &amp; diff</li>
+        <li>Fiyatlandırma (3 y&ouml;ntem)</li>
+        <li>PDF &uuml;retimi &amp; mail</li>
+        <li>Workflow takip tablosu</li>
+        <li>Y&ouml;netim dashboard (temel)</li>
+      </ul>
+      <div style="margin-top:14px; padding-top:10px; border-top:1px solid var(--border);">
+        <div style="font-size:10px; letter-spacing:1px; color:var(--muted); text-transform:uppercase; margin-bottom:6px;">Kim mutlu olur?</div>
+        <div style="font-size:11px;"><span class="green">PM, SAT, Y&Ouml;N</span></div>
+        <div style="font-size:10px; color:var(--muted); margin-top:4px;">SA, &Uuml;S, OP h&acirc;l&acirc; Excel'de</div>
+      </div>
+    </div>
+    <!-- SENARYO B -->
+    <div class="price-card featured">
+      <div class="p-badge">&Ouml;nerilen</div>
+      <div class="p-label">Senaryo B</div>
+      <div class="p-name">Paket 1 + 2</div>
+      <div class="p-desc">Teklif + satın alma dijital. Malzeme takibi otomatik. At&ouml;lyede bile g&ouml;r&uuml;l&uuml;r.</div>
+      <div class="p-stat">
+        <div class="p-stat-item"><div class="p-stat-num accent">17</div><div class="p-stat-label">Ekran</div></div>
+        <div class="p-stat-item"><div class="p-stat-num white">24</div><div class="p-stat-label">Fonksiyon</div></div>
+        <div class="p-stat-item"><div class="p-stat-num white">16</div><div class="p-stat-label">Hafta</div></div>
+      </div>
+      <ul class="p-features">
+        <li>Senaryo A'nın t&uuml;m&uuml; +</li>
+        <li>Satın alma talep &amp; sipariş</li>
+        <li>Malzeme durum takibi</li>
+        <li>Fason iş y&ouml;netimi</li>
+        <li>ETA entegrasyonu (okuma+yazma)</li>
+        <li>Madde kartı y&ouml;netimi</li>
+      </ul>
+      <div style="margin-top:14px; padding-top:10px; border-top:1px solid rgba(59,130,246,0.2);">
+        <div style="font-size:10px; letter-spacing:1px; color:var(--muted); text-transform:uppercase; margin-bottom:6px;">Kim mutlu olur?</div>
+        <div style="font-size:11px;"><span class="green">PM, SAT, TAS, SA, Y&Ouml;N, At&ouml;lye</span></div>
+        <div style="font-size:10px; color:var(--accent); margin-top:4px;">Kısmen paralel &rarr; ~14 haftaya d&uuml;şer</div>
+      </div>
+    </div>
+    <!-- SENARYO C -->
+    <div class="price-card">
+      <div class="p-label">Senaryo C</div>
+      <div class="p-name">Tam Kapsam</div>
+      <div class="p-desc">U&ccedil;tan u&ccedil;a dijital: teklif, satın alma, &uuml;retim, barkod, ger&ccedil;ek maliyet.</div>
+      <div class="p-stat">
+        <div class="p-stat-item"><div class="p-stat-num white">24</div><div class="p-stat-label">Ekran</div></div>
+        <div class="p-stat-item"><div class="p-stat-num white">39</div><div class="p-stat-label">Fonksiyon</div></div>
+        <div class="p-stat-item"><div class="p-stat-num white">24</div><div class="p-stat-label">Hafta</div></div>
+      </div>
+      <ul class="p-features">
+        <li>Senaryo B'nin t&uuml;m&uuml; +</li>
+        <li>Proses paket &amp; iş emri</li>
+        <li>Tezgah ekranı (barkod)</li>
+        <li>&Uuml;retim matrisi &amp; Gantt</li>
+        <li>Ger&ccedil;ek maliyet analizi</li>
+        <li>Gelişmiş TV dashboard</li>
+      </ul>
+      <div style="margin-top:14px; padding-top:10px; border-top:1px solid var(--border);">
+        <div style="font-size:10px; letter-spacing:1px; color:var(--muted); text-transform:uppercase; margin-bottom:6px;">Kim mutlu olur?</div>
+        <div style="font-size:11px;"><span class="green">Herkes</span></div>
+        <div style="font-size:10px; color:var(--muted); margin-top:4px;">Kısmen paralel &rarr; ~20 haftaya d&uuml;şer</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="padding:14px 18px;">
+    <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
+      <div style="flex:1; min-width:200px;">
+        <h3 style="margin-bottom:4px; font-size:13px;">S&uuml;re Karşılaştırması</h3>
+        <p style="font-size:11px;">Sıralı teslimat en d&uuml;ş&uuml;k risk: her paket kendi başına değer &uuml;retir. Kısmen paralel ile s&uuml;re kısaltılabilir.</p>
+      </div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; font-size:12px;">
+        <div style="text-align:center;"><div style="font-size:9px; color:var(--muted); letter-spacing:1px; text-transform:uppercase;">A &mdash; Sıralı</div><div style="font-size:18px; font-weight:800;">10 hf</div></div>
+        <div style="text-align:center;"><div style="font-size:9px; color:var(--accent); letter-spacing:1px; text-transform:uppercase;">B &mdash; Sıralı</div><div style="font-size:18px; font-weight:800; color:var(--accent);">16 hf</div><div style="font-size:9px; color:var(--muted);">paralel: 14</div></div>
+        <div style="text-align:center;"><div style="font-size:9px; color:var(--muted); letter-spacing:1px; text-transform:uppercase;">C &mdash; Sıralı</div><div style="font-size:18px; font-weight:800;">24 hf</div><div style="font-size:9px; color:var(--muted);">paralel: 20</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== S29: TERMİN PLANI ===== -->
+<div class="slide" id="s29">
+  <div class="slide-header"><span class="slide-label">11 / Termin Planı</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2>Hafta hafta <span class="accent">ne teslim edilir?</span></h2>
+  <div class="divider"></div>
+  <div class="grid-2" style="margin-bottom:16px;">
+    <div class="card card-accent">
+      <h3 class="accent" style="margin-bottom:10px;">Paket 1 &mdash; 10 Hafta</h3>
+      <div class="kv"><span class="k">Hf 1-2</span><span class="v">Altyapı, DB, auth, Firma</span></div>
+      <div class="kv"><span class="k">Hf 3-4</span><span class="v">Proje &amp; Kalem &amp; Versiyon</span></div>
+      <div class="kv"><span class="k">Hf 5-6</span><span class="v">Malzeme &amp; Fiyatlandırma</span></div>
+      <div class="kv"><span class="k">Hf 7-8</span><span class="v">PDF, Workflow, Sipariş Onay</span></div>
+      <div class="kv"><span class="k">Hf 9</span><span class="v">Dashboard, ETA sync, roller</span></div>
+      <div class="kv"><span class="k">Hf 10</span><span class="v">Test, veri aktarım, eğitim</span></div>
+    </div>
+    <div class="card card-green">
+      <h3 class="green" style="margin-bottom:10px;">Paket 2 &mdash; 6 Hafta</h3>
+      <div class="kv"><span class="k">Hf 1-2</span><span class="v">Talep &amp; sipariş altyapısı</span></div>
+      <div class="kv"><span class="k">Hf 3-4</span><span class="v">Malzeme durum, ETA yazma</span></div>
+      <div class="kv"><span class="k">Hf 5</span><span class="v">Fason, montaj hazırlık</span></div>
+      <div class="kv"><span class="k">Hf 6</span><span class="v">Test, eğitim, go-live</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:8px;">Başlamadan &Ouml;nce Gerekli</h3>
+    <div class="kv"><span class="k">1.</span><span class="v">ETA entegrasyon toplantısı (SQL erişim)</span></div>
+    <div class="kv"><span class="k">2.</span><span class="v">Form&uuml;l detaylandırma (Mert ile)</span></div>
+    <div class="kv"><span class="k">3.</span><span class="v">PDF şablon &ouml;rnekleri (4-5 form)</span></div>
+    <div class="kv"><span class="k">4.</span><span class="v">Ge&ccedil;miş veri inceleme (migration)</span></div>
+    <div class="kv"><span class="k">5.</span><span class="v">Tip kodu tanımlama (~15 adet)</span></div>
+  </div>
+</div>
+
+<!-- ===== S30: GELECEK — PAKET 3 ===== -->
+<div class="slide" id="s30">
+  <div class="slide-header"><span class="slide-label">12 / Gelecek: Paket 3</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2>Gelecekte: <span class="purple">&Uuml;retim &amp; İstasyon</span></h2>
+  <div class="divider"></div>
+  <p style="max-width:780px; margin-bottom:16px;">Paket 1+2 canlıya alınıp adapte olduktan sonra, &uuml;retim katının dijitalleştirilmesi Paket 3 ile yapılır. Altyapısı Paket 1+2'de hazırlanır.</p>
+  <div class="grid-3">
+    <div class="card card-purple">
+      <h3 class="purple" style="margin-bottom:8px;">7 Ekran</h3>
+      <p style="font-size:11px; line-height:1.6;">Proses paket y&ouml;netimi, iş emri oluşturma, tezgah ekranı (barkod başla/bitir), &uuml;retim matrisi, Gantt planlama, ger&ccedil;ek maliyet analizi, gelişmiş dashboard.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:8px;">15 Fonksiyon</h3>
+      <p style="font-size:11px; line-height:1.6;">Barkod sistemi, bağımlılık motoru, renk sistemi, kısmi tamamlama, ger&ccedil;ek s&uuml;re hesaplama, k&acirc;r/zarar raporu, gelişmiş TV dashboard.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:8px;">~8 Hafta</h3>
+      <p style="font-size:11px; line-height:1.6;">Paket 1+2 tamamlandıktan sonra. Her istasyona bilgisayar/tablet gerekli. Pilot istasyon ile başlanır.</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px; padding:14px 18px;">
+    <p style="font-size:12px;"><span class="white" style="font-weight:600;">Şimdi karar vermenize gerek yok.</span> <span class="muted">Paket 1+2'yi kullanmaya başlayın, ihtiya&ccedil; netleşince Paket 3 planlanır. Altyapısı hazır olacak.</span></p>
+  </div>
+</div>
+
+<!-- ===== S31: RİSKLER ===== -->
+<div class="slide" id="s31">
+  <div class="slide-header"><span class="slide-label">13 / Riskler &amp; Yaklaşım</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:26px; object-fit:contain;"></div>
+  <h2>Risk y&ouml;netimi <span class="accent">proaktif.</span></h2>
+  <div class="divider"></div>
+  <table class="data-table" style="margin-bottom:16px;">
+    <thead><tr><th>Risk</th><th>Olasılık</th><th>Etki</th><th>Azaltma</th></tr></thead>
+    <tbody>
+      <tr><td>ETA SQL erişimi sorunlu</td><td><span class="tag tag-orange">Orta</span></td><td><span class="tag tag-red">Y&uuml;ksek</span></td><td>Hafta 1'de erken toplantı. Fallback: CSV</td></tr>
+      <tr><td>Ge&ccedil;miş veri kalitesi</td><td><span class="tag tag-red">Y&uuml;ksek</span></td><td><span class="tag tag-orange">Orta</span></td><td>Veri temizleme sprint'i</td></tr>
+      <tr><td>Kapsam genişlemesi</td><td><span class="tag tag-red">Y&uuml;ksek</span></td><td><span class="tag tag-red">Y&uuml;ksek</span></td><td>Paket sınırları net, ek = CR</td></tr>
+      <tr><td>Excel alışkanlıkları</td><td><span class="tag tag-red">Y&uuml;ksek</span></td><td><span class="tag tag-orange">Orta</span></td><td>Paralel d&ouml;nem, zorunlu ge&ccedil;iş tarihi</td></tr>
+      <tr><td>Form&uuml;l karmaşıklığı</td><td><span class="tag tag-blue">D&uuml;ş&uuml;k</span></td><td><span class="tag tag-orange">Orta</span></td><td>MVP form&uuml;llerle başla, iterasyon</td></tr>
+    </tbody>
+  </table>
+  <div class="grid-2">
+    <div class="card card-green" style="padding:16px;">
+      <h3 class="green" style="margin-bottom:6px;">Yaklaşımımız</h3>
+      <p style="font-size:12px;">Her paket kendi başına değer &uuml;retir. Sıralı teslimat: ilk paket canlıya alınır, kullanıcılar adapte olurken ikinci paket geliştirilir.</p>
+    </div>
+    <div class="card" style="padding:16px;">
+      <h3 style="margin-bottom:6px;">Paket Bağımsızlığı</h3>
+      <p style="font-size:12px;">Paket 1'i alıp durabilirsiniz. Memnunsanız Paket 2'ye ge&ccedil;ersiniz. Her paket tek başına yarım kalmaz.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== S32: FINAL CTA ===== -->
+<div class="slide" id="s32" style="justify-content:center; background:linear-gradient(135deg, var(--black), #0f1118);">
+  <div class="final-box">
+    <div style="font-size:10px; letter-spacing:5px; color:var(--accent); text-transform:uppercase; margin-bottom:24px;">Sonraki Adım</div>
+    <h2 style="margin-bottom:14px;">Sizin s&uuml;recinizi<br><span class="accent">biz anladık.</span></h2>
+    <p style="font-size:14px; margin-bottom:28px; max-width:520px; margin-left:auto; margin-right:auto;">17 ekran, 24 fonksiyon &mdash; toplantıda konuştuğumuz her detay haritalandı. Şimdi başlayalım.</p>
+    <div style="display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-bottom:28px;">
+      <div><div class="big-stat accent">17</div><div style="font-size:10px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Ekran</div></div>
+      <div><div class="big-stat white">24</div><div style="font-size:10px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Fonksiyon</div></div>
+      <div><div class="big-stat white">2</div><div style="font-size:10px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Paket</div></div>
+    </div>
+    <div style="display:flex; gap:24px; justify-content:center; flex-wrap:wrap; font-size:13px;">
+      <div><span class="muted">İletişim</span><br><span class="white" style="font-weight:600;">Salih Yetim &mdash; Tibexa</span></div>
+      <div><span class="muted">E-posta</span><br><span class="white" style="font-weight:600;">salih@tibexa.com</span></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end slides-container -->
+
+<!-- NAVIGATION -->
+<div class="nav">
+  <button onclick="prev()" title="Geri">&larr;</button>
+  <div class="dots" id="dots"></div>
+  <button onclick="next()" title="İleri">&rarr;</button>
+  <span class="slide-counter" id="counter">1 / 32</span>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const container = document.getElementById('slides');
+const dotsEl = document.getElementById('dots');
+const counterEl = document.getElementById('counter');
+let current = 0;
+const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+slides.forEach((_, i) => { const d = document.createElement('div'); d.className = 'dot' + (i === 0 ? ' active' : ''); d.onclick = () => goTo(i); dotsEl.appendChild(d); });
+function goTo(n) { slides[current].classList.remove('active'); current = Math.max(0, Math.min(n, slides.length - 1)); if (isMobile()) { slides[current].classList.add('active'); slides[current].scrollIntoView({ behavior: 'smooth', block: 'start' }); } else { container.style.transform = `translateX(-${current * 100}vw)`; slides[current].classList.add('active'); slides[current].scrollTop = 0; } document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current)); counterEl.textContent = `${current + 1} / ${slides.length}`; }
+function next() { goTo(current + 1); }
+function prev() { goTo(current - 1); }
+document.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next(); if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev(); });
+let startX = 0;
+document.addEventListener('touchstart', e => { if (isMobile()) return; startX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => { if (isMobile()) return; const diff = startX - e.changedTouches[0].clientX; if (Math.abs(diff) > 50) diff > 0 ? next() : prev(); });
+if (isMobile()) { const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting && e.intersectionRatio > 0.4) { const idx = Array.from(slides).indexOf(e.target); if (idx >= 0 && idx !== current) { slides[current].classList.remove('active'); current = idx; slides[current].classList.add('active'); document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current)); counterEl.textContent = `${current + 1} / ${slides.length}`; } } }); }, { threshold: [0.4, 0.6] }); slides.forEach(s => observer.observe(s)); }
+slides[0].classList.add('active');
+</script>
+</body>
+</html>
