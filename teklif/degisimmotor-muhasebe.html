@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Değişim Motor × Tibexa — Akıllı Muhasebe Otomasyon Platformu</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111318;
+    --card: #181c24;
+    --card2: #1e2330;
+    --border: rgba(255,255,255,0.07);
+    --white: #f4f4f0;
+    --muted: #8a8f9e;
+    --accent: #e63946;
+    --accent2: #ff6b78;
+    --gold: #c9a84c;
+    --green: #3ecf8e;
+    --red: #f55;
+    --blue: #5b9cf6;
+    --purple: #a78bfa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: var(--black); color: var(--white); font-family: 'Red Hat Display', sans-serif; height: 100%; width: 100%; }
+  body { overflow: hidden; }
+
+  .slides-container { display: flex; width: 100%; height: 100vh; transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1); }
+  .slide { min-width: 100vw; height: 100vh; overflow-y: auto; padding: 40px 64px; position: relative; display: flex; flex-direction: column; }
+  .slide::-webkit-scrollbar { width: 3px; }
+  .slide::-webkit-scrollbar-track { background: transparent; }
+  .slide::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  .nav { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; z-index: 100; background: rgba(17,19,24,0.92); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 50px; padding: 10px 18px; }
+  .nav button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 18px; padding: 4px 8px; transition: color 0.2s; }
+  .nav button:hover { color: var(--accent); }
+  .dots { display: flex; gap: 4px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); transition: all 0.3s; cursor: pointer; }
+  .dot.active { background: var(--accent); width: 16px; border-radius: 3px; }
+  .slide-counter { font-size: 12px; color: var(--muted); letter-spacing: 2px; min-width: 55px; text-align: center; }
+
+  .slide-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 12px; }
+  .slide-label { font-size: 10px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; }
+
+  .brand-row { display: flex; align-items: center; gap: 14px; }
+  .brand-row .x { font-size: 11px; color: var(--muted); letter-spacing: 2px; }
+  .dm-logo { display: inline-flex; align-items: center; gap: 8px; background: #fff; border-radius: 8px; padding: 8px 14px; flex-shrink: 0; }
+  .dm-logo .dm-mark { width: 20px; height: 20px; border-radius: 4px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px; }
+  .dm-logo .dm-text { font-size: 13px; font-weight: 800; color: #0a0a0a; letter-spacing: 0.5px; }
+  .dm-logo .dm-sub { font-size: 9px; font-weight: 600; color: #555; letter-spacing: 1.5px; margin-left: 2px; text-transform: uppercase; }
+  .dm-logo.lg { padding: 12px 20px; border-radius: 10px; }
+  .dm-logo.lg .dm-mark { width: 28px; height: 28px; font-size: 17px; }
+  .dm-logo.lg .dm-text { font-size: 17px; }
+  .dm-logo.lg .dm-sub { font-size: 10px; }
+
+  h1 { font-size: clamp(32px, 5vw, 64px); font-weight: 800; line-height: 1.05; letter-spacing: -1px; }
+  h2 { font-size: clamp(24px, 3.5vw, 40px); font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; }
+  h3 { font-size: 16px; font-weight: 700; }
+  p { font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+  .accent { color: var(--accent); }
+  .white { color: var(--white); }
+  .green { color: var(--green); }
+  .gold { color: var(--gold); }
+  .red { color: var(--red); }
+  .muted { color: var(--muted); }
+  .blue { color: var(--blue); }
+  .purple { color: var(--purple); }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .card-accent { background: linear-gradient(135deg, rgba(230,57,70,0.13), rgba(230,57,70,0.04)); border: 1px solid rgba(230,57,70,0.28); }
+  .card-green { background: linear-gradient(135deg, rgba(62,207,142,0.10), rgba(62,207,142,0.03)); border: 1px solid rgba(62,207,142,0.25); }
+  .card-blue { background: linear-gradient(135deg, rgba(91,156,246,0.10), rgba(91,156,246,0.03)); border: 1px solid rgba(91,156,246,0.25); }
+  .card-purple { background: linear-gradient(135deg, rgba(167,139,250,0.10), rgba(167,139,250,0.03)); border: 1px solid rgba(167,139,250,0.25); }
+  .card-gold { background: linear-gradient(135deg, rgba(201,168,76,0.10), rgba(201,168,76,0.03)); border: 1px solid rgba(201,168,76,0.25); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+  .big-stat { font-size: 44px; font-weight: 800; letter-spacing: -1px; line-height: 1; }
+  .kv { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 12px; gap: 12px; }
+  .kv:last-child { border-bottom: none; }
+  .kv .k { color: var(--muted); flex-shrink: 0; }
+  .kv .v { font-weight: 600; text-align: right; }
+  .divider { width: 48px; height: 2px; background: var(--accent); margin: 12px 0 16px; }
+
+  .tag { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 20px; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; white-space: nowrap; }
+  .tag-red { background: rgba(230,57,70,0.12); color: var(--accent2); border: 1px solid rgba(230,57,70,0.28); }
+  .tag-gold { background: rgba(201,168,76,0.12); color: #e8c96a; border: 1px solid rgba(201,168,76,0.25); }
+  .tag-blue { background: rgba(91,156,246,0.12); color: var(--blue); border: 1px solid rgba(91,156,246,0.25); }
+  .tag-green { background: rgba(62,207,142,0.12); color: var(--green); border: 1px solid rgba(62,207,142,0.25); }
+  .tag-purple { background: rgba(167,139,250,0.12); color: var(--purple); border: 1px solid rgba(167,139,250,0.25); }
+  .tag-gray { background: rgba(138,143,158,0.12); color: var(--muted); border: 1px solid rgba(138,143,158,0.25); }
+
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); padding: 8px 8px; text-align: left; border-bottom: 1px solid var(--border); font-weight: 600; }
+  .data-table td { padding: 7px 8px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--white); vertical-align: middle; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr.recommended td { background: rgba(230,57,70,0.08); }
+  .data-table tr.recommended td:first-child { border-left: 2px solid var(--accent); }
+  .rec-badge { display: inline-block; background: var(--accent); color: #fff; font-size: 9px; letter-spacing: 2px; font-weight: 700; padding: 2px 8px; border-radius: 3px; margin-left: 6px; text-transform: uppercase; }
+
+  .bullet-row { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .bullet-row:last-child { border-bottom: none; }
+  .bullet-row .ix { width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+  .ix-red { background: rgba(255,85,85,0.15); color: var(--red); border: 1px solid rgba(255,85,85,0.3); }
+  .ix-green { background: rgba(62,207,142,0.15); color: var(--green); border: 1px solid rgba(62,207,142,0.3); }
+  .ix-accent { background: rgba(230,57,70,0.15); color: var(--accent2); border: 1px solid rgba(230,57,70,0.3); }
+  .ix-blue { background: rgba(91,156,246,0.15); color: var(--blue); border: 1px solid rgba(91,156,246,0.3); }
+  .ix-purple { background: rgba(167,139,250,0.15); color: var(--purple); border: 1px solid rgba(167,139,250,0.3); }
+
+  .screen-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .screen-row:last-child { border-bottom: none; }
+  .screen-row .s-num { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+  .screen-row .s-info { flex: 1; }
+  .screen-row .s-name { font-size: 12px; font-weight: 600; }
+  .screen-row .s-desc { font-size: 10px; color: var(--muted); }
+
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--accent), var(--blue), var(--purple)); }
+  .tl-item { margin-bottom: 16px; position: relative; }
+  .tl-item::before { content: ''; position: absolute; left: -20px; top: 5px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(230,57,70,0.2); }
+  .tl-step { font-size: 9px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 2px; }
+
+  .flow-arrow { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+  .flow-step { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; text-align: center; min-width: 90px; }
+  .flow-step.active-step { background: linear-gradient(135deg, rgba(230,57,70,0.15), rgba(230,57,70,0.05)); border-color: rgba(230,57,70,0.35); }
+  .flow-connector { color: var(--muted); font-size: 16px; padding: 0 4px; }
+
+  .price-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; display: flex; flex-direction: column; position: relative; }
+  .price-card.featured { background: linear-gradient(165deg, rgba(230,57,70,0.14), rgba(230,57,70,0.03)); border: 1px solid rgba(230,57,70,0.35); }
+  .price-card .p-badge { position: absolute; top: -11px; left: 20px; background: var(--accent); color: #fff; font-size: 9px; letter-spacing: 2px; padding: 4px 10px; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
+  .price-card .p-label { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+  .price-card .p-name { font-size: 20px; font-weight: 800; margin-bottom: 12px; }
+  .price-card .p-amount { font-size: 38px; font-weight: 800; letter-spacing: -1px; margin-bottom: 2px; line-height: 1; }
+  .price-card .p-sub { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+  .price-card .p-features { list-style: none; margin-top: auto; }
+  .price-card .p-features li { font-size: 12px; padding: 5px 0; color: var(--white); display: flex; align-items: flex-start; gap: 7px; }
+  .price-card .p-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+  .addon-card { background: var(--card2); border: 1px dashed rgba(201,168,76,0.35); border-radius: 12px; padding: 16px 20px; }
+
+  /* ===== MOCKUP / BROWSER FRAME STYLES ===== */
+  .browser-frame { background: #f8f9fb; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+  .browser-bar { background: #e8eaed; padding: 8px 14px; display: flex; align-items: center; gap: 10px; }
+  .browser-dots { display: flex; gap: 5px; }
+  .browser-dots span { width: 9px; height: 9px; border-radius: 50%; }
+  .browser-dots .d-r { background: #ff5f57; }
+  .browser-dots .d-y { background: #febc2e; }
+  .browser-dots .d-g { background: #28c840; }
+  .browser-url { flex: 1; background: #fff; border-radius: 5px; padding: 4px 10px; font-size: 10px; color: #666; font-family: monospace; }
+  .browser-body { display: flex; min-height: 280px; max-height: 52vh; color: #1a1a2e; font-size: 11px; }
+
+  .app-sidebar { width: 150px; background: #1e293b; padding: 10px 0; flex-shrink: 0; display: flex; flex-direction: column; }
+  .app-sidebar .app-logo { padding: 4px 14px 10px; font-size: 11px; font-weight: 800; color: #fff; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 6px; }
+  .app-sidebar a { display: flex; align-items: center; gap: 7px; padding: 5px 14px; color: #94a3b8; font-size: 10px; text-decoration: none; transition: all 0.15s; }
+  .app-sidebar a:hover { background: rgba(255,255,255,0.05); color: #e2e8f0; }
+  .app-sidebar a.active { background: rgba(230,57,70,0.15); color: #ff6b78; border-left: 2px solid #e63946; }
+  .app-sidebar .sb-sect { font-size: 8px; letter-spacing: 1.5px; color: rgba(148,163,184,0.4); padding: 8px 14px 2px; text-transform: uppercase; }
+
+  .app-content { flex: 1; padding: 14px 18px; overflow: hidden; background: #f8f9fb; display: flex; flex-direction: column; }
+  .app-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .app-header-bar h4 { font-size: 14px; font-weight: 700; color: #1e293b; }
+  .app-btn { display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; border-radius: 6px; font-size: 10px; font-weight: 600; border: none; cursor: default; }
+  .app-btn-primary { background: #e63946; color: #fff; }
+  .app-btn-outline { background: #fff; color: #475569; border: 1px solid #e2e8f0; }
+  .app-btn-blue { background: #3b82f6; color: #fff; }
+  .app-btn-green { background: #16a34a; color: #fff; }
+
+  .app-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; }
+  .app-table th { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #64748b; padding: 7px 6px; text-align: left; background: #f8fafc; border-bottom: 1px solid #e2e8f0; font-weight: 600; }
+  .app-table td { padding: 6px 6px; font-size: 10px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+  .app-table tr:last-child td { border-bottom: none; }
+
+  .status-badge { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 9px; font-weight: 600; white-space: nowrap; }
+  .sb-blue { background: #dbeafe; color: #1d4ed8; }
+  .sb-green { background: #dcfce7; color: #15803d; }
+  .sb-orange { background: #fef3c7; color: #b45309; }
+  .sb-red { background: #fee2e2; color: #dc2626; }
+  .sb-gray { background: #f1f5f9; color: #64748b; }
+  .sb-purple { background: #ede9fe; color: #7c3aed; }
+
+  .app-filter-bar { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+  .app-filter { padding: 3px 9px; border-radius: 5px; font-size: 9px; background: #fff; border: 1px solid #e2e8f0; color: #64748b; }
+  .app-filter.active { background: #fef2f2; border-color: #fca5a5; color: #dc2626; }
+
+  .app-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; }
+  .app-kpi { text-align: center; padding: 8px; }
+  .app-kpi .kpi-val { font-size: 20px; font-weight: 800; color: #1e293b; }
+  .app-kpi .kpi-label { font-size: 8px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+  .app-kpi .kpi-change { font-size: 9px; font-weight: 600; }
+  .kpi-up { color: #16a34a; }
+  .kpi-down { color: #dc2626; }
+
+  .app-progress { height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
+  .app-progress-fill { height: 100%; border-radius: 3px; }
+
+  .mockup-features { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+  .mockup-features span { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 4px; }
+  .mockup-features span::before { content: '✓'; color: var(--accent); font-weight: 700; font-size: 10px; }
+
+  .match-col { flex: 1; min-width: 0; }
+  .match-col-header { font-size: 10px; font-weight: 700; color: #1e293b; padding: 6px 8px; border-radius: 6px 6px 0 0; text-align: center; }
+  .match-row { display: flex; gap: 2px; margin-bottom: 1px; }
+  .match-cell { flex: 1; padding: 4px 6px; font-size: 9px; background: #fff; border: 1px solid #e2e8f0; }
+  .match-cell.mismatch { background: #fef2f2; border-color: #fca5a5; color: #dc2626; font-weight: 600; }
+
+  .mail-preview { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; font-size: 10px; color: #334155; }
+  .mail-preview .mail-field { display: flex; gap: 6px; padding: 3px 0; border-bottom: 1px solid #f1f5f9; }
+  .mail-preview .mail-label { color: #64748b; font-weight: 600; min-width: 40px; }
+  .mail-preview .mail-body { padding: 8px 0; line-height: 1.5; color: #475569; }
+
+  .ocr-box { background: #f8fafc; border: 2px dashed #e2e8f0; border-radius: 8px; padding: 14px; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 10px; min-height: 100px; }
+
+  .cal-row { display: flex; gap: 2px; margin-bottom: 2px; }
+  .cal-cell { flex: 1; padding: 3px 4px; font-size: 8px; background: #fff; border: 1px solid #f1f5f9; border-radius: 3px; min-height: 28px; }
+  .cal-cell.cal-today { border-color: #e63946; }
+  .cal-cell .cal-day { font-weight: 700; color: #1e293b; margin-bottom: 1px; }
+  .cal-cell .cal-item { font-size: 7px; padding: 1px 3px; border-radius: 2px; margin-bottom: 1px; white-space: nowrap; overflow: hidden; }
+  .cal-paid { background: #dcfce7; color: #15803d; }
+  .cal-upcoming { background: #dbeafe; color: #1d4ed8; }
+  .cal-overdue { background: #fee2e2; color: #dc2626; }
+
+  /* Cover */
+  #s1 { justify-content: center; padding: 56px 64px; }
+  .cover-label { font-size: 10px; letter-spacing: 5px; color: var(--accent); text-transform: uppercase; margin-bottom: 32px; display: flex; align-items: center; gap: 14px; }
+  .cover-label::before { content: ''; display: block; width: 36px; height: 1px; background: var(--accent); }
+  .cover-subtitle { font-size: 16px; color: var(--muted); margin-bottom: 36px; max-width: 720px; line-height: 1.6; }
+  .cover-meta { display: flex; gap: 36px; flex-wrap: wrap; }
+  .cover-meta-item .label { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
+  .cover-meta-item { font-size: 13px; }
+  .cover-deco { position: absolute; right: 0; top: 0; width: 40%; height: 100%; background: linear-gradient(135deg, transparent 60%, rgba(230,57,70,0.05) 100%); pointer-events: none; }
+
+  /* Final */
+  .final-box { background: linear-gradient(135deg, rgba(230,57,70,0.12), rgba(230,57,70,0.03)); border: 1px solid rgba(230,57,70,0.28); border-radius: 20px; padding: 40px; text-align: center; max-width: 700px; margin: 0 auto; }
+
+  /* Animations */
+  .slide > * { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .slide.active > * { opacity: 1; transform: translateY(0); }
+  .slide.active > *:nth-child(1) { transition-delay: 0.05s; }
+  .slide.active > *:nth-child(2) { transition-delay: 0.12s; }
+  .slide.active > *:nth-child(3) { transition-delay: 0.19s; }
+  .slide.active > *:nth-child(4) { transition-delay: 0.26s; }
+  .slide.active > *:nth-child(5) { transition-delay: 0.33s; }
+
+  @media (max-width: 900px) {
+    body { overflow: auto; }
+    .slides-container { display: block; width: 100%; height: auto; transform: none !important; transition: none; }
+    .slide { min-width: 100%; width: 100%; height: auto; min-height: auto; padding: 32px 22px 48px; overflow: visible; scroll-margin-top: 16px; }
+    .slide + .slide { border-top: 1px solid var(--border); }
+    .slide > * { opacity: 1 !important; transform: none !important; }
+    .nav { padding: 8px 14px; gap: 6px; bottom: 12px; }
+    .slide-header { margin-bottom: 20px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 12px; }
+    .browser-body { min-height: 200px; }
+    .app-sidebar { width: 110px; }
+    .flow-connector { display: none; }
+    .flow-arrow { gap: 6px; }
+    .cover-meta { gap: 16px; }
+    .final-box { padding: 28px 18px; }
+  }
+  @media (max-width: 640px) {
+    .slide { padding: 24px 16px 40px; }
+    h1 { font-size: clamp(26px, 8vw, 44px); }
+    h2 { font-size: clamp(20px, 6vw, 30px); }
+    .big-stat { font-size: 32px; }
+    .browser-body { flex-direction: column; }
+    .app-sidebar { width: 100%; flex-direction: row; overflow-x: auto; padding: 6px; }
+    .app-sidebar a { padding: 4px 8px; font-size: 9px; white-space: nowrap; }
+    .app-sidebar .sb-sect { display: none; }
+    .data-table th, .data-table td { padding: 6px 4px; font-size: 10px; }
+    .dm-logo { padding: 6px 10px; }
+    .dm-logo .dm-text { font-size: 12px; }
+    .dm-logo.lg { padding: 10px 16px; }
+    .dm-logo.lg .dm-text { font-size: 15px; }
+    .brand-row { gap: 10px; }
+  }
+  @media (max-width: 400px) {
+    .slide-header { gap: 8px; }
+    .brand-row .x { display: none; }
+    .dm-logo .dm-sub { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slides-container" id="slides">
+
+  <!-- ===== S1: COVER ===== -->
+  <div class="slide active" id="s1">
+    <div class="cover-deco"></div>
+    <div class="slide-header">
+      <div class="brand-row">
+        <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:34px; object-fit:contain;">
+        <span class="x">&times;</span>
+        <span class="dm-logo">
+          <span class="dm-mark">DM</span>
+          <span class="dm-text">Değişim Motor</span>
+          <span class="dm-sub">Koç Redüktör</span>
+        </span>
+      </div>
+      <span class="slide-label">Gizli &middot; Değişim Motor için hazırlandı</span>
+    </div>
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; max-width: 820px;">
+      <div class="cover-label">Akıllı Muhasebe Otomasyon Platformu &middot; Mayıs 2026</div>
+      <h1 style="margin-bottom:22px;">Muhasebecinin tekrarlayan işleri<br><span class="accent">yapay zeka ile otomatiğe dönüyor.</span></h1>
+      <p class="cover-subtitle">Logo ERP entegrasyonu üzerinden sipariş mutabakatı, tahsilat takibi ve ödeme yönetimini AI destekli orta katman ile otomatize eden platform. 3 modül, 14 ekran, tek panel.</p>
+      <div class="cover-meta">
+        <div class="cover-meta-item"><div class="label">Hazırlayan</div><div class="white" style="font-weight:600;">Tibexa</div></div>
+        <div class="cover-meta-item"><div class="label">Tarih</div><div class="white" style="font-weight:600;">Mayıs 2026</div></div>
+        <div class="cover-meta-item"><div class="label">Kapsam</div><div class="white" style="font-weight:600;">3 Modül &middot; 14 Ekran &middot; Logo + AI</div></div>
+        <div class="cover-meta-item"><div class="label">Firmalar</div><div class="white" style="font-weight:600;">Değişim Motor &middot; Koç Redüktör &middot; +1</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== S2: PROBLEM ===== -->
+  <div class="slide" id="s2">
+    <div class="slide-header">
+      <span class="slide-label">01 / Problem</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <h2>Muhasebecinin zamanı<br><span class="accent">tekrarlayan işlerde kayboluyor.</span></h2>
+    <div class="divider"></div>
+    <p style="max-width:820px; margin-bottom:16px;">Distribütörlük modeli — müşteri talebi &rarr; sipariş &rarr; tedarikçiden irsaliye/fatura &rarr; müşteriye satış faturası &rarr; tahsilat &rarr; tedarikçiye ödeme. Her halkada bir <span class="white">mutabakat ve hatırlatma katmanı</span> eksik.</p>
+    <div class="grid-3" style="margin-bottom:16px;">
+      <div class="card" style="border-left: 3px solid var(--red);">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--red); text-transform:uppercase; margin-bottom:8px;">Sipariş Karmaşası</div>
+        <div class="bullet-row" style="padding-top:0;"><div class="ix ix-red">!</div><div><p style="font-size:12px; color:var(--white);">Sipariş ↔ irsaliye ↔ fatura eşleşmesi manuel</p></div></div>
+        <div class="bullet-row"><div class="ix ix-red">!</div><div><p style="font-size:12px; color:var(--white);">Adet, fiyat, iskonto tutarsızlıkları gözden kaçıyor</p></div></div>
+        <div class="bullet-row" style="border:none;"><div class="ix ix-red">!</div><div><p style="font-size:12px; color:var(--white);">DM → Koç arası e-irsaliyeden fatura üretimi zaman alıyor</p></div></div>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--gold);">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:8px;">Tahsilat Kaçakları</div>
+        <div class="bullet-row" style="padding-top:0;"><div class="ix" style="background:rgba(201,168,76,0.15); color:var(--gold); border:1px solid rgba(201,168,76,0.3);">!</div><div><p style="font-size:12px; color:var(--white);">Vade takibi Excel'de, hatırlatma maili elle</p></div></div>
+        <div class="bullet-row"><div class="ix" style="background:rgba(201,168,76,0.15); color:var(--gold); border:1px solid rgba(201,168,76,0.3);">!</div><div><p style="font-size:12px; color:var(--white);">Müşteri yanıtları okunmuyor, yeni vade önerilmiyor</p></div></div>
+        <div class="bullet-row" style="border:none;"><div class="ix" style="background:rgba(201,168,76,0.15); color:var(--gold); border:1px solid rgba(201,168,76,0.3);">!</div><div><p style="font-size:12px; color:var(--white);">60+ gün geçen cariler için eskalasyon yok</p></div></div>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--blue);">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--blue); text-transform:uppercase; margin-bottom:8px;">Ödeme Kaosu</div>
+        <div class="bullet-row" style="padding-top:0;"><div class="ix ix-blue">!</div><div><p style="font-size:12px; color:var(--white);">Sabit ödemeler (Securitas, elektrik, DBS) takvimsiz</p></div></div>
+        <div class="bullet-row"><div class="ix ix-blue">!</div><div><p style="font-size:12px; color:var(--white);">Kredi kartı ekstreleri manuel işleniyor</p></div></div>
+        <div class="bullet-row" style="border:none;"><div class="ix ix-blue">!</div><div><p style="font-size:12px; color:var(--white);">Fatura vade tarihi ↔ Logo kaydı tutarsızlığı fark edilmiyor</p></div></div>
+      </div>
+    </div>
+    <div class="grid-4">
+      <div class="card" style="text-align:center; padding:14px 10px;"><div class="big-stat" style="font-size:26px; color:var(--red);">%40</div><div style="font-size:9px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-top:4px;">Efor kaybı</div></div>
+      <div class="card" style="text-align:center; padding:14px 10px;"><div class="big-stat" style="font-size:26px; color:var(--gold);">3</div><div style="font-size:9px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-top:4px;">Firma</div></div>
+      <div class="card" style="text-align:center; padding:14px 10px;"><div class="big-stat" style="font-size:26px; color:var(--blue);">24+</div><div style="font-size:9px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-top:4px;">Banka hesabı</div></div>
+      <div class="card" style="text-align:center; padding:14px 10px;"><div class="big-stat" style="font-size:26px; color:var(--accent);">10</div><div style="font-size:9px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-top:4px;">Kredi kartı</div></div>
+    </div>
+  </div>
+
+  <!-- ===== S3: ÇÖZÜM ===== -->
+  <div class="slide" id="s3">
+    <div class="slide-header">
+      <span class="slide-label">02 / Çözüm</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <h2>Logo + AI orta katmanı.<br><span class="accent">Üç modül, tek platform.</span></h2>
+    <div class="divider"></div>
+    <p style="max-width:820px; margin-bottom:20px;">Logo ERP'nin API'si üzerinden veriyi çeken, yapay zeka ile işleyen ve muhasebeciye <span class="white">onaya hazır sonuçlar</span> sunan bir web paneli. Her işlem <span class="white">human-in-the-loop</span> onay mekanizmasıyla kontrollü.</p>
+    <div class="flow-arrow" style="margin-bottom:22px;">
+      <div class="flow-step"><div style="font-size:10px; color:var(--muted); margin-bottom:3px;">Kaynak</div><div style="font-size:13px; font-weight:700;">Logo ERP</div><div style="font-size:9px; color:var(--muted);">REST API</div></div>
+      <div class="flow-connector">&rarr;</div>
+      <div class="flow-step active-step"><div style="font-size:10px; color:var(--accent); margin-bottom:3px;">Orta Katman</div><div style="font-size:13px; font-weight:700; color:var(--accent);">AI Motor</div><div style="font-size:9px; color:var(--muted);">Eşleştir &middot; Uyar &middot; Öner</div></div>
+      <div class="flow-connector">&rarr;</div>
+      <div class="flow-step"><div style="font-size:10px; color:var(--muted); margin-bottom:3px;">Kanal</div><div style="font-size:13px; font-weight:700;">Mail</div><div style="font-size:9px; color:var(--muted);">SMTP/IMAP</div></div>
+      <div class="flow-connector">&rarr;</div>
+      <div class="flow-step"><div style="font-size:10px; color:var(--muted); margin-bottom:3px;">Kullanıcı</div><div style="font-size:13px; font-weight:700;">Web Paneli</div><div style="font-size:9px; color:var(--muted);">Muhasebeci + Yönetim</div></div>
+    </div>
+    <div class="grid-3" style="gap:14px;">
+      <div class="card card-accent" style="padding:18px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+          <div style="width:32px; height:32px; border-radius:8px; background:rgba(230,57,70,0.15); display:flex; align-items:center; justify-content:center; color:var(--accent); font-weight:800; font-size:15px;">1</div>
+          <div><h3>Sipariş Mutabakatı</h3><div style="font-size:10px; color:var(--muted);">5 ekran &middot; DM + Koç</div></div>
+        </div>
+        <div class="kv"><span class="k">Sipariş açma + AI mail</span><span class="v accent">✓</span></div>
+        <div class="kv"><span class="k">3-yönlü eşleme</span><span class="v accent">✓</span></div>
+        <div class="kv"><span class="k">Uyumsuzluk uyarısı</span><span class="v accent">✓</span></div>
+        <div class="kv"><span class="k">İrsaliye→fatura üretimi</span><span class="v accent">✓</span></div>
+      </div>
+      <div class="card card-blue" style="padding:18px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+          <div style="width:32px; height:32px; border-radius:8px; background:rgba(91,156,246,0.15); display:flex; align-items:center; justify-content:center; color:var(--blue); font-weight:800; font-size:15px;">2</div>
+          <div><h3>Tahsilat Takibi</h3><div style="font-size:10px; color:var(--muted);">4 ekran &middot; 3 firma</div></div>
+        </div>
+        <div class="kv"><span class="k">Otomatik hatırlatma maili</span><span class="v blue">✓</span></div>
+        <div class="kv"><span class="k">AI yanıt okuma + özet</span><span class="v blue">✓</span></div>
+        <div class="kv"><span class="k">Vade önerisi + HITL onay</span><span class="v blue">✓</span></div>
+        <div class="kv"><span class="k">60+ gün eskalasyon</span><span class="v blue">✓</span></div>
+      </div>
+      <div class="card card-purple" style="padding:18px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+          <div style="width:32px; height:32px; border-radius:8px; background:rgba(167,139,250,0.15); display:flex; align-items:center; justify-content:center; color:var(--purple); font-weight:800; font-size:15px;">3</div>
+          <div><h3>Ödeme Takibi</h3><div style="font-size:10px; color:var(--muted);">4 ekran &middot; 3 firma</div></div>
+        </div>
+        <div class="kv"><span class="k">Tedarikçi ödeme takvimi</span><span class="v purple">✓</span></div>
+        <div class="kv"><span class="k">OCR + vade kontrolü</span><span class="v purple">✓</span></div>
+        <div class="kv"><span class="k">Kredi kartı Excel import</span><span class="v purple">✓</span></div>
+        <div class="kv"><span class="k">AI kategorizasyon</span><span class="v purple">✓</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== S4: MODÜL 1 GENEL BAKIŞ ===== -->
+  <div class="slide" id="s4">
+    <div class="slide-header">
+      <span class="slide-label">Modül 1 — Sipariş Mutabakatı</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <h2>Sipariş ↔ irsaliye ↔ fatura.<br><span class="accent">5 ekran, otomatik eşleme.</span></h2>
+    <div class="divider"></div>
+    <p style="max-width:700px; margin-bottom:16px;">Değişim Motor + Koç Redüktör için tüm alış-satış döngüsünü kapsayan sipariş mutabakatı modülü.</p>
+    <div class="grid-2" style="gap:14px;">
+      <div class="card card-accent" style="padding:18px;">
+        <div style="font-size:10px; letter-spacing:2px; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">5 Ekran</div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(230,57,70,0.15); color:var(--accent2); border:1px solid rgba(230,57,70,0.3);">01</div><div class="s-info"><div class="s-name">Sipariş Listesi</div><div class="s-desc">Tüm siparişler, filtreleme, durum takibi</div></div></div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(230,57,70,0.15); color:var(--accent2); border:1px solid rgba(230,57,70,0.3);">02</div><div class="s-info"><div class="s-name">Sipariş Oluştur & AI Mail</div><div class="s-desc">Kalem girişi, AI tedarikçi maili</div></div></div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(230,57,70,0.15); color:var(--accent2); border:1px solid rgba(230,57,70,0.3);">03</div><div class="s-info"><div class="s-name">3-Yönlü Mutabakat</div><div class="s-desc">Sipariş ↔ irsaliye ↔ fatura karşılaştırma</div></div></div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(230,57,70,0.15); color:var(--accent2); border:1px solid rgba(230,57,70,0.3);">04</div><div class="s-info"><div class="s-name">Uyumsuzluk Uyarıları</div><div class="s-desc">Fark listesi + HITL onay</div></div></div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(230,57,70,0.15); color:var(--accent2); border:1px solid rgba(230,57,70,0.3);">05</div><div class="s-info"><div class="s-name">E-İrsaliyeden Fatura</div><div class="s-desc">DM → Koç tek tıkla fatura üretimi</div></div></div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="card">
+          <h3 style="margin-bottom:10px;">Eşleme Motoru</h3>
+          <div class="kv"><span class="k">Sipariş → İrsaliye</span><span class="v accent">Otomatik</span></div>
+          <div class="kv"><span class="k">İrsaliye → Alış faturası</span><span class="v accent">Otomatik</span></div>
+          <div class="kv"><span class="k">Alış faturası → Satış faturası</span><span class="v accent">Otomatik</span></div>
+          <div class="kv"><span class="k">Uyumsuzluk</span><span class="v" style="color:var(--gold);">Uyar + Onay</span></div>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:10px;">AI Sipariş Maili</h3>
+          <div class="kv"><span class="k">Ürün listesi + miktar</span><span class="v">Otomatik</span></div>
+          <div class="kv"><span class="k">Teslim tarihi beklentisi</span><span class="v">Otomatik</span></div>
+          <div class="kv"><span class="k">Önceki sipariş referansı</span><span class="v">Otomatik</span></div>
+          <div class="kv"><span class="k">Dil</span><span class="v">TR / EN</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== S5: E01 — SİPARİŞ LİSTESİ ===== -->
+  <div class="slide" id="s5">
+    <div class="slide-header"><span class="slide-label">Modül 1 — Ekran 01</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>Sipariş Listesi</h2>
+    <p style="margin-bottom:10px;">Tüm siparişlerin tek ekranda takibi — firma, tutar, durum ve mutabakat bilgisi.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/siparisler</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#" class="active">Siparişler</a><a href="#">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#">OCR</a><a href="#">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content">
+          <div class="app-header-bar"><h4>Siparişler</h4><div><span class="app-btn app-btn-primary">+ Yeni Sipariş</span></div></div>
+          <div class="app-filter-bar">
+            <span class="app-filter active">Tümü (48)</span><span class="app-filter">Mutabakat Tamam</span><span class="app-filter">İrsaliye Bekliyor</span><span class="app-filter">Uyumsuzluk</span>
+          </div>
+          <table class="app-table">
+            <thead><tr><th>Sipariş No</th><th>Firma</th><th>Tedarikçi</th><th>Tarih</th><th>Kalem</th><th>Tutar</th><th>Durum</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:600;">SP-0234</td><td>Değişim Motor</td><td>Rupi Atlas</td><td>03.05</td><td>4</td><td>€12.400</td><td><span class="status-badge sb-green">Mutabakat Tamam</span></td></tr>
+              <tr><td style="font-weight:600;">SP-0233</td><td>Koç Redüktör</td><td>Bosch Rexroth</td><td>01.05</td><td>6</td><td>€28.900</td><td><span class="status-badge sb-orange">İrsaliye Bekliyor</span></td></tr>
+              <tr><td style="font-weight:600;">SP-0232</td><td>Değişim Motor</td><td>Parker</td><td>28.04</td><td>3</td><td>₺45.000</td><td><span class="status-badge sb-red">Uyumsuzluk</span></td></tr>
+              <tr><td style="font-weight:600;">SP-0231</td><td>Değişim Motor</td><td>Hema</td><td>25.04</td><td>2</td><td>₺18.200</td><td><span class="status-badge sb-green">Fatura Kesildi</span></td></tr>
+              <tr><td style="font-weight:600;">SP-0230</td><td>Koç Redüktör</td><td>Hidromek</td><td>22.04</td><td>5</td><td>€35.600</td><td><span class="status-badge sb-blue">Sipariş Gönderildi</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>Firma bazlı filtreleme</span><span>Durum renk kodları</span><span>Tek tıkla mutabakat ekranına geçiş</span></div>
+  </div>
+
+  <!-- ===== S6: E02 — SİPARİŞ OLUŞTUR & AI MAİL ===== -->
+  <div class="slide" id="s6">
+    <div class="slide-header"><span class="slide-label">Modül 1 — Ekran 02</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>Sipariş Oluştur & AI Mail</h2>
+    <p style="margin-bottom:10px;">Sipariş kalemlerini girin, AI tedarikçiye profesyonel sipariş maili hazırlasın.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/siparisler/yeni</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#" class="active">Siparişler</a><a href="#">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#">OCR</a><a href="#">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content" style="display:flex; gap:12px;">
+          <div style="flex:1;">
+            <div class="app-header-bar"><h4>Yeni Sipariş</h4></div>
+            <div class="app-card" style="margin-bottom:8px; padding:8px;">
+              <div style="display:flex; gap:8px; font-size:10px; margin-bottom:6px;">
+                <div><span style="color:#64748b;">Firma:</span> <strong>Değişim Motor</strong></div>
+                <div><span style="color:#64748b;">Tedarikçi:</span> <strong>Rupi Atlas Hidrolik</strong></div>
+              </div>
+            </div>
+            <table class="app-table" style="font-size:9px;">
+              <thead><tr><th>Sıra</th><th>Ürün</th><th>Miktar</th><th>Birim</th><th>Not</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Hidrolik Pompa HV-45</td><td>10</td><td>adet</td><td>Acil</td></tr>
+                <tr><td>2</td><td>Basınç Valfi PV-120</td><td>25</td><td>adet</td><td>—</td></tr>
+                <tr><td>3</td><td>Silindir Keçe Seti Ø80</td><td>50</td><td>takım</td><td>—</td></tr>
+              </tbody>
+            </table>
+            <div style="margin-top:6px;"><span class="app-btn app-btn-outline" style="font-size:9px;">+ Kalem Ekle</span></div>
+          </div>
+          <div style="width:45%;">
+            <div style="font-size:10px; font-weight:700; color:#1e293b; margin-bottom:6px; display:flex; align-items:center; gap:4px;">
+              <span style="background:#e63946; color:#fff; padding:2px 6px; border-radius:4px; font-size:8px;">AI</span> Mail Önizleme
+            </div>
+            <div class="mail-preview">
+              <div class="mail-field"><span class="mail-label">Kime:</span><span>siparis@rupiatlas.com</span></div>
+              <div class="mail-field"><span class="mail-label">Konu:</span><span>DM-SP-0235 Sipariş Talebi</span></div>
+              <div class="mail-body">Sayın Rupi Atlas Hidrolik,<br><br>Aşağıdaki ürünler için sipariş vermek istiyoruz:<br><br>1. Hidrolik Pompa HV-45 — 10 adet (ACİL)<br>2. Basınç Valfi PV-120 — 25 adet<br>3. Silindir Keçe Seti Ø80 — 50 takım<br><br>Teslimat: en geç 20.05.2026<br>Ref: Son siparişimiz SP-0212 (12.03.2026)</div>
+            </div>
+            <div style="margin-top:6px; display:flex; gap:4px;">
+              <span class="app-btn app-btn-primary">Onayla & Gönder</span>
+              <span class="app-btn app-btn-outline">Düzenle</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>AI otomatik mail taslağı</span><span>Geçmiş sipariş referansı</span><span>Çoklu dil desteği (TR/EN)</span></div>
+  </div>
+
+  <!-- ===== S7: E03 — 3-YÖNLÜ MUTABAKAT ===== -->
+  <div class="slide" id="s7">
+    <div class="slide-header"><span class="slide-label">Modül 1 — Ekran 03</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>3-Yönlü Mutabakat</h2>
+    <p style="margin-bottom:10px;">Sipariş, irsaliye ve fatura yan yana — uyumsuzluklar anında görünür.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/mutabakat/SP-0232</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#">Siparişler</a><a href="#" class="active">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#">OCR</a><a href="#">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content">
+          <div class="app-header-bar"><h4>SP-0232 &middot; Değişim Motor → Parker</h4><div><span class="status-badge sb-red">Uyumsuzluk</span></div></div>
+          <div style="display:flex; gap:4px; margin-bottom:8px;">
+            <div class="match-col"><div class="match-col-header" style="background:#dbeafe;">Sipariş</div></div>
+            <div class="match-col"><div class="match-col-header" style="background:#dcfce7;">İrsaliye</div></div>
+            <div class="match-col"><div class="match-col-header" style="background:#fef3c7;">Fatura</div></div>
+          </div>
+          <div style="font-size:9px; color:#64748b; margin-bottom:4px; font-weight:600;">Kalem 1: Hidrolik Pompa HV-45</div>
+          <div class="match-row">
+            <div class="match-cell">Adet: 10</div>
+            <div class="match-cell">Adet: 10</div>
+            <div class="match-cell">Adet: 10</div>
+          </div>
+          <div class="match-row">
+            <div class="match-cell">Fiyat: €124</div>
+            <div class="match-cell">—</div>
+            <div class="match-cell">Fiyat: €124</div>
+          </div>
+          <div style="font-size:9px; color:#64748b; margin:6px 0 4px; font-weight:600;">Kalem 2: Basınç Valfi PV-120</div>
+          <div class="match-row">
+            <div class="match-cell">Adet: 25</div>
+            <div class="match-cell">Adet: 25</div>
+            <div class="match-cell">Adet: 25</div>
+          </div>
+          <div class="match-row">
+            <div class="match-cell">Fiyat: €86</div>
+            <div class="match-cell">—</div>
+            <div class="match-cell mismatch">Fiyat: €92 (+€6)</div>
+          </div>
+          <div style="font-size:9px; color:#64748b; margin:6px 0 4px; font-weight:600;">Kalem 3: Rulman 6205</div>
+          <div class="match-row">
+            <div class="match-cell">Adet: 100</div>
+            <div class="match-cell mismatch">Adet: 95 (-5)</div>
+            <div class="match-cell mismatch">Adet: 95 (-5)</div>
+          </div>
+          <div style="margin-top:8px; display:flex; gap:8px;">
+            <div class="app-card" style="flex:1; padding:6px 8px; text-align:center;"><div style="font-size:8px; color:#64748b;">Eşleşen</div><div style="font-size:14px; font-weight:800; color:#16a34a;">1</div></div>
+            <div class="app-card" style="flex:1; padding:6px 8px; text-align:center;"><div style="font-size:8px; color:#64748b;">Uyumsuz</div><div style="font-size:14px; font-weight:800; color:#dc2626;">2</div></div>
+            <div class="app-card" style="flex:1; padding:6px 8px; text-align:center;"><div style="font-size:8px; color:#64748b;">Eksik</div><div style="font-size:14px; font-weight:800; color:#64748b;">0</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>Sipariş ↔ irsaliye ↔ fatura yan yana</span><span>Uyumsuzluk kırmızı vurgulu</span><span>Tek tıkla onay/red</span></div>
+  </div>
+
+  <!-- ===== S8: E04 — UYUMSUZLUK UYARILARI ===== -->
+  <div class="slide" id="s8">
+    <div class="slide-header"><span class="slide-label">Modül 1 — Ekran 04</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>Uyumsuzluk Uyarıları</h2>
+    <p style="margin-bottom:10px;">Tüm eşleşmeyen kalemlerin merkezi listesi — onay bekleyen, çözülen ve reddedilenler.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/mutabakat/uyumsuzluklar</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#">Siparişler</a><a href="#" class="active">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#">OCR</a><a href="#">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content">
+          <div class="app-header-bar"><h4>Uyumsuzluk Uyarıları</h4><div><span class="status-badge sb-red" style="font-size:10px;">3 Bekleyen</span></div></div>
+          <table class="app-table">
+            <thead><tr><th>Sipariş</th><th>Kalem</th><th>Sorun</th><th>Sipariş</th><th>Fatura</th><th>Fark</th><th>Durum</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:600;">SP-0232/K2</td><td>Basınç Valfi PV-120</td><td>Birim fiyat</td><td>€86</td><td>€92</td><td style="color:#dc2626;">+€6</td><td><span class="status-badge sb-orange">Onay Bekliyor</span></td></tr>
+              <tr><td style="font-weight:600;">SP-0232/K3</td><td>Rulman 6205</td><td>Adet farkı</td><td>100</td><td>95</td><td style="color:#dc2626;">-5 adet</td><td><span class="status-badge sb-orange">Onay Bekliyor</span></td></tr>
+              <tr><td style="font-weight:600;">SP-0228/K1</td><td>Keçe Seti Ø120</td><td>İskonto</td><td>%8</td><td>%5</td><td style="color:#dc2626;">-3%</td><td><span class="status-badge sb-green">Onaylandı</span></td></tr>
+              <tr><td style="font-weight:600;">SP-0225/K4</td><td>Mil Ø45×300</td><td>Adet farkı</td><td>20</td><td>18</td><td style="color:#dc2626;">-2 adet</td><td><span class="status-badge sb-gray">Reddedildi</span></td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:8px; display:flex; gap:4px;">
+            <span class="app-btn app-btn-green" style="font-size:9px;">Seçili Onayla</span>
+            <span class="app-btn app-btn-outline" style="font-size:9px;">Toplu Red</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>Merkezi uyumsuzluk listesi</span><span>HITL onay/red akışı</span><span>Geçmiş çözüm log'u</span></div>
+  </div>
+
+  <!-- ===== S9: E05 — E-İRSALİYEDEN FATURA ===== -->
+  <div class="slide" id="s9">
+    <div class="slide-header"><span class="slide-label">Modül 1 — Ekran 05</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>E-İrsaliyeden Fatura Üretimi</h2>
+    <p style="margin-bottom:10px;">Değişim Motor → Koç Redüktör arası e-irsaliyeden satış faturası — tek tıkla.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/fatura-uret</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#">Siparişler</a><a href="#">Mutabakat</a><a href="#" class="active">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#">OCR</a><a href="#">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content" style="display:flex; gap:12px;">
+          <div style="flex:1;">
+            <div style="font-size:10px; font-weight:700; color:#1e293b; margin-bottom:6px;">E-İrsaliye (DM → Koç)</div>
+            <div class="app-card" style="padding:8px; margin-bottom:6px;">
+              <div style="font-size:9px; display:flex; flex-wrap:wrap; gap:8px; color:#475569;">
+                <div><span style="color:#94a3b8;">İrsaliye No:</span> <strong>EIR-2026-0891</strong></div>
+                <div><span style="color:#94a3b8;">Tarih:</span> 02.05.2026</div>
+                <div><span style="color:#94a3b8;">Sevk:</span> DM → Koç Redüktör</div>
+              </div>
+            </div>
+            <table class="app-table" style="font-size:9px;">
+              <thead><tr><th>Ürün</th><th>Miktar</th><th>Birim Fiyat</th><th>Toplam</th></tr></thead>
+              <tbody>
+                <tr><td>Redüktör RV-040</td><td>15 adet</td><td>₺4.200</td><td>₺63.000</td></tr>
+                <tr><td>Redüktör RV-063</td><td>8 adet</td><td>₺6.800</td><td>₺54.400</td></tr>
+                <tr><td>Kuplaj KPL-28</td><td>20 adet</td><td>₺850</td><td>₺17.000</td></tr>
+              </tbody>
+            </table>
+            <div style="font-size:10px; font-weight:700; color:#1e293b; text-align:right; margin-top:4px;">Toplam: ₺134.400</div>
+          </div>
+          <div style="width:40%;">
+            <div style="font-size:10px; font-weight:700; color:#1e293b; margin-bottom:6px;">Oluşturulacak Satış Faturası</div>
+            <div class="app-card" style="padding:8px; border: 2px solid #e63946;">
+              <div style="font-size:9px; color:#475569; margin-bottom:6px;">
+                <div><span style="color:#94a3b8;">Alıcı:</span> <strong>Koç Redüktör</strong></div>
+                <div><span style="color:#94a3b8;">Fatura Tipi:</span> Satış Faturası</div>
+                <div><span style="color:#94a3b8;">Ref:</span> EIR-2026-0891</div>
+              </div>
+              <div style="border-top:1px solid #e2e8f0; padding-top:6px; font-size:9px;">
+                <div style="display:flex; justify-content:space-between;"><span>Ara Toplam</span><strong>₺134.400</strong></div>
+                <div style="display:flex; justify-content:space-between;"><span>KDV %20</span><strong>₺26.880</strong></div>
+                <div style="display:flex; justify-content:space-between; border-top:1px solid #e2e8f0; padding-top:4px; margin-top:4px; font-size:11px; font-weight:800; color:#1e293b;"><span>Genel Toplam</span><span>₺161.280</span></div>
+              </div>
+            </div>
+            <div style="margin-top:8px; display:flex; gap:4px;">
+              <span class="app-btn app-btn-primary">Fatura Oluştur</span>
+              <span class="app-btn app-btn-outline">Logo'ya Gönder</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>İrsaliye → fatura tek tıkla</span><span>KDV otomatik hesaplama</span><span>Logo ERP'ye doğrudan gönderim</span></div>
+  </div>
+
+  <!-- ===== S10: MODÜL 2 GENEL BAKIŞ ===== -->
+  <div class="slide" id="s10">
+    <div class="slide-header">
+      <span class="slide-label">Modül 2 — Tahsilat Takibi</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <h2>Vadeli alacaklar<br><span class="accent">AI ile takip ediliyor.</span></h2>
+    <div class="divider"></div>
+    <p style="max-width:700px; margin-bottom:16px;">3 firma için tüm vadeli satış faturaları. Otomatik hatırlatma, AI yanıt analizi ve eskalasyon.</p>
+    <div class="grid-2" style="gap:14px;">
+      <div class="card card-blue" style="padding:18px;">
+        <div style="font-size:10px; letter-spacing:2px; color:var(--blue); text-transform:uppercase; margin-bottom:10px;">4 Ekran</div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(91,156,246,0.15); color:var(--blue); border:1px solid rgba(91,156,246,0.3);">06</div><div class="s-info"><div class="s-name">Tahsilat Dashboard</div><div class="s-desc">Vade bantları, cari bazlı özet</div></div></div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(91,156,246,0.15); color:var(--blue); border:1px solid rgba(91,156,246,0.3);">07</div><div class="s-info"><div class="s-name">Hatırlatma Mail Kuyruğu</div><div class="s-desc">Otomatik mail, şablon, zamanlama</div></div></div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(91,156,246,0.15); color:var(--blue); border:1px solid rgba(91,156,246,0.3);">08</div><div class="s-info"><div class="s-name">AI Yanıt Analizi</div><div class="s-desc">Müşteri mailini oku, özetle, vade öner</div></div></div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(91,156,246,0.15); color:var(--blue); border:1px solid rgba(91,156,246,0.3);">09</div><div class="s-info"><div class="s-name">Eskalasyon Paneli</div><div class="s-desc">60+ gün gecikmiş, avukata devir</div></div></div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="card">
+          <h3 style="margin-bottom:10px;">Hatırlatma Döngüsü</h3>
+          <div class="kv"><span class="k">Vade öncesi hatırlatma</span><span class="v blue">Otomatik mail</span></div>
+          <div class="kv"><span class="k">Her Pazartesi rutin</span><span class="v blue">Toplu hatırlatma</span></div>
+          <div class="kv"><span class="k">2 hatırlatma sonrası</span><span class="v" style="color:var(--gold);">Log + bildirim</span></div>
+          <div class="kv"><span class="k">60+ gün gecikme</span><span class="v" style="color:var(--red);">Eskalasyon</span></div>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:10px;">AI Yanıt Analizi</h3>
+          <div class="kv"><span class="k">Yanıtı özetle</span><span class="v">Otomatik</span></div>
+          <div class="kv"><span class="k">Yeni vade öner</span><span class="v">Otomatik</span></div>
+          <div class="kv"><span class="k">Logo'ya yaz</span><span class="v">HITL onay</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== S11: E06 — TAHSİLAT DASHBOARD ===== -->
+  <div class="slide" id="s11">
+    <div class="slide-header"><span class="slide-label">Modül 2 — Ekran 06</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>Tahsilat Dashboard</h2>
+    <p style="margin-bottom:10px;">Tüm alacaklar tek panelde — vade bantları, cari bazlı ve fatura bazlı görünüm.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/tahsilat</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#">Siparişler</a><a href="#">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#" class="active">Dashboard</a><a href="#">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#">OCR</a><a href="#">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content">
+          <div class="app-header-bar"><h4>Tahsilat Dashboard</h4><div><span class="app-filter active" style="font-size:9px;">3 Firma</span></div></div>
+          <div style="display:flex; gap:6px; margin-bottom:10px;">
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="color:#1e293b;">₺2.4M</div><div class="kpi-label">Toplam Alacak</div></div>
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="color:#16a34a;">₺980K</div><div class="kpi-label">Vadesi Gelmemiş</div></div>
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="color:#b45309;">₺860K</div><div class="kpi-label">0-30 Gün</div></div>
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="color:#dc2626;">₺420K</div><div class="kpi-label">30-60 Gün</div></div>
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="color:#991b1b;">₺140K</div><div class="kpi-label">60+ Gün</div></div>
+          </div>
+          <table class="app-table">
+            <thead><tr><th>Müşteri</th><th>Toplam</th><th>Vadesi Gelmemiş</th><th>Gecikmiş</th><th>Son Hatırlatma</th><th>Durum</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:600;">Teknik Hidrolik A.Ş.</td><td>₺485.000</td><td>₺200.000</td><td style="color:#dc2626;">₺285.000</td><td>02.05</td><td><span class="status-badge sb-red">60+ gün</span></td></tr>
+              <tr><td style="font-weight:600;">Makina San. Ltd.</td><td>₺320.000</td><td>₺180.000</td><td style="color:#b45309;">₺140.000</td><td>05.05</td><td><span class="status-badge sb-orange">0-30 gün</span></td></tr>
+              <tr><td style="font-weight:600;">Endüstri Otomasyon</td><td>₺245.000</td><td>₺245.000</td><td>—</td><td>—</td><td><span class="status-badge sb-green">Normal</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>Vade bantları renk kodlu</span><span>Cari bazlı ve fatura bazlı görünüm</span><span>3 firma tek panelde</span></div>
+  </div>
+
+  <!-- ===== S12: E07 — HATIRLATMA MAİL KUYRUĞU ===== -->
+  <div class="slide" id="s12">
+    <div class="slide-header"><span class="slide-label">Modül 2 — Ekran 07</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>Hatırlatma Mail Kuyruğu</h2>
+    <p style="margin-bottom:10px;">Otomatik vade hatırlatma mailleri — zamanlama, şablon ve toplu gönderim.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/tahsilat/hatirlatma</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#">Siparişler</a><a href="#">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#" class="active">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#">OCR</a><a href="#">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content">
+          <div class="app-header-bar"><h4>Hatırlatma Kuyruğu</h4><div><span class="app-btn app-btn-primary" style="font-size:9px;">Toplu Gönder (4)</span></div></div>
+          <table class="app-table">
+            <thead><tr><th>Müşteri</th><th>Fatura</th><th>Tutar</th><th>Vade</th><th>Gecikme</th><th>#</th><th>Durum</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:600;">Teknik Hidrolik</td><td>SF-4521</td><td>₺85.000</td><td>01.03</td><td style="color:#dc2626;">67 gün</td><td>3</td><td><span class="status-badge sb-red">Eskalasyon</span></td></tr>
+              <tr><td style="font-weight:600;">Teknik Hidrolik</td><td>SF-4588</td><td>₺120.000</td><td>15.03</td><td style="color:#dc2626;">53 gün</td><td>2</td><td><span class="status-badge sb-orange">Hazır</span></td></tr>
+              <tr><td style="font-weight:600;">Makina San.</td><td>SF-4612</td><td>₺45.000</td><td>10.04</td><td style="color:#b45309;">27 gün</td><td>1</td><td><span class="status-badge sb-orange">Hazır</span></td></tr>
+              <tr><td style="font-weight:600;">Makina San.</td><td>SF-4650</td><td>₺95.000</td><td>20.04</td><td style="color:#b45309;">17 gün</td><td>0</td><td><span class="status-badge sb-blue">İlk Hatırlatma</span></td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:6px; font-size:9px; color:#64748b;">Sonraki otomatik gönderim: Pazartesi 12.05.2026 09:00</div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>Otomatik zamanlama (her Pazartesi)</span><span>Hatırlatma sayısı takibi</span><span>Toplu veya tekil gönderim</span></div>
+  </div>
+
+  <!-- ===== S13: E08 — AI YANIT ANALİZİ ===== -->
+  <div class="slide" id="s13">
+    <div class="slide-header"><span class="slide-label">Modül 2 — Ekran 08</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>AI Yanıt Analizi</h2>
+    <p style="margin-bottom:10px;">Müşteriden gelen yanıt mailini AI okur, özetler ve yeni vade tarihi önerir.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/tahsilat/ai-yanit/SF-4588</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#">Siparişler</a><a href="#">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#">Hatırlatma</a><a href="#" class="active">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#">OCR</a><a href="#">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content" style="display:flex; gap:12px;">
+          <div style="flex:1;">
+            <div style="font-size:10px; font-weight:700; color:#1e293b; margin-bottom:6px;">Müşteri Yanıtı</div>
+            <div class="mail-preview" style="font-size:9px;">
+              <div class="mail-field"><span class="mail-label">Kimden:</span><span>muhasebe@teknikhidrolik.com</span></div>
+              <div class="mail-field"><span class="mail-label">Tarih:</span><span>06.05.2026 14:22</span></div>
+              <div class="mail-body" style="font-size:9px;">Merhaba,<br><br>SF-4588 numaralı faturanızla ilgili; şu an nakit akışımızda sıkıntı yaşıyoruz. Mayıs sonuna kadar yarısını, Haziran ortasına kadar kalanını ödemeyi taahhüt ediyoruz.<br><br>Anlayışınız için teşekkürler.<br>Muhasebe Birimi</div>
+            </div>
+          </div>
+          <div style="width:42%;">
+            <div style="font-size:10px; font-weight:700; color:#1e293b; margin-bottom:6px; display:flex; align-items:center; gap:4px;">
+              <span style="background:#e63946; color:#fff; padding:2px 6px; border-radius:4px; font-size:8px;">AI</span> Analiz Sonucu
+            </div>
+            <div class="app-card" style="padding:8px; margin-bottom:6px;">
+              <div style="font-size:9px; font-weight:600; color:#1e293b; margin-bottom:4px;">Özet</div>
+              <div style="font-size:9px; color:#475569; line-height:1.4;">Müşteri nakit akış sıkıntısı bildiriyor. ₺60.000'i Mayıs sonuna, ₺60.000'i Haziran ortasına ödeme taahhüdü veriyor.</div>
+            </div>
+            <div class="app-card" style="padding:8px; margin-bottom:6px;">
+              <div style="font-size:9px; font-weight:600; color:#1e293b; margin-bottom:4px;">Önerilen Vade Planı</div>
+              <div style="font-size:9px; color:#475569;">
+                <div style="display:flex; justify-content:space-between; padding:2px 0;"><span>1. Taksit</span><strong>₺60.000 — 31.05.2026</strong></div>
+                <div style="display:flex; justify-content:space-between; padding:2px 0;"><span>2. Taksit</span><strong>₺60.000 — 15.06.2026</strong></div>
+              </div>
+            </div>
+            <div class="app-card" style="padding:6px 8px;">
+              <div style="display:flex; justify-content:space-between; font-size:9px; align-items:center;"><span style="color:#64748b;">Güven Skoru</span><span style="font-weight:700; color:#16a34a;">%88</span></div>
+            </div>
+            <div style="margin-top:6px; display:flex; gap:4px;">
+              <span class="app-btn app-btn-green" style="font-size:9px;">Kabul Et → Logo</span>
+              <span class="app-btn app-btn-outline" style="font-size:9px;">Reddet</span>
+              <span class="app-btn app-btn-outline" style="font-size:9px;">Manuel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>AI otomatik mail okuma</span><span>Vade önerisi + güven skoru</span><span>HITL onay → Logo'ya yazma</span></div>
+  </div>
+
+  <!-- ===== S14: E09 — ESKALASYON PANELİ ===== -->
+  <div class="slide" id="s14">
+    <div class="slide-header"><span class="slide-label">Modül 2 — Ekran 09</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>Eskalasyon Paneli</h2>
+    <p style="margin-bottom:10px;">60+ gün gecikmiş alacaklar — son uyarı ve avukata devir akışı.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/tahsilat/eskalasyon</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#">Siparişler</a><a href="#">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#" class="active">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#">OCR</a><a href="#">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content">
+          <div class="app-header-bar"><h4>Eskalasyon — 60+ Gün</h4><div><span class="status-badge sb-red" style="font-size:10px;">₺140.000 Risk</span></div></div>
+          <table class="app-table">
+            <thead><tr><th>Müşteri</th><th>Fatura</th><th>Tutar</th><th>Vade</th><th>Gecikme</th><th>Hatırlatma</th><th>Son Yanıt</th><th>Aksiyon</th></tr></thead>
+            <tbody>
+              <tr style="background:#fef2f2;"><td style="font-weight:600;">Teknik Hidrolik</td><td>SF-4521</td><td>₺85.000</td><td>01.03</td><td style="color:#991b1b; font-weight:700;">67 gün</td><td>3</td><td style="font-size:9px;">Yanıt yok</td><td><span class="app-btn app-btn-primary" style="font-size:8px; padding:3px 8px;">Avukata Devir</span></td></tr>
+              <tr style="background:#fef2f2;"><td style="font-weight:600;">Teknik Hidrolik</td><td>SF-4480</td><td>₺55.000</td><td>15.02</td><td style="color:#991b1b; font-weight:700;">82 gün</td><td>4</td><td style="font-size:9px;">05.04 — "Ödeyeceğiz"</td><td><span class="app-btn app-btn-outline" style="font-size:8px; padding:3px 8px;">Son Uyarı</span></td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:8px; display:flex; gap:6px;">
+            <span class="app-btn app-btn-primary" style="font-size:9px;">Toplu Avukata Devir Maili</span>
+            <span class="app-btn app-btn-outline" style="font-size:9px;">Son Uyarı Gönder</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>60+ gün otomatik filtreleme</span><span>Avukata devir mail şablonu</span><span>Hatırlatma geçmişi log</span></div>
+  </div>
+
+  <!-- ===== S15: MODÜL 3 GENEL BAKIŞ ===== -->
+  <div class="slide" id="s15">
+    <div class="slide-header">
+      <span class="slide-label">Modül 3 — Ödeme Takibi</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <h2>Tedarikçi ödemeleri ve giderler<br><span class="accent">tek takvimde, AI ile kategorize.</span></h2>
+    <div class="divider"></div>
+    <p style="max-width:700px; margin-bottom:16px;">Logo'dan vadeli alış faturaları, sabit giderler, kredi kartı ekstreleri — hepsi tek panelde.</p>
+    <div class="grid-2" style="gap:14px;">
+      <div class="card card-purple" style="padding:18px;">
+        <div style="font-size:10px; letter-spacing:2px; color:var(--purple); text-transform:uppercase; margin-bottom:10px;">4 Ekran</div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(167,139,250,0.15); color:var(--purple); border:1px solid rgba(167,139,250,0.3);">10</div><div class="s-info"><div class="s-name">Ödeme Takvimi</div><div class="s-desc">Sabit + değişken ödemeler, takvim görünümü</div></div></div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(167,139,250,0.15); color:var(--purple); border:1px solid rgba(167,139,250,0.3);">11</div><div class="s-info"><div class="s-name">OCR Fatura Okuma</div><div class="s-desc">PDF'den vade çıkarma, Logo karşılaştırma</div></div></div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(167,139,250,0.15); color:var(--purple); border:1px solid rgba(167,139,250,0.3);">12</div><div class="s-info"><div class="s-name">Kredi Kartı Excel Import</div><div class="s-desc">Excel yükle → AI kategorize → Logo'ya yaz</div></div></div>
+        <div class="screen-row"><div class="s-num" style="background:rgba(167,139,250,0.15); color:var(--purple); border:1px solid rgba(167,139,250,0.3);">13</div><div class="s-info"><div class="s-name">Gider Dashboard</div><div class="s-desc">Kategori bazlı gider özeti</div></div></div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="card">
+          <h3 style="margin-bottom:10px;">Ödeme Takvimi</h3>
+          <div class="kv"><span class="k">Securitas (güvenlik)</span><span class="v">Aylık sabit</span></div>
+          <div class="kv"><span class="k">Elektrik / Su / Doğalgaz</span><span class="v">Otomatik ödeme</span></div>
+          <div class="kv"><span class="k">DBS tedarikçi ödemeleri</span><span class="v">Vade bazlı</span></div>
+          <div class="kv"><span class="k">Diğer sabit giderler</span><span class="v">Takvim + uyarı</span></div>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:10px;">AI Kategorizasyon</h3>
+          <div class="kv"><span class="k">Masraf türü tahmini</span><span class="v purple">Otomatik</span></div>
+          <div class="kv"><span class="k">Hesap kodu önerisi</span><span class="v purple">Otomatik</span></div>
+          <div class="kv"><span class="k">Onay</span><span class="v">HITL</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== S16: E10 — ÖDEME TAKVİMİ ===== -->
+  <div class="slide" id="s16">
+    <div class="slide-header"><span class="slide-label">Modül 3 — Ekran 10</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>Ödeme Takvimi</h2>
+    <p style="margin-bottom:10px;">Tüm ödemeler takvim görünümünde — ödendi, yaklaşıyor ve gecikmiş renk kodlu.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/odeme/takvim</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#">Siparişler</a><a href="#">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#" class="active">Takvim</a><a href="#">OCR</a><a href="#">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content">
+          <div class="app-header-bar"><h4>Ödeme Takvimi — Mayıs 2026</h4><div style="display:flex; gap:4px;"><span class="app-filter active" style="font-size:9px;">Bu Ay</span><span class="app-filter" style="font-size:9px;">Gecikmiş</span></div></div>
+          <div style="display:flex; gap:6px; margin-bottom:8px;">
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="font-size:16px; color:#1e293b;">₺186K</div><div class="kpi-label">Bu Ay Toplam</div></div>
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="font-size:16px; color:#16a34a;">₺42K</div><div class="kpi-label">Ödendi</div></div>
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="font-size:16px; color:#1d4ed8;">₺128K</div><div class="kpi-label">Yaklaşıyor</div></div>
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="font-size:16px; color:#dc2626;">₺16K</div><div class="kpi-label">Gecikmiş</div></div>
+          </div>
+          <div style="font-size:8px; color:#64748b; display:flex; gap:2px; margin-bottom:4px;"><span style="flex:1; text-align:center;">Pzt</span><span style="flex:1; text-align:center;">Sal</span><span style="flex:1; text-align:center;">Çar</span><span style="flex:1; text-align:center;">Per</span><span style="flex:1; text-align:center;">Cum</span><span style="flex:1; text-align:center;">Cmt</span><span style="flex:1; text-align:center;">Paz</span></div>
+          <div class="cal-row">
+            <div class="cal-cell"><div class="cal-day">5</div><div class="cal-item cal-paid">Securitas ₺8.5K ✓</div></div>
+            <div class="cal-cell"><div class="cal-day">6</div></div>
+            <div class="cal-cell cal-today"><div class="cal-day" style="color:#e63946;">7</div><div class="cal-item cal-upcoming">TEDAŞ ₺12.3K</div></div>
+            <div class="cal-cell"><div class="cal-day">8</div></div>
+            <div class="cal-cell"><div class="cal-day">9</div><div class="cal-item cal-upcoming">DBS-Rupi €4.2K</div></div>
+            <div class="cal-cell"><div class="cal-day">10</div></div>
+            <div class="cal-cell"><div class="cal-day">11</div></div>
+          </div>
+          <div class="cal-row">
+            <div class="cal-cell"><div class="cal-day">12</div><div class="cal-item cal-upcoming">İGDAŞ ₺6.8K</div></div>
+            <div class="cal-cell"><div class="cal-day">13</div></div>
+            <div class="cal-cell"><div class="cal-day">14</div></div>
+            <div class="cal-cell"><div class="cal-day">15</div><div class="cal-item cal-upcoming">DBS-Parker €8.1K</div><div class="cal-item cal-upcoming">Kira ₺32K</div></div>
+            <div class="cal-cell"><div class="cal-day">16</div></div>
+            <div class="cal-cell"><div class="cal-day">17</div></div>
+            <div class="cal-cell"><div class="cal-day">18</div></div>
+          </div>
+          <div class="cal-row">
+            <div class="cal-cell"><div class="cal-day">19</div></div>
+            <div class="cal-cell"><div class="cal-day">20</div><div class="cal-item cal-upcoming">DBS-Hema ₺18K</div></div>
+            <div class="cal-cell"><div class="cal-day">21</div></div>
+            <div class="cal-cell"><div class="cal-day">22</div></div>
+            <div class="cal-cell"><div class="cal-day">23</div></div>
+            <div class="cal-cell"><div class="cal-day">24</div></div>
+            <div class="cal-cell"><div class="cal-day">25</div><div class="cal-item cal-upcoming">SGK ₺28K</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>Takvim + liste görünümü</span><span>Sabit giderler otomatik eklenir</span><span>Ödeme hatırlatma bildirimi</span></div>
+  </div>
+
+  <!-- ===== S17: E11 — OCR FATURA OKUMA ===== -->
+  <div class="slide" id="s17">
+    <div class="slide-header"><span class="slide-label">Modül 3 — Ekran 11</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>OCR Fatura Okuma</h2>
+    <p style="margin-bottom:10px;">PDF faturadan vade ve tutar çıkarılır, Logo kaydıyla karşılaştırılır.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/odeme/ocr</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#">Siparişler</a><a href="#">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#" class="active">OCR</a><a href="#">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content" style="display:flex; gap:12px;">
+          <div style="flex:1;">
+            <div style="font-size:10px; font-weight:700; color:#1e293b; margin-bottom:6px;">Fatura PDF</div>
+            <div class="ocr-box" style="flex:1; min-height:180px; flex-direction:column; gap:4px;">
+              <div style="font-size:16px;">📄</div>
+              <div style="font-weight:600; color:#475569;">celik-is_fatura_0451.pdf</div>
+              <div>Yüklendi — OCR tamamlandı</div>
+            </div>
+          </div>
+          <div style="width:48%;">
+            <div style="font-size:10px; font-weight:700; color:#1e293b; margin-bottom:6px;">OCR Sonucu vs Logo Kaydı</div>
+            <div class="app-card" style="padding:8px; margin-bottom:6px;">
+              <table class="app-table" style="font-size:9px;">
+                <thead><tr><th>Alan</th><th>OCR</th><th>Logo</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td>Tedarikçi</td><td>Çelik-İş San.</td><td>Çelik-İş San.</td><td style="color:#16a34a;">✓</td></tr>
+                  <tr><td>Fatura No</td><td>F-2026-0451</td><td>F-2026-0451</td><td style="color:#16a34a;">✓</td></tr>
+                  <tr><td>Tutar</td><td>₺24.800</td><td>₺24.800</td><td style="color:#16a34a;">✓</td></tr>
+                  <tr style="background:#fef2f2;"><td style="font-weight:600;">Vade</td><td>90 gün (28.07)</td><td style="color:#dc2626; font-weight:600;">30 gün (02.06)</td><td style="color:#dc2626; font-weight:700;">⚠</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="app-card" style="padding:6px 8px; border-color:#fca5a5; background:#fef2f2;">
+              <div style="font-size:9px; color:#dc2626; font-weight:600;">⚠ Vade Uyumsuzluğu</div>
+              <div style="font-size:9px; color:#475569;">Faturada 90 gün, Logo'da 30 gün girilmiş. Düzeltme gerekli.</div>
+            </div>
+            <div style="margin-top:6px; display:flex; gap:4px;">
+              <span class="app-btn app-btn-primary" style="font-size:9px;">Logo'yu Güncelle (90 gün)</span>
+              <span class="app-btn app-btn-outline" style="font-size:9px;">Yoksay</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>PDF'den OCR ile veri çıkarma</span><span>Logo kaydıyla otomatik karşılaştırma</span><span>Vade uyumsuzluğu uyarısı</span></div>
+  </div>
+
+  <!-- ===== S18: E12 — KREDİ KARTI EXCEL IMPORT ===== -->
+  <div class="slide" id="s18">
+    <div class="slide-header"><span class="slide-label">Modül 3 — Ekran 12</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>Kredi Kartı Excel Import</h2>
+    <p style="margin-bottom:10px;">10 kredi kartının Excel ekstresini yükleyin, AI kategorize etsin, onaylayıp Logo'ya gönderin.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/odeme/kredi-karti</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#">Siparişler</a><a href="#">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#">OCR</a><a href="#" class="active">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content">
+          <div class="app-header-bar"><h4>Kredi Kartı Excel Import</h4><div><span class="app-filter active" style="font-size:9px;">Garanti ****4521</span><span class="app-filter" style="font-size:9px;">İş Bankası ****7890</span></div></div>
+          <div class="app-card" style="padding:6px 8px; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+            <div style="font-size:9px; color:#64748b;">Dosya:</div>
+            <div style="font-size:9px; font-weight:600; color:#1e293b;">garanti_mayis2026.xlsx</div>
+            <span class="status-badge sb-green">Yüklendi — 12 işlem</span>
+          </div>
+          <div style="font-size:9px; font-weight:700; color:#1e293b; margin-bottom:4px; display:flex; align-items:center; gap:4px;">
+            <span style="background:#e63946; color:#fff; padding:2px 5px; border-radius:3px; font-size:7px;">AI</span> Kategorizasyon Sonucu
+          </div>
+          <table class="app-table" style="font-size:9px;">
+            <thead><tr><th>Tarih</th><th>Açıklama</th><th>Tutar</th><th>AI Kategori</th><th>Hesap Kodu</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>03.05</td><td>Shell Akaryakıt</td><td>₺850</td><td><span class="status-badge sb-green">Taşıt Gideri</span></td><td>770.01</td><td style="color:#16a34a;">✓</td></tr>
+              <tr><td>05.05</td><td>Migros Market</td><td>₺420</td><td><span class="status-badge sb-orange">Temsil Ağırlama?</span></td><td>760.04</td><td style="color:#b45309;">❓</td></tr>
+              <tr><td>07.05</td><td>Amazon Ofis Malz.</td><td>₺1.200</td><td><span class="status-badge sb-green">Ofis Malzemesi</span></td><td>740.02</td><td style="color:#16a34a;">✓</td></tr>
+              <tr><td>08.05</td><td>Vodafone</td><td>₺380</td><td><span class="status-badge sb-green">İletişim</span></td><td>730.01</td><td style="color:#16a34a;">✓</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:6px; display:flex; gap:4px;">
+            <span class="app-btn app-btn-green" style="font-size:9px;">Onayla & Logo'ya Gönder</span>
+            <span class="app-btn app-btn-outline" style="font-size:9px;">Kategoriyi Düzelt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>10 kart desteği</span><span>AI otomatik kategorizasyon</span><span>HITL onay → Logo muhasebe kaydı</span></div>
+  </div>
+
+  <!-- ===== S19: E13 — GİDER DASHBOARD ===== -->
+  <div class="slide" id="s19">
+    <div class="slide-header"><span class="slide-label">Modül 3 — Ekran 13</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>Gider Dashboard</h2>
+    <p style="margin-bottom:10px;">Tüm giderler kategori bazlı — sabit, değişken ve kredi kartı ayrımında.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/odeme/giderler</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#">Siparişler</a><a href="#">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#">OCR</a><a href="#">Kredi Kartı</a><a href="#" class="active">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#">Panel</a>
+        </div>
+        <div class="app-content">
+          <div class="app-header-bar"><h4>Gider Özeti — Mayıs 2026</h4><div><span class="app-filter active" style="font-size:9px;">Bu Ay</span><span class="app-filter" style="font-size:9px;">Yıllık</span></div></div>
+          <div style="display:flex; gap:6px; margin-bottom:10px;">
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="font-size:16px; color:#1e293b;">₺186K</div><div class="kpi-label">Toplam Gider</div></div>
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="font-size:16px; color:#7c3aed;">₺98K</div><div class="kpi-label">Sabit</div></div>
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="font-size:16px; color:#1d4ed8;">₺62K</div><div class="kpi-label">Değişken</div></div>
+            <div class="app-card app-kpi" style="flex:1;"><div class="kpi-val" style="font-size:16px; color:#b45309;">₺26K</div><div class="kpi-label">Kredi Kartı</div></div>
+          </div>
+          <table class="app-table">
+            <thead><tr><th>Kategori</th><th>Bu Ay</th><th>Geçen Ay</th><th>Değişim</th><th>Oran</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:600;">Tedarikçi Ödemeleri</td><td>₺62.400</td><td>₺58.100</td><td class="kpi-up">+₺4.300</td><td><div class="app-progress" style="width:80px;"><div class="app-progress-fill" style="width:33%; background:#7c3aed;"></div></div></td></tr>
+              <tr><td style="font-weight:600;">Kira</td><td>₺32.000</td><td>₺32.000</td><td style="color:#64748b;">—</td><td><div class="app-progress" style="width:80px;"><div class="app-progress-fill" style="width:17%; background:#3b82f6;"></div></div></td></tr>
+              <tr><td style="font-weight:600;">SGK + Maaş</td><td>₺28.000</td><td>₺28.000</td><td style="color:#64748b;">—</td><td><div class="app-progress" style="width:80px;"><div class="app-progress-fill" style="width:15%; background:#3b82f6;"></div></div></td></tr>
+              <tr><td style="font-weight:600;">Enerji (Elektrik, Gaz, Su)</td><td>₺19.100</td><td>₺17.800</td><td class="kpi-up">+₺1.300</td><td><div class="app-progress" style="width:80px;"><div class="app-progress-fill" style="width:10%; background:#f59e0b;"></div></div></td></tr>
+              <tr><td style="font-weight:600;">Kredi Kartı</td><td>₺26.200</td><td>₺22.400</td><td class="kpi-up">+₺3.800</td><td><div class="app-progress" style="width:80px;"><div class="app-progress-fill" style="width:14%; background:#f59e0b;"></div></div></td></tr>
+              <tr><td style="font-weight:600;">Diğer (Güvenlik, İletişim)</td><td>₺18.300</td><td>₺18.300</td><td style="color:#64748b;">—</td><td><div class="app-progress" style="width:80px;"><div class="app-progress-fill" style="width:10%; background:#94a3b8;"></div></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>Kategori bazlı gider analizi</span><span>Aylık karşılaştırma</span><span>Sabit/değişken ayrımı</span></div>
+  </div>
+
+  <!-- ===== S20: E14 — YÖNETİM PANELİ ===== -->
+  <div class="slide" id="s20">
+    <div class="slide-header"><span class="slide-label">Ekran 14 — Yönetim</span><img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;"></div>
+    <h2>Yönetim Paneli</h2>
+    <p style="margin-bottom:10px;">Yönetim için tek ekranda tüm modüllerin özeti — KPI'lar, dikkat gerektiren kalemler.</p>
+    <div class="browser-frame" style="flex:1;">
+      <div class="browser-bar"><div class="browser-dots"><span class="d-r"></span><span class="d-y"></span><span class="d-g"></span></div><div class="browser-url">muhasebe.dm.local/yonetim</div></div>
+      <div class="browser-body">
+        <div class="app-sidebar">
+          <div class="app-logo">DM Muhasebe</div>
+          <a href="#">Siparişler</a><a href="#">Mutabakat</a><a href="#">Fatura Üret</a>
+          <div class="sb-sect">Tahsilat</div><a href="#">Dashboard</a><a href="#">Hatırlatma</a><a href="#">AI Yanıt</a><a href="#">Eskalasyon</a>
+          <div class="sb-sect">Ödeme</div><a href="#">Takvim</a><a href="#">OCR</a><a href="#">Kredi Kartı</a><a href="#">Giderler</a>
+          <div class="sb-sect">Yönetim</div><a href="#" class="active">Panel</a>
+        </div>
+        <div class="app-content">
+          <div class="app-header-bar"><h4>Yönetim Paneli</h4><div style="font-size:9px; color:#64748b;">Son güncelleme: 07.05.2026 09:15</div></div>
+          <div style="display:flex; gap:6px; margin-bottom:10px;">
+            <div class="app-card app-kpi" style="flex:1; border-left:3px solid #e63946;"><div class="kpi-val" style="font-size:16px;">48</div><div class="kpi-label">Aktif Sipariş</div><div class="kpi-change kpi-up">↑3 bu hafta</div></div>
+            <div class="app-card app-kpi" style="flex:1; border-left:3px solid #3b82f6;"><div class="kpi-val" style="font-size:16px;">%94</div><div class="kpi-label">Mutabakat Oranı</div><div class="kpi-change kpi-up">↑2%</div></div>
+            <div class="app-card app-kpi" style="flex:1; border-left:3px solid #f59e0b;"><div class="kpi-val" style="font-size:16px;">₺2.4M</div><div class="kpi-label">Toplam Alacak</div><div class="kpi-change kpi-down">₺140K risk</div></div>
+            <div class="app-card app-kpi" style="flex:1; border-left:3px solid #16a34a;"><div class="kpi-val" style="font-size:16px;">12 sa</div><div class="kpi-label">AI Tasarruf/Ay</div><div class="kpi-change kpi-up">↑1.5 sa</div></div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <div class="app-card" style="flex:1; padding:8px;">
+              <div style="font-size:9px; font-weight:700; color:#dc2626; margin-bottom:4px;">⚠ Dikkat Gerektiren</div>
+              <div style="font-size:9px; padding:3px 0; border-bottom:1px solid #f1f5f9; color:#475569;">3 uyumsuzluk onay bekliyor</div>
+              <div style="font-size:9px; padding:3px 0; border-bottom:1px solid #f1f5f9; color:#475569;">2 alacak 60+ gün gecikmiş (₺140K)</div>
+              <div style="font-size:9px; padding:3px 0; border-bottom:1px solid #f1f5f9; color:#475569;">1 vade uyumsuzluğu (OCR)</div>
+              <div style="font-size:9px; padding:3px 0; color:#475569;">4 kredi kartı kategorisi onay bekliyor</div>
+            </div>
+            <div class="app-card" style="flex:1; padding:8px;">
+              <div style="font-size:9px; font-weight:700; color:#1e293b; margin-bottom:4px;">Bu Hafta Özet</div>
+              <div style="font-size:9px; padding:3px 0; border-bottom:1px solid #f1f5f9; color:#475569;">12 hatırlatma maili gönderildi</div>
+              <div style="font-size:9px; padding:3px 0; border-bottom:1px solid #f1f5f9; color:#475569;">3 AI yanıt analiz edildi</div>
+              <div style="font-size:9px; padding:3px 0; border-bottom:1px solid #f1f5f9; color:#475569;">8 sipariş mutabakatı tamamlandı</div>
+              <div style="font-size:9px; padding:3px 0; color:#475569;">2 e-irsaliyeden fatura kesildi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-features"><span>3 modül tek panelde</span><span>Dikkat gerektiren kalemler</span><span>AI tasarruf metrikleri</span></div>
+  </div>
+
+  <!-- ===== S21: ROLLER & ERİŞİM ===== -->
+  <div class="slide" id="s21">
+    <div class="slide-header">
+      <span class="slide-label">Roller & Erişim</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <h2>Kim neyi görür,<br><span class="accent">kim neyi onaylar.</span></h2>
+    <div class="divider"></div>
+    <table class="data-table" style="margin-bottom:16px;">
+      <thead><tr><th>Ekran</th><th style="text-align:center;">Muhasebeci</th><th style="text-align:center;">Yönetim</th></tr></thead>
+      <tbody>
+        <tr><td>Sipariş Listesi & Oluştur</td><td style="text-align:center; color:var(--green);">Tam Erişim</td><td style="text-align:center; color:var(--blue);">Görüntüle</td></tr>
+        <tr><td>3-Yönlü Mutabakat</td><td style="text-align:center; color:var(--green);">Tam Erişim + Onay</td><td style="text-align:center; color:var(--blue);">Görüntüle</td></tr>
+        <tr><td>E-İrsaliyeden Fatura</td><td style="text-align:center; color:var(--green);">Tam Erişim</td><td style="text-align:center; color:var(--blue);">Görüntüle</td></tr>
+        <tr><td>Tahsilat Dashboard</td><td style="text-align:center; color:var(--green);">Tam Erişim</td><td style="text-align:center; color:var(--green);">Tam Erişim</td></tr>
+        <tr><td>Hatırlatma & AI Yanıt</td><td style="text-align:center; color:var(--green);">Tam Erişim + Onay</td><td style="text-align:center; color:var(--blue);">Görüntüle</td></tr>
+        <tr><td>Eskalasyon</td><td style="text-align:center; color:var(--green);">Tam Erişim</td><td style="text-align:center; color:var(--green);">Tam Erişim + Onay</td></tr>
+        <tr><td>Ödeme Takvimi & OCR</td><td style="text-align:center; color:var(--green);">Tam Erişim</td><td style="text-align:center; color:var(--blue);">Görüntüle</td></tr>
+        <tr><td>Kredi Kartı Excel Import</td><td style="text-align:center; color:var(--green);">Tam Erişim + Onay</td><td style="text-align:center; color:var(--blue);">Görüntüle</td></tr>
+        <tr style="border-top:2px solid var(--border);"><td style="color:var(--gold);">Özet Dashboard & KPI</td><td style="text-align:center; color:var(--muted);">—</td><td style="text-align:center; color:var(--gold);">Yalnız Yönetim</td></tr>
+        <tr><td style="color:var(--gold);">Muhasebeci Aktivite Logu</td><td style="text-align:center; color:var(--muted);">—</td><td style="text-align:center; color:var(--gold);">Yalnız Yönetim</td></tr>
+        <tr><td style="color:var(--gold);">Karşılaştırmalı Raporlar</td><td style="text-align:center; color:var(--muted);">—</td><td style="text-align:center; color:var(--gold);">Yalnız Yönetim</td></tr>
+        <tr><td>Yönetim Paneli</td><td style="text-align:center; color:var(--muted);">—</td><td style="text-align:center; color:var(--green);">Tam Erişim</td></tr>
+      </tbody>
+    </table>
+    <div class="grid-2" style="gap:14px;">
+      <div class="card"><h3 style="margin-bottom:8px;">Muhasebeci (İç Muhasebe)</h3><p style="font-size:12px;">Tüm operasyonel ekranlara tam erişim. Sipariş oluşturma, mutabakat onaylama, mail gönderimi, Excel import ve Logo'ya yazma yetkisi.</p></div>
+      <div class="card card-gold"><h3 style="margin-bottom:8px;">Yönetim (Ceren Hanım)</h3><p style="font-size:12px;">Tüm ekranları görüntüler, operasyonel işlem yapmaz. Ek olarak: tüm modüllerin tek ekranda KPI özeti, muhasebeci aktivite logu (kim ne zaman ne yaptı) ve aylık karşılaştırmalı trend raporları. Eskalasyon onayı ve tahsilat takibinde tam yetki.</p></div>
+    </div>
+  </div>
+
+  <!-- ===== S22: TEKNİK MİMARİ ===== -->
+  <div class="slide" id="s22">
+    <div class="slide-header">
+      <span class="slide-label">Teknik Mimari</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <h2>Sade mimari,<br><span class="accent">kanıtlanmış teknolojiler.</span></h2>
+    <div class="divider"></div>
+    <div class="grid-2" style="gap:16px; margin-bottom:14px;">
+      <div class="card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Sistem Katmanları</div>
+        <div class="kv"><span class="k">Frontend</span><span class="v">Web paneli (React / Next.js)</span></div>
+        <div class="kv"><span class="k">Backend</span><span class="v">Node.js / Python API</span></div>
+        <div class="kv"><span class="k">Veritabanı</span><span class="v">PostgreSQL</span></div>
+        <div class="kv"><span class="k">AI Motor</span><span class="v">Claude / GPT API (ZDR modu)</span></div>
+        <div class="kv"><span class="k">OCR</span><span class="v">Cloud OCR API</span></div>
+        <div class="kv"><span class="k">Mail</span><span class="v">SMTP/IMAP &middot; Kendi sunucu</span></div>
+        <div class="kv"><span class="k">ERP</span><span class="v">Logo REST API</span></div>
+        <div class="kv"><span class="k">Hosting</span><span class="v">Kendi sunucuları</span></div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="card card-green">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <div style="width:24px; height:24px; border-radius:6px; background:rgba(62,207,142,0.2); display:flex; align-items:center; justify-content:center; color:var(--green); font-weight:800;">✓</div>
+            <h3 style="color:var(--green);">Veri Güvenliği</h3>
+          </div>
+          <div class="kv"><span class="k">AI API modu</span><span class="v green">ZDR / No-train</span></div>
+          <div class="kv"><span class="k">Veri modeli eğitimine</span><span class="v green">Girmez</span></div>
+          <div class="kv"><span class="k">Veriler nerede</span><span class="v">Kendi sunucu</span></div>
+          <div class="kv"><span class="k">Erişim kontrolü</span><span class="v">Rol bazlı</span></div>
+        </div>
+        <div class="card">
+          <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:8px;">Logo API</div>
+          <div class="kv"><span class="k">E-irsaliye</span><span class="v green">Yapısal düşüyor</span></div>
+          <div class="kv"><span class="k">E-fatura</span><span class="v green">Yapısal düşüyor</span></div>
+          <div class="kv"><span class="k">Banka hareketleri</span><span class="v green">Logo'da mevcut</span></div>
+          <div class="kv"><span class="k">Cari hesaplar</span><span class="v green">API'dan çekilir</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== S23: TEKNİK ZORLUKLAR ===== -->
+  <div class="slide" id="s23">
+    <div class="slide-header">
+      <span class="slide-label">Teknik Zorluklar</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <h2>Zor alanları biliyoruz,<br><span class="accent">çözüm yollarını da.</span></h2>
+    <div class="divider"></div>
+    <div class="grid-3" style="gap:12px; margin-bottom:10px;">
+      <div class="card card-accent" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <span class="tag tag-red" style="font-size:9px;">Yüksek</span>
+          <h3 style="font-size:13px;">OCR Vade Tespiti</h3>
+        </div>
+        <div style="font-size:10px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:6px;">Neden Zor</div>
+        <p style="font-size:11px; margin-bottom:10px;">Fatura formatı standart değil — vade "90 gün", "NET 90", sadece tarih ya da hiç yazılmıyor. Taranmış kağıt PDF'lerde OCR doğruluğu düşük.</p>
+        <div style="font-size:10px; letter-spacing:2px; color:var(--green); text-transform:uppercase; margin-bottom:6px;">Nasıl Çözeriz</div>
+        <p style="font-size:11px;">E-fatura/e-arşiv kullanan tedarikçilerde OCR'a gerek yok — XML'den yapısal okuma. OCR sadece eski dijital olmayan belgeler için. Düşük güvende muhasebeciye bırakılır.</p>
+      </div>
+      <div class="card card-accent" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <span class="tag tag-red" style="font-size:9px;">Orta-Yüksek</span>
+          <h3 style="font-size:13px;">AI Mail Analizi</h3>
+        </div>
+        <div style="font-size:10px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:6px;">Neden Zor</div>
+        <p style="font-size:11px; margin-bottom:10px;">Müşteri yanıtları belirsiz olabilir ("yakında öderiz"). Türkçe iş dili nüansları — taahhüt mü, nezaket mi? Birden fazla konu tek mailde.</p>
+        <div style="font-size:10px; letter-spacing:2px; color:var(--green); text-transform:uppercase; margin-bottom:6px;">Nasıl Çözeriz</div>
+        <p style="font-size:11px;">Güven skoru eşiği: %70 altı → muhasebeciye bırakılır. İlk aylar eğitim verisi toplanır, model sürekli iyileşir.</p>
+      </div>
+      <div class="card" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <span class="tag tag-gold" style="font-size:9px;">Orta</span>
+          <h3 style="font-size:13px;">Logo API Kapsamı</h3>
+        </div>
+        <div style="font-size:10px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:6px;">Neden Zor</div>
+        <p style="font-size:11px; margin-bottom:10px;">API dokümantasyonu eksik/eski olabilir. İhtiyaç duyulan bazı alanlar API'dan gelmeyebilir.</p>
+        <div style="font-size:10px; letter-spacing:2px; color:var(--green); text-transform:uppercase; margin-bottom:6px;">Nasıl Çözeriz</div>
+        <p style="font-size:11px;">Faz 0 discovery'de API tam keşfedilir. Eksik alan varsa workaround veya scope ayarı yapılır.</p>
+      </div>
+    </div>
+    <div class="grid-3" style="gap:12px;">
+      <div class="card" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <span class="tag tag-gold" style="font-size:9px;">Orta</span>
+          <h3 style="font-size:13px;">3-Yönlü Eşleme</h3>
+        </div>
+        <div style="font-size:10px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:6px;">Neden Zor</div>
+        <p style="font-size:11px; margin-bottom:10px;">Ürün kodu/ismi sipariş ↔ irsaliye ↔ faturada farklı olabilir. Kısmi teslimatlar, iskonto farkları.</p>
+        <div style="font-size:10px; letter-spacing:2px; color:var(--green); text-transform:uppercase; margin-bottom:6px;">Nasıl Çözeriz</div>
+        <p style="font-size:11px;">Fuzzy matching + kalem kodu standardizasyonu. Eşleşemeyen → muhasebeciye yönlendirilir.</p>
+      </div>
+      <div class="card" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <span class="tag tag-blue" style="font-size:9px;">Düşük-Orta</span>
+          <h3 style="font-size:13px;">Kredi Kartı Excel</h3>
+        </div>
+        <div style="font-size:10px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:6px;">Neden Zor</div>
+        <p style="font-size:11px; margin-bottom:10px;">10 farklı banka = 10 farklı Excel formatı. Sütun isimleri, tarih formatları, tutar gösterimi farklı.</p>
+        <div style="font-size:10px; letter-spacing:2px; color:var(--green); text-transform:uppercase; margin-bottom:6px;">Nasıl Çözeriz</div>
+        <p style="font-size:11px;">Banka başına şablon bir kez ayarlanır. Yeni format → kısa sürede şablon eklenir.</p>
+      </div>
+      <div class="card card-green" style="padding:16px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <span class="tag tag-green" style="font-size:9px;">Düşük</span>
+          <h3 style="font-size:13px;">Mail Teslim</h3>
+        </div>
+        <div style="font-size:10px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:6px;">Neden Zor</div>
+        <p style="font-size:11px; margin-bottom:10px;">Toplu otomatik mailler spam'e düşebilir.</p>
+        <div style="font-size:10px; letter-spacing:2px; color:var(--green); text-transform:uppercase; margin-bottom:6px;">Nasıl Çözeriz</div>
+        <p style="font-size:11px;">SPF/DKIM/DMARC ayarı; ilk hafta test gönderim; müşteri beyaz liste.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== S24: RİSK MATRİSİ ===== -->
+  <div class="slide" id="s24">
+    <div class="slide-header">
+      <span class="slide-label">Risk Matrisi</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <h2>Risk farkındalığı,<br><span class="accent">hazırlıklı başlangıç.</span></h2>
+    <div class="divider"></div>
+    <table class="data-table" style="margin-bottom:16px;">
+      <thead>
+        <tr>
+          <th>Risk</th>
+          <th style="text-align:center;">Olasılık</th>
+          <th style="text-align:center;">Etki</th>
+          <th>Hafifletme Stratejisi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span style="font-weight:600;">OCR vade tespiti başarısız</span></td>
+          <td style="text-align:center;"><span class="tag tag-gold" style="font-size:9px;">Orta</span></td>
+          <td style="text-align:center;"><span class="tag tag-red" style="font-size:9px;">Yüksek</span></td>
+          <td style="font-size:11px;">E-fatura XML yapısal okuma öncelikli. OCR sadece eski belgeler. Düşük güvende manuel giriş fallback.</td>
+        </tr>
+        <tr>
+          <td><span style="font-weight:600;">AI mail yorumu hatalı</span></td>
+          <td style="text-align:center;"><span class="tag tag-gold" style="font-size:9px;">Orta</span></td>
+          <td style="text-align:center;"><span class="tag tag-gold" style="font-size:9px;">Orta</span></td>
+          <td style="font-size:11px;">%70 güven eşiği — altı muhasebeciye bırakılır. İlk 3 ay eğitim modu.</td>
+        </tr>
+        <tr>
+          <td><span style="font-weight:600;">Logo API sınırlaması</span></td>
+          <td style="text-align:center;"><span class="tag tag-gold" style="font-size:9px;">Orta</span></td>
+          <td style="text-align:center;"><span class="tag tag-gold" style="font-size:9px;">Orta</span></td>
+          <td style="font-size:11px;">Faz 0'da tam keşif. Eksik endpoint → workaround veya scope daraltma. Go/no-go kapısı.</td>
+        </tr>
+        <tr>
+          <td><span style="font-weight:600;">3-yönlü eşleme uyumsuzluğu</span></td>
+          <td style="text-align:center;"><span class="tag tag-red" style="font-size:9px;">Yüksek</span></td>
+          <td style="text-align:center;"><span class="tag tag-blue" style="font-size:9px;">Düşük</span></td>
+          <td style="font-size:11px;">Fuzzy matching + kalem kodu standardizasyonu. Eşleşmeyen → manuel onay kuyruğu.</td>
+        </tr>
+        <tr>
+          <td><span style="font-weight:600;">Banka Excel format değişikliği</span></td>
+          <td style="text-align:center;"><span class="tag tag-blue" style="font-size:9px;">Düşük</span></td>
+          <td style="text-align:center;"><span class="tag tag-blue" style="font-size:9px;">Düşük</span></td>
+          <td style="font-size:11px;">Banka başına şablon. Yeni format → bakım kapsamında güncellenir.</td>
+        </tr>
+        <tr>
+          <td><span style="font-weight:600;">Mail spam filtresi</span></td>
+          <td style="text-align:center;"><span class="tag tag-blue" style="font-size:9px;">Düşük</span></td>
+          <td style="text-align:center;"><span class="tag tag-gold" style="font-size:9px;">Orta</span></td>
+          <td style="font-size:11px;">SPF/DKIM/DMARC yapılandırması. Kademeli gönderim artışı. İstenmeyen mail testi.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="grid-2" style="gap:14px;">
+      <div class="card card-accent">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:8px;">Temel Prensip</div>
+        <p style="font-size:13px; color:var(--white); line-height:1.6;">Bu risklerin farkındayız ve <strong>Faz 0 Discovery</strong>'de her biri araştırılacak. Her fazda <strong>go/no-go kapısı</strong> bu yüzden var — risk gerçekleşirse scope ayarlanır, sürpriz olmaz.</p>
+      </div>
+      <div class="card card-green">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--green); text-transform:uppercase; margin-bottom:8px;">Genel Fallback</div>
+        <div class="bullet-row" style="padding-top:0;"><div class="ix ix-green">✓</div><div><p style="font-size:11px; color:var(--white);">AI güvensizse → muhasebeciye yönlendir</p></div></div>
+        <div class="bullet-row"><div class="ix ix-green">✓</div><div><p style="font-size:11px; color:var(--white);">API eksikse → scope ayarla, workaround bul</p></div></div>
+        <div class="bullet-row" style="border:none;"><div class="ix ix-green">✓</div><div><p style="font-size:11px; color:var(--white);">Format değişirse → bakım kapsamında güncelle</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== S25: YOL HARİTASI ===== -->
+  <div class="slide" id="s25">
+    <div class="slide-header">
+      <span class="slide-label">Yol Haritası</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <h2>5 faz, ~14 hafta.<br><span class="accent">Her fazda demo + onay kapısı.</span></h2>
+    <div class="divider"></div>
+    <table class="data-table" style="margin-bottom:14px;">
+      <thead><tr><th>Faz</th><th>Süre</th><th>İçerik</th><th style="text-align:center;">Çıktı</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag tag-red" style="font-size:10px;">Faz 0</span></td><td style="font-weight:600;">2 hafta</td><td>Discovery &middot; Logo API keşfi &middot; Wireframe</td><td style="text-align:center;">İmzalı spec + tasarımlar</td></tr>
+        <tr class="recommended"><td><span class="tag tag-red" style="font-size:10px;">Faz 1</span> <span class="rec-badge">Ana Modül</span></td><td style="font-weight:600;">3 hafta</td><td>Modül 1 — Sipariş + 3-yönlü mutabakat + e-irsaliye→fatura</td><td style="text-align:center;">Demo + pilot</td></tr>
+        <tr><td><span class="tag tag-blue" style="font-size:10px;">Faz 2</span></td><td style="font-weight:600;">2 hafta</td><td>Modül 2 — Tahsilat + AI mail döngüsü</td><td style="text-align:center;">Demo + test</td></tr>
+        <tr><td><span class="tag tag-purple" style="font-size:10px;">Faz 3</span></td><td style="font-weight:600;">3 hafta</td><td>Modül 3 — Ödeme + OCR + kredi kartı Excel import</td><td style="text-align:center;">Demo + test</td></tr>
+        <tr><td><span class="tag tag-green" style="font-size:10px;">Faz 4</span></td><td style="font-weight:600;">2 hafta</td><td>UAT + pilot + Go-live</td><td style="text-align:center;">Canlı sistem</td></tr>
+        <tr><td><span class="tag tag-gold" style="font-size:10px;">Hypercare</span></td><td style="font-weight:600;">2 hafta</td><td>Canlı destek (fiyata dahil)</td><td style="text-align:center;">Stabil operasyon</td></tr>
+      </tbody>
+    </table>
+    <div class="grid-2" style="gap:14px;">
+      <div class="card card-accent">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:8px;">Her Faz Sonunda</div>
+        <div class="bullet-row" style="padding-top:0;"><div class="ix ix-green">✓</div><div><p style="font-size:12px; color:var(--white);">Canlı demo — gerçek verilerle</p></div></div>
+        <div class="bullet-row"><div class="ix ix-green">✓</div><div><p style="font-size:12px; color:var(--white);">Go / No-go kapısı — devam kararı sizde</p></div></div>
+        <div class="bullet-row" style="border:none;"><div class="ix ix-green">✓</div><div><p style="font-size:12px; color:var(--white);">Bir sonraki fazdan bağımsız durdurabilirsiniz</p></div></div>
+      </div>
+      <div class="card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:8px;">Varsayımlar</div>
+        <div class="bullet-row" style="padding-top:0;"><div class="ix ix-accent">!</div><div><p style="font-size:12px; color:var(--white);">Logo API dokümantasyonu ve erişim Faz 0'da sağlanır</p></div></div>
+        <div class="bullet-row"><div class="ix ix-accent">!</div><div><p style="font-size:12px; color:var(--white);">Mail sunucu erişimi (SMTP/IMAP) Faz 2 başında verilir</p></div></div>
+        <div class="bullet-row" style="border:none;"><div class="ix ix-accent">!</div><div><p style="font-size:12px; color:var(--white);">Muhasebeci haftalık 2-3 saat test için müsaittir</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== S26: FİYATLANDIRMA ===== -->
+  <div class="slide" id="s26">
+    <div class="slide-header">
+      <span class="slide-label">Fiyatlandırma</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <h2>Tek seferlik geliştirme<br><span class="accent">+ aylık bakım ve AI kredi.</span></h2>
+    <div class="divider"></div>
+    <div class="grid-2" style="gap:16px; margin-bottom:14px;">
+      <div class="price-card featured">
+        <span class="p-badge">Platform Geliştirme</span>
+        <div class="p-label" style="margin-top:6px;">Tek Seferlik</div>
+        <div class="p-name">3 Modül &middot; Tüm Platform</div>
+        <div class="p-amount" style="color:var(--accent);">Fiyat alınız</div>
+        <div class="p-sub">Faz bazlı ödeme planı</div>
+        <ul class="p-features">
+          <li><span>Modül 1 — Sipariş mutabakatı (DM + Koç)</span></li>
+          <li><span>Modül 2 — Tahsilat takibi (3 firma)</span></li>
+          <li><span>Modül 3 — Ödeme takibi + OCR + Excel import</span></li>
+          <li><span>Logo API entegrasyonu</span></li>
+          <li><span>14 ekranlı web paneli</span></li>
+          <li><span>AI motor (eşleme, özetleme, kategorizasyon)</span></li>
+          <li><span>2 hafta hypercare dahil</span></li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="p-label">Aylık</div>
+        <div class="p-name">Bakım + AI Kredi</div>
+        <div class="p-amount" style="color:var(--white);">Fiyat alınız</div>
+        <div class="p-sub">Go-live sonrası, aylık faturalanır</div>
+        <ul class="p-features">
+          <li><span>AI API kullanım kredisi (Claude/GPT)</span></li>
+          <li><span>OCR API kullanımı</span></li>
+          <li><span>Bug fix ve küçük iyileştirmeler</span></li>
+          <li><span>Logo API versiyon uyum güncellemesi</span></li>
+          <li><span>Güvenlik güncellemeleri</span></li>
+          <li><span>Teknik destek (iş saatleri)</span></li>
+          <li><span>Aylık performans raporu</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-2" style="gap:14px;">
+      <div class="card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; margin-bottom:8px;">Ödeme Planı</div>
+        <div class="kv"><span class="k">Sözleşme imzası</span><span class="v accent">%30</span></div>
+        <div class="kv"><span class="k">Faz 1 teslimi</span><span class="v">%25</span></div>
+        <div class="kv"><span class="k">Faz 3 teslimi</span><span class="v">%25</span></div>
+        <div class="kv"><span class="k">Go-live onayı</span><span class="v">%20</span></div>
+      </div>
+      <div class="addon-card">
+        <div style="font-size:10px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:6px;">Opsiyonel Add-on</div>
+        <div class="kv"><span class="k">Mobil uygulama (iOS + Android)</span><span class="v" style="color:var(--gold);">Ayrı teklif</span></div>
+        <div class="kv"><span class="k">Ek firma ekleme</span><span class="v" style="color:var(--gold);">Ayrı teklif</span></div>
+        <div class="kv"><span class="k">Banka API entegrasyonu</span><span class="v" style="color:var(--gold);">Ayrı teklif</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== S27: DEĞER ÖNERİSİ ===== -->
+  <div class="slide" id="s27">
+    <div class="slide-header">
+      <span class="slide-label">Değer Önerisi</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <h2>Yatırımın karşılığı<br><span class="accent">ilk aydan görünür.</span></h2>
+    <div class="divider"></div>
+    <div class="grid-3" style="gap:14px; margin-bottom:14px;">
+      <div class="card card-green" style="text-align:center; padding:22px 16px;">
+        <div class="big-stat" style="font-size:36px; color:var(--green);">%40</div>
+        <h3 style="margin-top:8px; margin-bottom:4px;">Efor Tasarrufu</h3>
+        <p style="font-size:12px;">Tekrarlayan muhasebe işlerinin %40'ı otomatize edilir.</p>
+      </div>
+      <div class="card card-accent" style="text-align:center; padding:22px 16px;">
+        <div class="big-stat" style="font-size:36px;">~0</div>
+        <h3 style="margin-top:8px; margin-bottom:4px;">Eşleme Hatası</h3>
+        <p style="font-size:12px;">3-yönlü otomatik mutabakat ile hata neredeyse sıfırlanır.</p>
+      </div>
+      <div class="card card-blue" style="text-align:center; padding:22px 16px;">
+        <div class="big-stat" style="font-size:36px; color:var(--blue);">7/24</div>
+        <h3 style="margin-top:8px; margin-bottom:4px;">Tahsilat Takibi</h3>
+        <p style="font-size:12px;">AI destekli otomatik hatırlatma sistemi uyumaz, unutmaz.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:14px;">
+      <h3 style="margin-bottom:10px;">Bugün vs. Platform Sonrası</h3>
+      <table class="data-table" style="margin-top:0;">
+        <thead><tr><th>İş</th><th style="text-align:center;">Bugün</th><th style="text-align:center;">Platform</th></tr></thead>
+        <tbody>
+          <tr><td>Sipariş-fatura eşleme</td><td style="text-align:center; color:var(--red);">Manuel &middot; saatler</td><td style="text-align:center; color:var(--green);">Otomatik &middot; saniyeler</td></tr>
+          <tr><td>Tahsilat hatırlatma</td><td style="text-align:center; color:var(--red);">Elle mail &middot; unutuluyor</td><td style="text-align:center; color:var(--green);">Otomatik &middot; her vade</td></tr>
+          <tr><td>Müşteri yanıtı</td><td style="text-align:center; color:var(--red);">Okunmuyor / gecikiyor</td><td style="text-align:center; color:var(--green);">AI özet + vade önerisi</td></tr>
+          <tr><td>Kredi kartı giderleri</td><td style="text-align:center; color:var(--red);">Manuel giriş</td><td style="text-align:center; color:var(--green);">Excel → AI → Logo</td></tr>
+          <tr><td>Ödeme takvimi</td><td style="text-align:center; color:var(--red);">Excel / akılda</td><td style="text-align:center; color:var(--green);">Otomatik takvim + uyarı</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== S28: FINAL CTA ===== -->
+  <div class="slide" id="s_final" style="justify-content:center; background:linear-gradient(135deg, var(--black) 0%, #0f1118 100%);">
+    <div class="slide-header">
+      <span class="slide-label">Sonraki Adımlar</span>
+      <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:32px; object-fit:contain;">
+    </div>
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+      <div class="final-box">
+        <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:24px; flex-wrap:wrap;">
+          <img src="../TibexaLogo/tibexa-global/DarkLogo_transparent.png" alt="Tibexa" style="height:36px; object-fit:contain;">
+          <span style="font-size:13px; color:var(--muted); letter-spacing:2px;">&times;</span>
+          <span class="dm-logo lg"><span class="dm-mark">DM</span><span class="dm-text">Değişim Motor</span><span class="dm-sub">Koç Redüktör</span></span>
+        </div>
+        <h2 style="margin-bottom:12px;">Muhasebecinin AI asistanı<br>hazır.</h2>
+        <p style="max-width:540px; margin: 0 auto 24px; font-size:14px;">Başlamak için üç onay yeterli.</p>
+        <div style="text-align:left; max-width:480px; margin:0 auto;">
+          <div class="kv"><span class="k">1. Kapsam onayı</span><span class="v" style="font-size:12px;">3 modül &middot; 3 firma &middot; Logo API</span></div>
+          <div class="kv"><span class="k">2. Logo API erişimi</span><span class="v" style="font-size:12px;">API dokümantasyonu + test ortam</span></div>
+          <div class="kv"><span class="k">3. Başlangıç onayı</span><span class="v" style="font-size:12px;">Sözleşme imzası → Faz 0 başlar</span></div>
+        </div>
+        <p style="font-size:12px; color:var(--muted); margin-top:22px; font-style:italic;">
+          Sözleşme imzası sonrası 2 haftalık discovery (Faz 0), ardından 12 hafta geliştirme. Toplam ~14 haftada canlı sistem.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- NAVIGATION -->
+<div class="nav">
+  <button onclick="prev()" title="Geri">&larr;</button>
+  <div class="dots" id="dots"></div>
+  <button onclick="next()" title="İleri">&rarr;</button>
+  <span class="slide-counter" id="counter">1 / 28</span>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const container = document.getElementById('slides');
+  const dotsEl = document.getElementById('dots');
+  const counterEl = document.getElementById('counter');
+  let current = 0;
+  const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(n, slides.length - 1));
+    if (isMobile()) {
+      slides[current].classList.add('active');
+      slides[current].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      container.style.transform = `translateX(-${current * 100}vw)`;
+      slides[current].classList.add('active');
+      slides[current].scrollTop = 0;
+    }
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    counterEl.textContent = `${current + 1} / ${slides.length}`;
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next();
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev();
+  });
+
+  let startX = 0;
+  document.addEventListener('touchstart', e => { if (isMobile()) return; startX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => { if (isMobile()) return; const diff = startX - e.changedTouches[0].clientX; if (Math.abs(diff) > 50) diff > 0 ? next() : prev(); });
+
+  if (isMobile()) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && e.intersectionRatio > 0.4) {
+          const idx = Array.from(slides).indexOf(e.target);
+          if (idx >= 0 && idx !== current) {
+            slides[current].classList.remove('active');
+            current = idx;
+            slides[current].classList.add('active');
+            document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+            counterEl.textContent = `${current + 1} / ${slides.length}`;
+          }
+        }
+      });
+    }, { threshold: [0.4, 0.6] });
+    slides.forEach(s => observer.observe(s));
+  }
+
+  slides[0].classList.add('active');
+</script>
+
+</body>
+</html>
