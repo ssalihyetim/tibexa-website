@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tibexa · Yapay Zekâ Destekli B2B Lead Generation Sistemi</title>
+<meta name="description" content="Tibexa'nın çok-ajanlı, çoklu arama motorlu yapay zekâ lead generation sistemi: bir pazarı baştan sona tarar, her firmayı doğrular, satışa hazır liste çıkarır.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+
+<style>
+:root{
+  /* Ana renkler */
+  --bg:#000000; --text:#FFFFFF; --amber:#C89010; --gold:#F5C842;
+  /* Yüzeyler */
+  --surface:#0A0A0A; --surface-2:#141414; --text-2:#A1A1AA; --border:#27272A;
+  /* Tipografi */
+  --font-sans:"Geist", system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"Geist Mono",ui-monospace,"SF Mono","Menlo",monospace;
+  /* Düzen */
+  --radius:12px; --radius-sm:8px; --maxw:1100px;
+  --section-pad:clamp(5rem,10vh,8rem);
+  --gap:clamp(1.5rem,3vw,2.5rem);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:var(--font-sans); font-weight:400;
+  font-size:clamp(1rem,1.2vw,1.125rem); line-height:1.7;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+::selection{background:var(--amber);color:#000}
+
+h1,h2,h3{font-weight:500;line-height:1.08}
+h1{font-size:clamp(3rem,6vw,5rem);letter-spacing:-0.04em}
+h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em}
+h3{font-size:clamp(1.25rem,2.5vw,1.75rem);letter-spacing:-0.02em}
+p{color:var(--text-2)}
+p strong, li strong{color:var(--text);font-weight:500}
+a{color:inherit;text-decoration:none}
+
+.mono{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.1em;font-size:0.7rem;color:var(--text-2)}
+.amber{color:var(--amber)}
+.gold{color:var(--gold)}
+
+/* ---- Layout helpers ---- */
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2.5rem)}
+section{padding-block:var(--section-pad);position:relative;border-top:1px solid transparent}
+.divider{border-top:1px solid var(--border)}
+.eyebrow{display:inline-block;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;font-size:0.7rem;color:var(--amber);margin-bottom:1.5rem;position:relative;padding-left:2.5rem}
+.eyebrow::before{content:"";position:absolute;left:0;top:50%;width:1.75rem;height:1px;background:var(--amber)}
+.lead{font-size:clamp(1.05rem,1.4vw,1.25rem);max-width:42ch}
+
+/* ---- Reveal animation (yalnızca JS aktifse gizle — JS yoksa içerik görünür kalır) ---- */
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.08s}
+.reveal[data-d="2"]{transition-delay:.16s}
+.reveal[data-d="3"]{transition-delay:.24s}
+.reveal[data-d="4"]{transition-delay:.32s}
+
+/* ---- Header ---- */
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(0,0,0,.7);border-bottom:1px solid var(--border)}
+.nav{max-width:var(--maxw);margin-inline:auto;padding:.9rem clamp(1.25rem,5vw,2.5rem);display:flex;align-items:center;justify-content:space-between}
+.nav img{height:26px;width:auto;display:block}
+.nav-links{display:flex;gap:1.75rem}
+.nav-links a{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;font-size:.68rem;color:var(--text-2);transition:color .25s}
+.nav-links a:hover,.nav-links a.active{color:var(--amber)}
+@media(max-width:720px){.nav-links{display:none}}
+
+/* ---- Hero ---- */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;top:-20%;right:-10%;width:60vw;height:60vw;background:radial-gradient(circle,rgba(200,144,16,.10),transparent 60%);pointer-events:none}
+.hero h1{max-width:16ch;margin-bottom:1.75rem}
+.hero .lead{max-width:48ch;margin-bottom:2.5rem}
+.statbar{display:flex;flex-wrap:wrap;gap:0 2.5rem;row-gap:.5rem;border-top:1px solid var(--border);padding-top:1.5rem;max-width:680px}
+.statbar span{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--text-2)}
+.statbar span b{color:var(--amber);font-weight:500}
+.scrolldown{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:var(--amber);font-size:1.4rem;animation:bob 1.8s var(--ease) infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* ---- Cards / grids ---- */
+.grid{display:grid;gap:var(--gap)}
+.cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.cols-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(1.5rem,3vw,2rem)}
+.card .tick{width:2rem;height:2px;background:var(--amber);margin-bottom:1.25rem}
+.card h3{margin-bottom:.6rem;font-size:1.2rem}
+.card p{font-size:.98rem}
+
+/* ---- Principles ---- */
+.principle{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.25rem,3vw,2.5rem);padding-block:1.75rem;border-bottom:1px solid var(--border);align-items:start}
+.principle:last-child{border-bottom:none}
+.principle .num{font-family:var(--font-mono);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--amber);font-weight:500;line-height:1;letter-spacing:-.02em}
+.principle h3{margin-bottom:.4rem;font-size:1.3rem}
+.principle p{font-size:1rem}
+
+/* ---- Callout ---- */
+.callout{border:1px solid var(--amber);border-radius:var(--radius);background:linear-gradient(180deg,rgba(200,144,16,.06),rgba(200,144,16,.01));padding:clamp(1.25rem,3vw,1.75rem);margin-top:2rem}
+.callout .mono{color:var(--amber)}
+.callout p{color:var(--text)}
+
+/* ---- Code blocks / trees ---- */
+pre{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(1.25rem,3vw,1.75rem);overflow-x:auto;font-family:var(--font-mono);font-size:.8rem;line-height:1.75;color:var(--text-2);text-transform:none;letter-spacing:0}
+pre b{color:var(--text);font-weight:500}
+pre .c{color:var(--amber)}
+
+/* ---- Flow (workflow) ---- */
+.flow{display:flex;flex-direction:column;gap:0}
+.step{display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:start;padding:1.1rem 1.25rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);transition:border-color .3s,box-shadow .3s,background .3s}
+.step.active{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber),0 8px 24px -16px rgba(0,0,0,.6);background:var(--surface-2)}
+.step .n{font-family:var(--font-mono);color:var(--amber);font-size:1.05rem;font-weight:500;min-width:1.6rem}
+.step h3{font-size:1.02rem;font-weight:500;margin-bottom:.15rem;letter-spacing:-.01em}
+.step p{font-size:.9rem;margin:0}
+.flow .arrow{align-self:center;color:var(--border);font-size:1.1rem;text-align:center;padding:.35rem 0}
+
+/* ---- Multi-engine fan-out (5A) ---- */
+.fanout{display:grid;gap:1.5rem;justify-items:center;text-align:center}
+.fan-query{font-family:var(--font-mono);font-size:.82rem;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.85rem 1.25rem;color:var(--text);text-transform:none;letter-spacing:0}
+.fan-engines{display:grid;grid-template-columns:repeat(3,minmax(140px,1fr));gap:1rem;width:100%;max-width:720px}
+.engine{border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1rem;background:var(--surface);position:relative}
+.engine .name{font-family:var(--font-mono);letter-spacing:.1em;font-size:.82rem;color:var(--amber);font-weight:500;margin-bottom:.5rem}
+.engine .desc{font-size:.78rem;color:var(--text-2);line-height:1.5}
+.fan-down{color:var(--amber);font-size:1.3rem;line-height:1}
+.fan-pool{font-family:var(--font-mono);letter-spacing:.08em;font-size:.85rem;background:linear-gradient(180deg,rgba(200,144,16,.1),rgba(200,144,16,.02));border:1px solid var(--amber);border-radius:var(--radius);padding:1rem 1.5rem;color:var(--text);width:100%;max-width:720px}
+.fan-dedup{font-family:var(--font-mono);letter-spacing:.1em;font-size:.72rem;color:var(--text-2)}
+@media(max-width:560px){.fan-engines{grid-template-columns:1fr}}
+
+/* ---- Angles accordion ---- */
+.angles{display:grid;gap:.6rem}
+.angle{border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);overflow:hidden}
+.angle summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:1rem;padding:.95rem 1.25rem;transition:background .25s}
+.angle summary::-webkit-details-marker{display:none}
+.angle summary:hover{background:var(--surface-2)}
+.angle .an{font-family:var(--font-mono);color:var(--amber);font-size:.85rem;font-weight:500;min-width:1.8rem}
+.angle .at{font-weight:500;font-size:1rem}
+.angle .plus{margin-left:auto;color:var(--text-2);font-family:var(--font-mono);transition:transform .3s}
+.angle[open] .plus{transform:rotate(45deg);color:var(--amber)}
+.angle .body{padding:0 1.25rem 1.1rem 4.05rem;font-size:.9rem;color:var(--text-2)}
+.angle .q{font-family:var(--font-mono);text-transform:none;letter-spacing:0;color:var(--gold);font-size:.82rem;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.15rem .5rem;display:inline-block;margin-top:.4rem}
+
+/* ---- Verify split ---- */
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--gap)}
+.verify-list{list-style:none;display:grid;gap:.7rem}
+.verify-list li{display:flex;gap:.75rem;align-items:baseline;font-size:.95rem;color:var(--text);padding:.7rem .9rem;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface)}
+.verify-list .mk{font-family:var(--font-mono);font-size:.75rem;font-weight:500}
+.verify-list .yes{color:var(--gold)}
+.verify-list .no{color:var(--text-2)}
+
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{text-align:left;padding:.7rem .8rem;border-bottom:1px solid var(--border)}
+th{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.08em;font-size:.68rem;color:var(--text-2);font-weight:500}
+td{color:var(--text-2)}
+td:first-child{color:var(--text);font-family:var(--font-mono);font-size:.78rem;letter-spacing:.04em}
+.scroll-x{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface-2)}
+.scroll-x table{font-size:.82rem}
+.scroll-x th,.scroll-x td{white-space:nowrap;border-color:var(--border)}
+
+/* ---- Output badges ---- */
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.badge{font-family:var(--font-mono);text-transform:none;letter-spacing:0;font-size:.74rem;color:var(--text-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.35rem .7rem;background:var(--surface)}
+
+/* ---- Proof / results ---- */
+.proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--gap)}
+.proof .card .big{font-family:var(--font-mono);font-size:clamp(2.5rem,5vw,4rem);color:var(--amber);font-weight:500;line-height:1;letter-spacing:-.03em;margin:.2rem 0 .4rem}
+.proof .card .sub{font-size:.95rem}
+.proof .card ul{list-style:none;margin-top:1rem;display:grid;gap:.4rem}
+.proof .card li{font-size:.88rem;color:var(--text-2);padding-left:1.1rem;position:relative}
+.proof .card li::before{content:"›";position:absolute;left:0;color:var(--amber)}
+.totalbar{margin-top:var(--gap);text-align:center;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;font-size:.74rem;color:var(--text-2);border-top:1px solid var(--border);padding-top:1.5rem}
+.totalbar b{color:var(--amber);font-weight:500}
+
+/* ---- CTA ---- */
+.cta{text-align:center;display:flex;flex-direction:column;align-items:center}
+.cta img{height:40px;margin-bottom:2rem;opacity:.95}
+.cta h2{max-width:18ch;margin-bottom:1.25rem}
+.cta p{max-width:46ch;margin-bottom:2.25rem}
+.btn{display:inline-block;background:var(--amber);color:#000;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;font-weight:500;padding:.95rem 2rem;border-radius:var(--radius-sm);transition:background .25s,transform .25s}
+.btn:hover{background:var(--gold);transform:translateY(-2px)}
+.cta .alt{margin-top:1.25rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.08em;font-size:.7rem;color:var(--text-2);border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
+.cta .alt:hover{color:var(--amber);border-color:var(--amber)}
+
+/* ---- Footer ---- */
+footer{border-top:1px solid var(--border);padding-block:2.5rem}
+.foot{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2.5rem);display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}
+.foot-l{display:flex;align-items:center;gap:.9rem}
+.foot-l img{height:20px;opacity:.85}
+.foot-l span{font-size:.78rem;color:var(--text-2)}
+.foot-r{display:flex;gap:1.5rem}
+.foot-r a{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;font-size:.66rem;color:var(--text-2);transition:color .25s}
+.foot-r a:hover{color:var(--amber)}
+
+.section-head{margin-bottom:clamp(2.5rem,5vw,3.5rem)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#hero" aria-label="Tibexa"><img src="assets/tibexa-darklogo.png" alt="Tibexa Global" width="80" height="26" decoding="async"></a>
+    <div class="nav-links">
+      <a href="#sistem">Sistem</a>
+      <a href="#akis">Nasıl Çalışır</a>
+      <a href="#sonuclar">Sonuçlar</a>
+      <a href="#iletisim">İletişim</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="wrap">
+    <span class="eyebrow reveal">Yapay Zekâ Destekli B2B Lead Generation</span>
+    <h1 class="reveal" data-d="1">Dünyanın her köşesindeki doğru alıcıyı bulan yapay zekâ sistemi.</h1>
+    <p class="lead reveal" data-d="2">Tek tek değil — sistematik. Tahminle değil — kanıtla. Tibexa'nın çok-ajanlı araştırma fabrikası bir pazarı baştan sona tarar, her firmayı doğrular ve satışa hazır bir liste çıkarır.</p>
+    <div class="statbar reveal" data-d="3">
+      <span><b>2</b> CANLI MÜŞTERİ</span>
+      <span><b>ÇOKLU</b> ARAMA MOTORU</span>
+      <span><b>HER FİRMA</b> ELLE DOĞRULANIR</span>
+    </div>
+  </div>
+  <div class="scrolldown" aria-hidden="true">↓</div>
+</section>
+
+<!-- ===== PROBLEM ===== -->
+<section class="divider" id="sistem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Problem</span>
+      <h2>Neden klasik liste çıkarma yetmiyor?</h2>
+    </div>
+    <div class="grid cols-3">
+      <div class="card reveal" data-d="1">
+        <div class="tick"></div>
+        <h3>Tek motor, kör nokta</h3>
+        <p>Tek bir arama motoruna güvenmek, o motorun indekslemediği coğrafyaları — Rusya, Orta Asya, Kafkasya, Doğu Avrupa — tümden kör eder. İlk sayfada durmak küçük ve yerel firmaları kaçırır.</p>
+      </div>
+      <div class="card reveal" data-d="2">
+        <div class="tick"></div>
+        <h3>Doğrulanmamış liste</h3>
+        <p>İsimler var ama firmanın gerçekten bir <strong>alıcı</strong> mı, yoksa bir <strong>rakip</strong> ya da <strong>bayi</strong> mi olduğu belirsiz. Doğrulanmamış liste, boşa giden bir satış emeğidir.</p>
+      </div>
+      <div class="card reveal" data-d="3">
+        <div class="tick"></div>
+        <h3>Ölçeklenemez emek</h3>
+        <p>50 eyalet, onlarca segment, düzinelerce ülke elle taranamaz. İnsan yorulur, tutarsızlaşır, ortalarda bırakır. Kapsama her zaman eksik kalır.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ÇÖZÜM: 5 İLKE ===== -->
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Çözüm · Felsefe</span>
+      <h2>Sistem beş ilke üzerine kurulu.</h2>
+      <p class="lead" style="margin-top:1rem">Bunlar olmadan yapay zekâ ya yorulur, ya uydurur, ya da kaçırır.</p>
+    </div>
+
+    <div class="principle reveal" data-d="1">
+      <div class="num">01</div>
+      <div>
+        <h3>İzole agent, temiz context</h3>
+        <p>Her ajan yalnızca <strong>tek bir ICP × tek bir coğrafya × tek bir araştırma dilimi</strong> üzerinde çalışır. <em style="color:var(--text-2);font-style:normal">(ICP = ideal müşteri profili; araştırma dilimi = bir ajanın tek seferde tarayacağı iş birimi.)</em> Böylece yapay zekânın hafıza penceresi dolmaz, araştırma kalitesi düşmez, firma kaçmaz.</p>
+      </div>
+    </div>
+    <div class="principle reveal" data-d="1">
+      <div class="num">02</div>
+      <div>
+        <h3>Tek motor değil, çoklu motor</h3>
+        <p>Aynı sorgu <strong>Google, Yandex ve diğer arama motorlarına</strong> aynı anda gider; sonuçlar tek havuzda birleşir. Bir motorun kör noktası, diğerinin görüş alanıdır.</p>
+      </div>
+    </div>
+    <div class="principle reveal" data-d="2">
+      <div class="num">03</div>
+      <div>
+        <h3>Doygunluğa kadar ara</h3>
+        <p>"30 firma buldum, yeter" yok. 8–11 zorunlu arama açısı tükenip son sorgularda yeni firma çıkmayana kadar devam — hedef <strong>tek bir uygun firmayı bile kaçırmamak.</strong></p>
+      </div>
+    </div>
+    <div class="principle reveal" data-d="2">
+      <div class="num">04</div>
+      <div>
+        <h3>Bulmak yetmez, doğrula</h3>
+        <p>Her aday firmanın sitesi tek tek ziyaret edilir; "biz üretiyoruz" mu yoksa "biz bayilik/hizmet yapıyoruz" mu ayrılır. Her eşleşmeye siteden alıntı kanıt yazılır. <strong>Halüsinasyon yasak.</strong></p>
+      </div>
+    </div>
+    <div class="principle reveal" data-d="3">
+      <div class="num">05</div>
+      <div>
+        <h3>Makine + insan</h3>
+        <p>Ajan ham aday üretir (MATCH / PARTIAL / ELIMINATED), insan son onayı verir. Birleştirme → tekilleştirme → insan kontrolü → temiz <strong>FINAL lead listesi.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MİMARİ ===== -->
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Mimari</span>
+      <h2>Sistem nasıl kurulu?</h2>
+      <p class="lead" style="margin-top:1rem">İki katman: tüm müşterilerin paylaştığı çekirdek, ve her müşteriye tamamen izole proje alanı.</p>
+    </div>
+    <div class="reveal" data-d="1">
+<pre>
+leadgen/
+├── <b>framework/</b>              <span class="c">← PAYLAŞIMLI (tüm müşteriler kullanır)</span>
+│   ├── prompts/            → ajan şablonu, CSV şeması, ICP şablonu
+│   ├── geography/          → ABD eyaletleri, Kanada, AB/GA/KA ülkeleri, öncelik sırası
+│   └── scripts/            → proje başlat, arama başlat, konsolidasyon
+└── <b>projects/</b>
+    ├── degisim_motor/      <span class="c">← Müşteri 1 (AC motor distribütörleri)</span>
+    └── unverler/           <span class="c">← Müşteri 2 (hidrolik silindir OEM'leri)</span>
+        ├── client.md       → firma profili
+        ├── icp/            → ICP tanımları (bağlam + ana liste)
+        ├── state.json      → makine-okunabilir ilerleme
+        ├── searches/       → CSV + log + dedup + inceleme çıktıları
+        └── scripts/        → projeye özel başlatma + konsolidasyon
+</pre>
+    </div>
+    <div class="badges reveal" data-d="2">
+      <span class="badge">GENERIC ŞABLON</span>
+      <span class="badge">PAYLAŞIMLI COĞRAFYA</span>
+      <span class="badge">İZOLE STATE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== İŞ AKIŞI ===== -->
+<section class="divider" id="akis">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">İş Akışı</span>
+      <h2>Bir arama, baştan sona.</h2>
+      <p class="lead" style="margin-top:1rem">Sekiz adım. Her biri bir öncekinin çıktısını alır, kendi katmanını ekler.</p>
+    </div>
+    <div class="flow" id="flow">
+      <div class="step reveal" data-step><div class="n">01</div><div><h3>Görev üret</h3><p>ICP ve coğrafya doğrulanır, ajan görevi hazırlanır.</p></div></div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="step reveal" data-step><div class="n">02</div><div><h3>Paralel başlat</h3><p>Her coğrafya için ayrı bir yapay zekâ ajanı — aynı anda, her biri kendi context'inde.</p></div></div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="step reveal" data-step><div class="n">03</div><div><h3>Çoklu motorda ara</h3><p>Aynı sorgu Google + Yandex + diğer motorlara gider; sonuçlar <strong>tek havuzda birleşir.</strong></p></div></div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="step reveal" data-step><div class="n">04</div><div><h3>Derinlemesine araştır</h3><p>8–11 zorunlu arama açısı, doygunluğa ulaşana kadar.</p></div></div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="step reveal" data-step><div class="n">05</div><div><h3>Her firmayı doğrula</h3><p>Site ziyaret + analiz: üretici/alıcı mı, bayi/rakip mi?</p></div></div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="step reveal" data-step><div class="n">06</div><div><h3>Sınıflandır</h3><p>MATCH / PARTIAL / ELIMINATED + skor + kanıt cümlesi.</p></div></div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="step reveal" data-step><div class="n">07</div><div><h3>Çıktı yaz</h3><p>CSV + log + dedup listesi + inceleme + devam notu.</p></div></div>
+      <div class="arrow" aria-hidden="true">↓</div>
+      <div class="step reveal" data-step><div class="n">08</div><div><h3>Konsolide + insan</h3><p>Birleştir → tekilleştir → insan onayı → <strong>FINAL.csv</strong></p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5A · ÇOKLU ARAMA MOTORU ===== -->
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Çoklu Arama Motoru</span>
+      <h2>Tek motor neden yetmez?</h2>
+      <p class="lead" style="margin-top:1rem">Bize en çok sorulan soru: "Tek bir arama motoru tüm firmaları nasıl bulacak?" Cevap: bulamaz. Hiçbir tek motor bulamaz.</p>
+    </div>
+
+    <div class="fanout reveal" data-d="1">
+      <div class="fan-query">"electric motor distributor" Kazakhstan</div>
+      <div class="fan-down" aria-hidden="true">↓</div>
+      <div class="fan-engines">
+        <div class="engine"><div class="name">Google</div><div class="desc">Batı pazarları · İngilizce içerik · büyük firmalar</div></div>
+        <div class="engine"><div class="name">Yandex</div><div class="desc">Rusya · Orta Asya · Kafkasya · Kiril/Rusça içerik · yerel firmalar</div></div>
+        <div class="engine"><div class="name">+ Diğer</div><div class="desc">Bölgesel & niş kapsama · çapraz doğrulama</div></div>
+      </div>
+      <div class="fan-down" aria-hidden="true">↓</div>
+      <div class="fan-pool">BİRLEŞİK SONUÇ HAVUZU</div>
+      <div class="fan-dedup"><span aria-hidden="true">↓ &nbsp;</span> TEKİLLEŞTİR (DEDUP) <span aria-hidden="true">&nbsp; ↓</span></div>
+      <div class="fan-pool" style="border-color:var(--border);background:var(--surface)">TEK, EKSİKSİZ FİRMA LİSTESİ</div>
+    </div>
+
+    <div class="callout reveal" data-d="2">
+      <span class="mono">Neden bu coğrafyada kritik?</span>
+      <p style="margin-top:.6rem">Degisim Motor projesinin taradığı 38 ülkenin önemli bir kısmı — Kazakistan, Özbekistan, Türkmenistan, Azerbaycan, Gürcistan, Tacikistan, Kırgızistan, Ukrayna — Yandex'in en güçlü, Google'ın en zayıf olduğu bölge. Çoklu motor olmasaydı bu firmaların çoğu listeye hiç girmezdi. Bir motorun kör noktası, diğerinin görüş alanı.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11 ARAMA AÇISI ===== -->
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Derinlik</span>
+      <h2>Ajan neden hiçbir firmayı kaçırmıyor?</h2>
+      <p class="lead" style="margin-top:1rem">Sıradan bir arama ilk sayfada durur. Bizim ajan aynı pazara 11 farklı kapıdan girer — her kapı, ötekinin kaçırdığını yakalar.</p>
+    </div>
+    <div class="angles reveal" data-d="1">
+      <details class="angle"><summary><span class="an">01</span><span class="at">Doğrudan ICP sorgusu</span><span class="plus">+</span></summary><div class="body">En bariz firmalar, en doğrudan terimle. <span class="q">"electric motor distributor" {ülke}</span></div></details>
+      <details class="angle"><summary><span class="an">02</span><span class="at">Eşanlamlı / yerel dil</span><span class="plus">+</span></summary><div class="body">İngilizce sorgunun göremediği yerel firmalar. Rusça, Arapça, İspanyolca, Portekizce varyantlar — çoklu motorla doğal eşleşir (Yandex + yerel dil).</div></details>
+      <details class="angle"><summary><span class="an">03</span><span class="at">Ulusal / sektörel dizinler</span><span class="plus">+</span></summary><div class="body">Dizinin <strong>içine</strong> girip firma firma liste çekilir — arama motorunun göstermediği yüzlerce kayıt. <span class="q">ThomasNet · Kompass · Europages · ABIMAQ</span></div></details>
+      <details class="angle"><summary><span class="an">04</span><span class="at">Lookalike genişletme</span><span class="plus">+</span></summary><div class="body">Bilinen bir firmadan rakiplerine zincirleme. <span class="q">"competitors of {marka}" · "companies like X"</span></div></details>
+      <details class="angle"><summary><span class="an">05</span><span class="at">Fuar + dernek üye listeleri</span><span class="plus">+</span></summary><div class="body">Katılımcı/üye listeleri açılıp tek tek ayıklanır. <span class="q">FABTECH · EuroBLECH · PMA katılımcıları</span></div></details>
+      <details class="angle"><summary><span class="an">06</span><span class="at">LinkedIn şirket araması</span><span class="plus">+</span></summary><div class="body">Web sitesi bile olmayan firmaları yakalar. <span class="q">site:linkedin.com/company "{ICP}" "{coğrafya}"</span></div></details>
+      <details class="angle"><summary><span class="an">07</span><span class="at">Negatif inversion</span><span class="plus">+</span></summary><div class="body">Yanlış sonuçların içinden doğru firmaları ayıklama. Karışmış listelerde gerçek üreticiler de çıkar.</div></details>
+      <details class="angle"><summary><span class="an">08</span><span class="at">Reverse-lookup</span><span class="plus">+</span></summary><div class="body">Son kullanıcının referansından geri gitme. <span class="q">"our equipment supplier" → markayı bul → coğrafyada mı?</span></div></details>
+      <details class="angle"><summary><span class="an">09</span><span class="at">Yabancı OEM yerel iştiraki</span><span class="plus">+</span></summary><div class="body">Yerel sitede çıkmayan global markaların şubeleri. <span class="q">"{marka} USA / Inc / America"</span></div></details>
+      <details class="angle"><summary><span class="an">10</span><span class="at">Yerel dil sorguları (LatAm zorunlu)</span><span class="plus">+</span></summary><div class="body">İspanyolca/Portekizce dizinler ve sorgular. <span class="q">"fabricante de prensas hidráulicas"</span></div></details>
+      <details class="angle"><summary><span class="an">11</span><span class="at">İkinci-el / marketplace reverse-lookup</span><span class="plus">+</span></summary><div class="body">Pazaryerinden <strong>marka</strong> çıkarıp o markanın üreticisini bulma. <span class="q">MachineTools · Surplus Record</span></div></details>
+    </div>
+
+    <div class="callout reveal" data-d="2">
+      <span class="mono">Sürüm notu · Sistem kendini iyileştiriyor</span>
+      <p style="margin-top:.6rem">İlk versiyon 8 açıdaydı. Gerçek taramalarda yabancı üreticilerin yerel iştiraklerinin kaçtığı görüldü → v2'de 9., 10. ve 11. açılar eklendi. Eksik bulundukça sistem genişliyor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOĞRULAMA ===== -->
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Doğrulama</span>
+      <h2>Bulmak yetmez.</h2>
+      <p class="lead" style="margin-top:1rem">Yapay zekâ bir isim buldu diye iş bitmiyor. Her firmanın sitesi gerçekten ziyaret edilip soruluyor: bu firma bizim <strong>alıcımız</strong> mı?</p>
+    </div>
+    <div class="split">
+      <div class="reveal" data-d="1">
+        <h3 style="margin-bottom:1.25rem;font-size:1.15rem">Kritik ayrım</h3>
+        <ul class="verify-list">
+          <li><span class="mk yes">HEDEF <span aria-hidden="true">✓</span></span> Üretici / OEM — "biz tasarlar ve üretiriz"</li>
+          <li><span class="mk no">ELE <span aria-hidden="true">✕</span></span> Atölye / Servis — "biz hizmet veririz"</li>
+          <li><span class="mk no">BAĞLAMA GÖRE</span> Bayi / Distribütör</li>
+          <li><span class="mk no">ELE <span aria-hidden="true">✕</span></span> Son kullanıcı — makineyi kullanan fabrika</li>
+        </ul>
+        <div class="callout" style="margin-top:1.5rem">
+          <span class="mono">Halüsinasyon yasak</span>
+          <p style="margin-top:.5rem;font-size:.95rem">Sitede bulunamayan bilgi uydurulmaz — "unknown" yazılır. Her MATCH için siteden alınmış bir kanıt cümlesi zorunludur.</p>
+        </div>
+      </div>
+      <div class="reveal" data-d="2">
+        <h3 style="margin-bottom:1.25rem;font-size:1.15rem">Skor & statü</h3>
+        <table>
+          <thead><tr><th>Statü</th><th>Anlamı</th><th>Skor</th></tr></thead>
+          <tbody>
+            <tr><td>MATCH</td><td>Net uyum, kanıtlı</td><td>70–100</td></tr>
+            <tr><td>PARTIAL</td><td>Kısmen, bilgi eksik</td><td>40–69</td></tr>
+            <tr><td>ELIMINATED</td><td>Negatif filtre tetiklendi</td><td>0–39</td></tr>
+            <tr><td>REVIEW</td><td>İnsan kararı şart</td><td>—</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1.25rem;font-size:.9rem">Her satır eleme nedeniyle birlikte kaydedilir; coğrafyalar arası tekrarlar konsolidasyonda tekilleştirilir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ÇIKTI ===== -->
+<section class="divider">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Çıktı</span>
+      <h2>Ne teslim ediyoruz?</h2>
+      <p class="lead" style="margin-top:1rem">Sonuç bir isim listesi değil — her firma için web sitesi, özet, kanıt cümlesi, iletişim ve skor içeren, makine-okunabilir bir veri seti.</p>
+    </div>
+    <div class="scroll-x reveal" data-d="1">
+      <table>
+        <thead><tr><th>company_name</th><th>country</th><th>status</th><th>score</th><th>icp_subcategory</th><th>match_evidence</th><th>contact_email</th></tr></thead>
+        <tbody>
+          <tr><td>Everest Electrical</td><td>AE</td><td>MATCH</td><td>95</td><td>Multi-brand motor distributor</td><td>"Already carries Gamak; multi-brand"</td><td>info@…</td></tr>
+          <tr><td>Pokhara Motors</td><td>AE</td><td>MATCH</td><td>92</td><td>Motor + gearbox distributor</td><td>"Regional presence UAE/SA/QA/OM"</td><td>sales@…</td></tr>
+          <tr><td>PowerGas Global</td><td>AE</td><td>PARTIAL</td><td>58</td><td>Pumps & water systems</td><td>"Motors not confirmed as core"</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mono" style="margin-top:1.5rem;color:var(--text-2)">Üretilen dosyalar</p>
+    <div class="badges">
+      <span class="badge">*.csv — ana lead</span>
+      <span class="badge">*_CROSSMATCH.csv</span>
+      <span class="badge">*_REVIEW.md</span>
+      <span class="badge">*_log.md</span>
+      <span class="badge">*_FOUND.txt — dedup</span>
+      <span class="badge">*_RESUME.md</span>
+      <span class="badge">state.json</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SONUÇLAR ===== -->
+<section class="divider" id="sonuclar">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Kanıt</span>
+      <h2>Bu sadece teori değil.</h2>
+      <p class="lead" style="margin-top:1rem">Sistem şu an iki gerçek müşteri için çalışıyor — üç kıtada, yüzden fazla hedef coğrafyaya yayılan bir kapsamda.</p>
+    </div>
+    <div class="proof">
+      <div class="card reveal" data-d="1">
+        <span class="mono amber">Vaka 01 · AC Motor Distribütörleri</span>
+        <div class="big">38 ülke</div>
+        <p class="sub"><strong>Degisim Motor</strong> — Bursa merkezli motor & güç aktarım üreticisi için dağıtım ağı araması. <strong>Canlı, devam eden sistem.</strong></p>
+        <ul>
+          <li>UAE'den Umman'a — 19 ülke tamamlandı, kalan fazlar sürüyor</li>
+          <li>12 marka portföyü, 41 hedef ülke, 6 dağıtım segmenti</li>
+          <li>Yandex-ağırlıklı coğrafya: Kafkasya + Orta Asya + Ortadoğu</li>
+        </ul>
+      </div>
+      <div class="card reveal" data-d="2">
+        <span class="mono amber">Vaka 02 · Hidrolik Silindir OEM'leri</span>
+        <div class="big">64 ICP</div>
+        <p class="sub"><strong>Ünverler Makine</strong> — özel tasarım büyük hidrolik silindir üreticisi için alıcı OEM araması.</p>
+        <ul>
+          <li>12 segment, 64 alıcı profili</li>
+          <li>G1: 29 onaylı · G2: 168+60 onaylı lead</li>
+          <li>ABD + Kanada + Meksika + G. Amerika + Japonya + Kore + İngiltere</li>
+        </ul>
+      </div>
+    </div>
+    <div class="totalbar reveal" data-d="3"><b>2</b> MÜŞTERİ &nbsp;·&nbsp; <b>100+</b> HEDEF COĞRAFYA &nbsp;·&nbsp; <b>400+</b> DOĞRULANMIŞ ADAY</div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="divider" id="iletisim">
+  <div class="wrap cta reveal">
+    <img src="assets/tibexa-darklogo.png" alt="Tibexa Global" width="124" height="40" decoding="async">
+    <h2>Tahminle satmayın. Doğru alıcıyı bulun.</h2>
+    <p>Ürününüzü dünyada doğru firmalara ulaştırmak istiyorsanız, bu sistemi sizin için de kurabiliriz. Tibexa ile konuşalım.</p>
+    <a class="btn" href="https://tibexa.com/iletisim">İletişime Geç</a>
+    <a class="alt" href="https://tibexa.com">Daha fazla blog yazısı →</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="foot">
+    <div class="foot-l">
+      <img src="assets/tibexa-darklogo.png" alt="Tibexa Global" width="62" height="20" loading="lazy" decoding="async">
+      <span>© 2026 Tibexa Global</span>
+    </div>
+    <div class="foot-r">
+      <a href="https://tibexa.com">tibexa.com</a>
+      <a href="https://tibexa.com/blog">Blog</a>
+      <a href="https://tibexa.com/iletisim">İletişim</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Progressive enhancement: JS aktif → reveal animasyonlarını etkinleştir.
+// Reveal'ler ancak .js sınıfı eklenince gizlenir; bu satır çalışmazsa içerik default görünür kalır.
+document.documentElement.classList.add('js');
+
+// Fail-safe: IntersectionObserver yoksa veya kurulum patlarsa, her şeyi anında görünür yap.
+function revealAll(){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));}
+
+try{
+  if(!('IntersectionObserver' in window)){
+    revealAll();
+  }else{
+    // Reveal on scroll
+    const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Workflow active-step highlight
+    const steps=[...document.querySelectorAll('[data-step]')];
+    const stepIO=new IntersectionObserver((es)=>{es.forEach(e=>{e.target.classList.toggle('active',e.isIntersecting&&e.intersectionRatio>0.6)})},{threshold:[0,0.6,1],rootMargin:'-30% 0px -30% 0px'});
+    steps.forEach(s=>stepIO.observe(s));
+
+    // Scroll-spy nav
+    const navlinks=[...document.querySelectorAll('.nav-links a')];
+    const secs=navlinks.map(a=>document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+    const spy=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;navlinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id))}})},{rootMargin:'-45% 0px -50% 0px'});
+    secs.forEach(s=>spy.observe(s));
+  }
+}catch(err){
+  // Herhangi bir adım patlarsa içeriği görünür bırak — boş sayfa asla olmasın.
+  revealAll();
+}
+</script>
+</body>
+</html>
