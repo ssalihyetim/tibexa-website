@@ -1,6 +1,6 @@
-FROM nginx:alpine
-COPY . /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-RUN chmod -R a+rX /usr/share/nginx/html
+FROM node:20-alpine
+WORKDIR /app
+COPY . .
+ENV NODE_ENV=production
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "server.js"]
