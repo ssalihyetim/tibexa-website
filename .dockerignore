@@ -1,0 +1,11 @@
+# Build/VCS artefaktları — image'a girmesin
+.git
+.gitignore
+node_modules
+.DS_Store
+.gstack/
+.claude/
+
+# İç dökümanlar — web kökünde public serve EDİLMEMELİ
+CLAUDE.md
+teklif/UniversMeetingTscrip.md
