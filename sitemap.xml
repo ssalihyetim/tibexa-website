@@ -44,8 +44,20 @@
   </url>
   <url>
     <loc>https://tibexa.com/blog.html</loc>
-    <lastmod>2026-04-04</lastmod>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tibexa.com/blog-linkedin-ile-musteri-bulma.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tibexa.com/blog-ihracatta-fiyat-teklifi.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
