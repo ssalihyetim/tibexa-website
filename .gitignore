@@ -5,3 +5,11 @@ node_modules/
 .env.local
 .env.*.local
 .claude/
+
+# goose-aeo (AEO ölçüm aracı) — yerel araç durumu, public serve/commit EDİLMEMELİ
+.goose-aeo.yml
+goose-aeo.db
+goose-aeo.db-*
+pricing.json
+queries.json
+.goose-aeo/

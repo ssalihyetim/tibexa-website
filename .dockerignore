@@ -9,3 +9,12 @@ node_modules
 # İç dökümanlar — web kökünde public serve EDİLMEMELİ
 CLAUDE.md
 teklif/UniversMeetingTscrip.md
+
+# goose-aeo (AEO ölçüm aracı) — yerel araç durumu, web'e çıkmamalı
+.goose-aeo.yml
+goose-aeo.db
+goose-aeo.db-*
+pricing.json
+queries.json
+.goose-aeo/
+.env.example

@@ -1,4 +1,62 @@
+# Tibexa Global — robots.txt
+# Genel kurallar
 User-agent: *
+Allow: /
+Disallow: /teklif/
+
+# --- Yapay zekâ / yanıt motoru botları (AEO) ---
+# Tibexa içeriğinin AI yanıt motorlarında görünmesini açıkça destekliyoruz.
+# /teklif/ (müşteriye özel teklifler) tüm botlara kapalı tutulur.
+
+User-agent: GPTBot
+Allow: /
+Disallow: /teklif/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /teklif/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /teklif/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /teklif/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /teklif/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /teklif/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /teklif/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /teklif/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /teklif/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /teklif/
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /teklif/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /teklif/
+
+User-agent: CCBot
 Allow: /
 Disallow: /teklif/
 
