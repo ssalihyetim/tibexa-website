@@ -17,6 +17,10 @@ Tibexa'nın temel yaklaşımı: "Uluslararası alıcı bulmak şans işi değil,
 - [Selin Çikolata](https://tibexa.com/case-selin-cikolata.html): 2 ayda 300+ pozitif dönüş; sprint kampanyadan uzun vadeli partnerliğe.
 
 ## İçgörüler (Blog)
+- [İhracatta Pazara Giriş Danışmanı Seçerken Nelere Dikkat Etmeli?](https://tibexa.com/blog-pazara-giris-danismani-secimi.html): Pazara giriş/ihracat danışmanı seçimi: 7 soru, değerlendirme kontrol listesi, fiyat modelleri; danışman, hizmet ve veri aracı farkı.
+- [Uçtan Uca Yurt Dışı Satış Geliştirme: Outsource SDR, Pipeline ve Toplantı Ayarlama](https://tibexa.com/blog-uctan-uca-yurt-disi-satis-gelistirme.html): Dış kaynaklı satış geliştirme, sistematik satış hattı (pipeline) kurulumu ve B2B toplantı ayarlama; çıktılar, KPI'lar ve çalışma modelleri.
+- [Yapay Zeka ile Yurt Dışı Alıcı Bulma: Araçlar ve AI + İnsan Yöntemi](https://tibexa.com/blog-yapay-zeka-ihracat-alici-bulma.html): AI destekli importer keşfi, HS kodu analizi, segmentasyon ve lead skorlama; yapay zekânın sınırları ve insan doğrulamasının rolü.
+- [Soğuk Lead Yerine Nitelikli İhracat Lead'i Nasıl Bulunur?](https://tibexa.com/blog-nitelikli-ihracat-lead.html): Nitelikli lead tanımı ve niteleme kriterleri; lead niteliğini artıran adımlar ve B2B lead generation hizmeti seçim kontrol listesi.
 - [İhracata Nasıl Başlanır? 2026 Adım Adım Rehber](https://tibexa.com/blog-ihracata-nasil-baslanir.html): İhracata sıfırdan başlamak için adım adım yol haritası.
 - [B2B Lead Generation Nedir? İhracatçılar İçin Kapsamlı Rehber](https://tibexa.com/blog-b2b-lead-generation-nedir.html): B2B lead generation tanımı, inbound/outbound yöntemler ve ihracatta uygulaması.
 - [İhracat Müşterisi Bulma Yöntemleri Karşılaştırması](https://tibexa.com/blog-ihracat-musteri-bulma-yontemleri-karsilastirma.html): Fuar, B2B pazaryerleri, LinkedIn ve outbound yöntemlerinin maliyet/hız/ölçek karşılaştırması.
