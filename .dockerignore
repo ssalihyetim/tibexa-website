@@ -10,6 +10,9 @@ node_modules
 CLAUDE.md
 teklif/UniversMeetingTscrip.md
 
+# IndexNow gönderim scripti — iç araç, image'a girmesin (ama <key>.txt PUBLIC kalmalı!)
+indexnow-submit.sh
+
 # goose-aeo (AEO ölçüm aracı) — yerel araç durumu, web'e çıkmamalı
 .goose-aeo.yml
 goose-aeo.db
