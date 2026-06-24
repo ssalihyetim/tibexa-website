@@ -146,7 +146,13 @@ function proxyR2(req, res, pathname) {
 }
 
 const server = http.createServer((req, res) => {
-  const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+  let url;
+  try {
+    url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+  } catch {
+    // Bozuk istek yolu (ör. bot'ların gönderdiği "//") tüm process'i düşürmesin.
+    return send(res, 400, 'Bad Request\n', { 'Content-Type': 'text/plain; charset=utf-8' });
+  }
   if (url.pathname === '/healthz') return send(res, 200, 'ok\n', { 'Content-Type': 'text/plain; charset=utf-8' });
   if (url.pathname === '/plusvibe' || url.pathname.startsWith('/plusvibe/')) return proxyR2(req, res, url.pathname);
   return serveStatic(req, res, url.pathname);
@@ -154,4 +160,9 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`tibexa website listening on :${PORT}`);
+});
+
+// Son güvenlik ağı: yakalanmamış bir hata process'i çökertip siteyi düşürmesin.
+process.on('uncaughtException', err => {
+  console.error('uncaughtException (yutuldu):', err && err.stack ? err.stack : err);
 });
