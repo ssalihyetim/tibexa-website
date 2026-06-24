@@ -9,6 +9,7 @@ node_modules
 # İç dökümanlar — web kökünde public serve EDİLMEMELİ
 CLAUDE.md
 teklif/UniversMeetingTscrip.md
+teklif/SEO-Keyword-Stratejisi.md
 
 # IndexNow gönderim scripti — iç araç, image'a girmesin (ama <key>.txt PUBLIC kalmalı!)
 indexnow-submit.sh
