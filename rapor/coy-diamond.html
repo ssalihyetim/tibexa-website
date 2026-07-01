@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex, nosnippet" />
+<title>Coy Diamond — Uluslararası Pazar Araştırması & İhracat Projeksiyonu · Tibexa Global</title>
+<meta name="description" content="Tibexa Global tarafından Coy Diamond için hazırlanan uluslararası pazar araştırması sonuç raporu ve 3 senaryolu ihracat gelir projeksiyonu." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #000000;
+    --surface: #0A0A0A;
+    --surface-2: #141414;
+    --text: #FFFFFF;
+    --text-2: #A1A1AA;
+    --amber: #C89010;
+    --gold: #F5C842;
+    --border: #27272A;
+    --sans: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text-2);
+    font-family: var(--sans); font-weight: 400; line-height: 1.7;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-size: 16px;
+  }
+  ::selection { background: var(--amber); color: #000; }
+
+  /* ---------- Typography ---------- */
+  h1, h2, h3, h4 { color: var(--text); font-weight: 500; letter-spacing: -0.03em; line-height: 1.14; }
+  h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); }
+  h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.02em; }
+  h4 { font-size: 1rem; letter-spacing: -0.01em; }
+  p { margin-top: 0.9rem; max-width: 70ch; }
+  strong { color: var(--text); font-weight: 500; }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }
+  a:hover { border-color: var(--gold); }
+
+  .eyebrow {
+    font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.12em;
+    font-size: 0.72rem; color: var(--amber); font-weight: 500;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--amber); opacity: .8; }
+  .lead { color: var(--text-2); font-size: clamp(1rem, 1.5vw, 1.12rem); }
+  .accent { color: var(--gold); }
+  .muted-txt { color: var(--text-2); }
+
+  /* ---------- Reading progress ---------- */
+  #progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 100;
+    background: linear-gradient(90deg, var(--amber), var(--gold)); transition: width .1s linear; }
+
+  /* ---------- Top bar ---------- */
+  header.topbar {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(0,0,0,0.74); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar .row { display: flex; align-items: center; justify-content: space-between; height: 60px; max-width: 1340px; margin: 0 auto; padding: 0 24px; }
+  .brand { display: flex; align-items: center; gap: 11px; }
+  .brand svg { width: 20px; height: 20px; display: block; }
+  .brand .wm { font-weight: 600; color: var(--text); letter-spacing: 0.16em; font-size: 0.92rem; }
+  .brand .wm span { color: var(--text-2); font-weight: 400; }
+  .topbar .tag { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.66rem; color: var(--text-2); }
+  @media (max-width: 680px){ .topbar .tag { display: none; } }
+
+  /* ---------- Mobile nav strip ---------- */
+  .topnav-m { display: none; position: sticky; top: 60px; z-index: 50;
+    overflow-x: auto; white-space: nowrap; gap: 8px;
+    background: rgba(0,0,0,0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border); padding: 10px 16px; -ms-overflow-style: none; scrollbar-width: none; }
+  .topnav-m::-webkit-scrollbar { display: none; }
+  .topnav-m a { display: inline-block; font-size: 0.78rem; padding: 6px 13px; border-radius: 20px;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text-2); border-bottom: none; }
+  .topnav-m a.active { color: #000; background: linear-gradient(90deg, var(--amber), var(--gold)); border-color: transparent; font-weight: 500; }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; overflow: hidden; padding: clamp(64px, 11vw, 120px) 24px clamp(40px, 6vw, 64px); }
+  .hero-inner { max-width: 1340px; margin: 0 auto; }
+  .hero::before { content: ""; position: absolute; inset: 0;
+    background: radial-gradient(1100px 460px at 16% -10%, rgba(200,144,16,0.15), transparent 60%); pointer-events: none; }
+  .hero h1 { font-size: clamp(2.1rem, 5.6vw, 3.9rem); margin-top: 1.3rem; max-width: 20ch;
+    background: linear-gradient(180deg, #fff 58%, #d6d6db); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero .lead { margin-top: 1.4rem; max-width: 62ch; }
+  .hero-meta { margin-top: 2.4rem; display: flex; flex-wrap: wrap; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--surface); max-width: 880px; }
+  .hero-meta div { flex: 1 1 180px; padding: 15px 20px; border-right: 1px solid var(--border); }
+  .hero-meta div:last-child { border-right: none; }
+  .hero-meta .k { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.6rem; color: var(--text-2); }
+  .hero-meta .v { color: var(--text); font-size: 0.9rem; margin-top: 4px; font-weight: 500; }
+  @media (max-width: 560px){ .hero-meta div { flex: 1 1 100%; border-right: none; border-bottom: 1px solid var(--border); } .hero-meta div:last-child { border-bottom: none; } }
+
+  /* ---------- KPI strip ---------- */
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .kpi { background: var(--surface); padding: 24px 22px; }
+  .kpi .num { color: var(--text); font-size: clamp(1.7rem, 3.6vw, 2.4rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1; }
+  .kpi .num .u { color: var(--amber); font-size: 0.55em; margin-left: 2px; }
+  .kpi .lab { font-size: 0.82rem; margin-top: 11px; color: var(--text-2); }
+  .kpi .lab b { color: var(--text); font-weight: 500; }
+
+  /* ---------- Layout: sidebar + main ---------- */
+  .intro { max-width: 1340px; margin: 0 auto; padding: 0 24px clamp(24px, 4vw, 40px); }
+  .layout { max-width: 1340px; margin: 0 auto; display: flex; align-items: flex-start; padding: 0 24px; }
+  .sidenav { position: sticky; top: 60px; flex: 0 0 244px; align-self: flex-start; height: calc(100vh - 60px); overflow-y: auto; padding: 40px 22px 40px 0; border-right: 1px solid var(--border); }
+  .sidenav::-webkit-scrollbar { width: 6px; } .sidenav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; }
+  .sidenav .navtitle { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.6rem; color: var(--text-2); margin: 0 12px 14px; }
+  .sidenav a { display: flex; gap: 11px; align-items: baseline; padding: 8px 12px; border-radius: 8px; color: var(--text-2); font-size: 0.85rem; border-left: 2px solid transparent; border-bottom: none; transition: background .2s, color .2s, border-color .2s; }
+  .sidenav a .n { font-family: var(--mono); font-size: 0.68rem; color: #56565c; flex: 0 0 auto; }
+  .sidenav a:hover { color: var(--text); background: var(--surface); }
+  .sidenav a.active { color: var(--text); border-left-color: var(--amber); background: linear-gradient(90deg, rgba(200,144,16,0.09), transparent); }
+  .sidenav a.active .n { color: var(--amber); }
+  .sidenav .navfoot { margin: 22px 12px 0; padding-top: 18px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.08em; color: #56565c; line-height: 1.9; }
+
+  .main { flex: 1 1 auto; min-width: 0; padding-left: 52px; }
+  @media (max-width: 1024px){
+    .sidenav { display: none; }
+    .main { padding-left: 0; }
+    .topnav-m { display: flex; }
+  }
+
+  /* ---------- Section rhythm ---------- */
+  section { padding: clamp(54px, 7vw, 86px) 0; border-top: 1px solid var(--border); scroll-margin-top: 84px; }
+  section:first-child { border-top: none; }
+  @media (max-width: 1024px){ section { scroll-margin-top: 124px; } }
+  .sec-head { margin-bottom: 2.4rem; }
+  .sec-head h2 { margin-top: 0.8rem; }
+  .sec-head p { margin-top: 1.05rem; }
+  .block { margin-top: 2.6rem; }
+  .block > h3 { margin-bottom: 0.4rem; }
+
+  /* ---------- Cards / grids ---------- */
+  .grid { display: grid; gap: 16px; }
+  .g-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .g-3 { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px 22px; transition: border-color .25s; }
+  .card:hover { border-color: #3a3a40; }
+  .card h3 { margin-bottom: 8px; }
+  .card .ico { font-family: var(--mono); color: var(--amber); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .card p { margin-top: 8px; font-size: 0.94rem; }
+
+  .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .pillar { background: var(--surface); border: 1px solid var(--border); border-left: 2px solid var(--amber); border-radius: 12px; padding: 22px; }
+  .pillar .n { font-family: var(--mono); color: var(--amber); font-size: 0.72rem; letter-spacing: 0.08em; }
+  .pillar h3 { margin: 10px 0 6px; font-size: 1.02rem; }
+  .pillar p { font-size: 0.89rem; margin-top: 4px; }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .fact { background: var(--surface); padding: 18px 20px; }
+  .fact .k { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.58rem; color: var(--text-2); }
+  .fact .v { color: var(--text); font-size: 0.92rem; margin-top: 5px; font-weight: 500; }
+  .fact .v small { color: var(--text-2); font-weight: 400; display: block; font-size: 0.8rem; margin-top: 2px; }
+
+  /* ---------- Pull quote ---------- */
+  .quote { margin-top: 2.2rem; padding: 28px 30px; border-radius: 16px;
+    background: linear-gradient(135deg, rgba(200,144,16,0.10), rgba(245,200,66,0.03)); border: 1px solid rgba(200,144,16,0.32); }
+  .quote p { color: var(--text); font-size: clamp(1.1rem, 2.2vw, 1.5rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.42; margin: 0; max-width: none; }
+  .quote .src { display: block; margin-top: 14px; font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); }
+
+  /* ---------- Q&A blocks ---------- */
+  .qa { display: grid; gap: 14px; }
+  .qa-block { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; }
+  .qa-block .qh { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .qa-block .qh .qn { font-family: var(--mono); color: var(--amber); font-size: 0.72rem; }
+  .qa-block h3 { font-size: 1.02rem; }
+  .qa-item { padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .qa-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .qa-q { font-family: var(--mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-2); }
+  .qa-a { color: var(--text); margin-top: 5px; font-size: 0.94rem; line-height: 1.55; }
+
+  /* ---------- Bar charts ---------- */
+  .chart { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 14px; }
+  .bar__top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; }
+  .bar__name { color: var(--text); font-size: 0.9rem; font-weight: 500; }
+  .bar__val { font-family: var(--mono); color: var(--gold); font-size: 0.8rem; font-weight: 500; }
+  .bar__track { height: 9px; background: var(--surface-2); border-radius: 20px; overflow: hidden; }
+  .bar__fill { height: 100%; border-radius: 20px; background: linear-gradient(90deg, var(--amber), var(--gold)); }
+  .bar.muted .bar__fill { background: #3a3a40; }
+  .bar.lead-bar .bar__name::after { content: " ★"; color: var(--amber); }
+  .chart-note { font-family: var(--mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-2); margin-top: 16px; opacity: .85; }
+
+  /* ---------- Tables ---------- */
+  .tbl-wrap { margin-top: 1.5rem; overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 540px; }
+  th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  thead th { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.62rem; color: var(--text-2); font-weight: 500; background: var(--surface); position: sticky; top: 0; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody td { color: var(--text-2); }
+  tbody td.em { color: var(--text); font-weight: 500; }
+  tr.hl td { background: rgba(200,144,16,0.06); }
+  tr.grp td { background: var(--surface-2); color: var(--gold); font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .tnum { text-align: right; font-family: var(--mono); }
+  td.tnum, th.tnum { white-space: nowrap; }
+  tfoot td { font-weight: 500; color: var(--text); background: var(--surface); border-top: 1px solid var(--amber); font-family: var(--mono); }
+
+  .tier { display: inline-block; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; white-space: nowrap; }
+  .t1 { background: rgba(245,200,66,0.14); color: var(--gold); border: 1px solid rgba(245,200,66,0.3); }
+  .t2 { background: rgba(200,144,16,0.12); color: var(--amber); border: 1px solid rgba(200,144,16,0.3); }
+  .t3 { background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border); }
+
+  /* ---------- Funnel ---------- */
+  .funnel { margin-top: 1.6rem; display: flex; flex-direction: column; gap: 10px; }
+  .fstep { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 13px 18px; display: flex; align-items: center; gap: 16px; }
+  .fstep .ftrack { flex: 0 0 42%; height: 28px; background: var(--surface-2); border-radius: 6px; overflow: hidden; }
+  .fstep .fbar { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--amber), var(--gold)); min-width: 6px; }
+  .fstep .fmeta { display: flex; flex-direction: column; min-width: 0; }
+  .fstep .fnum { font-family: var(--mono); color: var(--text); font-weight: 500; font-size: 1.02rem; line-height: 1.1; }
+  .fstep .flab { font-size: 0.81rem; color: var(--text-2); }
+  .fstep .fconv { margin-left: auto; font-family: var(--mono); font-size: 0.68rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ---------- Chips ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 1.3rem; }
+  .chip { font-size: 0.79rem; padding: 7px 14px; border-radius: 20px; background: var(--surface); border: 1px solid var(--border); color: var(--text-2); }
+  .chip.neg { border-color: rgba(220,80,80,0.28); color: #d99; }
+  .chip.neg::before { content: "✕ "; opacity: .7; }
+  .chip.pos { border-color: rgba(200,144,16,0.34); color: var(--gold); }
+  .chip.pos::before { content: "✓ "; opacity: .8; }
+
+  /* ---------- Callout ---------- */
+  .callout { margin-top: 1.6rem; background: var(--surface); border: 1px solid var(--border); border-left: 2px solid var(--amber); border-radius: 12px; padding: 20px 22px; }
+  .callout .ct { font-family: var(--mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); }
+  .callout p { font-size: 0.9rem; margin-top: 7px; }
+
+  /* ---------- Steps ---------- */
+  .steps { counter-reset: step; margin-top: 1.4rem; display: grid; gap: 14px; }
+  .step { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px 22px 68px; }
+  .step::before { counter-increment: step; content: counter(step, decimal-leading-zero);
+    position: absolute; left: 22px; top: 22px; font-family: var(--mono); font-size: 0.9rem; color: var(--amber); font-weight: 500; }
+  .step h3 { font-size: 1rem; margin-bottom: 5px; }
+  .step p { margin-top: 4px; font-size: 0.9rem; }
+
+  /* ---------- Bridge / next-step ---------- */
+  .nextstep { margin-top: 2rem; border-radius: 18px; padding: clamp(26px, 5vw, 42px);
+    background: linear-gradient(135deg, rgba(200,144,16,0.13), rgba(10,10,10,0.4)); border: 1px solid rgba(200,144,16,0.34); }
+  .nextstep h3 { font-size: clamp(1.15rem, 2.5vw, 1.6rem); }
+  .nextstep p { color: var(--text-2); margin-top: 12px; max-width: 72ch; }
+
+  /* ---------- Sources / notes ---------- */
+  .sources { margin-top: 1.3rem; display: grid; gap: 8px; }
+  .sources li { list-style: none; font-size: 0.84rem; color: var(--text-2); padding-left: 18px; position: relative; }
+  .sources li::before { content: "→"; position: absolute; left: 0; color: var(--amber); }
+  .note-box { margin-top: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; }
+  .note-box p { font-size: 0.87rem; margin-top: 0.6rem; }
+  .note-box p:first-child { margin-top: 0; }
+
+  ul.tick { margin-top: 1rem; list-style: none; display: grid; gap: 9px; }
+  ul.tick li { padding-left: 22px; position: relative; font-size: 0.93rem; }
+  ul.tick li::before { content: "▸"; position: absolute; left: 0; color: var(--amber); }
+  ul.tick li b { color: var(--text); font-weight: 500; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 52px 24px 60px; }
+  footer .frow { max-width: 1340px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: flex-start; }
+  footer .fbrand .wm { font-weight: 600; color: var(--text); letter-spacing: 0.16em; }
+  footer .fbrand .wm span { color: var(--text-2); font-weight: 400; }
+  footer .ftag { font-size: 0.84rem; color: var(--text-2); margin-top: 10px; max-width: 40ch; }
+  footer .fmeta { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-2); text-align: right; line-height: 2; }
+  .disclaimer { max-width: 1340px; margin: 28px auto 0; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.04em; color: #5a5a60; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="row">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 3 H18 L22.5 9 L12 22 L1.5 9 Z" stroke="#C89010" stroke-width="1.3" stroke-linejoin="round"/>
+        <path d="M1.5 9 H22.5 M9 3 L7 9 L12 22 M15 3 L17 9 L12 22" stroke="#C89010" stroke-width="0.8" opacity="0.55"/>
+      </svg>
+      <span class="wm">TIBEXA <span>GLOBAL</span></span>
+    </div>
+    <span class="tag">Araştırma Raporu · Coy Diamond · Gizli</span>
+  </div>
+</header>
+
+<!-- ============ MOBILE NAV ============ -->
+<nav class="topnav-m" id="topnavM">
+  <a href="#ozet" data-nav>01 Özet</a>
+  <a href="#konum" data-nav>02 Konumlandırma</a>
+  <a href="#qa" data-nav>03 Firma Görüşmesi</a>
+  <a href="#pazar" data-nav>04 Pazar</a>
+  <a href="#hedef" data-nav>05 Hedef Pazar</a>
+  <a href="#icp" data-nav>06 Müşteri Profili</a>
+  <a href="#cografya" data-nav>07 Coğrafya</a>
+  <a href="#arama" data-nav>08 Arama Zekâsı</a>
+  <a href="#projeksiyon" data-nav>09 Projeksiyon</a>
+  <a href="#yol" data-nav>10 Yol Haritası</a>
+  <a href="#metodoloji" data-nav>11 Metodoloji</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Tibexa Global · Uluslararası Alıcı Geliştirme</span>
+    <h1>Coy Diamond Uluslararası Pazar Araştırması &amp; İhracat Projeksiyonu</h1>
+    <p class="lead">Tasarım-odaklı erkek takısında dünyanın en büyük lüks tüketim pazarına açılma fırsatı —
+      firma görüşmesinden başlayıp pazar tespiti, ideal alıcı profili, coğrafya haritalaması ve üç senaryolu gelir
+      modeline uzanan, uçtan uca çalışmanın sonuç raporu.</p>
+
+    <div class="hero-meta">
+      <div><div class="k">Hazırlayan</div><div class="v">Tibexa Global</div></div>
+      <div><div class="k">Firma</div><div class="v">Coy Diamond · İstanbul / Kapalıçarşı</div></div>
+      <div><div class="k">Tarih</div><div class="v">30 Haziran 2026</div></div>
+      <div><div class="k">Durum</div><div class="v">Gizli · Firmaya Özel</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ KPI STRIP ============ -->
+<div class="intro">
+  <div class="kpis">
+    <div class="kpi"><div class="num">ABD</div><div class="lab"><b>1 numaralı hedef pazar</b> — küresel lüks mücevherin %29'u</div></div>
+    <div class="kpi"><div class="num">~2.000–3.400</div><div class="lab"><b>Coy-uyumlu adreslenebilir alıcı</b> · 6 çekirdek ülke (bağımsız doğrulamalı)</div></div>
+    <div class="kpi"><div class="num">~325–525</div><div class="lab"><b>İlk-dalga yüksek-uyum</b> hesap — efor buraya</div></div>
+    <div class="kpi"><div class="num">%8.7</div><div class="lab"><b>Erkek takı</b> yıllık büyüme — en hızlı büyüyen segment</div></div>
+    <div class="kpi"><div class="num">~$4.5<span class="u">M</span></div><div class="lab">3 yıllık tekrarlı ciro potansiyeli <b>(gerçekçi)</b></div></div>
+  </div>
+</div>
+
+<!-- ============ LAYOUT ============ -->
+<div class="layout">
+
+  <!-- SIDE NAV -->
+  <aside class="sidenav">
+    <div class="navtitle">İçindekiler</div>
+    <a href="#ozet" data-nav><span class="n">01</span> Yönetici Özeti</a>
+    <a href="#konum" data-nav><span class="n">02</span> Firma Konumlandırması</a>
+    <a href="#qa" data-nav><span class="n">03</span> Firma Görüşmesi (Q&amp;A)</a>
+    <a href="#pazar" data-nav><span class="n">04</span> Pazar Çerçevesi</a>
+    <a href="#hedef" data-nav><span class="n">05</span> Hedef Pazar Tespiti</a>
+    <a href="#icp" data-nav><span class="n">06</span> İdeal Müşteri Profili</a>
+    <a href="#cografya" data-nav><span class="n">07</span> Coğrafya &amp; Sizing</a>
+    <a href="#arama" data-nav><span class="n">08</span> Arama Zekâsı</a>
+    <a href="#projeksiyon" data-nav><span class="n">09</span> Gelir Projeksiyonu</a>
+    <a href="#yol" data-nav><span class="n">10</span> Uygulama Yol Haritası</a>
+    <a href="#metodoloji" data-nav><span class="n">11</span> Metodoloji</a>
+    <div class="navfoot">Tibexa Global<br>30 Haziran 2026<br>Firmaya Özel</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- 01 EXECUTIVE SUMMARY -->
+    <section id="ozet">
+      <div class="sec-head">
+        <span class="eyebrow">01 — Yönetici Özeti</span>
+        <h2>Doğru fark, doğru dalgada</h2>
+        <p class="lead">Coy Diamond'ın ayrışması — <strong>her ayrıntıda özgün tasarım</strong>, <strong>rakipte olmayan derin erkek
+          koleksiyonu</strong> ve <strong>tasarımdan üretime entegre hız</strong> — küresel mücevherin en hızlı büyüyen damarı olan
+          erkek takısıyla birebir örtüşüyor. Bu rapor, firma ile yapılan birebir görüşmeden yola çıkarak fırsatı uçtan uca haritalıyor.</p>
+      </div>
+
+      <div class="grid g-2">
+        <div class="card">
+          <span class="ico">Bulgu</span>
+          <h3>Hedef pazar ABD önceliklidir</h3>
+          <p>Lüks mücevher harcamasının %29'u, en büyük ve en hızlı büyüyen erkek takı pazarı (~$5.64 milyar) ve dünyanın en geniş
+            tasarım-butik / konsept mağaza / erkek-aksesuar ekosistemi ABD'de. Batı Avrupa (Almanya, İngiltere, İtalya, Fransa)
+            çekirdek; Yunanistan, diaspora ve kurumsal hediye fırsatçı katman.</p>
+        </div>
+        <div class="card">
+          <span class="ico">Sonuç</span>
+          <h3>Derin havuz, disiplinli ilk-dalga</h3>
+          <p>Kanıt-temelli ve bağımsız doğrulanmış (GPT-5.5) kalibrasyon: 6 çekirdek ülkede <strong>~2.000–3.400 Coy-uyumlu
+            adreslenebilir alıcı</strong>, bunun <strong>~325–525'i yüksek-uyumlu ilk-dalga</strong>. Partner-başına $100k–$300k/yıl
+            temelinde disiplinli (DAR) senaryoda <strong>3 yılda ~$4.5–5.5M tekrarlı ciro</strong>; kazanım kapasite + enablement ile
+            sınırlı, havuz değil.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Bu rapor neyi kapsıyor</h3>
+        <ul class="tick">
+          <li><b>Firma görüşmesi (Q&amp;A):</b> 7 temada firmanın kendi cevapları — değer önermesinden ciro beklentisine.</li>
+          <li><b>Pazar çerçevesi:</b> erkek takı, gümüş ve lüks mücevher segmentlerinin büyüklük ve büyüme verisi.</li>
+          <li><b>Hedef pazar &amp; coğrafya:</b> 6 çekirdek ülke + diaspora için katmanlı sizing (TAM → adreslenebilir → ilk-dalga), bağımsız doğrulamalı.</li>
+          <li><b>İdeal müşteri profili:</b> 8 segment, hedef alıcı tipi, karar verici ve eleme kuralları.</li>
+          <li><b>Arama zekâsı:</b> bu firmaların fiilen bulunacağı fuarlar, dernekler, tasarım distriktleri ve yerel terimler.</li>
+          <li><b>Gelir projeksiyonu:</b> 3 senaryo, dönüşüm hunisi, 3 yıllık model ve dar/geniş strateji karşılaştırması.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 02 POSITIONING -->
+    <section id="konum">
+      <div class="sec-head">
+        <span class="eyebrow">02 — Firma Konumlandırması</span>
+        <h2>Coy Diamond neden kazanır</h2>
+        <p>Kökü <strong>1979</strong>'a uzanan, babadan oğula çok kuşaklı bir Kapalıçarşı atölyesi: kendi özgün tasarımını kendi
+          bünyesinde üreten, dikey entegre bir tasarım markası. Değer <strong>gram/maden fiyatında değil, tasarım ve işçilikte</strong>
+          — yani "erişilebilir lüks". Bu niş, pazarın yaklaşık <strong>%10–15'ine</strong> denk geliyor.</p>
+      </div>
+
+      <div class="facts">
+        <div class="fact"><div class="k">Konum</div><div class="v">Çuhacı Han No:14, Kapalıçarşı<small>Molla Fenari Mah., Fatih — İstanbul</small></div></div>
+        <div class="fact"><div class="k">Köken</div><div class="v">1979 · çok kuşaklı atölye<small>Kapalıçarşı menşei + zanaat primi</small></div></div>
+        <div class="fact"><div class="k">Malzeme</div><div class="v">Gümüş çekirdek + altın üst hat<small>taşlar: zirkon ve/veya elmas</small></div></div>
+        <div class="fact"><div class="k">Mevcut kanal</div><div class="v">Ticimax B2C · yalnızca TR<small>global B2B görünürlüğü yok — doldurulacak boşluk</small></div></div>
+      </div>
+
+      <div class="block">
+        <h3>Çekirdek ayrışma — üç sütun</h3>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="n">01</div><h3>Özgün tasarım derinliği</h3>
+            <p>Her ayrıntıda gizli, kendine ait tasarım dili. Pazardaki tasarım tekdüzeliğine doğrudan yanıt.</p>
+          </div>
+          <div class="pillar">
+            <div class="n">02</div><h3>Derin erkek koleksiyonu</h3>
+            <p>Rakiplerde bulunmayan genişlikte erkek hattı — kol düğmesinden signet yüzük ve bilekliğe. En güçlü, en korunaklı koz.</p>
+          </div>
+          <div class="pillar">
+            <div class="n">03</div><h3>Butik üretim hızı</h3>
+            <p>Tasarımdan üretime tam entegre süreç → kısa tedarik döngüsü, hızlı koleksiyon yenileme, özel varyant esnekliği.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <p>"Biz, her ayrıntısı düşünülmüş özgün tasarımları kendi bünyesinde hızla üreterek dünya pazarına sunan tek firmayız."</p>
+        <span class="src">Coy Diamond — firma değer önermesi</span>
+      </div>
+
+      <div class="callout">
+        <div class="ct">En büyük itiraz &amp; cevap</div>
+        <p>"Gümüş olduğu için pahalı" algısı. Yanıt: değer malzemede değil <strong>tasarım ve işçilikte</strong> — "pırlanta işçiliğiyle
+          üretilen gümüşün" farkını göstererek aşılır. Bu, ilk temas mesajının da omurgası.</p>
+      </div>
+    </section>
+
+    <!-- 03 Q&A -->
+    <section id="qa">
+      <div class="sec-head">
+        <span class="eyebrow">03 — Firma Görüşmesi (Q&amp;A)</span>
+        <h2>Çalışmanın temeli: firmanın kendi cevapları</h2>
+        <p>Tüm araştırma, firma ile yapılan yapılandırılmış bir görüşmeye dayanıyor. Web sitesi B2C "pırlanta" dili kullansa da,
+          yön çatışmasında <strong>firma cevabı esas alındı</strong>. Aşağıda yedi temada öne çıkan yanıtlar.</p>
+      </div>
+
+      <div class="qa">
+        <div class="qa-block">
+          <div class="qh"><span class="qn">01</span><h3>Değer Önermesi</h3></div>
+          <div class="qa-item"><div class="qa-q">Rakiplerden ayrışma — pazarın yüzde kaçı?</div><div class="qa-a">Her ayrıntıda gizli özgün tasarımlar, geniş erkek koleksiyonu ve tasarımdan üretime tam entegre hız. Niş ≈ pazarın %10–15'i.</div></div>
+          <div class="qa-item"><div class="qa-q">Müşteriler sizinle değil başkasıyla çalışsaydı?</div><div class="qa-a">Standart seri üretimle kısıtlı kalır, tasarım özgünlüğünü ve butik üretim hızını kaybederlerdi.</div></div>
+          <div class="qa-item"><div class="qa-q">Çözülen en büyük problemler?</div><div class="qa-a">Pazardaki tasarım tekdüzeliği, erkek takıda seçenek azlığı ve yavaş tedarik süreçleri.</div></div>
+          <div class="qa-item"><div class="qa-q">6 ayda ölçülebilir çıktı?</div><div class="qa-a">Ürün farklılaşmasıyla artan kâr marjı, yeni segmente (özellikle erkek takı) erişim ve azalan stok bekleme süresi.</div></div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qh"><span class="qn">02</span><h3>Mevcut Müşteri Analizi</h3></div>
+          <div class="qa-item"><div class="qa-q">En önemli müşteri tipleri?</div><div class="qa-a">Tasarım odaklı lüks butikler, yurt dışı ihracat odaklı toptancılar ve niş takı platformları.</div></div>
+          <div class="qa-item"><div class="qa-q">Hangi müşteriler en çok ciro yapıyor?</div><div class="qa-a">Tasarımın değerini bilen, sadece gram/maden fiyatına odaklanmayan ve düzenli koleksiyon yenileyen ihracat partnerleri.</div></div>
+          <div class="qa-item"><div class="qa-q">Çalışmayı tetikleyen şeyler?</div><div class="qa-a">Ürünlerin hikayesi, detaylardaki işçilik kalitesi ve rakiplerde olmayan erkek koleksiyonu derinliği.</div></div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qh"><span class="qn">03</span><h3>Hayal Müşteri Profili</h3></div>
+          <div class="qa-item"><div class="qa-q">Seçilmiş firmalarla çalışsak — kim olurlardı?</div><div class="qa-a">Global ölçekte lüks erkek aksesuar zincirleri, Avrupa merkezli tasarım konsept mağazaları ve yüksek hacimli butik ihracat devleri.</div></div>
+          <div class="qa-item"><div class="qa-q">Bu firmaların en önemli özellikleri?</div><div class="qa-a">Marka vizyonuna sahip olmaları, tasarım katma değerini satışa dönüştürebilmeleri ve güçlü yurt dışı dağıtım ağları.</div></div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qh"><span class="qn">04</span><h3>Hedeflenebilir Pazar</h3></div>
+          <div class="qa-item"><div class="qa-q">Hangi ülkelere odaklanmalıyız?</div><div class="qa-a">ABD, Almanya, İngiltere, İtalya, Fransa ve Yunanistan — lüks tüketimin ve tasarım algısının en yüksek olduğu pazarlar.</div></div>
+          <div class="qa-item"><div class="qa-q">Hangi firma boyutlarını hedeflememeliyiz?</div><div class="qa-a">Çok küçük (0–5 çalışan) yerel atölyeler ve çok büyük (3000+ çalışan) fiyat odaklı seri üretim zincirleri.</div></div>
+          <div class="qa-item"><div class="qa-q">Kiminle görüşülüyor?</div><div class="qa-a">Doğrudan firma sahipleri ve kreatif direktörler.</div></div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qh"><span class="qn">05</span><h3>Ciro Beklentisi</h3></div>
+          <div class="qa-item"><div class="qa-q">Partner başına 2–3 yıllık ciro beklentisi?</div><div class="qa-a">Partner başına yıllık ortalama <strong>100.000 – 300.000 USD</strong> bandında sürdürülebilir bir ticaret hacmi.</div></div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qh"><span class="qn">06</span><h3>Acı Noktası &amp; Tetikleyici</h3></div>
+          <div class="qa-item"><div class="qa-q">Firma sizinle çalışmadan önce ne olur?</div><div class="qa-a">Mevcut tedarikçisinin tasarımından sıkılması veya yeni-farklı bir "erkek koleksiyonu" arayışına girmesi.</div></div>
+          <div class="qa-item"><div class="qa-q">Rakipten size geçiş ne zaman olur?</div><div class="qa-a">Rakibin kalite istikrarını bozması, tasarımda kendini tekrar etmesi veya firmanın yüksek-marjlı niş ürüne geçme kararı.</div></div>
+          <div class="qa-item"><div class="qa-q">Hangi yan pazarlar hedeflenebilir?</div><div class="qa-a">Lüks saat aksesuarları, kişiye özel kurumsal lüks hediyelikler ve tasarım odaklı deri-metal kombinasyonlu aksesuarlar.</div></div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qh"><span class="qn">07</span><h3>Satış Süreci</h3></div>
+          <div class="qa-item"><div class="qa-q">En kaliteli lead'ler hangi kanaldan?</div><div class="qa-a">Uluslararası B2B fuarlar ve doğrudan firma sahiplerine yapılan kişiselleştirilmiş LinkedIn / e-posta erişimleri.</div></div>
+          <div class="qa-item"><div class="qa-q">İlk temas nasıl yapılmalı?</div><div class="qa-a">Ürün satmaya çalışmak yerine, "tasarım partnerliği" vizyonuyla ve firmaya özel mini-koleksiyon sunumuyla doğrudan sahiplere ulaşmak.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 MARKET FRAMEWORK -->
+    <section id="pazar">
+      <div class="sec-head">
+        <span class="eyebrow">04 — Pazar Çerçevesi</span>
+        <h2>İki rüzgâr aynı yöne esiyor</h2>
+        <p>Coy Diamond, mücevherin <strong>en hızlı büyüyen son-kullanıcı segmenti</strong> (erkek takı) ile en hızlı büyüyen
+          değer-segmenti (tasarım-odaklı "affordable luxury" gümüş) <strong>kesişiminde</strong> konumlanıyor. Firmanın "erkek takı
+          global trend" sezgisi pazar verisiyle birebir doğrulanıyor.</p>
+      </div>
+
+      <div class="kpis" style="border-radius:14px">
+        <div class="kpi"><div class="num">$381<span class="u">Mlr</span></div><div class="lab">Küresel mücevher pazarı (2025) · CAGR ~%5.5</div></div>
+        <div class="kpi"><div class="num">$5.64<span class="u">Mlr</span></div><div class="lab"><b>ABD erkek takı</b> (2024) · en hızlı büyüyen</div></div>
+        <div class="kpi"><div class="num">$61<span class="u">Mlr</span></div><div class="lab">Küresel gümüş takı (2034 proj.) · 2024: $38.6 Mlr</div></div>
+        <div class="kpi"><div class="num">%29</div><div class="lab"><b>ABD'nin</b> küresel lüks mücevherdeki payı</div></div>
+      </div>
+
+      <div class="block">
+        <h3>Fırsat tezi — neden bu iş, neden şimdi, neden Coy</h3>
+        <ul class="tick">
+          <li><b>Erkek takı = en hızlı büyüyen damar.</b> Mücevherin en yüksek CAGR'lı son-kullanıcı segmenti (~%8.7 global, ABD %8.4); ABD erkek takı pazarı ~$5.64 Mlr. Coy'un erkek koleksiyonu derinliği tam bu dalgaya biniyor.</li>
+          <li><b>Gümüş = "erişilebilir lüks" tasarım segmenti.</b> Lüks mücevherin ~%15'i; design-conscious, genç, affordable-luxury kitleye hitap. Coy'un "maden değil tasarım değeri" konumuyla birebir.</li>
+          <li><b>Coy'un wedge'i = tasarım + hız + erkek derinliği,</b> "Türk işçiliği / Kapalıçarşı menşei" ile. Ucuz seri gümüş (Asya) ile pahalı Batı lüksü arasında orta-premium "tasarımlı ama uygun".</li>
+          <li><b>Hedef pazarlar lüks + tasarım algısı yüksek Batı.</b> ABD lüks mücevherin lideri (%29); Avrupa zanaat mirası + gümüşün lüks/moda segmentinde yerleşik olması firmanın ülke listesiyle tutarlı.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>Segment büyüme hızı — yıllık (CAGR)</h3>
+        <div class="chart">
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">Lüks mücevher</span><span class="bar__val">%8.8</span></div><div class="bar__track"><div class="bar__fill" style="width:100%"></div></div></div>
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">Erkek takı (çekirdek fark)</span><span class="bar__val">%8.7</span></div><div class="bar__track"><div class="bar__fill" style="width:98.9%"></div></div></div>
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">Mücevher (genel)</span><span class="bar__val">%5.5</span></div><div class="bar__track"><div class="bar__fill" style="width:62.5%"></div></div></div>
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">Gümüş takı</span><span class="bar__val">%4.7</span></div><div class="bar__track"><div class="bar__fill" style="width:53.4%"></div></div></div>
+        </div>
+        <p class="chart-note">★ Coy'un çekirdeğine denk gelen iki segment, pazarın genel ortalamasının ~1.6 katı hızla büyüyor. Yüzük, erkek takıda en büyük gelir payına sahip ürün tipi — Coy'un güçlü olduğu kategori.</p>
+      </div>
+    </section>
+
+    <!-- 05 TARGET MARKET -->
+    <section id="hedef">
+      <div class="sec-head">
+        <span class="eyebrow">05 — Hedef Pazar Tespiti</span>
+        <h2>Önce ABD, çekirdek Batı Avrupa</h2>
+        <p>Hedef pazar, firmanın belirttiği altı ülke <strong>lüks tüketim yoğunluğu, tasarım algısı ve erkek-takı ekosistemi
+          büyüklüğüne</strong> göre üç kademede önceliklendirildi. Tasarımsal erkek hattının en güçlü karşılığı bulduğu pazar açık ara
+          <strong>ABD</strong>. Birim: <strong>E = bir pazardaki tahmini hedef B2B firma sayısı</strong> (orta-boy, tasarım-değeri ödeyen).</p>
+      </div>
+
+      <div class="block">
+        <h3>Ülke bazlı Coy-uyumlu adreslenebilir alıcı</h3>
+        <div class="chart">
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">🇺🇸 ABD</span><span class="bar__val">950–1.500</span></div><div class="bar__track"><div class="bar__fill" style="width:100%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">🇬🇧 İngiltere</span><span class="bar__val">300–500</span></div><div class="bar__track"><div class="bar__fill" style="width:33%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">🇩🇪 Almanya</span><span class="bar__val">220–370</span></div><div class="bar__track"><div class="bar__fill" style="width:24%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">🇮🇹 İtalya</span><span class="bar__val">210–380</span></div><div class="bar__track"><div class="bar__fill" style="width:24%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">🇫🇷 Fransa</span><span class="bar__val">220–360</span></div><div class="bar__track"><div class="bar__fill" style="width:24%"></div></div></div>
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">Diaspora / Diğer (CA·NL·AT-CH)</span><span class="bar__val">100–180</span></div><div class="bar__track"><div class="bar__fill" style="width:11%"></div></div></div>
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">🇬🇷 Yunanistan</span><span class="bar__val">55–110</span></div><div class="bar__track"><div class="bar__fill" style="width:7%"></div></div></div>
+        </div>
+        <p class="chart-note">Kanıt-temelli, bağımsız doğrulanmış (GPT-5.5) "Coy-uyumlu adreslenebilir" tahmini. Çekirdek 6 ülke toplamı ~2.000–3.400; bunun ~325–525'i yüksek-uyumlu ilk-dalga. Katmanlı yöntem &amp; kalibrasyon bölüm 07'de.</p>
+      </div>
+
+      <div class="block">
+        <h3>Üç kademeli önceliklendirme</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kademe</th><th>Pazar</th><th class="tnum">Adreslenebilir</th><th>Dayanak</th></tr></thead>
+            <tbody>
+              <tr class="hl"><td><span class="tier t1">Tier 1 · Altın</span></td><td class="em">🇺🇸 ABD</td><td class="tnum">950–1.500</td><td>Lüks mücevherin %29'u; erkek takı $5.64 Mlr &amp; en hızlı büyüyen; en geniş butik/konsept/erkek-aksesuar ekosistemi.</td></tr>
+              <tr class="hl"><td><span class="tier t1">Tier 1 · Altın</span></td><td class="em">🇬🇧 İngiltere</td><td class="tnum">300–500</td><td>Erkek takı trendi güçlü; bağımsız tasarım butiği + multi-brand konsept yoğun (Soho/Mayfair, Hatton Garden); NAJ tabanı.</td></tr>
+              <tr class="hl"><td><span class="tier t1">Tier 1 · Altın</span></td><td class="em">🇩🇪 Almanya</td><td class="tnum">220–370</td><td>Güçlü kuyum perakende/toptan + Pforzheim kümesi; kanal tanıdık. (Daha muhafazakâr, ithal-designer'a temkinli.)</td></tr>
+              <tr><td><span class="tier t2">Tier 2 · Yüksek</span></td><td class="em">🇮🇹 İtalya</td><td class="tnum">210–380</td><td>Tasarım + moda mirası, erkek aksesuar kültürü güçlü; <strong>yerel üretim güçlü → ithal-tasarım oranı düşük</strong>, niş/erkek açısıyla gir.</td></tr>
+              <tr><td><span class="tier t2">Tier 2 · Yüksek</span></td><td class="em">🇫🇷 Fransa</td><td class="tnum">220–360</td><td>Lüks + konsept mağaza ekosistemi (Marais); tasarım algısı yüksek; erkek aksesuar + kurumsal hediye kanalı.</td></tr>
+              <tr><td><span class="tier t3">Tier 3 · Fırsatçı</span></td><td class="em">Diaspora / Diğer</td><td class="tnum">100–180</td><td>CA/NL/AT-CH + TR/MENA diaspora; menşe/güven köprüsü, kolay ilk giriş. <em>Aşağıdaki nota bakın.</em></td></tr>
+              <tr><td><span class="tier t3">Tier 3 · Fırsatçı</span></td><td class="em">🇬🇷 Yunanistan</td><td class="tnum">55–110</td><td>Kişi başı yüksek kuyum kültürü + turizm-lüks perakende; küçük ama firma listesinde, yakın pazar.</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="2">Çekirdek 6 ülke + diaspora · Coy-uyumlu adreslenebilir</td><td class="tnum">~2.000–3.400</td><td>ilk-dalga ~325–525</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="ct">Diaspora ne demek?</div>
+        <p>Yurt dışında — özellikle Avrupa ve Kuzey Amerika'da — yaşayan <strong>Türk / MENA topluluklarına hitap eden veya bu
+          kökenli kişilerce işletilen tasarım takı toptancı/dağıtım kanalları</strong>. Coy için değeri: Kapalıçarşı menşeini ve
+          zanaatını zaten tanıdıkları için <strong>güven ve erişim köprüsü</strong> kurar; soğuk pazara kıyasla ilk giriş çok daha kolaydır.</p>
+      </div>
+
+      <div class="block">
+        <h3>Bilinçli dışlama — boşa eforu önler</h3>
+        <p>Aşağıdaki pazarlar, Coy'un "tasarım değeri" wedge'i orada çalışmadığı için kapsam dışı bırakıldı. Bu disiplin, eforun
+          dönüşeceği yere odaklanmayı sağlar.</p>
+        <div class="chips">
+          <span class="chip neg">Körfez altın-souk / yatırım altını</span>
+          <span class="chip neg">Hindistan / Çin / Tayland ucuz seri gümüş (rakip/kaynak)</span>
+          <span class="chip neg">0–5 çalışan yerel atölye</span>
+          <span class="chip neg">3000+ fiyat-odaklı mass zincir</span>
+          <span class="chip neg">Gram/maden-fiyatçı alıcı</span>
+          <span class="chip neg">Kostüm / imitasyon takı</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 ICP -->
+    <section id="icp">
+      <div class="sec-head">
+        <span class="eyebrow">06 — İdeal Müşteri Profili</span>
+        <h2>Tasarım değerini ödeyen alıcı</h2>
+        <p>Ortak hedef: <strong>orta-boy</strong>, koleksiyonunu düzenli yenileyen, <strong>tasarım değerini gram/maden fiyatının
+          önünde tutan</strong> B2B alıcı. Karar verici doğrudan <strong>firma sahibi + kreatif direktör</strong>. 7 çekirdek segment
+          (S1–S7) ve genişleme katmanı (S8) toplam <strong>24 alt-ICP</strong>'ye bölündü; her biri ayrı bir arama birimi.</p>
+      </div>
+
+      <div class="block">
+        <h3>Çekirdek segmentler</h3>
+        <div class="grid g-2">
+          <div class="card">
+            <span class="ico">S1 · ★ Altın</span>
+            <h3>Tasarım butiği &amp; multi-brand konsept mağaza</h3>
+            <p>Özgün tasarım ve hikâye satan, koleksiyon yenileyen curated alıcılar — firmanın "hayal müşterisi". NY/LA, Londra
+              (Soho/Mayfair), Paris (Marais), Berlin/Münih. <strong>Tekrar sipariş: yüksek.</strong></p>
+          </div>
+          <div class="card">
+            <span class="ico">S2 · ★ Altın · En güçlü koz</span>
+            <h3>Lüks erkek aksesuar zinciri &amp; erkek takı ihtisası</h3>
+            <p>Coy'un rakipte olmayan derin erkek hattının doğrudan alıcısı. En hızlı büyüyen + en düşük rakipli segment → en yüksek
+              dönüşüm. Kol düğmesi, signet yüzük, erkek bileklik. <strong>5 alt-ICP ile en derin segment.</strong></p>
+          </div>
+          <div class="card">
+            <span class="ico">S3 · Yüksek</span>
+            <h3>İhracat-odaklı toptancı &amp; distribütör</h3>
+            <p>Firmanın mevcut en iyi müşteri tipi. Çok-pazara dağıtım çarpanı sağlayan, yapışkan partnerler. Tasarım-değeri alan
+              distribütör (✓) vs gram-fiyatçı (✕) ayrımı kritik.</p>
+          </div>
+          <div class="card">
+            <span class="ico">S4 · Yüksek</span>
+            <h3>Niş / curated online platform &amp; B2B marketplace</h3>
+            <p>Online = erkek takının en hızlı büyüyen kanalı. Curated designer pazaryerleri ve premium B2B toptan platformlar;
+              düşük-orta MOQ + hız şartı Coy'un butik üretimiyle uyumlu.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Yan pazar &amp; genişleme</h3>
+        <div class="grid g-3">
+          <div class="card"><span class="ico">S5 · Yan</span><h3>Kurumsal lüks hediye</h3><p>Kişiye özel kol düğmesi &amp; erkek aksesuar — yüksek marj, proje bazlı, kurumsal yıllık tekrar.</p></div>
+          <div class="card"><span class="ico">S6 · Yan</span><h3>Lüks saat &amp; deri-metal aksesuar</h3><p>Aynı müşteri profili; erkek takıyı tamamlayıcı ürün gamı olarak taşıyan perakende/toptan.</p></div>
+          <div class="card"><span class="ico">S7 · Orta</span><h3>Orta-boy zincir &amp; private-label</h3><p>Koleksiyon/private-label alan orta-boy premium kuyum zincirleri — atölye + hız ile köprü.</p></div>
+          <div class="card"><span class="ico">S8 · 🟢 Genişleme</span><h3>Bağımsız tasarım-bilinçli fine jeweler</h3><p>Firmanın kendi tetikleyicisi: erkek-hattı arayan, designer-marka taşıyan bağımsız kuyumcular. <strong>En büyük havuz (~1.200), en yüksek eleme yükü.</strong></p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Ortak eleme eşiği</h3>
+        <div class="chips">
+          <span class="chip pos">Designer / curated / koleksiyon yenileyen</span>
+          <span class="chip pos">Orta-boy · sahip + kreatif direktöre ulaşılabilir</span>
+          <span class="chip pos">Tasarım-değeri ödeyen</span>
+          <span class="chip neg">0–5 atölye</span>
+          <span class="chip neg">3000+ mass zincir</span>
+          <span class="chip neg">Gram/maden-fiyatçı</span>
+          <span class="chip neg">Kostüm / imitasyon</span>
+          <span class="chip neg">Tekil B2C mağaza</span>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>24 alt-ICP — granüler liste</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kod</th><th>Alt-ICP</th><th>Ana pazar · örnek tip (çıpa)</th></tr></thead>
+            <tbody>
+              <tr class="grp"><td colspan="3">S1 — Tasarım butiği &amp; konsept mağaza · ★ Altın</td></tr>
+              <tr><td class="em">S1.1</td><td>Curated designer/fine jewelry butiği</td><td>ABD (NY/LA) · Catbird, Twist tipi</td></tr>
+              <tr><td class="em">S1.2</td><td>Multi-brand moda+takı konsept mağazası</td><td>UK/FR/DE · Dover Street Market, Browns tipi</td></tr>
+              <tr><td class="em">S1.3</td><td>Tasarım-distrikt bağımsız kuyumcu (design-led)</td><td>IT/FR/UK · Milano, Marais, Hatton Garden</td></tr>
+              <tr><td class="em">S1.4</td><td>Yunanistan lüks/turizm tasarım butiği</td><td>Atina, Selanik, adalar</td></tr>
+              <tr class="grp"><td colspan="3">S2 — Erkek aksesuar &amp; erkek takı · ★ Altın · çekirdek fark</td></tr>
+              <tr><td class="em">S2.1</td><td>Erkek takı ihtisas perakende/marka-toptan</td><td>ABD (en büyük erkek takı pazarı)</td></tr>
+              <tr><td class="em">S2.2</td><td>Kol düğmesi &amp; resmi erkek aksesuar ihtisası</td><td>UK/US · The Tie Bar, Mr Porter tipi</td></tr>
+              <tr><td class="em">S2.3</td><td>Lüks erkek giyim / centilmen aksesuar zinciri</td><td>UK/IT/FR · gentlemen's outfitters</td></tr>
+              <tr><td class="em">S2.4</td><td>Çağdaş/streetwear erkek takı online toptan</td><td>US/DE online</td></tr>
+              <tr><td class="em">S2.5</td><td>Erkek statement/signet yüzük &amp; bileklik ihtisası</td><td>US/UK/IT</td></tr>
+              <tr class="grp"><td colspan="3">S3 — İhracat toptancı/distribütör · Yüksek</td></tr>
+              <tr><td class="em">S3.1</td><td>Designer/branded takı distribütörü</td><td>ABD</td></tr>
+              <tr><td class="em">S3.2</td><td>DACH + UK moda fine-jewelry toptancısı</td><td>DE/AT/CH/UK</td></tr>
+              <tr><td class="em">S3.3</td><td>İtalya/Fransa tasarım takı &amp; aksesuar dağıtımı</td><td>IT/FR</td></tr>
+              <tr class="grp"><td colspan="3">S4 — Niş / online curated platform · Yüksek</td></tr>
+              <tr><td class="em">S4.1</td><td>Curated çok-tasarımcı online takı platformu/stockist</td><td>US/UK · Stone and Strand, Wolf &amp; Badger tipi</td></tr>
+              <tr><td class="em">S4.2</td><td>Premium B2B toptan takı platformu</td><td>US/EU · Faire-premium tipi</td></tr>
+              <tr class="grp"><td colspan="3">S5–S7 — Yan pazar &amp; orta-boy zincir · Orta</td></tr>
+              <tr><td class="em">S5.1</td><td>Lüks kurumsal hediye evi (kol düğmesi/erkek)</td><td>US/UK</td></tr>
+              <tr><td class="em">S5.2</td><td>Premium özel-markalı promosyon aksesuar tedarikçisi</td><td>EU (DE/FR)</td></tr>
+              <tr><td class="em">S6.1</td><td>Lüks saat &amp; erkek aksesuar multi-brand perakende</td><td>US/EU</td></tr>
+              <tr><td class="em">S6.2</td><td>Tasarım deri-metal erkek aksesuar markası/toptan</td><td>IT/FR/US</td></tr>
+              <tr><td class="em">S7.1</td><td>Orta-boy premium kuyum perakende zinciri</td><td>US/DE/UK</td></tr>
+              <tr><td class="em">S7.2</td><td>Private-label / kontrat takı alıcısı</td><td>EU/US</td></tr>
+              <tr><td class="em">S7.3</td><td>Diaspora-köprü tasarım takı toptancısı</td><td>AB / K.Amerika (TR/MENA diaspora)</td></tr>
+              <tr class="grp"><td colspan="3">S8 — Bağımsız fine jeweler · 🟢 Genişleme</td></tr>
+              <tr><td class="em">S8.1</td><td>Erkek-hattı arayan bağımsız fine jeweler</td><td>Tüm ülkeler + 2.kademe şehir</td></tr>
+              <tr><td class="em">S8.2</td><td>Designer-marka taşıyan bağımsız kuyumcu</td><td>Tüm ülkeler</td></tr>
+              <tr><td class="em">S8.3</td><td>Koleksiyon-yenileyen 2.kademe butik kuyumcu</td><td>Çekirdek + genişleme ülkeleri</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">"Örnek tip" isimleri kategori çıpasıdır (illüstratif), müşteri değil — leadgen'de alıcı/toptan teyidi yapılır.</p>
+      </div>
+    </section>
+
+    <!-- 07 GEOGRAPHY -->
+    <section id="cografya">
+      <div class="sec-head">
+        <span class="eyebrow">07 — Coğrafya &amp; Sizing</span>
+        <h2>Katmanlı sizing — kaç firma, ne kadarı gerçekçi?</h2>
+        <p>Per-hücre proxy yerine her ülke için <strong>katmanlı bir funnel</strong> kuruldu:
+          <strong>TAM (mağaza) → designer-marka taşıyabilen evren → Coy-uyumlu adreslenebilir → ilk-dalga yüksek-uyum → 24-ay gerçekçi
+          kazanım</strong>. Her katman dış çapaya (mağaza sayımı, dernek üyeliği, fuar alıcı ölçeği) bağlandı ve sonuç
+          <strong>GPT-5.5 (xhigh) ile bağımsız, web-aramalı bir review'dan</strong> geçirildi.</p>
+      </div>
+
+      <div class="block">
+        <h3>Çekirdek 6 ülke + diaspora — katmanlı funnel</h3>
+        <div class="funnel">
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:100%"></div></div><div class="fmeta"><span class="fnum">~4.600–7.350</span><span class="flab">Designer-marka taşıyabilen bağımsız fine jeweler evreni</span></div></div>
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:46%"></div></div><div class="fmeta"><span class="fnum">~2.050–3.400</span><span class="flab">Coy-uyumlu adreslenebilir (dar çekirdek + S8, dedup)</span></div></div>
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:8%"></div></div><div class="fmeta"><span class="fnum">~325–525</span><span class="flab">İlk-dalga yüksek-uyum hesap — efor buraya</span></div><span class="fconv">efor</span></div>
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:4%"></div></div><div class="fmeta"><span class="fnum">~9–24</span><span class="flab">24 ayda imzalı partner (DAR ~9–13 · GENİŞ ~16–24)</span></div><span class="fconv">kazanım</span></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Ülke × katman — Coy-uyumlu firma sayıları</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Ülke</th><th class="tnum">TAM (mağaza)</th><th class="tnum">Designer-capable</th><th class="tnum">Adreslenebilir</th><th class="tnum">Dar S1–S7</th><th class="tnum">S8 (incr.)</th><th class="tnum">İlk-dalga</th></tr></thead>
+            <tbody>
+              <tr class="hl"><td class="em">🇺🇸 ABD</td><td class="tnum">~17.600</td><td class="tnum">1.800–3.000</td><td class="tnum em">950–1.500</td><td class="tnum">250–340</td><td class="tnum">700–1.160</td><td class="tnum">150–230</td></tr>
+              <tr><td class="em">🇬🇧 UK</td><td class="tnum">~7.000</td><td class="tnum">700–1.050</td><td class="tnum em">300–500</td><td class="tnum">80–115</td><td class="tnum">220–385</td><td class="tnum">50–80</td></tr>
+              <tr><td class="em">🇩🇪 DE</td><td class="tnum">~7.300</td><td class="tnum">585–875</td><td class="tnum em">220–370</td><td class="tnum">60–90</td><td class="tnum">160–280</td><td class="tnum">35–60</td></tr>
+              <tr><td class="em">🇮🇹 IT</td><td class="tnum">~9.000</td><td class="tnum">500–800</td><td class="tnum em">210–380</td><td class="tnum">50–80</td><td class="tnum">160–300</td><td class="tnum">30–55</td></tr>
+              <tr><td class="em">🇫🇷 FR</td><td class="tnum">~5.000</td><td class="tnum">550–825</td><td class="tnum em">220–360</td><td class="tnum">55–90</td><td class="tnum">165–270</td><td class="tnum">35–60</td></tr>
+              <tr><td class="em">🇬🇷 GR</td><td class="tnum">~2.000</td><td class="tnum">120–200</td><td class="tnum em">55–110</td><td class="tnum">12–25</td><td class="tnum">43–85</td><td class="tnum">8–15</td></tr>
+              <tr><td class="em">Diaspora / Diğer</td><td class="tnum">—</td><td class="tnum">350–600</td><td class="tnum em">100–180</td><td class="tnum">25–45</td><td class="tnum">75–135</td><td class="tnum">15–25</td></tr>
+            </tbody>
+            <tfoot><tr><td class="em">TOPLAM</td><td class="tnum">—</td><td class="tnum">~4.600–7.350</td><td class="tnum em">~2.050–3.400</td><td class="tnum">~530–785</td><td class="tnum">~1.500–2.600</td><td class="tnum">~325–525</td></tr></tfoot>
+          </table>
+        </div>
+        <p class="chart-note">TAM çapaları: ABD 17.6k (Statista) · UK NAJ ~1.7–2k üye · DE 6.4k→7.7k (Statista) · IT >6.8k sektör (yerel üretim güçlü) · FR ~5.5k (UFBJOP). "Dar S1–S7" ve "S8" örtüşmez (S8 = artık/incremental). Alt-ICP segmentasyonu bölüm 06'da.</p>
+      </div>
+
+      <div class="block">
+        <h3>Uzlaşı — eski proxy → revize → bağımsız doğrulama</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Katman (tüm ülke)</th><th class="tnum">Eski proxy</th><th class="tnum">Tibexa revize</th><th class="tnum">GPT-5.5 (xhigh)</th><th class="tnum">✅ Uzlaşı</th></tr></thead>
+            <tbody>
+              <tr><td class="em">Dar çekirdek S1–S7 (benzersiz)</td><td class="tnum">400–480</td><td class="tnum">660–940</td><td class="tnum">530–785</td><td class="tnum em">~530–785</td></tr>
+              <tr><td class="em">S8 bağımsız kuyumcu (incremental)</td><td class="tnum">600–800</td><td class="tnum">1.870–3.260</td><td class="tnum">1.500–2.600</td><td class="tnum em">~1.500–2.600</td></tr>
+              <tr class="hl"><td class="em">Toplam Coy-adreslenebilir</td><td class="tnum">1.200–1.500</td><td class="tnum">2.530–4.160</td><td class="tnum">2.050–3.400</td><td class="tnum em accent">~2.050–3.400</td></tr>
+              <tr><td class="em">İlk-dalga (efor)</td><td class="tnum">—</td><td class="tnum">420–720</td><td class="tnum">325–525</td><td class="tnum em">~325–525</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">Eski "benzersiz ~400–480 çekirdek" → kanıt-temelli ~2× büyüdü (esas derinlik ABD/UK S8 tabakasında). Revize→GPT farkı: ABD oranları AB için <strong>tavan</strong>dır (DE/IT daha temkinli), S8 örtüşmeyen artıktır, ve bilinmeyen marka için benimseme haircut'u gerekir.</p>
+      </div>
+
+      <div class="callout">
+        <div class="ct">Kritik düzeltme (review'dan benimsendi)</div>
+        <p>"Bir designer markayı taşıyan kapı" ≠ "bilinmeyen Türk erkek hattını ekleyecek alıcı" → <strong>benimseme haircut'u</strong>.
+          <strong>Kapı ≠ firma</strong> (department/zincir kapıları ayrı). <strong>S8 örtüşmeyen artık</strong> olarak tanımlandı
+          (S1–S7 ile çift sayım yok). <strong>IT'de yerel üretim</strong> ithal-tasarım oranını düşürür; <strong>DE</strong> daha
+          muhafazakârdır. Asıl bağlayıcı kısıt havuz değil → <strong>atölye kapasitesi + AB/ABD enablement</strong> (rep/showroom,
+          MOQ/lead-time, AB hallmark / nikel uyumu).</p>
+      </div>
+
+      <div class="block">
+        <h3>🇺🇸 ABD derinlik analizi — bağımsız doğrulamayla kalibre</h3>
+        <p>İlk matriste ABD ham E = ~227 idi (pazar-proxy). ABD'nin gerçek perakende tabanı (~<strong>17.600 takı mağazası</strong>;
+          tek başına <strong>David Yurman'ın ~300 ABD toptan kapısı</strong>; <strong>JCK Las Vegas'ta 2.000+ elenmiş lüks alıcı</strong>)
+          bu sayıyı düşük gösterdi. Yeniden kalibre ettik ve sonucu <strong>GPT-5.5 (xhigh) ile bağımsız, web-aramalı adversaryal
+          bir review'dan</strong> geçirdik. İki taraf da hemfikir: <strong>227 düşüktü — ama tek bir devasa rakam değil, katmanlı okuma doğru.</strong></p>
+
+        <div class="funnel">
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:100%"></div></div><div class="fmeta"><span class="fnum">~1.800–3.000</span><span class="flab">Designer-marka taşıyabilen bağımsız fine jeweler evreni</span></div></div>
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:50%"></div></div><div class="fmeta"><span class="fnum">~950–1.500</span><span class="flab">Coy-uyumlu adreslenebilir (dar çekirdek + S8, dedup)</span></div></div>
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:14%"></div></div><div class="fmeta"><span class="fnum">~150–250</span><span class="flab">İlk-dalga yüksek-uyum hesap — efor buraya</span></div><span class="fconv">efor</span></div>
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:6%"></div></div><div class="fmeta"><span class="fnum">~5–20</span><span class="flab">24 ayda gerçekçi yeni partner (enablement'a bağlı)</span></div><span class="fconv">kazanım</span></div>
+        </div>
+
+        <div class="tbl-wrap" style="margin-top:1.6rem">
+          <table>
+            <thead><tr><th>Katman (ABD)</th><th class="tnum">İlk proxy</th><th class="tnum">Tibexa revize</th><th class="tnum">GPT-5.5 (xhigh)</th><th class="tnum">✅ Uzlaşı</th></tr></thead>
+            <tbody>
+              <tr><td class="em">Dar çekirdek S1–S7</td><td class="tnum">227 ham</td><td class="tnum">420–480</td><td class="tnum">240–320 benzersiz</td><td class="tnum em">~250–340 benzersiz</td></tr>
+              <tr><td class="em">S8 bağımsız kuyumcu (Coy-uyumlu)</td><td class="tnum">—</td><td class="tnum">1.500–2.500</td><td class="tnum">700–1.200</td><td class="tnum em">~700–1.200</td></tr>
+              <tr class="hl"><td class="em">ABD toplam adreslenebilir</td><td class="tnum">—</td><td class="tnum">~1.900–3.000</td><td class="tnum">~950–1.500</td><td class="tnum em accent">~950–1.500</td></tr>
+              <tr><td class="em">İlk-dalga (efor)</td><td class="tnum">—</td><td class="tnum">—</td><td class="tnum">150–250</td><td class="tnum em">~150–250</td></tr>
+              <tr><td class="em">24 ay gerçekçi kazanım</td><td class="tnum">—</td><td class="tnum">—</td><td class="tnum">5–20</td><td class="tnum em">~5–20</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="chart-note">ABD zoom — en güçlü çapa: tek başına David Yurman'ın ~300 ABD toptan kapısı. Sonuç: ABD orijinalde düşüktü; ama operatif sayı dev TAM değil → ~150–250 yüksek-uyum hesap + 24 ayda ~5–20 partner. <strong>Erkek fırsatı</strong> ayrı bir "erkek ihtisas" hücresinde değil, erkek hattı arayan genel fine jeweler (S8) tabakasında yaşıyor.</p>
+      </div>
+    </section>
+
+    <!-- 08 SEARCH INTELLIGENCE -->
+    <section id="arama">
+      <div class="sec-head">
+        <span class="eyebrow">08 — Arama Zekâsı</span>
+        <h2>Bu firmalar fiilen nerede bulunur</h2>
+        <p>Firma "en kaliteli lead = B2B fuarlar" dedi. Fuar katılımcı/ziyaretçi ve dernek üye listeleri, <strong>aradığımız firma
+          havuzunun ta kendisidir</strong>. Kullanım sırası: fuar listeleri → dernek/buying-group listeleri → tasarım-distrikt
+          kümeleri + yerel-dil dizinleri → LinkedIn'den sahip/kreatif direktör.</p>
+      </div>
+
+      <div class="block">
+        <h3>🥇 Uluslararası fuarlar (katılımcı listesi = hedef havuz)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Fuar</th><th>Yer</th><th>Neden / hangi segment</th></tr></thead>
+            <tbody>
+              <tr><td class="em">JCK Las Vegas</td><td>ABD</td><td>En büyük ABD kuyum B2B fuarı — ABD alıcı/buyer havuzu (S1, S2, S3, S7)</td></tr>
+              <tr><td class="em">VICENZAORO</td><td>Vicenza, IT</td><td>Avrupa'nın merkez kuyum fuarı — designer + distribütör (S1.3, S3.3, S7)</td></tr>
+              <tr><td class="em">Inhorgenta München</td><td>DE</td><td>DACH kuyum &amp; tasarım (S1.2, S3.2, S7.1)</td></tr>
+              <tr><td class="em">Int. Jewellery London (IJL)</td><td>UK</td><td>UK kuyum buyer ekosistemi (S1.2, S2, S3.2)</td></tr>
+              <tr><td class="em">Pitti Uomo</td><td>Floransa, IT</td><td>🔑 ERKEK moda/aksesuar — S2 için altın (erkek aksesuar buyer'ları)</td></tr>
+              <tr><td class="em">Bijorhca / Premiere Classe</td><td>Paris, FR</td><td>Moda takı &amp; aksesuar buyer (konsept/butik) — S1.2, S3.3, S6.2</td></tr>
+              <tr><td class="em">HOMI / White Milano</td><td>Milano, IT</td><td>Aksesuar + konsept mağaza alımı — S1.2, S6</td></tr>
+              <tr><td class="em">Istanbul Jewelry Show</td><td>TR</td><td>Ev sahası — uluslararası buyer'lar gelir; inbound + menşe avantajı (tüm S)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">ABD ek: AGTA GemFair, Atlanta Jewelry Show · UK/EU ek: Jewellery &amp; Watch Birmingham.</p>
+      </div>
+
+      <div class="block">
+        <h3>🥇 Dernekler &amp; buying-group'lar (üye listesi)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Ülke</th><th>Dernek / grup</th><th>Hangi segment</th></tr></thead>
+            <tbody>
+              <tr><td class="em">ABD</td><td>Jewelers of America (JA), MJSA, American Gem Society (AGS)</td><td>S1.1, S3.1, S7.1</td></tr>
+              <tr><td class="em">UK</td><td>National Association of Jewellers (NAJ), Company of Master Jewellers (CMJ — buying group)</td><td>S7.1, S3.2</td></tr>
+              <tr><td class="em">DE</td><td>BV Schmuck + Uhren, Pforzheim kuyum kümesi</td><td>S3.2, S7.1</td></tr>
+              <tr><td class="em">IT</td><td>Federorafi (Confindustria), Club degli Orafi</td><td>S3.3, S1.3, S7</td></tr>
+              <tr><td class="em">FR</td><td>UFBJOP / Francéclat</td><td>S3.3, S1.3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid g-2 block">
+        <div class="card">
+          <span class="ico">Tasarım-distrikt kümeleri</span>
+          <h3>Yoğunlaşılacak bölgeler</h3>
+          <ul class="tick" style="margin-top:.8rem">
+            <li><b>ABD:</b> New York (47th St + SoHo/Nolita), Los Angeles (jewelry district + Melrose/Abbot Kinney), Miami</li>
+            <li><b>UK:</b> Londra — Hatton Garden, Soho/Mayfair/Marylebone, Manchester</li>
+            <li><b>IT:</b> Milano (Brera), Vicenza / Valenza / Arezzo</li>
+            <li><b>FR:</b> Paris — Le Marais, Place Vendôme çevresi</li>
+            <li><b>DE:</b> Pforzheim (imalat+toptan), Berlin/Münih/Hamburg</li>
+            <li><b>GR:</b> Atina (Kolonaki), Selanik, turizm-lüks adalar</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="ico">Yerel dil terimleri</span>
+          <h3>Dizin / arama (boşluk bırakma)</h3>
+          <ul class="tick" style="margin-top:.8rem">
+            <li><b>US/UK:</b> designer jewelry stockist, men's jewelry retailer, concept store jewellery buyer</li>
+            <li><b>DE:</b> Schmuck Großhandel, Designer-Schmuck Einkauf, Juwelier</li>
+            <li><b>FR:</b> grossiste bijoux, bijouterie créateur, accessoires homme</li>
+            <li><b>IT:</b> grossista gioielli, gioielleria di design, accessori uomo</li>
+            <li><b>GR:</b> χονδρική κοσμήματα, κοσμηματοπωλείο design</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="ct">Risk notu</div>
+        <p>Dernek/fuar üye listesi atlanır veya yerel-dil terim boşluğu olursa firma kaçar → "burada az firma var" yanılgısı oluşur.
+          Özellikle erkek (S2) ve konsept mağaza (S1.2) için Pitti Uomo + moda-aksesuar fuarları atlanmamalı — saf kuyum fuarı bu alıcıları kaçırır.</p>
+      </div>
+    </section>
+
+    <!-- 09 PROJECTION -->
+    <section id="projeksiyon">
+      <div class="sec-head">
+        <span class="eyebrow">09 — Gelir Projeksiyonu</span>
+        <h2>Üç senaryoda tekrarlı ciro</h2>
+        <p>Model, <strong>firmanın kendi verdiği</strong> partner-başına bant üzerine kuruldu: kötümser <strong>$100k</strong>,
+          gerçekçi <strong>$175k</strong>, iyimser <strong>$300k</strong> yıllık tekrarlı hacim. İş tipi: <strong>az sayıda,
+          yüksek-değerli, yapışkan partner</strong> — kitle değil nitelik.</p>
+      </div>
+
+      <div class="block">
+        <h3>Huni — havuzdan partnere (gerçekçi senaryo, yıl 1)</h3>
+        <div class="funnel">
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:100%"></div></div><div class="fmeta"><span class="fnum">~450</span><span class="flab">İlk-dalga yüksek-uyum havuz (DAR · ~325–525)</span></div></div>
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:70%"></div></div><div class="fmeta"><span class="fnum">~315</span><span class="flab">Karar verici erişimi (DM %70)</span></div><span class="fconv">%70</span></div>
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:30%"></div></div><div class="fmeta"><span class="fnum">~22</span><span class="flab">Pozitif yanıt</span></div><span class="fconv">%7</span></div>
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:16%"></div></div><div class="fmeta"><span class="fnum">~10</span><span class="flab">Toplantı + mini-koleksiyon sunumu</span></div><span class="fconv">~%45</span></div>
+          <div class="fstep"><div class="ftrack"><div class="fbar" style="width:9%"></div></div><div class="fmeta"><span class="fnum">~4</span><span class="flab">Yeni partner (yıl 1)</span></div><span class="fconv">~%35</span></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Üç senaryo · yıl 1 ve 3 yıl</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Senaryo</th><th class="tnum">Partner /Y1</th><th class="tnum">Partner değeri</th><th class="tnum">Yıl 1</th><th class="tnum">Yıl 2</th><th class="tnum">Yıl 3</th><th class="tnum">3 Yıl Toplam</th><th class="tnum">Y3 aktif</th></tr></thead>
+            <tbody>
+              <tr><td class="em">Kötümser</td><td class="tnum">~2</td><td class="tnum">$100k</td><td class="tnum">$200k</td><td class="tnum">$420k</td><td class="tnum">$674k</td><td class="tnum em">~$1.3M</td><td class="tnum">~7</td></tr>
+              <tr class="hl"><td class="em">Gerçekçi</td><td class="tnum">~4</td><td class="tnum">$175k</td><td class="tnum">$700k</td><td class="tnum">$1.47M</td><td class="tnum">$2.36M</td><td class="tnum em accent">~$4.5M</td><td class="tnum">~13</td></tr>
+              <tr><td class="em">İyimser</td><td class="tnum">~6</td><td class="tnum">$300k</td><td class="tnum">$1.8M</td><td class="tnum">$3.78M</td><td class="tnum">$6.06M</td><td class="tnum em">~$11.6M</td><td class="tnum">~20</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">Model: Yıl N aktif = (önceki aktif × 0.80 elde tutma) + (önceki yeni × 1.3 büyüme). Gelir = aktif partner × değer.</p>
+      </div>
+
+      <div class="block">
+        <h3>3 yıllık toplam ciro — senaryo karşılaştırması</h3>
+        <div class="chart">
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">Kötümser</span><span class="bar__val">~$1.3M</span></div><div class="bar__track"><div class="bar__fill" style="width:11.2%"></div></div></div>
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">Gerçekçi</span><span class="bar__val">~$4.5M</span></div><div class="bar__track"><div class="bar__fill" style="width:38.8%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">İyimser</span><span class="bar__val">~$11.6M</span></div><div class="bar__track"><div class="bar__fill" style="width:100%"></div></div></div>
+        </div>
+        <p class="chart-note">Asıl değer tekrarda: %80 elde tutma + yıllık yeni kazanım ile 3. yıl geliri, yıl 1'in ~3–3.4 katı.</p>
+      </div>
+
+      <div class="block">
+        <h3>Dar (ilk-dalga) vs geniş (tam adreslenebilir) — stratejik karar</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>&nbsp;</th><th>🔵 Dar (ilk-dalga)</th><th>🟢 Geniş (tam adreslenebilir)</th></tr></thead>
+            <tbody>
+              <tr><td class="em">Havuz (benzersiz)</td><td>~325–525</td><td>~2.050–3.400</td></tr>
+              <tr><td class="em">İletişim (DM %70)</td><td>~230–370</td><td>~1.400–2.400</td></tr>
+              <tr><td class="em">Pozitif % (gerçekçi)</td><td>%7</td><td>%4–5 (S8 isabeti düşük)</td></tr>
+              <tr><td class="em">Partner değeri</td><td>$175k</td><td>$140k (jeweler tail küçük)</td></tr>
+              <tr class="hl"><td class="em">Yeni partner (yıl 1)</td><td class="em">~4–5</td><td class="em">~6–9</td></tr>
+              <tr class="hl"><td class="em">Yıl 1 gelir (gerçekçi)</td><td class="em">~$0.7–0.9M</td><td class="em">~$0.9–1.3M</td></tr>
+              <tr class="hl"><td class="em">3 yıl (gerçekçi)</td><td class="em accent">~$4.5–5.5M</td><td class="em accent">~$7–10M</td></tr>
+              <tr><td class="em">Operasyon yükü</td><td>düşük (az, nitelikli)</td><td>yüksek (çok lead, sert eleme, kapasite)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">Bağımsız doğrulama (GPT-5.5): GENİŞ yıl-1 ~6–9 (kümülatif ~16–24 imzalı yıl3, enablement şartıyla) — eski ~9–11'den temkinli. Geniş daha çok POTANSİYEL ama isabet düşer, sipariş küçülür ve <strong>atölye kapasitesi</strong> bağlayıcı olur. Karar firmanın kapasitesine + ekip büyüklüğüne bağlı.</p>
+      </div>
+
+      <div class="callout">
+        <div class="ct">Stratejik okuma</div>
+        <p>En yüksek dönüşüm beklenen çekirdek: <strong>S2 (erkek) + S1 (butik/konsept)</strong> = ilk-dalganın ağırlığı, ALTIN.
+          <strong>ABD, adreslenebilir havuzun ~%45'i.</strong> Disiplinli (DAR) senaryo (~4–5 partner/yıl1 → ~$4.5–5.5M/3yıl)
+          firmanın kendi ciro beklentisini fazlasıyla karşılıyor — ve bağımsız review (GPT-5.5) bu bandı doğruluyor. Asıl kazanım,
+          daha büyük + nitelikli ilk-dalga havuzunun verdiği <strong>seçicilik ve dayanıklılık</strong>; ciro tavanını kapasite belirler.</p>
+      </div>
+    </section>
+
+    <!-- 10 ROADMAP / BRIDGE -->
+    <section id="yol">
+      <div class="sec-head">
+        <span class="eyebrow">10 — Uygulama Yol Haritası</span>
+        <h2>Fırsattan imzalı partnere</h2>
+        <p>Bu araştırma fırsatın <strong>haritasıdır</strong>. Haritayı sahadaki gerçek firma listesine ve ilk temaslara çevirmek,
+          firmanın kendi belirttiği en kaliteli kanalı izleyen yönetilen bir süreçtir.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step"><h3>Havuzu sahaya indirme &amp; kalibrasyon</h3><p>B2B fuar katılımcı/ziyaretçi ve dernek üye listelerinden (JCK, VICENZAORO, Inhorgenta, IJL, Pitti Uomo, Istanbul Jewelry Show) gerçek firma listesi çıkarılır; tahmini havuz, gerçek sayıma çekilir.</p></div>
+        <div class="step"><h3>Karar verici erişimi</h3><p>Her firmada <strong>sahip + kreatif direktör</strong> tespit edilir; kişiselleştirilmiş LinkedIn ve e-posta ile doğrudan erişim kurulur — firmanın "en kaliteli lead" tanımıyla aynı kanal.</p></div>
+        <div class="step"><h3>"Tasarım partnerliği" teması</h3><p>Ürün satışı değil; firmaya özel seçilmiş bir <strong>mini-koleksiyon</strong> sunumuyla tasarım-partnerliği vizyonu — "gümüş olduğu için pahalı" itirazını tasarım+işçilik değeriyle baştan karşılayan mesaj.</p></div>
+        <div class="step"><h3>Takip &amp; dönüşüm ölçümü</h3><p>Sistematik takip ile pozitif→partner hunisi gerçek veriyle güncellenir; bu projeksiyon "taslak"tan çıkıp kanıta dayalı bir plana dönüşür.</p></div>
+      </div>
+
+      <div class="block">
+        <h3>Çıktıyı keskinleştirecek firma teyitleri</h3>
+        <p>Aşağıdaki dört girdi geldiğinde E tahminleri ve partner değeri sabitlenir; model "taslak"tan çıkar.</p>
+        <ul class="tick">
+          <li><b>Fiyat bandı:</b> erişilebilir-lüksün tam neresi → hangi butik/konsept tipi ve E.</li>
+          <li><b>MOQ / lead-time:</b> düşük MOQ + hız → online niş + bağımsız butik açılır (E artar); yüksek MOQ → sadece zincir/büyük toptancı.</li>
+          <li><b>Mevcut ihracat datası:</b> gerçek müşteri ülkeleri varsa sıralama bunlara göre yeniden ağırlıklandırılır (en sağlam dayanak).</li>
+          <li><b>Taş / sertifika:</b> altın+elmas üst hat sertifikalıysa üst-premium butik/konsept segmenti güçlenir (AB hallmark, nikel uyumu, ayar damgası = Batı B2B kapısı).</li>
+        </ul>
+      </div>
+
+      <div class="nextstep">
+        <span class="eyebrow">Sonraki Adım</span>
+        <h3 style="margin-top:14px">Haritayı canlı bir ihracat pipeline'ına çevirmek</h3>
+        <p>Coy Diamond'ın ürünü hazır, ayrışması net ve pazar talebi kanıtlı. Eksik olan tek halka, <span class="accent">bu hedef
+          pazarlardaki doğru alıcıları bulup karar vericilerine ulaşmak ve süreci takip etmek</span> — Tibexa Global'in Türk
+          ihracatçılar için uçtan uca yürüttüğü iş budur. Veri toplama, hedefli erişim ve takip; bu rapordaki haritanın imzalı
+          partnerlere dönüştüğü yer.</p>
+      </div>
+    </section>
+
+    <!-- 11 METHODOLOGY -->
+    <section id="metodoloji">
+      <div class="sec-head">
+        <span class="eyebrow">11 — Metodoloji &amp; Kaynaklar</span>
+        <h2>Şeffaflık notu</h2>
+      </div>
+
+      <div class="note-box">
+        <p><strong>Profil temeli:</strong> coydiamond.com ve firma ile yapılan birebir soru-cevap görüşmesi. Yön çatışmasında firma
+          cevabı esas alındı: değer = tasarım + işçilik (gram/maden değil), çekirdek ayrışma = derin erkek koleksiyonu.</p>
+        <p><strong>Hedef firma tahminleri (E):</strong> pazar-proxy ve dizin yoğunluğu dayanaklıdır; çoğu orta/düşük güven ve
+          <strong>bilinçli olarak şişirilmemiştir</strong>. İlk kalibrasyon turunda (gerçek arama) gerçeğe çekilir.</p>
+        <p><strong>Gelir modeli:</strong> partner-başına değer firmanın kendi ifadesidir (sağlam); dönüşüm oranları bir deneme
+          kampanyasıyla ölçülecek çerçeve varsayımlarıdır. Bu bir taahhüt değil, güvenle çizilmiş bir tabandır.</p>
+        <p><strong>Bağımsız doğrulama:</strong> tüm-ülke katmanlı sizing'i (bölüm 07), GPT-5.5 (xhigh) ile web-aramalı, adversaryal bir
+          ikinci-görüş review'undan iki kez geçirildi (önce ABD, sonra tüm ülke). "Designer-capable kapı = Coy-ready alıcı" varsayımı
+          eleştirildi ve düzeltildi; ABD oranlarının AB'ye serbest uygulanması, S8 örtüşmesi ve yıl-1 dönüşümü temkinli hale getirildi.
+          Nihai sayılar iki bağımsız top-down + bottom-up kontrolün uzlaşısıdır.</p>
+      </div>
+
+      <div class="block">
+        <h3>Pazar verisi kaynakları</h3>
+        <ul class="sources">
+          <li>Fortune Business Insights — Jewelry Market ($381 Mlr, CAGR %5.5)</li>
+          <li>Fortune Business Insights — Luxury Jewelry Market (gümüş ~%15, ABD %29, CAGR %8.8)</li>
+          <li>Polaris / Market Research Future — Men's Jewelry Market (en hızlı büyüyen, ABD $5.64 Mlr, CAGR %8.4)</li>
+          <li>Market.us / Custom Market Insights — Silver Jewelry Market ($38.6 → 61.1 Mlr, CAGR %4.7)</li>
+          <li>Grand View Research — Men's end-use jewelry istatistikleri</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="frow">
+    <div class="fbrand">
+      <div class="brand" style="margin-bottom:0">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" style="width:22px;height:22px">
+          <path d="M6 3 H18 L22.5 9 L12 22 L1.5 9 Z" stroke="#C89010" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M1.5 9 H22.5 M9 3 L7 9 L12 22 M15 3 L17 9 L12 22" stroke="#C89010" stroke-width="0.8" opacity="0.55"/>
+        </svg>
+        <span class="wm">TIBEXA <span>GLOBAL</span></span>
+      </div>
+      <p class="ftag">Türk ihracatçılar için uluslararası alıcı geliştirme — veri toplama, hedefli erişim ve takip, uçtan uca.</p>
+    </div>
+    <div class="fmeta">Coy Diamond · Pazar Araştırması<br>30 Haziran 2026<br>Gizli · Firmaya Özel</div>
+  </div>
+  <p class="disclaimer">Bu doküman Tibexa Global tarafından Coy Diamond'a özel olarak hazırlanmıştır. İçerdiği tahmin ve
+    projeksiyonlar kalibre edilecek çerçevelerdir; mali taahhüt teşkil etmez.</p>
+</footer>
+
+<script>
+  (function () {
+    // Reading progress bar
+    var prog = document.getElementById('progress');
+    function onScroll() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      prog.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Scroll-spy
+    var links = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+    var byId = {};
+    links.forEach(function (l) {
+      var id = l.getAttribute('href').slice(1);
+      (byId[id] = byId[id] || []).push(l);
+    });
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (l) { l.classList.remove('active'); });
+          (byId[e.target.id] || []).forEach(function (l) { l.classList.add('active'); });
+          // keep active chip in view on mobile
+          var active = (byId[e.target.id] || [])[1] || (byId[e.target.id] || [])[0];
+          var strip = document.getElementById('topnavM');
+          if (active && strip && getComputedStyle(strip).display !== 'none') {
+            active.scrollIntoView({ inline: 'center', block: 'nearest' });
+          }
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { obs.observe(s); });
+  })();
+</script>
+
+</body>
+</html>

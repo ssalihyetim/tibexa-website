@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex, nosnippet" />
+<title>İskefe Leather — Uluslararası Pazar Araştırması &amp; İhracat Projeksiyonu · Tibexa Global</title>
+<meta name="description" content="Tibexa Global tarafından İskefe Leather için hazırlanan, gerçek Top-50 ihracat verisine dayalı uluslararası pazar araştırması ve 3 senaryolu ihracat gelir projeksiyonu. Ürün: wet-blue + kireçli yarma." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #000000;
+    --surface: #0A0A0A;
+    --surface-2: #141414;
+    --text: #FFFFFF;
+    --text-2: #A1A1AA;
+    --amber: #B5742A;
+    --gold: #D89B4F;
+    --border: #27272A;
+    --sans: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text-2);
+    font-family: var(--sans); font-weight: 400; line-height: 1.7;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-size: 16px;
+  }
+  ::selection { background: var(--amber); color: #000; }
+
+  h1, h2, h3, h4 { color: var(--text); font-weight: 500; letter-spacing: -0.03em; line-height: 1.14; }
+  h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); }
+  h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.02em; }
+  h4 { font-size: 1rem; letter-spacing: -0.01em; }
+  p { margin-top: 0.9rem; max-width: 70ch; }
+  strong { color: var(--text); font-weight: 500; }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }
+  a:hover { border-color: var(--gold); }
+
+  .eyebrow {
+    font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.12em;
+    font-size: 0.72rem; color: var(--amber); font-weight: 500;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--amber); opacity: .8; }
+  .lead { color: var(--text-2); font-size: clamp(1rem, 1.5vw, 1.12rem); }
+  .accent { color: var(--gold); }
+
+  #progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 100;
+    background: linear-gradient(90deg, var(--amber), var(--gold)); transition: width .1s linear; }
+
+  header.topbar {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(0,0,0,0.74); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar .row { display: flex; align-items: center; justify-content: space-between; height: 60px; max-width: 1340px; margin: 0 auto; padding: 0 24px; }
+  .brand { display: flex; align-items: center; gap: 11px; }
+  .brand svg { width: 20px; height: 20px; display: block; }
+  .brand .wm { font-weight: 600; color: var(--text); letter-spacing: 0.16em; font-size: 0.92rem; }
+  .brand .wm span { color: var(--text-2); font-weight: 400; }
+  .topbar .tag { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.66rem; color: var(--text-2); }
+  @media (max-width: 680px){ .topbar .tag { display: none; } }
+
+  .topnav-m { display: none; position: sticky; top: 60px; z-index: 50;
+    overflow-x: auto; white-space: nowrap; gap: 8px;
+    background: rgba(0,0,0,0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border); padding: 10px 16px; -ms-overflow-style: none; scrollbar-width: none; }
+  .topnav-m::-webkit-scrollbar { display: none; }
+  .topnav-m a { display: inline-block; font-size: 0.78rem; padding: 6px 13px; border-radius: 20px;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text-2); border-bottom: none; }
+  .topnav-m a.active { color: #000; background: linear-gradient(90deg, var(--amber), var(--gold)); border-color: transparent; font-weight: 500; }
+
+  .hero { position: relative; overflow: hidden; padding: clamp(64px, 11vw, 120px) 24px clamp(40px, 6vw, 64px); }
+  .hero-inner { max-width: 1340px; margin: 0 auto; }
+  .hero::before { content: ""; position: absolute; inset: 0;
+    background: radial-gradient(1100px 460px at 16% -10%, rgba(181,116,42,0.16), transparent 60%); pointer-events: none; }
+  .hero h1 { font-size: clamp(2.1rem, 5.6vw, 3.9rem); margin-top: 1.3rem; max-width: 20ch;
+    background: linear-gradient(180deg, #fff 58%, #d6d6db); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero .lead { margin-top: 1.4rem; max-width: 62ch; }
+  .hero-meta { margin-top: 2.4rem; display: flex; flex-wrap: wrap; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--surface); max-width: 880px; }
+  .hero-meta div { flex: 1 1 180px; padding: 15px 20px; border-right: 1px solid var(--border); }
+  .hero-meta div:last-child { border-right: none; }
+  .hero-meta .k { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.6rem; color: var(--text-2); }
+  .hero-meta .v { color: var(--text); font-size: 0.9rem; margin-top: 4px; font-weight: 500; }
+  @media (max-width: 560px){ .hero-meta div { flex: 1 1 100%; border-right: none; border-bottom: 1px solid var(--border); } .hero-meta div:last-child { border-bottom: none; } }
+
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .kpi { background: var(--surface); padding: 24px 22px; }
+  .kpi .num { color: var(--text); font-size: clamp(1.7rem, 3.6vw, 2.4rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1; }
+  .kpi .num .u { color: var(--amber); font-size: 0.55em; margin-left: 2px; }
+  .kpi .lab { font-size: 0.82rem; margin-top: 11px; color: var(--text-2); }
+  .kpi .lab b { color: var(--text); font-weight: 500; }
+
+  .intro { max-width: 1340px; margin: 0 auto; padding: 0 24px clamp(24px, 4vw, 40px); }
+  .layout { max-width: 1340px; margin: 0 auto; display: flex; align-items: flex-start; padding: 0 24px; }
+  .sidenav { position: sticky; top: 60px; flex: 0 0 244px; align-self: flex-start; height: calc(100vh - 60px); overflow-y: auto; padding: 40px 22px 40px 0; border-right: 1px solid var(--border); }
+  .sidenav::-webkit-scrollbar { width: 6px; } .sidenav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; }
+  .sidenav .navtitle { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.6rem; color: var(--text-2); margin: 0 12px 14px; }
+  .sidenav a { display: flex; gap: 11px; align-items: baseline; padding: 8px 12px; border-radius: 8px; color: var(--text-2); font-size: 0.85rem; border-left: 2px solid transparent; border-bottom: none; transition: background .2s, color .2s, border-color .2s; }
+  .sidenav a .n { font-family: var(--mono); font-size: 0.68rem; color: #56565c; flex: 0 0 auto; }
+  .sidenav a:hover { color: var(--text); background: var(--surface); }
+  .sidenav a.active { color: var(--text); border-left-color: var(--amber); background: linear-gradient(90deg, rgba(181,116,42,0.10), transparent); }
+  .sidenav a.active .n { color: var(--amber); }
+  .sidenav .navfoot { margin: 22px 12px 0; padding-top: 18px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.08em; color: #56565c; line-height: 1.9; }
+
+  .main { flex: 1 1 auto; min-width: 0; padding-left: 52px; }
+  @media (max-width: 1024px){
+    .sidenav { display: none; }
+    .main { padding-left: 0; }
+    .topnav-m { display: flex; }
+  }
+
+  section { padding: clamp(54px, 7vw, 86px) 0; border-top: 1px solid var(--border); scroll-margin-top: 84px; }
+  section:first-child { border-top: none; }
+  @media (max-width: 1024px){ section { scroll-margin-top: 124px; } }
+  .sec-head { margin-bottom: 2.4rem; }
+  .sec-head h2 { margin-top: 0.8rem; }
+  .sec-head p { margin-top: 1.05rem; }
+  .block { margin-top: 2.6rem; }
+  .block > h3 { margin-bottom: 0.4rem; }
+
+  .grid { display: grid; gap: 16px; }
+  .g-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .g-3 { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px 22px; transition: border-color .25s; }
+  .card:hover { border-color: #3a3a40; }
+  .card h3 { margin-bottom: 8px; }
+  .card .ico { font-family: var(--mono); color: var(--amber); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .card p { margin-top: 8px; font-size: 0.94rem; }
+
+  .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .pillar { background: var(--surface); border: 1px solid var(--border); border-left: 2px solid var(--amber); border-radius: 12px; padding: 22px; }
+  .pillar .n { font-family: var(--mono); color: var(--amber); font-size: 0.72rem; letter-spacing: 0.08em; }
+  .pillar h3 { margin: 10px 0 6px; font-size: 1.02rem; }
+  .pillar p { font-size: 0.89rem; margin-top: 4px; }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .fact { background: var(--surface); padding: 18px 20px; }
+  .fact .k { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.58rem; color: var(--text-2); }
+  .fact .v { color: var(--text); font-size: 0.92rem; margin-top: 5px; font-weight: 500; }
+  .fact .v small { color: var(--text-2); font-weight: 400; display: block; font-size: 0.8rem; margin-top: 2px; }
+
+  .quote { margin-top: 2.2rem; padding: 28px 30px; border-radius: 16px;
+    background: linear-gradient(135deg, rgba(181,116,42,0.11), rgba(216,155,79,0.03)); border: 1px solid rgba(181,116,42,0.32); }
+  .quote p { color: var(--text); font-size: clamp(1.1rem, 2.2vw, 1.5rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.42; margin: 0; max-width: none; }
+  .quote .src { display: block; margin-top: 14px; font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); }
+
+  .chart { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 14px; }
+  .bar__top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; }
+  .bar__name { color: var(--text); font-size: 0.9rem; font-weight: 500; }
+  .bar__val { font-family: var(--mono); color: var(--gold); font-size: 0.8rem; font-weight: 500; }
+  .bar__track { height: 9px; background: var(--surface-2); border-radius: 20px; overflow: hidden; }
+  .bar__fill { height: 100%; border-radius: 20px; background: linear-gradient(90deg, var(--amber), var(--gold)); }
+  .bar.muted .bar__fill { background: #3a3a40; }
+  .bar.lead-bar .bar__name::after { content: " ★"; color: var(--amber); }
+  .chart-note { font-family: var(--mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-2); margin-top: 16px; opacity: .85; }
+
+  .tbl-wrap { margin-top: 1.5rem; overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 540px; }
+  th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  thead th { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.62rem; color: var(--text-2); font-weight: 500; background: var(--surface); position: sticky; top: 0; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody td { color: var(--text-2); }
+  tbody td.em { color: var(--text); font-weight: 500; }
+  tr.hl td { background: rgba(181,116,42,0.06); }
+  tr.grp td { background: var(--surface-2); color: var(--gold); font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .tnum { text-align: right; font-family: var(--mono); }
+  td.tnum, th.tnum { white-space: nowrap; }
+  tfoot td { font-weight: 500; color: var(--text); background: var(--surface); border-top: 1px solid var(--amber); font-family: var(--mono); }
+
+  .tier { display: inline-block; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; white-space: nowrap; }
+  .t1 { background: rgba(216,155,79,0.15); color: var(--gold); border: 1px solid rgba(216,155,79,0.3); }
+  .t2 { background: rgba(181,116,42,0.12); color: var(--amber); border: 1px solid rgba(181,116,42,0.3); }
+  .t3 { background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border); }
+  .trackW { color: var(--gold); }
+  .trackK { color: #d0a24f; }
+  .trackF { color: #6fae8f; }
+
+  .funnel { margin-top: 1.6rem; display: flex; flex-direction: column; gap: 10px; }
+  .fstep { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 13px 18px; display: flex; align-items: center; gap: 18px; }
+  .fstep .fbar { height: 28px; border-radius: 6px; background: linear-gradient(90deg, var(--amber), var(--gold)); flex-shrink: 0; }
+  .fstep .fmeta { display: flex; flex-direction: column; }
+  .fstep .fnum { font-family: var(--mono); color: var(--text); font-weight: 500; font-size: 1.02rem; line-height: 1.1; }
+  .fstep .flab { font-size: 0.81rem; color: var(--text-2); }
+  .fstep .fconv { margin-left: auto; font-family: var(--mono); font-size: 0.68rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 1.3rem; }
+  .chip { font-size: 0.79rem; padding: 7px 14px; border-radius: 20px; background: var(--surface); border: 1px solid var(--border); color: var(--text-2); }
+  .chip.neg { border-color: rgba(220,80,80,0.28); color: #d99; }
+  .chip.neg::before { content: "✕ "; opacity: .7; }
+  .chip.pos { border-color: rgba(181,116,42,0.34); color: var(--gold); }
+  .chip.pos::before { content: "✓ "; opacity: .8; }
+
+  .callout { margin-top: 1.6rem; background: var(--surface); border: 1px solid var(--border); border-left: 2px solid var(--amber); border-radius: 12px; padding: 20px 22px; }
+  .callout .ct { font-family: var(--mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); }
+  .callout p { font-size: 0.9rem; margin-top: 7px; }
+  .callout.warn { border-left-color: #d99; }
+  .callout.warn .ct { color: #d99; }
+
+  .steps { counter-reset: step; margin-top: 1.4rem; display: grid; gap: 14px; }
+  .step { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px 22px 68px; }
+  .step::before { counter-increment: step; content: counter(step, decimal-leading-zero);
+    position: absolute; left: 22px; top: 22px; font-family: var(--mono); font-size: 0.9rem; color: var(--amber); font-weight: 500; }
+  .step h3 { font-size: 1rem; margin-bottom: 5px; }
+  .step p { margin-top: 4px; font-size: 0.9rem; }
+
+  .nextstep { margin-top: 2rem; border-radius: 18px; padding: clamp(26px, 5vw, 42px);
+    background: linear-gradient(135deg, rgba(181,116,42,0.14), rgba(10,10,10,0.4)); border: 1px solid rgba(181,116,42,0.34); }
+  .nextstep h3 { font-size: clamp(1.15rem, 2.5vw, 1.6rem); }
+  .nextstep p { color: var(--text-2); margin-top: 12px; max-width: 72ch; }
+
+  .sources { margin-top: 1.3rem; display: grid; gap: 8px; }
+  .sources li { list-style: none; font-size: 0.84rem; color: var(--text-2); padding-left: 18px; position: relative; }
+  .sources li::before { content: "→"; position: absolute; left: 0; color: var(--amber); }
+  .note-box { margin-top: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; }
+  .note-box p { font-size: 0.87rem; margin-top: 0.6rem; }
+  .note-box p:first-child { margin-top: 0; }
+
+  ul.tick { margin-top: 1rem; list-style: none; display: grid; gap: 9px; }
+  ul.tick li { padding-left: 22px; position: relative; font-size: 0.93rem; }
+  ul.tick li::before { content: "▸"; position: absolute; left: 0; color: var(--amber); }
+  ul.tick li b { color: var(--text); font-weight: 500; }
+
+  footer { border-top: 1px solid var(--border); padding: 52px 24px 60px; }
+  footer .frow { max-width: 1340px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: flex-start; }
+  footer .fbrand .wm { font-weight: 600; color: var(--text); letter-spacing: 0.16em; }
+  footer .fbrand .wm span { color: var(--text-2); font-weight: 400; }
+  footer .ftag { font-size: 0.84rem; color: var(--text-2); margin-top: 10px; max-width: 40ch; }
+  footer .fmeta { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-2); text-align: right; line-height: 2; }
+  .disclaimer { max-width: 1340px; margin: 28px auto 0; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.04em; color: #5a5a60; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="row">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 3 H18 L22.5 9 L12 22 L1.5 9 Z" stroke="#B5742A" stroke-width="1.3" stroke-linejoin="round"/>
+        <path d="M1.5 9 H22.5 M9 3 L7 9 L12 22 M15 3 L17 9 L12 22" stroke="#B5742A" stroke-width="0.8" opacity="0.55"/>
+      </svg>
+      <span class="wm">TIBEXA <span>GLOBAL</span></span>
+    </div>
+    <span class="tag">Araştırma Raporu · İskefe Leather · Gizli</span>
+  </div>
+</header>
+
+<nav class="topnav-m" id="topnavM">
+  <a href="#ozet" data-nav>01 Özet</a>
+  <a href="#konum" data-nav>02 Konumlandırma</a>
+  <a href="#veri" data-nav>03 İhracat Verisi</a>
+  <a href="#pazar" data-nav>04 Pazar</a>
+  <a href="#hedef" data-nav>05 Hedef Pazar</a>
+  <a href="#icp" data-nav>06 Müşteri Profili</a>
+  <a href="#cografya" data-nav>07 Coğrafya</a>
+  <a href="#arama" data-nav>08 Arama Zekâsı</a>
+  <a href="#projeksiyon" data-nav>09 Projeksiyon</a>
+  <a href="#yol" data-nav>10 Yol Haritası</a>
+  <a href="#metodoloji" data-nav>11 Metodoloji</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Tibexa Global · Uluslararası Alıcı Geliştirme</span>
+    <h1>İskefe Leather Uluslararası Pazar Araştırması &amp; İhracat Projeksiyonu</h1>
+    <p class="lead">69 yıllık dikey entegre bir tabakhanenin <strong>gerçek Top-50 ihracat verisinden</strong> yola çıkıp;
+      wet-blue ve kireçli yarma alıcı profilini, coğrafya yoğunluğunu, jelatin/kolajen çeşitlendirmesini ve üç senaryolu
+      gelir modelini uçtan uca haritalayan sonuç raporu.</p>
+
+    <div class="hero-meta">
+      <div><div class="k">Hazırlayan</div><div class="v">Tibexa Global</div></div>
+      <div><div class="k">Firma</div><div class="v">İskefe Leather · Tuzla / İstanbul</div></div>
+      <div><div class="k">Tarih</div><div class="v">1 Temmuz 2026</div></div>
+      <div><div class="k">Durum</div><div class="v">Gizli · Firmaya Özel</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="intro">
+  <div class="kpis">
+    <div class="kpi"><div class="num">$36<span class="u">M</span></div><div class="lab">Analiz edilen <b>gerçek Top-50 ihracat</b> (wet-blue + kireçli yarma)</div></div>
+    <div class="kpi"><div class="num">Hindistan</div><div class="lab"><b>1 numaralı kanıtlı pazar</b> — ihracatın %42'si</div></div>
+    <div class="kpi"><div class="num">18</div><div class="lab"><b>Alt-ICP</b> · 3 track (W/K/F) · kanıtlı arketip</div></div>
+    <div class="kpi"><div class="num">~600</div><div class="lab">Yıl-1 önceliklendirilmiş <b>hedef alıcı havuzu</b></div></div>
+    <div class="kpi"><div class="num">~$6<span class="u">M</span></div><div class="lab">3 yıllık tekrarlı ciro potansiyeli <b>(gerçekçi)</b></div></div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <aside class="sidenav">
+    <div class="navtitle">İçindekiler</div>
+    <a href="#ozet" data-nav><span class="n">01</span> Yönetici Özeti</a>
+    <a href="#konum" data-nav><span class="n">02</span> Firma Konumlandırması</a>
+    <a href="#veri" data-nav><span class="n">03</span> İhracat Verisi Analizi</a>
+    <a href="#pazar" data-nav><span class="n">04</span> Pazar Çerçevesi</a>
+    <a href="#hedef" data-nav><span class="n">05</span> Hedef Pazar Tespiti</a>
+    <a href="#icp" data-nav><span class="n">06</span> İdeal Müşteri Profili</a>
+    <a href="#cografya" data-nav><span class="n">07</span> Coğrafya &amp; Sizing</a>
+    <a href="#arama" data-nav><span class="n">08</span> Arama Zekâsı</a>
+    <a href="#projeksiyon" data-nav><span class="n">09</span> Gelir Projeksiyonu</a>
+    <a href="#yol" data-nav><span class="n">10</span> Uygulama Yol Haritası</a>
+    <a href="#metodoloji" data-nav><span class="n">11</span> Metodoloji</a>
+    <div class="navfoot">Tibexa Global<br>1 Temmuz 2026<br>Firmaya Özel</div>
+  </aside>
+
+  <main class="main">
+
+    <!-- 01 EXECUTIVE SUMMARY -->
+    <section id="ozet">
+      <div class="sec-head">
+        <span class="eyebrow">01 — Yönetici Özeti</span>
+        <h2>Kanıtlı temel, üç ürün hattı</h2>
+        <p class="lead">Bu rapor hipoteze değil, <strong>firmanın gerçek ihracat verisine</strong> dayanıyor. İskefe ham deri satmaz;
+          <strong>wet-blue</strong> (krom tabaklı yarı-mamul) ve <strong>kireçli yarma</strong> (limed split) satar. Top-50 alıcısı
+          (toplam <strong>$36M</strong>, 5.346 ton) ICP'yi varsayımla değil <strong>kanıtla</strong> kuruyor.</p>
+      </div>
+
+      <div class="grid g-2">
+        <div class="card">
+          <span class="ico">Bulgu · üç track</span>
+          <h3>Wet-blue çekirdek, split + jelatin çeşitlendirme</h3>
+          <p><strong>Track W — wet-blue</strong> (değerin çoğu): bitiş/re-tan tabakhanesi + kendi-finishli entegre üretici + ayakkabı
+            fabrikası + ticaret ajansı. <strong>Track K — kireçli yarma</strong>: split işleyici + <strong>jelatin/kolajen</strong>
+            (İskefe Bursa kolajen sinerjisi, sektör-dışı istikrar). <strong>Track F — bitmiş "Iskefe Prime"</strong>: markalara üst ürüne satış.</p>
+        </div>
+        <div class="card">
+          <span class="ico">Sonuç</span>
+          <h3>Tekrarlı ciro + konsantrasyon riski azaltma</h3>
+          <p>~600 firmalık Yıl-1 havuz, firmanın <strong>gerçek müşteri gelir diliminden</strong> dayandırılan partner değeriyle gerçekçi
+            senaryoda <strong>3 yılda ~$6M tekrarlı ciro</strong> üretiyor. Üstelik en büyük tek alıcı (KH Exports, %22) ve
+            Top-10 (%66) yoğunlaşmasını dağıtarak <strong>stratejik riski</strong> düşürüyor.</p>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="ct">Ürün düzeltmesi (firma görüşmesi, 1 Tem 2026)</div>
+        <p>İlk taslak "ham deri" varsaymıştı; firma düzeltti: İskefe <strong>wet-end'i (kireçleme, yarma, krom tabaklama) yapıp
+          wet-blue + kireçli yarma satan bir tabakhane</strong>. Alıcı artık "sıfırdan tabaklayan" değil, <strong>bitiş/re-tan yapan</strong>
+          veya <strong>split işleyen / jelatin üreten</strong> taraf. Tüm rapor buna göre güncellendi.</p>
+      </div>
+
+      <div class="block">
+        <h3>Bu rapor neyi kapsıyor</h3>
+        <ul class="tick">
+          <li><b>İhracat verisi analizi:</b> gerçek Top-50 alıcının coğrafya × rol (bitiş tabakhanesi/entegre/fabrika/ajans) × yoğunlaşma kırılımı.</li>
+          <li><b>Firma konumlandırması:</b> 1957, dikey entegrasyon, wet-end'i devralma ayrışma kozu, üç ürün hattı.</li>
+          <li><b>Hedef pazar &amp; coğrafya:</b> kanıtlı güç pazarları + jelatin kümeleri + Batı boşluğu; 18 alt-ICP × ülke bloğu E-matrisi.</li>
+          <li><b>İdeal müşteri profili:</b> 3 track, 9 segment, 18 alt-ICP granüler tablo, eleme kuralları.</li>
+          <li><b>Arama zekâsı:</b> deri fuarları (Lineapelle/APLF) + <strong>jelatin kanalı</strong> (Fi Europe/GME/GMIA), dernekler, kümeler.</li>
+          <li><b>Gelir projeksiyonu:</b> 3 senaryo, dönüşüm hunisi, 3 yıllık model, Track W/K/F ekonomisi.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 02 POSITIONING -->
+    <section id="konum">
+      <div class="sec-head">
+        <span class="eyebrow">02 — Firma Konumlandırması</span>
+        <h2>İskefe neden kazanır</h2>
+        <p>Kökü <strong>1957</strong>'ye uzanan, Tuzla Deri OSB merkezli, <strong>tam dikey entegre</strong> bir tabakhane: ham deriyi
+          alıp <strong>en kirli/regüle aşamayı (beamhouse: kireçleme, yarma, krom tabaklama)</strong> kendi yapar ve
+          <strong>wet-blue + kireçli yarma</strong> olarak yarı-mamul ihraç eder. Ayrıca Bursa'da <strong>kolajen</strong> üretir.
+          Değer fiyatta değil, <strong>ıslak işi devralma + istikrar + izlenebilirlik</strong>te.</p>
+      </div>
+
+      <div class="facts">
+        <div class="fact"><div class="k">Konum</div><div class="v">İstanbul Deri OSB, Tuzla<small>+ Kolajen Rafinerisi — Bursa</small></div></div>
+        <div class="fact"><div class="k">Köken</div><div class="v">1957 · 69 yıl tabaklama<small>+500 çalışan · çok birimli</small></div></div>
+        <div class="fact"><div class="k">Üretim</div><div class="v">Tam dikey entegre<small>beamhouse → krom tabaklama (wet-blue) → kolajen</small></div></div>
+        <div class="fact"><div class="k">Ürün</div><div class="v">Wet-blue + kireçli yarma<small>+ opsiyonel bitmiş (Iskefe Prime)</small></div></div>
+      </div>
+
+      <div class="block">
+        <h3>Üç ürün hattı</h3>
+        <div class="grid g-3">
+          <div class="card"><span class="ico trackW">Track W · çekirdek</span><h3>Wet-blue</h3><p>Krom tabaklı, yaş yarı-mamul (bitiş yapılmamış). Alıcı = <strong>bitiş/re-tan yapan</strong> taraf. İhracat değerinin çoğu.</p></div>
+          <div class="card"><span class="ico trackK">Track K · çeşitlendirme</span><h3>Kireçli yarma (limed split)</h3><p>Kireçlenmiş, tabaklanmamış yarma. Alıcı = <strong>split işleyici</strong> (süet/astar/eldiven) + <strong>jelatin/kolajen</strong> üreticisi.</p></div>
+          <div class="card"><span class="ico trackF">Track F · ikincil</span><h3>Bitmiş "Iskefe Prime"</h3><p>Suede/nubuck/floater, 48h numune. Alıcı = kendi finish'i olmayan footwear/çanta/lifestyle markası. Upsell.</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Çekirdek ayrışma — üç sütun</h3>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="n">01</div><h3>Wet-end'i devralma</h3>
+            <p>Kirli, regüle, su/atıksu yükü yüksek ıslak işi (kireçleme/yarma/krom) biz yaparız; bitiş tabakhanesi sadece re-tan+finish eder. Çevre mevzuatı bu modeli büyütüyor.</p>
+          </div>
+          <div class="pillar">
+            <div class="n">02</div><h3>İzlenebilirlik &amp; kalite</h3>
+            <p>Uçtan uca izlenebilirlik, akredite kendi test lab, sürdürülebilirlik. Batı bitiş tabakhanesi + jelatin alıcısının kapı şartı.</p>
+          </div>
+          <div class="pillar">
+            <div class="n">03</div><h3>Kolajen bilgisi (K4)</h3>
+            <p>Kendi Bursa kolajen rafinerisi → kireçli yarmanın jelatin/kolajen spesifikasyonunu içeriden bilir. Sektör-dışı çeşitlendirme kozu.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <p>"Kirli ve regüle ıslak işi biz yapıyoruz; izlenebilir, tutarlı wet-blue ve kireçli yarma veriyoruz — sen sadece bitir."</p>
+        <span class="src">İskefe Leather — wet-blue ayrışma kozu (firma görüşmesi + web)</span>
+      </div>
+    </section>
+
+    <!-- 03 EXPORT DATA ANALYSIS -->
+    <section id="veri">
+      <div class="sec-head">
+        <span class="eyebrow">03 — İhracat Verisi Analizi</span>
+        <h2>Çalışmanın temeli: gerçek alıcı verisi</h2>
+        <p>Elimizde <strong>firmanın gerçek Top-50 ihracat müşterisi</strong> var. Ürün düzeltmesiyle alıcıların <strong>rolü</strong>
+          netleşti: "tabakhane" = sıfırdan tabaklayan değil, <strong>wet-blue alıp re-tan+finish eden bitiş tabakhanesi</strong>;
+          "entegre üretici" = <strong>kendi finishing'i olan</strong>. Rakamlar aynı, yorum düzeltildi.</p>
+      </div>
+
+      <div class="kpis" style="border-radius:14px">
+        <div class="kpi"><div class="num">$35.99<span class="u">M</span></div><div class="lab">Top-50 toplam ihracat değeri</div></div>
+        <div class="kpi"><div class="num">5.346<span class="u">t</span></div><div class="lab">Toplam ağırlık (wet-blue + split, ton)</div></div>
+        <div class="kpi"><div class="num">%66</div><div class="lab"><b>Top-10 yoğunlaşma</b> — yeni alıcı = risk azaltma</div></div>
+        <div class="kpi"><div class="num">%22</div><div class="lab">Tek alıcı (<b>KH Exports India</b>) payı · $7.8M</div></div>
+      </div>
+
+      <div class="block">
+        <h3>Coğrafya — değere göre (nerede güçlüyüz)</h3>
+        <div class="chart">
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">🇮🇳 Hindistan</span><span class="bar__val">%41.7 · $15.0M</span></div><div class="bar__track"><div class="bar__fill" style="width:100%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">🇨🇳 Çin</span><span class="bar__val">%13.0 · $4.7M</span></div><div class="bar__track"><div class="bar__fill" style="width:31.2%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">🇺🇦 Ukrayna</span><span class="bar__val">%11.2 · $4.0M</span></div><div class="bar__track"><div class="bar__fill" style="width:26.9%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">🇭🇰 Çin Hong Kong</span><span class="bar__val">%9.2 · $3.3M</span></div><div class="bar__track"><div class="bar__fill" style="width:22.1%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">🇪🇸 İspanya</span><span class="bar__val">%7.2 · $2.6M</span></div><div class="bar__track"><div class="bar__fill" style="width:17.3%"></div></div></div>
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">🇮🇩 Endonezya</span><span class="bar__val">%4.8 · $1.7M</span></div><div class="bar__track"><div class="bar__fill" style="width:11.5%"></div></div></div>
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">🇷🇺 Rusya</span><span class="bar__val">%4.0 · $1.5M</span></div><div class="bar__track"><div class="bar__fill" style="width:9.6%"></div></div></div>
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">🇧🇩 Bangladeş · 🇵🇱🇻🇳🇵🇹🇩🇪🇮🇹🇲🇩 diğer</span><span class="bar__val">%9.1 · $3.3M</span></div><div class="bar__track"><div class="bar__fill" style="width:21.8%"></div></div></div>
+        </div>
+        <p class="chart-note">Bloklar: G.Asya (IN, wet-blue bitiren dev) %42 · Büyük Çin (bitiş tabakhanesi+ticaret) %22 · D.Avrupa (fabrika finish) ~%18 · G.Avrupa (premium bitiş tabakhanesi) ~%8 · GD Asya ~%9. Batı markaları (bitmiş/Track F) = ~%0.</p>
+      </div>
+
+      <div class="block">
+        <h3>Alıcı rolü — değere göre (ürün düzeltmesiyle netleşti)</h3>
+        <div class="chart">
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">Entegre üretici (kendi finish · wet-blue)</span><span class="bar__val">%30.8 · $11.1M</span></div><div class="bar__track"><div class="bar__fill" style="width:100%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">Wet-blue / deri ticaret ajansı</span><span class="bar__val">%28.0 · $10.1M</span></div><div class="bar__track"><div class="bar__fill" style="width:90.9%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">Ayakkabı fabrikası (kendi finish · wet-blue)</span><span class="bar__val">%26.8 · $9.6M</span></div><div class="bar__track"><div class="bar__fill" style="width:87%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">Bitiş / re-tan tabakhanesi</span><span class="bar__val">%12.6 · $4.5M</span></div><div class="bar__track"><div class="bar__fill" style="width:40.9%"></div></div></div>
+        </div>
+        <p class="chart-note">★ 4 net alıcı arketipi = Track W (wet-blue) çekirdek segmentleri (W1–W4). "Bitiş tabakhanesi" (Curtidos/Curtumes/Lamipel) = İskefe'nin en saf wet-blue alıcısı (W1). Düşük-$/kg satırlar (Curpifran, Upflying) = kireçli yarma/split (Track K).</p>
+      </div>
+
+      <div class="block">
+        <h3>En büyük alıcılar — fiyat sinyali (USD/kg → ürün kalite sınıfı)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Alıcı</th><th>Ülke</th><th>Rol (yeni)</th><th class="tnum">Değer</th><th class="tnum">Ağırlık</th><th class="tnum">$/kg</th></tr></thead>
+            <tbody>
+              <tr class="hl"><td class="em">KH Exports India</td><td>🇮🇳</td><td>Entegre (kendi finish)</td><td class="tnum">$7.80M</td><td class="tnum">1.64M kg</td><td class="tnum">$4.75</td></tr>
+              <tr><td class="em">AI HI Leather</td><td>🇨🇳</td><td>Bitiş tabakhanesi/ticaret</td><td class="tnum">$3.20M</td><td class="tnum">313k kg</td><td class="tnum">$10.20</td></tr>
+              <tr><td class="em">Song Shin HK Group</td><td>🇭🇰</td><td>Wet-blue ticaret</td><td class="tnum">$2.47M</td><td class="tnum">212k kg</td><td class="tnum">$11.65</td></tr>
+              <tr><td class="em">Talanprom</td><td>🇺🇦</td><td>Ayakkabı fabrikası</td><td class="tnum">$1.87M</td><td class="tnum">130k kg</td><td class="tnum">$14.30</td></tr>
+              <tr class="hl"><td class="em">Curpifran</td><td>🇪🇸</td><td>Split sinyali (kireçli yarma)</td><td class="tnum">$1.11M</td><td class="tnum">572k kg</td><td class="tnum">$1.94</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">Split (Track K) ~$1.9–2.0/kg + çok yüksek tonaj (Curpifran, Upflying) → ucuz/kg hacim. Wet-blue grain orta bant ~$4–7/kg. Yüksek bant $10–25/kg → muhtemelen crust/finished veya veri gürültüsü (firma teyidi — üst ürüne geçirme sinyali).</p>
+      </div>
+
+      <div class="callout">
+        <div class="ct">Stratejik çıkarım</div>
+        <p>ICP <strong>kanıtlı</strong>: 4 alıcı arketipi = wet-blue'yu <strong>bitiren/re-tan eden</strong> taraf (W1–W4). Üç kaldıraç:
+          <strong>W</strong> (wet-blue benzer firma, hızlı/düşük risk), <strong>K</strong> (split + <strong>jelatin</strong> sektör-dışı çeşitlendirme),
+          <strong>F</strong> (Batı markasına bitmiş üst ürüne satış). Top-10 yoğunlaşması (%66) yeni-alıcı kazanımını stratejik zorunluluk yapıyor.</p>
+      </div>
+    </section>
+
+    <!-- 04 MARKET FRAMEWORK -->
+    <section id="pazar">
+      <div class="sec-head">
+        <span class="eyebrow">04 — Pazar Çerçevesi</span>
+        <h2>İki yapısal rüzgâr</h2>
+        <p>İskefe iki yapısal eğilimin kesişiminde: (1) <strong>çevre mevzuatı ıslak işi (beamhouse) azalttıkça</strong> bitiş
+          tabakhaneleri wet-end'i bırakıp dışarıdan <strong>wet-blue almaya</strong> yöneliyor; (2) <strong>kireçli yarma</strong>
+          deri-dışı bir sektöre — <strong>jelatin/kolajen</strong> — istikrarlı, sözleşmeli talep yaratıyor.</p>
+      </div>
+
+      <div class="kpis" style="border-radius:14px">
+        <div class="kpi"><div class="num">#1</div><div class="lab"><b>Footwear</b> = wet-blue'nun en büyük son-kullanımı</div></div>
+        <div class="kpi"><div class="num">Wet-end↓</div><div class="lab"><b>Çevre mevzuatı</b> ıslak işi uzman tedarikçiye kaydırıyor</div></div>
+        <div class="kpi"><div class="num">Jelatin</div><div class="lab"><b>Kireçli yarma</b> = deri-dışı, yapışkan talep (gıda/farma)</div></div>
+        <div class="kpi"><div class="num">LWG</div><div class="lab"><b>İzlenebilirlik</b> Batı bitiş tabakhanesi + jelatin alıcısı kapısı</div></div>
+      </div>
+
+      <div class="block">
+        <h3>Fırsat tezi — neden bu iş, neden şimdi, neden İskefe</h3>
+        <ul class="tick">
+          <li><b>Wet-end'i devralma = büyüyen model.</b> Çevre/atıksu regülasyonu ıslak işi (kireçleme/krom) pahalı ve zor kılıyor; birçok bitiş tabakhanesi tabakhane bunu bırakıp wet-blue alıyor. İskefe tam bu ıslak işi izlenebilir yapıp wet-blue satıyor.</li>
+          <li><b>Kireçli yarma = sektör-dışı çeşitlendirme.</b> Limed split, jelatin/kolajen üretiminin klasik hammaddesi (tabaklanmamış olması şart). İskefe'nin kendi Bursa kolajen kolu bu ürünü içeriden biliyor → deri konjonktüründen bağımsız, yapışkan gelir.</li>
+          <li><b>İskefe ayrışma kozu = entegrasyon + hız + menşe.</b> Beamhouse'dan wet-blue'ya tek elden + izlenebilirlik + Türkiye menşe (AB'ye yakın, Asya'ya rekabetçi).</li>
+          <li><b>Konsantrasyon riski = stratejik ihtiyaç.</b> Tek alıcı %22, Top-10 %66. Tabanı çeşitlendirmek ciro kadar risk-yönetimi meselesi.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>Talep rüzgârları — yön</h3>
+        <div class="chart">
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">Dışarıdan wet-blue alan bitiş tabakhanesi</span><span class="bar__val">Yapısal ↑</span></div><div class="bar__track"><div class="bar__fill" style="width:100%"></div></div></div>
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">Jelatin/kolajen (limed split talebi)</span><span class="bar__val">İstikrarlı ↑</span></div><div class="bar__track"><div class="bar__fill" style="width:90%"></div></div></div>
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">Salt fiyat-odaklı emtia hide</span><span class="bar__val">Yatay →</span></div><div class="bar__track"><div class="bar__fill" style="width:50%"></div></div></div>
+        </div>
+        <p class="chart-note">★ İskefe iki büyüyen rüzgârda konumlu (wet-blue tedariki + jelatin split). Pazar büyüklük ifadeleri sektör-geneldir; raporun çekirdek kanıtı firmanın kendi ihracat verisidir (bkz. Metodoloji).</p>
+      </div>
+    </section>
+
+    <!-- 05 TARGET MARKET -->
+    <section id="hedef">
+      <div class="sec-head">
+        <span class="eyebrow">05 — Hedef Pazar Tespiti</span>
+        <h2>Kanıtlı güç pazarları + jelatin + Batı boşluğu</h2>
+        <p>Hedef pazar üç katmanda: (1) verinin kanıtladığı <strong>wet-blue güç pazarlarını pekiştir</strong> (W, hızlı/düşük risk),
+          (2) <strong>jelatin/kolajen</strong> kümelerini aç (K4, sektör-dışı istikrar), (3) datada boş <strong>Batı marka</strong> pazarına
+          bitmiş deri sun (F). Birim: <strong>E = bir blokta tahmini hedef B2B firma sayısı</strong>.</p>
+      </div>
+
+      <div class="block">
+        <h3>Üç kademeli önceliklendirme</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kademe</th><th>Pazar bloğu</th><th>Track</th><th>Dayanak</th></tr></thead>
+            <tbody>
+              <tr class="hl"><td><span class="tier t1">Tier 1 · Altın</span></td><td class="em">🇮🇳 Hindistan + 🇨🇳🇭🇰 Büyük Çin</td><td><span class="trackW">W · kanıtlı</span></td><td>Verinin %64'ü; wet-blue ithal edip bitiren dev gruplar + bitiş tabakhanesi + ticaret. Benzer-firma araması yüksek isabet.</td></tr>
+              <tr class="hl"><td><span class="tier t1">Tier 1 · Altın</span></td><td class="em">🇪🇸🇵🇹🇮🇹 Güney Avrupa</td><td><span class="trackW">W</span> + <span class="trackF">F köprü</span></td><td>Premium bitiş tabakhanesi (Arzignano/Igualada, LWG) — İskefe'nin en saf wet-blue alıcısı (W1); + F markası.</td></tr>
+              <tr><td><span class="tier t2">Tier 2 · Yüksek</span></td><td class="em">🇺🇦🇷🇺 D.Avrupa + 🇻🇳🇮🇩🇧🇩 GD Asya</td><td><span class="trackW">W · kanıtlı</span></td><td>Ayakkabı fabrikası (wet-blue → kendi finish). Hacim, tekrar.</td></tr>
+              <tr><td><span class="tier t2">Tier 2 · Yüksek</span></td><td class="em">🇨🇳🇮🇳🇧🇷🇪🇺 jelatin kümeleri</td><td><span class="trackK">K4 · sektör-dışı</span></td><td>Jelatin/kolajen üreticisi (limed split hammadde). Yapışkan, deri-dışı istikrar. İskefe Bursa sinerjisi.</td></tr>
+              <tr><td><span class="tier t3">Tier 3 · Fırsatçı</span></td><td class="em">🇩🇪🇫🇷🇬🇧🇺🇸 Batı markaları</td><td><span class="trackF">F · büyüme</span></td><td>Datada ~boş; bitmiş deri + izlenebilirlik. Yavaş döngü, yüksek marj.</td></tr>
+              <tr><td><span class="tier t3">Tier 3 · Fırsatçı</span></td><td class="em">🇵🇰🇲🇽🇪🇬 genişleme</td><td><span class="trackW">W · kanıtsız</span></td><td>Aynı arketip, yeni coğrafya (bitiş tabakhanesi/eldiven). Havuz kaldıracı.</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="3">TAM havuz (benzersiz, dedup)</td><td class="tnum">~850–1.000 firma</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="ct">Kalibrasyon avantajı</div>
+        <p>E tahminleri boşlukta değil: gerçek ihracat dağılımı en çok firma/değerin nerede olduğunu söylüyor (Hindistan'da wet-blue'yu
+          bitiren çok dev grup VAR — kanıtlı). Bu, hangi blokta "benzer firma" aramasının isabetli olacağını önceden gösteriyor.
+          Detaylı kalibrasyon tablosu bölüm 07'de.</p>
+      </div>
+
+      <div class="block">
+        <h3>Bilinçli dışlama</h3>
+        <div class="chips">
+          <span class="chip neg">Sıfırdan ham deri alıp kendi wet-end'ini yapan tabakhane</span>
+          <span class="chip neg">Suni / PU deri</span>
+          <span class="chip neg">Vegan / sentetik marka</span>
+          <span class="chip neg">Salt komisyoncu (deri-dışı)</span>
+          <span class="chip neg">K4'te: krom-tabaklı isteyen (jelatine uymaz)</span>
+          <span class="chip neg">Türkiye-içi</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 ICP -->
+    <section id="icp">
+      <div class="sec-head">
+        <span class="eyebrow">06 — İdeal Müşteri Profili</span>
+        <h2>Wet-end'i devralınan / split &amp; jelatin alıcısı</h2>
+        <p>Ortak yetenek filtresi: alıcı <strong>finish/re-tan yapıyor</strong> (wet-blue alır) VEYA <strong>split işliyor / jelatin
+          üretiyor</strong> (kireçli yarma). 9 segment üç track'e ayrıldı — <strong>Track W (W1–W4)</strong> kanıtlı wet-blue,
+          <strong>Track K (K1–K4)</strong> split + jelatin, <strong>Track F (F1)</strong> bitmiş üst ürüne satış. Toplam <strong>18 alt-ICP</strong>.</p>
+      </div>
+
+      <div class="block">
+        <h3>Track W — wet-blue (kanıtlı çekirdek)</h3>
+        <div class="grid g-2">
+          <div class="card">
+            <span class="ico">W1 · ★ Altın · en saf alıcı</span>
+            <h3>Bitiş / re-tan tabakhanesi</h3>
+            <p>Kendi wet-end'i olmayan/azaltan, wet-blue alıp re-tan+finish eden tabakhane. Çevre-mevzuatı ayrışma kozu en güçlü burada.
+              G.Avrupa premium (LWG) + Asya. <strong>En yüksek-değer, en saf wet-blue alıcısı.</strong></p>
+          </div>
+          <div class="card">
+            <span class="ico">W2 · ★ Altın · kanıtlı %30.8</span>
+            <h3>Entegre üretici-ihracatçı (kendi finish)</h3>
+            <p>Wet-blue ithal edip kendi finishing'ini yapan dev gruplar (KH Exports arketipi, Hindistan). Büyük, düzenli, yapışkan.</p>
+          </div>
+          <div class="card">
+            <span class="ico">W3 · Yüksek · kanıtlı %26.8</span>
+            <h3>Ayakkabı üreticisi / fabrikası</h3>
+            <p>Wet-blue alıp kendi finish'ini yapan deri ayakkabı fabrikaları (D.Avrupa + GD Asya + G.Avrupa). En kalabalık tip; astar için split çapraz-satış.</p>
+          </div>
+          <div class="card">
+            <span class="ico">W4 · Yüksek · kanıtlı %28.0</span>
+            <h3>Wet-blue / deri ticaret &amp; sourcing ajansı</h3>
+            <p>Büyük Çin/HK + Avrupa ajansları. Bir ajans = çok bitiş tabakhanesi/fabrika → <strong>çarpan kanalı</strong>. Fiyat-hassas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Track K — kireçli yarma / split &amp; Track F — bitmiş</h3>
+        <div class="grid g-3">
+          <div class="card"><span class="ico trackK">K1 · Yüksek</span><h3>Split-suede &amp; kaplı split işleyici</h3><p>Süet/kaplı split/astar üreticisi. Düşük-$/kg data sinyali. Hacim.</p></div>
+          <div class="card"><span class="ico trackK">K2–K3 · Orta</span><h3>Eldiven + astar/bonded split</h3><p>İş eldiveni (PK/IN/CN) + astar/bonded leather (Lamipel arketipi).</p></div>
+          <div class="card"><span class="ico trackK">K4 · ★ Yüksek · sektör-dışı</span><h3>Jelatin / kolajen / casing</h3><p>Limed split = jelatin klasik hammaddesi (tabaklanmamış şart). İskefe Bursa kolajen sinerjisi → deri-dışı yapışkan çeşitlendirme.</p></div>
+          <div class="card"><span class="ico trackF">F1 · Orta · ikincil</span><h3>Footwear/çanta/lifestyle markası</h3><p>Kendi finish'i olmayan, bitmiş deri alan marka (Iskefe Prime, 48h). Batı büyüme, üst ürüne satış.</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Ortak eleme eşiği</h3>
+        <div class="chips">
+          <span class="chip pos">Finish/re-tan yapıyor (wet-blue)</span>
+          <span class="chip pos">Split işliyor / jelatin üretiyor (kireçli yarma)</span>
+          <span class="chip pos">İzlenebilirlik / LWG değer veren</span>
+          <span class="chip neg">Sıfırdan ham-tabaklayan</span>
+          <span class="chip neg">Suni / PU</span>
+          <span class="chip neg">Vegan / sentetik marka</span>
+          <span class="chip neg">K4: krom-tabaklı isteyen</span>
+          <span class="chip neg">Türkiye-içi</span>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>18 alt-ICP — granüler liste</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kod</th><th>Alt-ICP</th><th>Ürün</th><th>Ana pazar · örnek arketip (veri)</th></tr></thead>
+            <tbody>
+              <tr class="grp"><td colspan="4">Track W · W1 — Bitiş / re-tan tabakhanesi · ★ Altın · kanıtlı</td></tr>
+              <tr><td class="em">W1.1</td><td>G.Avrupa premium bitiş tabakhanesi (LWG)</td><td>Wet-blue</td><td>🇮🇹🇪🇸🇵🇹 · Curtidos Gaycar, Curtumes Boaventura tipi</td></tr>
+              <tr><td class="em">W1.2</td><td>Asya re-tan / bitiş tabakhanesi</td><td>Wet-blue</td><td>🇮🇳🇨🇳🇻🇳 · Habeeb Tanning, AI HI Leather tipi</td></tr>
+              <tr><td class="em">W1.3</td><td>Yeni-pazar bitiş tabakhanesi</td><td>Wet-blue</td><td>🇲🇽🇧🇷🇪🇬 genişleme</td></tr>
+              <tr class="grp"><td colspan="4">Track W · W2 — Entegre üretici-ihracatçı (kendi finish) · ★ Altın · %30.8</td></tr>
+              <tr><td class="em">W2.1</td><td>Hindistan entegre ihracat grubu</td><td>Wet-blue</td><td>🇮🇳 · KH Exports, Tata Int'l, Gupta HC tipi</td></tr>
+              <tr><td class="em">W2.2</td><td>Hindistan-dışı entegre üretici</td><td>Wet-blue</td><td>🇵🇰🇧🇩🇻🇳</td></tr>
+              <tr class="grp"><td colspan="4">Track W · W3 — Ayakkabı fabrikası (kendi finish) · Yüksek · %26.8</td></tr>
+              <tr><td class="em">W3.1</td><td>D.Avrupa deri ayakkabı fabrikası</td><td>Wet-blue (+split astar)</td><td>🇺🇦🇷🇺🇲🇩 · Talanprom, Unichel, Krok tipi</td></tr>
+              <tr><td class="em">W3.2</td><td>GD Asya deri/güvenlik ayakkabı fabrikası</td><td>Wet-blue</td><td>🇻🇳🇮🇩🇧🇩 · Rieker, Caprice tipi</td></tr>
+              <tr><td class="em">W3.3</td><td>G.Avrupa premium ayakkabı üreticisi</td><td>Wet-blue</td><td>🇪🇸🇵🇹🇮🇹 · Hosbo, Sanchez Agullo tipi</td></tr>
+              <tr class="grp"><td colspan="4">Track W · W4 — Wet-blue / deri ticaret &amp; sourcing ajansı · Yüksek · %28.0</td></tr>
+              <tr><td class="em">W4.1</td><td>Büyük Çin / HK wet-blue ticaret evi</td><td>Wet-blue (toptan)</td><td>🇭🇰🇨🇳 · Song Shin, Smart Leather tipi</td></tr>
+              <tr><td class="em">W4.2</td><td>Avrupa deri sourcing ajansı</td><td>Wet-blue / split</td><td>🇩🇪🇮🇹 · IS International Sourcing tipi</td></tr>
+              <tr class="grp"><td colspan="4">Track K · Kireçli yarma / limed split</td></tr>
+              <tr><td class="em">K1.1</td><td>G.Avrupa süet/kaplı split / astar işleyici</td><td>Limed/wet-blue split</td><td>🇮🇹🇪🇸</td></tr>
+              <tr><td class="em">K1.2</td><td>Asya split işleyici (süet/kaplı)</td><td>Limed/wet-blue split</td><td>🇮🇳🇨🇳🇻🇳 · (Curpifran/Upflying düşük-$/kg tipi)</td></tr>
+              <tr><td class="em">K2.1</td><td>Deri iş eldiveni / endüstriyel split üreticisi</td><td>Kireçli/wet-blue split</td><td>🇵🇰🇮🇳🇨🇳 (Sialkot/Kanpur)</td></tr>
+              <tr><td class="em">K3.1</td><td>Astar / bonded / laminat split üreticisi</td><td>Limed/wet-blue split</td><td>🇮🇹🇨🇳🇮🇳 · Lamipel tipi</td></tr>
+              <tr class="hl"><td class="em">K4.1</td><td>Jelatin üreticisi (gıda/farma)</td><td>Tabaklanmamış kireçli yarma</td><td>🇨🇳🇮🇳🇧🇷 · (Fi Europe / GME / GMIA kanalı)</td></tr>
+              <tr class="hl"><td class="em">K4.2</td><td>Kolajen / kolajen-casing üreticisi</td><td>Tabaklanmamış limed split</td><td>🇪🇺🇺🇸 (DE/FR/IT)</td></tr>
+              <tr class="grp"><td colspan="4">Track F · Bitmiş "Iskefe Prime" · ikincil / üst ürüne satış</td></tr>
+              <tr><td class="em">F1.1</td><td>G.Avrupa premium footwear/çanta markası</td><td>Finished (suede/nubuck/floater)</td><td>🇮🇹🇵🇹🇪🇸</td></tr>
+              <tr><td class="em">F1.2</td><td>DACH/UK/US footwear/lifestyle markası</td><td>Finished</td><td>🇩🇪🇬🇧🇺🇸</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">"Örnek arketip" isimleri veri-kanıtlı kategori temelidır — leadgen bunların <strong>benzerlerini</strong> hedefler ve <strong>yeteneği doğrular</strong> (finish/re-tan yapıyor mu?), mevcut müşteriyi değil.</p>
+      </div>
+    </section>
+
+    <!-- 07 GEOGRAPHY -->
+    <section id="cografya">
+      <div class="sec-head">
+        <span class="eyebrow">07 — Coğrafya &amp; Sizing</span>
+        <h2>Her alt-ICP'de ~kaç firma?</h2>
+        <p>18 alt-ICP × ülke bloğu matrisi. Hücre = <strong>E (tahmini doğru firma sayısı)</strong>: wet-blue'yu bitiren / split işleyen /
+          jelatin üreten B2B alıcı. Arama-birimi sayıları — ham toplam, benzersiz firmadan fazladır. <strong>Avantaj:</strong> E'ler gerçek
+          ihracat dağılımıyla kalibre.</p>
+      </div>
+
+      <div class="block">
+        <h3>Müşteri özeti — alt-ICP × track × E (geography müşteri tablosu)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kod</th><th>Alt-ICP</th><th>Track</th><th>Ürün</th><th>Bloklar</th><th class="tnum">E</th><th>Güven</th></tr></thead>
+            <tbody>
+              <tr><td class="em">W1.1</td><td>G.Avrupa premium bitiş tabakhanesi (LWG)</td><td><span class="trackW">W · kanıtlı</span></td><td>Wet-blue</td><td>SEU</td><td class="tnum em">90</td><td>orta</td></tr>
+              <tr><td class="em">W1.2</td><td>Asya re-tan / bitiş tabakhanesi</td><td><span class="trackW">W · kanıtlı</span></td><td>Wet-blue</td><td>IN/CN/SEA</td><td class="tnum em">90</td><td>orta</td></tr>
+              <tr><td class="em">W1.3</td><td>Yeni-pazar bitiş tabakhanesi</td><td><span class="trackW">W</span></td><td>Wet-blue</td><td>OTH</td><td class="tnum em">50</td><td>düşük</td></tr>
+              <tr><td class="em">W2.1</td><td>Hindistan entegre ihracat grubu</td><td><span class="trackW">W · kanıtlı</span></td><td>Wet-blue</td><td>IN</td><td class="tnum em">60</td><td>orta</td></tr>
+              <tr><td class="em">W2.2</td><td>Hindistan-dışı entegre üretici</td><td><span class="trackW">W · kanıtlı</span></td><td>Wet-blue</td><td>SEA/PK</td><td class="tnum em">55</td><td>orta-düşük</td></tr>
+              <tr><td class="em">W3.1</td><td>D.Avrupa deri ayakkabı fabrikası</td><td><span class="trackW">W · kanıtlı</span></td><td>Wet-blue</td><td>EE</td><td class="tnum em">65</td><td>orta</td></tr>
+              <tr><td class="em">W3.2</td><td>GD Asya deri/güvenlik ayakkabı fabrikası</td><td><span class="trackW">W · kanıtlı</span></td><td>Wet-blue</td><td>SEA</td><td class="tnum em">95</td><td>orta</td></tr>
+              <tr><td class="em">W3.3</td><td>G.Avrupa premium ayakkabı üreticisi</td><td><span class="trackW">W · kanıtlı</span></td><td>Wet-blue</td><td>SEU</td><td class="tnum em">120</td><td>orta</td></tr>
+              <tr><td class="em">W4.1</td><td>Büyük Çin / HK wet-blue ticaret evi</td><td><span class="trackW">W · kanıtlı</span></td><td>Wet-blue</td><td>CN/HK</td><td class="tnum em">60</td><td>orta</td></tr>
+              <tr><td class="em">W4.2</td><td>Avrupa deri sourcing ajansı</td><td><span class="trackW">W · kanıtlı</span></td><td>Wet-blue/split</td><td>SEU/WEU</td><td class="tnum em">30</td><td>düşük-orta</td></tr>
+              <tr><td class="em">K1.1</td><td>G.Avrupa süet/kaplı split / astar işleyici</td><td><span class="trackK">K</span></td><td>Limed/wb split</td><td>SEU</td><td class="tnum em">60</td><td>düşük-orta</td></tr>
+              <tr><td class="em">K1.2</td><td>Asya split işleyici (süet/kaplı)</td><td><span class="trackK">K</span></td><td>Limed/wb split</td><td>IN/CN/SEA</td><td class="tnum em">80</td><td>düşük-orta</td></tr>
+              <tr><td class="em">K2.1</td><td>Deri iş eldiveni / endüstriyel split üreticisi</td><td><span class="trackK">K</span></td><td>Kireçli/wb split</td><td>PK/IN/CN</td><td class="tnum em">75</td><td>düşük</td></tr>
+              <tr><td class="em">K3.1</td><td>Astar / bonded / laminat split üreticisi</td><td><span class="trackK">K · kanıtlı</span></td><td>Limed/wb split</td><td>IT/CN/IN</td><td class="tnum em">60</td><td>düşük-orta</td></tr>
+              <tr class="hl"><td class="em">K4.1</td><td>Jelatin üreticisi (gıda/farma)</td><td><span class="trackK">K · sektör-dışı</span></td><td>Tabaklanmamış yarma</td><td>CN/IN/BR</td><td class="tnum em">60</td><td>düşük</td></tr>
+              <tr class="hl"><td class="em">K4.2</td><td>Kolajen / kolajen-casing üreticisi</td><td><span class="trackK">K · sektör-dışı</span></td><td>Tabaklanmamış split</td><td>EU/US</td><td class="tnum em">45</td><td>düşük</td></tr>
+              <tr><td class="em">F1.1</td><td>G.Avrupa premium footwear/çanta markası</td><td><span class="trackF">F · ikincil</span></td><td>Finished</td><td>SEU</td><td class="tnum em">100</td><td>düşük-orta</td></tr>
+              <tr><td class="em">F1.2</td><td>DACH/UK/US footwear/lifestyle markası</td><td><span class="trackF">F · ikincil</span></td><td>Finished</td><td>WEU/US</td><td class="tnum em">85</td><td>düşük</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="5">TAM havuz · 18 alt-ICP</td><td class="tnum">~1.280 ham</td><td>~850–1.000 benzersiz</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Matris — alt-ICP × ülke bloğu (hücre = E)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kod</th><th>Alt-ICP</th><th class="tnum">IN</th><th class="tnum">CN/HK</th><th class="tnum">EE</th><th class="tnum">SEA</th><th class="tnum">SEU</th><th class="tnum">WEU</th><th class="tnum">US</th><th class="tnum">OTH</th><th class="tnum">E</th></tr></thead>
+            <tbody>
+              <tr class="grp"><td colspan="11">Track W — Wet-blue (kanıtlı) · alt ~715</td></tr>
+              <tr><td>W1.1</td><td>G.Avrupa bitiş tabakhanesi</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">90</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum em">90</td></tr>
+              <tr><td>W1.2</td><td>Asya re-tan / bitiş tabakhanesi</td><td class="tnum">45</td><td class="tnum">25</td><td class="tnum">–</td><td class="tnum">20</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum em">90</td></tr>
+              <tr><td>W1.3</td><td>Yeni-pazar bitiş tabakhanesi</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">50</td><td class="tnum em">50</td></tr>
+              <tr><td>W2.1</td><td>Hindistan entegre ihracat grubu</td><td class="tnum">60</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum em">60</td></tr>
+              <tr><td>W2.2</td><td>Hindistan-dışı entegre üretici</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">30</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">25</td><td class="tnum em">55</td></tr>
+              <tr><td>W3.1</td><td>D.Avrupa ayakkabı fabrikası</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">65</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum em">65</td></tr>
+              <tr><td>W3.2</td><td>GD Asya ayakkabı fabrikası</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">95</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum em">95</td></tr>
+              <tr><td>W3.3</td><td>G.Avrupa premium ayakkabı üreticisi</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">120</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum em">120</td></tr>
+              <tr><td>W4.1</td><td>Büyük Çin / HK wet-blue ticaret</td><td class="tnum">–</td><td class="tnum">60</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum em">60</td></tr>
+              <tr><td>W4.2</td><td>Avrupa deri sourcing ajansı</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">15</td><td class="tnum">15</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum em">30</td></tr>
+              <tr class="grp"><td colspan="11">Track K — Kireçli yarma / split · alt ~380</td></tr>
+              <tr><td>K1.1</td><td>G.Avrupa süet/kaplı split/astar</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">60</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum em">60</td></tr>
+              <tr><td>K1.2</td><td>Asya split işleyici</td><td class="tnum">30</td><td class="tnum">30</td><td class="tnum">–</td><td class="tnum">20</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum em">80</td></tr>
+              <tr><td>K2.1</td><td>İş eldiveni / endüstriyel split</td><td class="tnum">25</td><td class="tnum">20</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">30</td><td class="tnum em">75</td></tr>
+              <tr><td>K3.1</td><td>Astar / bonded / laminat split</td><td class="tnum">15</td><td class="tnum">20</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">25</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum em">60</td></tr>
+              <tr class="hl"><td>K4.1</td><td>Jelatin üreticisi</td><td class="tnum">20</td><td class="tnum">25</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">15</td><td class="tnum em">60</td></tr>
+              <tr class="hl"><td>K4.2</td><td>Kolajen / casing üreticisi</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">10</td><td class="tnum">20</td><td class="tnum">15</td><td class="tnum">–</td><td class="tnum em">45</td></tr>
+              <tr class="grp"><td colspan="11">Track F — Bitmiş (ikincil) · alt ~185</td></tr>
+              <tr><td>F1.1</td><td>G.Avrupa footwear/çanta markası</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">100</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum em">100</td></tr>
+              <tr><td>F1.2</td><td>DACH/UK/US markası</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">45</td><td class="tnum">40</td><td class="tnum">–</td><td class="tnum em">85</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="2">Blok ham toplamı</td><td class="tnum">195</td><td class="tnum">180</td><td class="tnum">65</td><td class="tnum">165</td><td class="tnum">420</td><td class="tnum">80</td><td class="tnum">55</td><td class="tnum">120</td><td class="tnum">1.280</td></tr></tfoot>
+          </table>
+        </div>
+        <p class="chart-note">Ham toplam ~1.280 arama-birimi · benzersiz (dedup ~%30) ~850–1.000 firma. Yıl-1 öncelik ~600 (W1+W2+W3 golden + K4 jelatin) → projeksiyon bunu kullanır.</p>
+      </div>
+
+      <div class="block">
+        <h3>📊 Kalibrasyon — gerçek dağılımla çapraz kontrol</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Blok</th><th class="tnum">Gerçek data payı</th><th class="tnum">Matris E payı</th><th>Okuma</th></tr></thead>
+            <tbody>
+              <tr><td class="em">IN + CN/HK (Track W çekirdek)</td><td class="tnum">%64</td><td class="tnum">%29</td><td>Data ağır yoğun; wet-blue bitiren dev pazar → W'de hızlı kazanım gerçekçi</td></tr>
+              <tr><td class="em">EE + SEA (ayakkabı fabrikası)</td><td class="tnum">%27</td><td class="tnum">%18</td><td>Tutarlı; fabrika wet-blue alıcısı kanıtlı</td></tr>
+              <tr class="hl"><td class="em">SEU (G.Avrupa · W1+K+F)</td><td class="tnum">%8</td><td class="tnum">%33</td><td>Premium bitiş tabakhanesi (LWG) + split + marka → W1 en saf hedef + F fırsatı</td></tr>
+              <tr class="hl"><td class="em">WEU + US (kolajen + marka)</td><td class="tnum">~%0.4</td><td class="tnum">%11</td><td>Boş; K4 kolajen + Track F büyüme (yavaş döngü)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">Çıkarım: Track W pazarı Asya + G.Avrupa premium bitiş tabakhanesinde (kanıtlı, dolu, hızlı). K4 jelatin = CN/IN/BR/EU (sektör-dışı). Track F = Batı marka (boş, yavaş).</p>
+      </div>
+    </section>
+
+    <!-- 08 SEARCH INTELLIGENCE -->
+    <section id="arama">
+      <div class="sec-head">
+        <span class="eyebrow">08 — Arama Zekâsı</span>
+        <h2>Bu firmalar fiilen nerede bulunur</h2>
+        <p>İskefe zaten <strong>Lineapelle Milano</strong>'da (Şubat 2026, Pavilion 3). Deri fuar + dernek üye listeleri wet-blue/split
+          havuzunu verir; <strong>jelatin (K4) ayrı sektör</strong> → Fi Europe / jelatin dernekleri. Kullanım sırası: fuar → dernek →
+          küme + yerel-dil dizin → LinkedIn (satınalma / raw material sourcing).</p>
+      </div>
+
+      <div class="block">
+        <h3>🥇 Deri fuarları (Track W + K1-K3) &amp; jelatin kanalı (K4)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kaynak</th><th>Yer / tip</th><th>Hangi alt-ICP</th></tr></thead>
+            <tbody>
+              <tr class="hl"><td class="em">Lineapelle Milano</td><td>Milano, IT · deri fuarı</td><td>🔑 İskefe zaten katılıyor. W1 (bitiş tabakhanesi), W3 (footwear), K1/K3 (split), F1 (marka)</td></tr>
+              <tr><td class="em">APLF</td><td>Hong Kong / Dubai · deri</td><td>W1.2 (Asya bitiş tabakhanesi), W4.1 (Çin/HK ticaret), K1.2</td></tr>
+              <tr><td class="em">ACLE — All China Leather Exhibition</td><td>Shanghai · deri</td><td>W4.1, W1.2, K1.2/K3</td></tr>
+              <tr><td class="em">MICAM / Expo Riva Schuh</td><td>Milano / Riva · ayakkabı</td><td>W3.3 (üretici) + F1 (marka)</td></tr>
+              <tr class="hl"><td class="em">Fi Europe (Food ingredients)</td><td>AB · gıda-bileşen</td><td>🔑 K4.1, K4.2 — jelatin/kolajen üreticileri</td></tr>
+              <tr class="hl"><td class="em">GME / GMIA (jelatin dernekleri)</td><td>AB / ABD · üye listesi</td><td>K4.1 (jelatin üreticileri)</td></tr>
+              <tr><td class="em">Lineapelle London / NY</td><td>UK / US · deri</td><td>F1.2 (bitmiş, Batı marka)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid g-2 block">
+        <div class="card">
+          <span class="ico">Dernekler &amp; kümeler</span>
+          <h3>Üye listeleri = havuz</h3>
+          <ul class="tick" style="margin-top:.8rem">
+            <li><b>Deri:</b> CLE (Hindistan), UNIC (İtalya), ACEXPIEL (İspanya), APICCAPS (Portekiz), CLIA (Çin), <b>LWG dizini</b></li>
+            <li><b>Jelatin:</b> GME (AB), GMIA (ABD), kolajen-casing üreticileri</li>
+            <li><b>🇮🇹 Küme:</b> Arzignano (bitiş tabakhanesi), Santa Croce (bitiş tabakhanesi+split), Marche (ayakkabı)</li>
+            <li><b>🇪🇸🇵🇹 Küme:</b> Igualada, Elche/Elda, Felgueiras</li>
+            <li><b>🇮🇳 Küme:</b> Tamil Nadu (Ambur/Ranipet), Kanpur; eldiven: Kanpur/Sialkot(PK)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="ico">Yerel dil terimleri</span>
+          <h3>Wet-blue / split / jelatin</h3>
+          <ul class="tick" style="margin-top:.8rem">
+            <li><b>EN wet-blue:</b> wet blue buyer, finishing tannery, re-tanning, crust, LWG certified</li>
+            <li><b>EN split/jelatin:</b> limed split, lime split, split suede, gelatine raw material, collagen split</li>
+            <li><b>🇮🇹:</b> conceria, rifinizione, crosta, scamosciato</li>
+            <li><b>🇪🇸🇵🇹:</b> curtidos, acabado, serraje, curtume, crute</li>
+            <li><b>🇨🇳:</b> 蓝湿皮 (wet-blue), 头层/二层 (grain/split), 明胶 (jelatin)</li>
+            <li><b>🇷🇺🇺🇦:</b> вет-блю, спилок (split), кожевенный завод</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="ct">Risk notu</div>
+        <p><strong>K4 (jelatin) deri fuarında aranırsa boş çıkar</strong> → Fi Europe / GME / GMIA şart; "kireçli/tabaklanmamış (untanned)"
+          vurgusu olmadan yanlış (krom-tabaklı) firmalar gelir. Yerel-dil wet-blue/split terimleri (蓝湿皮 / crosta / serraje / спилок)
+          olmadan Çin+G.Avrupa kümeleri eksik taranır. LWG dizini = Batı bitiş tabakhanesi altın filtresi.</p>
+      </div>
+    </section>
+
+    <!-- 09 PROJECTION -->
+    <section id="projeksiyon">
+      <div class="sec-head">
+        <span class="eyebrow">09 — Gelir Projeksiyonu</span>
+        <h2>Üç senaryoda tekrarlı ciro</h2>
+        <p>Model, <strong>firmanın gerçek müşteri gelir diliminden</strong> dayandırılan partner değeri üzerine kuruldu: Top-50'nin kazanılabilir
+          en küçük müşteri dilimi (sıra 21–50) ortalama <strong>$202k</strong>, medyan <strong>$148k</strong>. İş tipi: <strong>az sayıda, yüksek-değerli,
+          yapışkan</strong> B2B alıcı. Ana model Track W (wet-blue) temeli.</p>
+      </div>
+
+      <div class="block">
+        <h3>Huni — havuzdan partnere (gerçekçi senaryo, yıl 1)</h3>
+        <div class="funnel">
+          <div class="fstep"><div class="fbar" style="width:100%"></div><div class="fmeta"><span class="fnum">~600</span><span class="flab">Yıl-1 öncelikli hedef havuz</span></div></div>
+          <div class="fstep"><div class="fbar" style="width:70%"></div><div class="fmeta"><span class="fnum">~420</span><span class="flab">Karar verici erişimi (DM %70)</span></div><span class="fconv">%70</span></div>
+          <div class="fstep"><div class="fbar" style="width:28%"></div><div class="fmeta"><span class="fnum">~29</span><span class="flab">Pozitif yanıt</span></div><span class="fconv">%7</span></div>
+          <div class="fstep"><div class="fbar" style="width:15%"></div><div class="fmeta"><span class="fnum">~13</span><span class="flab">Numune / teklif / görüşme</span></div><span class="fconv">~%45</span></div>
+          <div class="fstep"><div class="fbar" style="width:8%"></div><div class="fmeta"><span class="fnum">~5</span><span class="flab">Yeni partner (yıl 1)</span></div><span class="fconv">~%35</span></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Partner başına gelir — track bazında (gerçek gelir dilimine dayalı)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Track</th><th>Alıcı</th><th class="tnum">Kötümser</th><th class="tnum">Gerçekçi</th><th class="tnum">İyimser</th></tr></thead>
+            <tbody>
+              <tr class="hl"><td class="em"><span class="trackW">W</span> Wet-blue</td><td>Bitiş tabakhanesi / entegre / fabrika / ajans</td><td class="tnum">$100k</td><td class="tnum em">$180k</td><td class="tnum">$400k</td></tr>
+              <tr><td class="em"><span class="trackK">K</span> Split</td><td>Süet / astar / eldiven işleyici</td><td class="tnum">$60k</td><td class="tnum">$110k</td><td class="tnum">$250k</td></tr>
+              <tr><td class="em"><span class="trackK">K4</span> Jelatin</td><td>Jelatin / kolajen üreticisi (yapışkan)</td><td class="tnum">$80k</td><td class="tnum">$160k</td><td class="tnum">$350k</td></tr>
+              <tr><td class="em"><span class="trackF">F</span> Bitmiş</td><td>Footwear/çanta markası (yüksek marj %)</td><td class="tnum">$50k</td><td class="tnum">$90k</td><td class="tnum">$200k</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">Gelir dilimi temeli: medyan $148k / ortalama $202k. Ana model Track W $180k gerçekçi değeriyle kuruldu (kanıtlı).</p>
+      </div>
+
+      <div class="block">
+        <h3>Üç senaryo · yıl 1 ve 3 yıl (Track W (wet-blue) temeli)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Senaryo</th><th class="tnum">Partner /Y1</th><th class="tnum">Partner değeri</th><th class="tnum">Yıl 1</th><th class="tnum">Yıl 2</th><th class="tnum">Yıl 3</th><th class="tnum">3 Yıl Toplam</th><th class="tnum">Y3 aktif</th></tr></thead>
+            <tbody>
+              <tr><td class="em">Kötümser</td><td class="tnum">~2</td><td class="tnum">$100k</td><td class="tnum">$200k</td><td class="tnum">$430k</td><td class="tnum">$705k</td><td class="tnum em">~$1.3M</td><td class="tnum">~7</td></tr>
+              <tr class="hl"><td class="em">Gerçekçi</td><td class="tnum">~5</td><td class="tnum">$180k</td><td class="tnum">$900k</td><td class="tnum">$1.9M</td><td class="tnum">$3.2M</td><td class="tnum em accent">~$6.0M</td><td class="tnum">~18</td></tr>
+              <tr><td class="em">İyimser</td><td class="tnum">~8</td><td class="tnum">$400k</td><td class="tnum">$3.2M</td><td class="tnum">$6.9M</td><td class="tnum">$11.2M</td><td class="tnum em">~$21M</td><td class="tnum">~28</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">Model: Yıl N aktif = (önceki aktif × 0.85 elde tutma) + (önceki yeni × 1.3 büyüme). Gelir = aktif × değer.</p>
+      </div>
+
+      <div class="block">
+        <h3>3 yıllık toplam ciro — senaryo karşılaştırması</h3>
+        <div class="chart">
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">Kötümser</span><span class="bar__val">~$1.3M</span></div><div class="bar__track"><div class="bar__fill" style="width:6.2%"></div></div></div>
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">Gerçekçi</span><span class="bar__val">~$6.0M</span></div><div class="bar__track"><div class="bar__fill" style="width:28.6%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">İyimser</span><span class="bar__val">~$21M</span></div><div class="bar__track"><div class="bar__fill" style="width:100%"></div></div></div>
+        </div>
+        <p class="chart-note">Asıl değer tekrarda: %85 elde tutma ile 3. yıl geliri yıl 1'in ~3.5 katı. Gerçekçi senaryo, mevcut $36M tabana ~%17 yeni + çeşitlendirilmiş gelir ekliyor.</p>
+      </div>
+
+      <div class="block">
+        <h3>Track W vs K vs F — üç ekonomi (stratejik karar)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>&nbsp;</th><th>🔵 W (wet-blue · kanıtlı)</th><th>🟡 K (split + jelatin)</th><th>🟢 F (bitmiş)</th></tr></thead>
+            <tbody>
+              <tr><td class="em">Alıcı</td><td>Bitiş tabakhanesi / entegre / fabrika / ajans</td><td>Split işleyici · <b>jelatin/kolajen</b></td><td>Footwear/çanta/lifestyle markası</td></tr>
+              <tr><td class="em">Havuz isabeti</td><td>Yüksek (benzer firma, kanıtlı)</td><td>Orta (jelatin ayrı sektör)</td><td>Orta (yeni pazar)</td></tr>
+              <tr><td class="em">Partner değeri</td><td>Yüksek (~$180k)</td><td>Split ~$110k · <b>jelatin ~$160k</b></td><td>Düşük (~$90k) yüksek marj %</td></tr>
+              <tr><td class="em">Kapanış hızı</td><td>Hızlı</td><td>Orta</td><td>Yavaş (numune/uyum)</td></tr>
+              <tr class="hl"><td class="em">Stratejik kazanç</td><td class="em">Konsantrasyon riski azaltma + hacim</td><td class="em">Sektör-dışı çeşitlendirme (jelatin)</td><td class="em">Marj + marka tabanı</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">Öneri: Track W ile başla (hızlı kazanım + yoğunlaşma riskini azaltma), K4 jelatini paralel aç (Bursa kolajen sinerjisi, deri-dışı istikrar). Karar firmanın kapasite önceliğine bağlı.</p>
+      </div>
+
+      <div class="callout">
+        <div class="ct">Stratejik okuma</div>
+        <p>En yüksek dönüşüm beklenen: W1 (bitiş tabakhanesi — en saf wet-blue alıcısı) + W3 (ayakkabı) + W2 (entegre). Gerçekçi senaryo
+          bile (~5 partner/yıl1 → ~$6M/3yıl) hem yeni tekrarlı ciro hem <strong>konsantrasyon riskini azaltma</strong> sağlıyor.
+          <strong>K4 jelatin</strong> ise deri konjonktüründen bağımsız ikinci ayak — üstelik bu, kalibre edilmemiş, muhafazakâr bir havuzla.</p>
+      </div>
+    </section>
+
+    <!-- 10 ROADMAP -->
+    <section id="yol">
+      <div class="sec-head">
+        <span class="eyebrow">10 — Uygulama Yol Haritası</span>
+        <h2>Veriden imzalı partnere</h2>
+        <p>Bu araştırma fırsatın <strong>kanıtlı haritasıdır</strong>. Haritayı sahadaki gerçek firma listesine çevirmek, firmanın zaten
+          içinde olduğu kanalları (Lineapelle + Fi Europe) izleyen yönetilen bir süreçtir.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step"><h3>Havuzu sahaya indirme &amp; kalibrasyon</h3><p>Lineapelle Şubat 2026 + APLF katılımcı listesi (W/K1-K3) + <strong>Fi Europe / GME / GMIA</strong> (K4 jelatin) + LWG dizininden gerçek firma listesi; tahmini E gerçek sayıma çekilir.</p></div>
+        <div class="step"><h3>Yetenek nitelendirme &amp; DM erişimi</h3><p>Her firmada <strong>finish/re-tan yapıyor mu</strong> (wet-blue) veya <strong>jelatin/split mi</strong> doğrulanır; satınalma / teknik / raw-material sourcing müdürüne kişiselleştirilmiş erişim. Email VAR → Smartlead; yoksa Sendpilot.</p></div>
+        <div class="step"><h3>Ayrışma kozuna özel temas</h3><p>W: "kirli wet-end'i biz yaparız, izlenebilir wet-blue veririz". K4: "tabaklanmamış, gıda-uyumlu limed split; kendi kolajen rafinerimizden numune ve spesifikasyon". F: 48h Prime numune + izlenebilirlik.</p></div>
+        <div class="step"><h3>Takip &amp; dönüşüm ölçümü</h3><p>Sistematik takip ile pozitif→partner hunisi gerçek veriyle güncellenir; projeksiyon "taslak"tan çıkıp kanıta dayalı plana dönüşür.</p></div>
+      </div>
+
+      <div class="block">
+        <h3>Çıktıyı keskinleştirecek firma teyitleri</h3>
+        <ul class="tick">
+          <li><b>Track önceliği:</b> W (wet-blue) çekirdek; <b>K4 jelatin</b> öne mi, F ne kadar? → segment ağırlığı.</li>
+          <li><b>Wet-blue spesifikasyonu:</b> hayvan (sadece sığır?), kalite sınıfı, kalınlık (mm), aylık kapasite.</li>
+          <li><b>Kireçli yarma:</b> limed mi wet-blue split mi, kalite sınıfı; <b>jelatin kalitesinde (tabaklanmamış, gıda-uyumlu)</b> hacim var mı?</li>
+          <li><b>Sertifika:</b> LWG, REACH, ISO; jelatin split için gıda/farma uyumu + izlenebilirlik.</li>
+        </ul>
+      </div>
+
+      <div class="nextstep">
+        <span class="eyebrow">Sonraki Adım</span>
+        <h3 style="margin-top:14px">Kanıtlı haritayı canlı bir ihracat satış hattına çevirmek</h3>
+        <p>İskefe'nin ürünü net (wet-blue + kireçli yarma), ayrışma kozu güçlü (wet-end'i devralma + kolajen bilgisi) ve <span class="accent">alıcı
+          talebi gerçek veriyle kanıtlı</span>. Eksik olan tek halka, bu pazarlardaki doğru alıcıları bulup karar vericilerine ulaşmak ve
+          süreci takip etmek — Tibexa Global'in Türk ihracatçılar için uçtan uca yürüttüğü iş budur.</p>
+      </div>
+    </section>
+
+    <!-- 11 METHODOLOGY -->
+    <section id="metodoloji">
+      <div class="sec-head">
+        <span class="eyebrow">11 — Metodoloji &amp; Kaynaklar</span>
+        <h2>Şeffaflık notu</h2>
+      </div>
+
+      <div class="note-box">
+        <p><strong>Ürün düzeltmesi (1 Tem 2026):</strong> Firma görüşmesinde netleşti — İskefe <strong>ham deri satmaz</strong>;
+          <strong>wet-blue</strong> (krom tabaklı yarı-mamul) + <strong>kireçli yarma</strong> (limed split) satar. İlk taslaktaki
+          "ham deri" çerçevesi bu rapor genelinde düzeltildi; alıcı rolleri (bitiş tabakhanesi / split işleyici / jelatin) buna göre.</p>
+        <p><strong>İhracat verisi (çekirdek kanıt):</strong> firmanın verdiği Top-50 alıcı, $35.99M, 5.346 ton — coğrafya, alıcı rolü
+          (elle sınıflandırma) ve yoğunlaşma doğrudan bu veriden. Grup-içi İskefe Nile (%1.8) ayrıştırıldı.</p>
+        <p><strong>Hedef firma tahminleri (E):</strong> pazar-proxy + dizin yoğunluğu, <strong>gerçek ihracat dağılımıyla kalibre</strong>,
+          şişirilmedi. İlk kalibrasyon turunda (Lineapelle + Fi Europe listeleri) gerçeğe çekilir.</p>
+        <p><strong>Pazar çerçevesi:</strong> bölüm 04'teki sektör eğilimleri (wet-end'in dışa kayması, jelatin talebi) <strong>sektör-geneldir</strong>;
+          raporun çekirdek kanıtı firmanın <strong>kendi ihracat verisidir</strong>. Gelir modeli partner değeri gerçek gelir dilimine dayalı;
+          dönüşüm oranları deneme kampanyasıyla ölçülecek çerçeve varsayımlarıdır — taahhüt değil, güvenle çizilmiş taban.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="frow">
+    <div class="fbrand">
+      <div class="brand" style="margin-bottom:0">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" style="width:22px;height:22px">
+          <path d="M6 3 H18 L22.5 9 L12 22 L1.5 9 Z" stroke="#B5742A" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M1.5 9 H22.5 M9 3 L7 9 L12 22 M15 3 L17 9 L12 22" stroke="#B5742A" stroke-width="0.8" opacity="0.55"/>
+        </svg>
+        <span class="wm">TIBEXA <span>GLOBAL</span></span>
+      </div>
+      <p class="ftag">Türk ihracatçılar için uluslararası alıcı geliştirme — veri toplama, hedefli erişim ve takip, uçtan uca.</p>
+    </div>
+    <div class="fmeta">İskefe Leather · Pazar Araştırması<br>1 Temmuz 2026<br>Gizli · Firmaya Özel</div>
+  </div>
+  <p class="disclaimer">Bu doküman Tibexa Global tarafından İskefe Leather'a özel olarak hazırlanmıştır. Ürün: wet-blue + kireçli yarma.
+    İçerdiği tahmin ve projeksiyonlar kalibre edilecek çerçevelerdir; mali taahhüt teşkil etmez. Çekirdek dayanak firmanın gerçek ihracat verisidir.</p>
+</footer>
+
+<script>
+  (function () {
+    var prog = document.getElementById('progress');
+    function onScroll() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      prog.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    var links = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+    var byId = {};
+    links.forEach(function (l) {
+      var id = l.getAttribute('href').slice(1);
+      (byId[id] = byId[id] || []).push(l);
+    });
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (l) { l.classList.remove('active'); });
+          (byId[e.target.id] || []).forEach(function (l) { l.classList.add('active'); });
+          var active = (byId[e.target.id] || [])[1] || (byId[e.target.id] || [])[0];
+          var strip = document.getElementById('topnavM');
+          if (active && strip && getComputedStyle(strip).display !== 'none') {
+            active.scrollIntoView({ inline: 'center', block: 'nearest' });
+          }
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { obs.observe(s); });
+  })();
+</script>
+
+</body>
+</html>

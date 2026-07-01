@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex, nosnippet" />
+<title>Halavet — Uluslararası Pazar Araştırması & İhracat Projeksiyonu · Tibexa Global</title>
+<meta name="description" content="Tibexa Global tarafından Halavet için hazırlanan uluslararası pazar araştırması sonuç raporu ve 3 senaryolu ihracat gelir projeksiyonu — helal sığır jelatini & kolajen." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #000000;
+    --surface: #0A0A0A;
+    --surface-2: #141414;
+    --text: #FFFFFF;
+    --text-2: #A1A1AA;
+    --amber: #C89010;
+    --gold: #F5C842;
+    --border: #27272A;
+    --sans: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text-2);
+    font-family: var(--sans); font-weight: 400; line-height: 1.7;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-size: 16px;
+  }
+  ::selection { background: var(--amber); color: #000; }
+
+  /* ---------- Typography ---------- */
+  h1, h2, h3, h4 { color: var(--text); font-weight: 500; letter-spacing: -0.03em; line-height: 1.14; }
+  h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); }
+  h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.02em; }
+  h4 { font-size: 1rem; letter-spacing: -0.01em; }
+  p { margin-top: 0.9rem; max-width: 70ch; }
+  strong { color: var(--text); font-weight: 500; }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }
+  a:hover { border-color: var(--gold); }
+
+  .eyebrow {
+    font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.12em;
+    font-size: 0.72rem; color: var(--amber); font-weight: 500;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--amber); opacity: .8; }
+  .lead { color: var(--text-2); font-size: clamp(1rem, 1.5vw, 1.12rem); }
+  .accent { color: var(--gold); }
+  .muted-txt { color: var(--text-2); }
+
+  /* ---------- Reading progress ---------- */
+  #progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 100;
+    background: linear-gradient(90deg, var(--amber), var(--gold)); transition: width .1s linear; }
+
+  /* ---------- Top bar ---------- */
+  header.topbar {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(0,0,0,0.74); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar .row { display: flex; align-items: center; justify-content: space-between; height: 60px; max-width: 1340px; margin: 0 auto; padding: 0 24px; }
+  .brand { display: flex; align-items: center; gap: 11px; }
+  .brand svg { width: 20px; height: 20px; display: block; }
+  .brand .wm { font-weight: 600; color: var(--text); letter-spacing: 0.16em; font-size: 0.92rem; }
+  .brand .wm span { color: var(--text-2); font-weight: 400; }
+  .topbar .tag { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.66rem; color: var(--text-2); }
+  @media (max-width: 680px){ .topbar .tag { display: none; } }
+
+  /* ---------- Mobile nav strip ---------- */
+  .topnav-m { display: none; position: sticky; top: 60px; z-index: 50;
+    overflow-x: auto; white-space: nowrap; gap: 8px;
+    background: rgba(0,0,0,0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border); padding: 10px 16px; -ms-overflow-style: none; scrollbar-width: none; }
+  .topnav-m::-webkit-scrollbar { display: none; }
+  .topnav-m a { display: inline-block; font-size: 0.78rem; padding: 6px 13px; border-radius: 20px;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text-2); border-bottom: none; }
+  .topnav-m a.active { color: #000; background: linear-gradient(90deg, var(--amber), var(--gold)); border-color: transparent; font-weight: 500; }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; overflow: hidden; padding: clamp(64px, 11vw, 120px) 24px clamp(40px, 6vw, 64px); }
+  .hero-inner { max-width: 1340px; margin: 0 auto; }
+  .hero::before { content: ""; position: absolute; inset: 0;
+    background: radial-gradient(1100px 460px at 16% -10%, rgba(200,144,16,0.15), transparent 60%); pointer-events: none; }
+  .hero h1 { font-size: clamp(2.1rem, 5.6vw, 3.9rem); margin-top: 1.3rem; max-width: 20ch;
+    background: linear-gradient(180deg, #fff 58%, #d6d6db); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero .lead { margin-top: 1.4rem; max-width: 62ch; }
+  .hero-meta { margin-top: 2.4rem; display: flex; flex-wrap: wrap; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--surface); max-width: 880px; }
+  .hero-meta div { flex: 1 1 180px; padding: 15px 20px; border-right: 1px solid var(--border); }
+  .hero-meta div:last-child { border-right: none; }
+  .hero-meta .k { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.6rem; color: var(--text-2); }
+  .hero-meta .v { color: var(--text); font-size: 0.9rem; margin-top: 4px; font-weight: 500; }
+  @media (max-width: 560px){ .hero-meta div { flex: 1 1 100%; border-right: none; border-bottom: 1px solid var(--border); } .hero-meta div:last-child { border-bottom: none; } }
+
+  /* ---------- KPI strip ---------- */
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .kpi { background: var(--surface); padding: 24px 22px; }
+  .kpi .num { color: var(--text); font-size: clamp(1.7rem, 3.6vw, 2.4rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1; }
+  .kpi .num .u { color: var(--amber); font-size: 0.55em; margin-left: 2px; }
+  .kpi .lab { font-size: 0.82rem; margin-top: 11px; color: var(--text-2); }
+  .kpi .lab b { color: var(--text); font-weight: 500; }
+
+  /* ---------- Layout: sidebar + main ---------- */
+  .intro { max-width: 1340px; margin: 0 auto; padding: 0 24px clamp(24px, 4vw, 40px); }
+  .layout { max-width: 1340px; margin: 0 auto; display: flex; align-items: flex-start; padding: 0 24px; }
+  .sidenav { position: sticky; top: 60px; flex: 0 0 244px; align-self: flex-start; height: calc(100vh - 60px); overflow-y: auto; padding: 40px 22px 40px 0; border-right: 1px solid var(--border); }
+  .sidenav::-webkit-scrollbar { width: 6px; } .sidenav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; }
+  .sidenav .navtitle { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.6rem; color: var(--text-2); margin: 0 12px 14px; }
+  .sidenav a { display: flex; gap: 11px; align-items: baseline; padding: 8px 12px; border-radius: 8px; color: var(--text-2); font-size: 0.85rem; border-left: 2px solid transparent; border-bottom: none; transition: background .2s, color .2s, border-color .2s; }
+  .sidenav a .n { font-family: var(--mono); font-size: 0.68rem; color: #56565c; flex: 0 0 auto; }
+  .sidenav a:hover { color: var(--text); background: var(--surface); }
+  .sidenav a.active { color: var(--text); border-left-color: var(--amber); background: linear-gradient(90deg, rgba(200,144,16,0.09), transparent); }
+  .sidenav a.active .n { color: var(--amber); }
+  .sidenav .navfoot { margin: 22px 12px 0; padding-top: 18px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.08em; color: #56565c; line-height: 1.9; }
+
+  .main { flex: 1 1 auto; min-width: 0; padding-left: 52px; }
+  @media (max-width: 1024px){
+    .sidenav { display: none; }
+    .main { padding-left: 0; }
+    .topnav-m { display: flex; }
+  }
+
+  /* ---------- Section rhythm ---------- */
+  section { padding: clamp(54px, 7vw, 86px) 0; border-top: 1px solid var(--border); scroll-margin-top: 84px; }
+  section:first-child { border-top: none; }
+  @media (max-width: 1024px){ section { scroll-margin-top: 124px; } }
+  .sec-head { margin-bottom: 2.4rem; }
+  .sec-head h2 { margin-top: 0.8rem; }
+  .sec-head p { margin-top: 1.05rem; }
+  .block { margin-top: 2.6rem; }
+  .block > h3 { margin-bottom: 0.4rem; }
+
+  /* ---------- Cards / grids ---------- */
+  .grid { display: grid; gap: 16px; }
+  .g-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .g-3 { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px 22px; transition: border-color .25s; }
+  .card:hover { border-color: #3a3a40; }
+  .card h3 { margin-bottom: 8px; }
+  .card .ico { font-family: var(--mono); color: var(--amber); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .card p { margin-top: 8px; font-size: 0.94rem; }
+
+  .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .pillar { background: var(--surface); border: 1px solid var(--border); border-left: 2px solid var(--amber); border-radius: 12px; padding: 22px; }
+  .pillar .n { font-family: var(--mono); color: var(--amber); font-size: 0.72rem; letter-spacing: 0.08em; }
+  .pillar h3 { margin: 10px 0 6px; font-size: 1.02rem; }
+  .pillar p { font-size: 0.89rem; margin-top: 4px; }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .fact { background: var(--surface); padding: 18px 20px; }
+  .fact .k { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.58rem; color: var(--text-2); }
+  .fact .v { color: var(--text); font-size: 0.92rem; margin-top: 5px; font-weight: 500; }
+  .fact .v small { color: var(--text-2); font-weight: 400; display: block; font-size: 0.8rem; margin-top: 2px; }
+
+  /* ---------- Pull quote ---------- */
+  .quote { margin-top: 2.2rem; padding: 28px 30px; border-radius: 16px;
+    background: linear-gradient(135deg, rgba(200,144,16,0.10), rgba(245,200,66,0.03)); border: 1px solid rgba(200,144,16,0.32); }
+  .quote p { color: var(--text); font-size: clamp(1.1rem, 2.2vw, 1.5rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.42; margin: 0; max-width: none; }
+  .quote .src { display: block; margin-top: 14px; font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); }
+
+  /* ---------- Bar charts ---------- */
+  .chart { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 14px; }
+  .bar__top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; }
+  .bar__name { color: var(--text); font-size: 0.9rem; font-weight: 500; }
+  .bar__val { font-family: var(--mono); color: var(--gold); font-size: 0.8rem; font-weight: 500; }
+  .bar__track { height: 9px; background: var(--surface-2); border-radius: 20px; overflow: hidden; }
+  .bar__fill { height: 100%; border-radius: 20px; background: linear-gradient(90deg, var(--amber), var(--gold)); }
+  .bar.muted .bar__fill { background: #3a3a40; }
+  .bar.lead-bar .bar__name::after { content: " ★"; color: var(--amber); }
+  .chart-note { font-family: var(--mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-2); margin-top: 16px; opacity: .85; }
+
+  /* ---------- Tables ---------- */
+  .tbl-wrap { margin-top: 1.5rem; overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 540px; }
+  th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  thead th { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.62rem; color: var(--text-2); font-weight: 500; background: var(--surface); position: sticky; top: 0; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody td { color: var(--text-2); }
+  tbody td.em { color: var(--text); font-weight: 500; }
+  tr.hl td { background: rgba(200,144,16,0.06); }
+  tr.grp td { background: var(--surface-2); color: var(--gold); font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .tnum { text-align: right; font-family: var(--mono); }
+  td.tnum, th.tnum { white-space: nowrap; }
+  tfoot td { font-weight: 500; color: var(--text); background: var(--surface); border-top: 1px solid var(--amber); font-family: var(--mono); }
+
+  .tier { display: inline-block; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; white-space: nowrap; }
+  .t1 { background: rgba(245,200,66,0.14); color: var(--gold); border: 1px solid rgba(245,200,66,0.3); }
+  .t2 { background: rgba(200,144,16,0.12); color: var(--amber); border: 1px solid rgba(200,144,16,0.3); }
+  .t3 { background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border); }
+
+  /* ---------- Funnel ---------- */
+  .funnel { margin-top: 1.6rem; display: flex; flex-direction: column; gap: 10px; }
+  .fstep { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 13px 18px; display: flex; align-items: center; gap: 18px; }
+  .fstep .fbar { height: 28px; border-radius: 6px; background: linear-gradient(90deg, var(--amber), var(--gold)); flex-shrink: 0; }
+  .fstep .fmeta { display: flex; flex-direction: column; }
+  .fstep .fnum { font-family: var(--mono); color: var(--text); font-weight: 500; font-size: 1.02rem; line-height: 1.1; }
+  .fstep .flab { font-size: 0.81rem; color: var(--text-2); }
+  .fstep .fconv { margin-left: auto; font-family: var(--mono); font-size: 0.68rem; color: var(--amber); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ---------- Chips ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 1.3rem; }
+  .chip { font-size: 0.79rem; padding: 7px 14px; border-radius: 20px; background: var(--surface); border: 1px solid var(--border); color: var(--text-2); }
+  .chip.neg { border-color: rgba(220,80,80,0.28); color: #d99; }
+  .chip.neg::before { content: "✕ "; opacity: .7; }
+  .chip.pos { border-color: rgba(200,144,16,0.34); color: var(--gold); }
+  .chip.pos::before { content: "✓ "; opacity: .8; }
+
+  /* ---------- Callout ---------- */
+  .callout { margin-top: 1.6rem; background: var(--surface); border: 1px solid var(--border); border-left: 2px solid var(--amber); border-radius: 12px; padding: 20px 22px; }
+  .callout .ct { font-family: var(--mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); }
+  .callout p { font-size: 0.9rem; margin-top: 7px; }
+
+  /* ---------- Steps ---------- */
+  .steps { counter-reset: step; margin-top: 1.4rem; display: grid; gap: 14px; }
+  .step { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px 22px 68px; }
+  .step::before { counter-increment: step; content: counter(step, decimal-leading-zero);
+    position: absolute; left: 22px; top: 22px; font-family: var(--mono); font-size: 0.9rem; color: var(--amber); font-weight: 500; }
+  .step h3 { font-size: 1rem; margin-bottom: 5px; }
+  .step p { margin-top: 4px; font-size: 0.9rem; }
+
+  /* ---------- Bridge / next-step ---------- */
+  .nextstep { margin-top: 2rem; border-radius: 18px; padding: clamp(26px, 5vw, 42px);
+    background: linear-gradient(135deg, rgba(200,144,16,0.13), rgba(10,10,10,0.4)); border: 1px solid rgba(200,144,16,0.34); }
+  .nextstep h3 { font-size: clamp(1.15rem, 2.5vw, 1.6rem); }
+  .nextstep p { color: var(--text-2); margin-top: 12px; max-width: 72ch; }
+
+  /* ---------- Sources / notes ---------- */
+  .sources { margin-top: 1.3rem; display: grid; gap: 8px; }
+  .sources li { list-style: none; font-size: 0.84rem; color: var(--text-2); padding-left: 18px; position: relative; }
+  .sources li::before { content: "→"; position: absolute; left: 0; color: var(--amber); }
+  .note-box { margin-top: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; }
+  .note-box p { font-size: 0.87rem; margin-top: 0.6rem; }
+  .note-box p:first-child { margin-top: 0; }
+
+  ul.tick { margin-top: 1rem; list-style: none; display: grid; gap: 9px; }
+  ul.tick li { padding-left: 22px; position: relative; font-size: 0.93rem; }
+  ul.tick li::before { content: "▸"; position: absolute; left: 0; color: var(--amber); }
+  ul.tick li b { color: var(--text); font-weight: 500; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 52px 24px 60px; }
+  footer .frow { max-width: 1340px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: flex-start; }
+  footer .fbrand .wm { font-weight: 600; color: var(--text); letter-spacing: 0.16em; }
+  footer .fbrand .wm span { color: var(--text-2); font-weight: 400; }
+  footer .ftag { font-size: 0.84rem; color: var(--text-2); margin-top: 10px; max-width: 40ch; }
+  footer .fmeta { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-2); text-align: right; line-height: 2; }
+  .disclaimer { max-width: 1340px; margin: 28px auto 0; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.04em; color: #5a5a60; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="row">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 3 H18 L22.5 9 L12 22 L1.5 9 Z" stroke="#C89010" stroke-width="1.3" stroke-linejoin="round"/>
+        <path d="M1.5 9 H22.5 M9 3 L7 9 L12 22 M15 3 L17 9 L12 22" stroke="#C89010" stroke-width="0.8" opacity="0.55"/>
+      </svg>
+      <span class="wm">TIBEXA <span>GLOBAL</span></span>
+    </div>
+    <span class="tag">Araştırma Raporu · Halavet · Gizli</span>
+  </div>
+</header>
+
+<!-- ============ MOBILE NAV ============ -->
+<nav class="topnav-m" id="topnavM">
+  <a href="#ozet" data-nav>01 Özet</a>
+  <a href="#konum" data-nav>02 Konumlandırma</a>
+  <a href="#kanit" data-nav>03 İhracat Datası</a>
+  <a href="#pazar" data-nav>04 Pazar</a>
+  <a href="#hedef" data-nav>05 Hedef Pazar</a>
+  <a href="#icp" data-nav>06 Müşteri Profili</a>
+  <a href="#cografya" data-nav>07 Coğrafya</a>
+  <a href="#arama" data-nav>08 Arama Zekâsı</a>
+  <a href="#projeksiyon" data-nav>09 Projeksiyon</a>
+  <a href="#yol" data-nav>10 Yol Haritası</a>
+  <a href="#metodoloji" data-nav>11 Metodoloji</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Tibexa Global · Uluslararası Alıcı Geliştirme</span>
+    <h1>Halavet Uluslararası Pazar Araştırması &amp; İhracat Projeksiyonu</h1>
+    <p class="lead"><strong>Avrupa'nın en büyük sığır jelatini ve kolajen üreticisi</strong> Halavet'in, dünyanın büyüyen
+      helal &amp; nutrasötik talebine açılma fırsatı — firmanın <strong>gerçek ihracat datasından</strong> başlayıp pazar tespiti, ideal alıcı profili,
+      coğrafya haritalaması ve üç senaryolu gelir modeline uzanan, uçtan uca çalışmanın sonuç raporu.</p>
+
+    <div class="hero-meta">
+      <div><div class="k">Hazırlayan</div><div class="v">Tibexa Global</div></div>
+      <div><div class="k">Firma</div><div class="v">Halavet · İstanbul / Bolu</div></div>
+      <div><div class="k">Tarih</div><div class="v">30 Haziran 2026</div></div>
+      <div><div class="k">Durum</div><div class="v">Gizli · Firmaya Özel</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ KPI STRIP ============ -->
+<div class="intro">
+  <div class="kpis">
+    <div class="kpi"><div class="num">70<span class="u">+</span></div><div class="lab"><b>İhracat ülkesi</b> — kurulu küresel erişim</div></div>
+    <div class="kpi"><div class="num">~$136<span class="u">M</span></div><div class="lab">Top-50 <b>3. taraf yıllık ciro</b> çapası (gerçek data)</div></div>
+    <div class="kpi"><div class="num">~2.270</div><div class="lab"><b>Hedef B2B alıcı</b> · 19 alt-ICP · 7 segment</div></div>
+    <div class="kpi"><div class="num">$660<span class="u">M</span></div><div class="lab"><b>Helal jelatin</b> pazarı (2030 proj.) · 2023: $459M</div></div>
+    <div class="kpi"><div class="num">~$15.7<span class="u">M</span></div><div class="lab">3 yıllık tekrarlı ciro potansiyeli <b>(gerçekçi)</b></div></div>
+  </div>
+</div>
+
+<!-- ============ LAYOUT ============ -->
+<div class="layout">
+
+  <!-- SIDE NAV -->
+  <aside class="sidenav">
+    <div class="navtitle">İçindekiler</div>
+    <a href="#ozet" data-nav><span class="n">01</span> Yönetici Özeti</a>
+    <a href="#konum" data-nav><span class="n">02</span> Firma Konumlandırması</a>
+    <a href="#kanit" data-nav><span class="n">03</span> İhracat Datası · Kanıt</a>
+    <a href="#pazar" data-nav><span class="n">04</span> Pazar Çerçevesi</a>
+    <a href="#hedef" data-nav><span class="n">05</span> Hedef Pazar Tespiti</a>
+    <a href="#icp" data-nav><span class="n">06</span> İdeal Müşteri Profili</a>
+    <a href="#cografya" data-nav><span class="n">07</span> Coğrafya &amp; Sizing</a>
+    <a href="#arama" data-nav><span class="n">08</span> Arama Zekâsı</a>
+    <a href="#projeksiyon" data-nav><span class="n">09</span> Gelir Projeksiyonu</a>
+    <a href="#yol" data-nav><span class="n">10</span> Uygulama Yol Haritası</a>
+    <a href="#metodoloji" data-nav><span class="n">11</span> Metodoloji</a>
+    <div class="navfoot">Tibexa Global<br>30 Haziran 2026<br>Firmaya Özel</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- 01 EXECUTIVE SUMMARY -->
+    <section id="ozet">
+      <div class="sec-head">
+        <span class="eyebrow">01 — Yönetici Özeti</span>
+        <h2>Doğru ürün, doğru wedge, kanıtlı talep</h2>
+        <p class="lead">Halavet'in ayrışması — <strong>Avrupa'nın en büyük yenilebilir sığır jelatini VE kolajen üreticisi</strong>
+          olması, <strong>dedicated %100 helal</strong> hattı ve <strong>%100 güneş enerjili üretim</strong> —
+          küresel helal ve nutrasötik talebiyle birebir örtüşüyor. Bu rapor, firmanın <strong>gerçek Top-50 ihracat datasından</strong>
+          yola çıkarak fırsatı uçtan uca haritalıyor.</p>
+      </div>
+
+      <div class="grid g-2">
+        <div class="card">
+          <span class="ico">Bulgu</span>
+          <h3>Helal = doğal wedge, talep kanıtlı</h3>
+          <p>%100 helal sığır jelatini, hem Müslüman-çoğunluk pazarlarında hem de Batı'nın helal/no-pork ürün üreticilerinde
+            Halavet'i <strong>commodity rekabetinden ayırıyor</strong>. Top-50 ihracat datası 7 segmentin tamamını kanıtlı
+            müşteriyle doğruluyor (ACG, Haribo, Swedish Nutra, Viscofan, FrieslandCampina...).</p>
+        </div>
+        <div class="card">
+          <span class="ico">Sonuç</span>
+          <h3>~2.000 nitelikli alıcıdan tekrarlı ciro</h3>
+          <p>19 alt-segmentte taranan ~2.270 firmalık havuz, firmanın <strong>kendi gerçek müşteri verisi</strong> (ort. ~$3M,
+            medyan ~$1.2M/müşteri) temel alınarak — kasıtlı temkinli per-müşteri varsayımıyla — gerçekçi senaryoda
+            <strong>3 yılda ~$15.7M tekrarlı ciro</strong> üretiyor. Kötümser senaryo dahi (~$1.9M) pozitif iş gösteriyor.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Bu rapor neyi kapsıyor</h3>
+        <ul class="tick">
+          <li><b>İhracat datası kanıtı:</b> Top-50 gerçek müşterinin segment tipolojisi ve gelir çapası analizi.</li>
+          <li><b>Pazar çerçevesi:</b> helal jelatin &amp; kolajen büyüklük/büyüme verisi, fiyat ve rakip manzarası.</li>
+          <li><b>Hedef pazar &amp; coğrafya:</b> bölgelerin önceliklendirilmesi ve 19 alt-ICP × bölge firma yoğunluğu matrisi.</li>
+          <li><b>İdeal müşteri profili:</b> 7 segment / 19 alt-ICP, hedef alıcı tipi, karar verici ve eleme kuralları.</li>
+          <li><b>Arama zekâsı:</b> bu firmaların fiilen bulunacağı fuarlar, dernekler ve helal tedarik kaynakları.</li>
+          <li><b>Gelir projeksiyonu:</b> 3 senaryo, dönüşüm hunisi ve gerçek dataya çapalı 3 yıllık model.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 02 POSITIONING -->
+    <section id="konum">
+      <div class="sec-head">
+        <span class="eyebrow">02 — Firma Konumlandırması</span>
+        <h2>Halavet neden kazanır</h2>
+        <p>2011 kuruluşlu, <strong>İstanbul + Bolu</strong> üretim üssü ve ABD + Hollanda dağıtım kollarıyla 70+ ülkeye ihracat yapan,
+          <strong>Avrupa'nın en büyük helal sığır jelatini ve kolajen üreticisi</strong>. Ayrışma <strong>gram fiyatında değil;
+          çift liderlik (jelatin + kolajen), saf-helal güven, AB lojistiği ve sürdürülebilir üretimde</strong> — dünya devlerinin
+          çoğu domuz+sığır karışık tesisken Halavet <strong>%100 sığır, dedicated helal</strong>.</p>
+      </div>
+
+      <div class="facts">
+        <div class="fact"><div class="k">Konum</div><div class="v">Avrupa #1 · jelatin <b>+</b> kolajen<small>Avrupa'nın en büyük yenilebilir sığır jelatini VE kolajen üreticisi (2011)</small></div></div>
+        <div class="fact"><div class="k">Yer</div><div class="v">İstanbul + Bolu (üretim)<small>ABD &amp; Hollanda dağıtım kolları — yerinde stok</small></div></div>
+        <div class="fact"><div class="k">Hammadde</div><div class="v">%100 sığır · helal<small>domuz / balık yok → çapraz-kontaminasyon riski yok</small></div></div>
+        <div class="fact"><div class="k">Üretim</div><div class="v">%100 güneş enerjisi<small>jelatin + kolajen hidrolizat (yüksek biyoaktif peptit)</small></div></div>
+      </div>
+
+      <div class="block">
+        <h3>Çekirdek ayrışma — üç sütun</h3>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="n">01</div><h3>Dedicated %100 helal sığır</h3>
+            <p>Devlerin çoğu domuz+sığır karışık tesis. Halavet'in saf-helal hattı, helal-hassas her müşteri için
+              somut çapraz-kontaminasyon güvencesi — taklit edilmesi zor koz.</p>
+          </div>
+          <div class="pillar">
+            <div class="n">02</div><h3>Avrupa'nın en büyük jelatin + kolajen üreticisi</h3>
+            <p>Hem yenilebilir sığır jelatininde hem kolajende <strong>Avrupa #1</strong> → ölçek + tedarik güvenliği.
+              Hollanda/ABD deposuyla AB ve K.Amerika'ya yerinde stok, kısa lead-time; Hint rakibe karşı belirleyici avantaj.</p>
+          </div>
+          <div class="pillar">
+            <div class="n">03</div><h3>Solar üretim + kolajen liderliği</h3>
+            <p>%100 güneş enerjisi = AB alıcısının ESG/karbon kriterine doğrudan cevap. Avrupa'nın en büyük kolajen üreticisi
+              olarak yüksek-biyoaktif peptit → commodity jelatinden katma-değerli, en hızlı büyüyen pazarda güçlü konum.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <p>"Avrupa'nın en büyük yenilebilir sığır jelatini VE kolajen üreticisi — dedicated %100 helal,
+          %100 güneş enerjisiyle, 70+ ülkeye."</p>
+        <span class="src">Halavet — firma değer önermesi</span>
+      </div>
+
+      <div class="callout">
+        <div class="ct">En büyük itiraz &amp; cevap</div>
+        <p>"Zaten bir jelatin tedarikçim var." Yanıt: değer fiyatta değil <strong>saf-helal güvende + tedarik güvenliğinde</strong> —
+          karışık tesis riskinin olmadığı dedicated helal üretim, AB'de yerinde stok ve solar/ESG profili ile ikinci-kaynak
+          (ve zamanla ana-kaynak) konumu. Bu, ilk temas mesajının da omurgası.</p>
+      </div>
+    </section>
+
+    <!-- 03 EXPORT DATA EVIDENCE -->
+    <section id="kanit">
+      <div class="sec-head">
+        <span class="eyebrow">03 — İhracat Datası · Kanıt Tabanı</span>
+        <h2>Çalışmanın temeli: gerçek müşteri verisi</h2>
+        <p>Bu analiz varsayıma değil, Halavet'in <strong>fiili Top-50 ihracat datasına</strong> dayanıyor (müşteri × sevkiyat ×
+          ağırlık). Veri iki şeyi birden veriyor: segmentlerin <strong>kanıtı</strong> (kimler alıyor) ve projeksiyonun
+          <strong>gelir çapası</strong> (ne kadar alıyor). Bu, bir firma anketinden çok daha sağlam bir zemin.</p>
+      </div>
+
+      <div class="kpis" style="border-radius:14px">
+        <div class="kpi"><div class="num">18.7<span class="u">K t</span></div><div class="lab">Top-50 toplam ihracat (yıllık)</div></div>
+        <div class="kpi"><div class="num">13.6<span class="u">K t</span></div><div class="lab"><b>3. taraf müşteri</b> (kendi kolları hariç, 45 firma)</div></div>
+        <div class="kpi"><div class="num">~302<span class="u">t</span></div><div class="lab">Ortalama müşteri · medyan ~120 t</div></div>
+        <div class="kpi"><div class="num">~$3<span class="u">M</span></div><div class="lab">Ort. müşteri yıllık ciro (~$10/kg ile)</div></div>
+      </div>
+
+      <div class="block">
+        <h3>Müşteri tipolojisi = segment kanıtı</h3>
+        <p>Datadaki 45 gerçek müşteri net 7 kümeye düşüyor — ICP'nin her segmenti en az bir <strong>kanıtlı müşteriyle</strong> çapalı.</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Segment kanıtı</th><th>Datadaki müşteriler (örnek)</th></tr></thead>
+            <tbody>
+              <tr><td class="em">İlaç / nutrasötik kapsül</td><td>ACG Associated Capsules (dünyanın en büyük kapsül üreticisi), ACG Europe/Thailand, Iran Gelatin Capsule, CapsCanada, Vivatis Pharma</td></tr>
+              <tr><td class="em">Şekerleme / gummy / jöle</td><td>Rigo Trading (= Haribo tedarik kolu), Trolli Ibérica, Shirin Asal, Otmuchow, Marmi, Pierrot Gourmand, MICHOC</td></tr>
+              <tr><td class="em">Kolajen / nutrasötik</td><td>Swedish Nutra, Vitafoods, Custom Collagen, Hayleys Aventura</td></tr>
+              <tr><td class="em">Distribütör / hammadde trader</td><td>JSC Baltic Group (2. en büyük müşteri), Almerro, Szilchem, UD Chemie, Pluripac, Toyond</td></tr>
+              <tr><td class="em">Süt ürünleri &amp; tatlı</td><td>FrieslandCampina Belgium (süt devi), BG Milk JSC</td></tr>
+              <tr><td class="em">Et işleme &amp; kolajen casing</td><td>Viscofan (dünyanın en büyük casing üreticisi)</td></tr>
+              <tr><td class="em">Özel / teknik (içecek durultma)</td><td>L'Enotecnica (şarap/içecek fining jelatini)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">Top-50'nin %27'si Halavet'in kendi dağıtım kolları (US LLC, BV, Halamix) — ICP'den hariç tutuldu. Her kanıtlı müşteri = lookalike tohumu.</p>
+      </div>
+
+      <div class="callout">
+        <div class="ct">Neden bu önemli</div>
+        <p>Mevcut müşteri ortalaması ~$3M/yıl, en küçük müşteri bile ~$0.4M/yıl. Bu, <strong>az müşteri-çok para</strong>
+          modeli: leadgen'in getirdiği her yeni hesap, kalite onayından sonra yıllarca tekrarlayan yüksek-LTV bir ilişki.
+          Projeksiyon (bölüm 09) bu gerçek çapaya oturuyor.</p>
+      </div>
+
+      <div class="block">
+        <h3>Top-50 ihracat müşterisi — tam liste (yıllık)</h3>
+        <p>Ham veri: müşteri × sevkiyat × ağırlık. Segment ataması Tibexa analizi. Vurgulu satır =
+          Halavet'in kendi dağıtım kolu (ICP dışı). Her 3. taraf müşteri = aynı segmentte lookalike tohumu.</p>
+        <div class="tbl-wrap" style="max-height:560px">
+          <table>
+            <thead><tr><th class="tnum">#</th><th>Müşteri</th><th>Segment</th><th class="tnum">Sevkiyat</th><th class="tnum">Ton/yıl</th></tr></thead>
+            <tbody>
+              <tr class="hl"><td class="tnum">1</td><td class="em">Halavet Us Llc</td><td><span class="tier t3">Kendi kol</span></td><td class="tnum">495</td><td class="tnum">4.104</td></tr>
+              <tr><td class="tnum">2</td><td class="em">Jsc Baltic Group</td><td>Distribütör</td><td class="tnum">114</td><td class="tnum">2.148</td></tr>
+              <tr><td class="tnum">3</td><td class="em">Acg Associated Capsules Pvt Ltd</td><td>Kapsül</td><td class="tnum">80</td><td class="tnum">1.551</td></tr>
+              <tr><td class="tnum">4</td><td class="em">Acg Europe D O O</td><td>Kapsül</td><td class="tnum">44</td><td class="tnum">790</td></tr>
+              <tr><td class="tnum">5</td><td class="em">Shiva Mfg Co</td><td>İlaç / kapsül</td><td class="tnum">27</td><td class="tnum">908</td></tr>
+              <tr class="hl"><td class="tnum">6</td><td class="em">Halavet Usa Llc</td><td><span class="tier t3">Kendi kol</span></td><td class="tnum">30</td><td class="tnum">539</td></tr>
+              <tr><td class="tnum">7</td><td class="em">Biogel Ag</td><td>Distribütör</td><td class="tnum">41</td><td class="tnum">772</td></tr>
+              <tr><td class="tnum">8</td><td class="em">Productos Alimenticios Y Dieteticos Relampago S A</td><td>Şekerleme / gıda</td><td class="tnum">70</td><td class="tnum">640</td></tr>
+              <tr><td class="tnum">9</td><td class="em">S I M Vn Corporation</td><td>Distribütör / gıda</td><td class="tnum">60</td><td class="tnum">577</td></tr>
+              <tr><td class="tnum">10</td><td class="em">Acg Capsules Thailand Co Ltd</td><td>Kapsül</td><td class="tnum">27</td><td class="tnum">460</td></tr>
+              <tr><td class="tnum">11</td><td class="em">Bg Milk Jsc</td><td>Süt & tatlı</td><td class="tnum">22</td><td class="tnum">404</td></tr>
+              <tr><td class="tnum">12</td><td class="em">Rigo Trading S A</td><td>Gummy (Haribo)</td><td class="tnum">20</td><td class="tnum">400</td></tr>
+              <tr><td class="tnum">13</td><td class="em">Dadash Baradar Co</td><td>Şekerleme / gıda</td><td class="tnum">24</td><td class="tnum">440</td></tr>
+              <tr><td class="tnum">14</td><td class="em">Gelima A S</td><td>Distribütör</td><td class="tnum">18</td><td class="tnum">385</td></tr>
+              <tr><td class="tnum">15</td><td class="em">L Enotecnica S R L</td><td>Özel (içecek durultma)</td><td class="tnum">19</td><td class="tnum">369</td></tr>
+              <tr><td class="tnum">16</td><td class="em">Lapi Gelatine Spa</td><td>Distribütör / kanal</td><td class="tnum">19</td><td class="tnum">380</td></tr>
+              <tr class="hl"><td class="tnum">17</td><td class="em">Halavet Bv</td><td><span class="tier t3">Kendi kol</span></td><td class="tnum">10</td><td class="tnum">198</td></tr>
+              <tr><td class="tnum">18</td><td class="em">Shirin Asal Co</td><td>Şekerleme (İran)</td><td class="tnum">11</td><td class="tnum">283</td></tr>
+              <tr class="hl"><td class="tnum">19</td><td class="em">Halamix International Thailand Co Ltd</td><td><span class="tier t3">Kendi kol</span></td><td class="tnum">25</td><td class="tnum">268</td></tr>
+              <tr><td class="tnum">20</td><td class="em">Custom Collagen Inc</td><td>Kolajen</td><td class="tnum">20</td><td class="tnum">280</td></tr>
+              <tr><td class="tnum">21</td><td class="em">Zaklady Przemyslu Cukierniczego Otmuchow S A</td><td>Şekerleme</td><td class="tnum">9</td><td class="tnum">198</td></tr>
+              <tr><td class="tnum">22</td><td class="em">Vitafoods S L</td><td>Kolajen / nutra</td><td class="tnum">11</td><td class="tnum">194</td></tr>
+              <tr><td class="tnum">23</td><td class="em">Iran Gelatin Capsule Mfg Co</td><td>Kapsül</td><td class="tnum">5</td><td class="tnum">140</td></tr>
+              <tr><td class="tnum">24</td><td class="em">Marmi Confectionery Factory Llc</td><td>Şekerleme</td><td class="tnum">6</td><td class="tnum">150</td></tr>
+              <tr><td class="tnum">25</td><td class="em">Vivatis Pharma Gmbh</td><td>Distribütör (pharma)</td><td class="tnum">6</td><td class="tnum">105</td></tr>
+              <tr><td class="tnum">26</td><td class="em">Pluripac Gmbh</td><td>Distribütör (pharma)</td><td class="tnum">6</td><td class="tnum">72</td></tr>
+              <tr><td class="tnum">27</td><td class="em">Michoc</td><td>Şekerleme (Meksika)</td><td class="tnum">7</td><td class="tnum">129</td></tr>
+              <tr><td class="tnum">28</td><td class="em">Jeleaf Inc</td><td>Gummy / jöle</td><td class="tnum">6</td><td class="tnum">120</td></tr>
+              <tr><td class="tnum">29</td><td class="em">Motha Confectionery Works Pvt Ltd</td><td>Şekerleme</td><td class="tnum">9</td><td class="tnum">120</td></tr>
+              <tr><td class="tnum">30</td><td class="em">Savannah Bio Systems Pty Ltd</td><td>Kolajen / biyomed.</td><td class="tnum">11</td><td class="tnum">104</td></tr>
+              <tr><td class="tnum">31</td><td class="em">Viscofan De Gmbh</td><td>Et & casing</td><td class="tnum">6</td><td class="tnum">113</td></tr>
+              <tr><td class="tnum">32</td><td class="em">S N C Ger Son Pierrot Gourmand</td><td>Şekerleme (FR)</td><td class="tnum">4</td><td class="tnum">88</td></tr>
+              <tr><td class="tnum">33</td><td class="em">Capscanada Corporation</td><td>Kapsül</td><td class="tnum">6</td><td class="tnum">80</td></tr>
+              <tr><td class="tnum">34</td><td class="em">Hassani Food Industries Llc</td><td>Şekerleme / gıda</td><td class="tnum">4</td><td class="tnum">100</td></tr>
+              <tr><td class="tnum">35</td><td class="em">Al Makhilah Manufacturing Company Ltd</td><td>Şekerleme / gıda</td><td class="tnum">4</td><td class="tnum">100</td></tr>
+              <tr><td class="tnum">36</td><td class="em">Szilchem Kft</td><td>Distribütör</td><td class="tnum">6</td><td class="tnum">85</td></tr>
+              <tr><td class="tnum">37</td><td class="em">Llc Almerro Group</td><td>Distribütör</td><td class="tnum">7</td><td class="tnum">86</td></tr>
+              <tr><td class="tnum">38</td><td class="em">Shirin Vatan Food Ind Co</td><td>Şekerleme / gıda</td><td class="tnum">3</td><td class="tnum">92</td></tr>
+              <tr><td class="tnum">39</td><td class="em">Hayleys Aventura Pvt Ltd</td><td>Kolajen / nutra</td><td class="tnum">7</td><td class="tnum">78</td></tr>
+              <tr><td class="tnum">40</td><td class="em">Junca Gelatines S L</td><td>Distribütör / kanal</td><td class="tnum">4</td><td class="tnum">80</td></tr>
+              <tr><td class="tnum">41</td><td class="em">Trolli Ibérica S A</td><td>Gummy (Trolli)</td><td class="tnum">3</td><td class="tnum">72</td></tr>
+              <tr><td class="tnum">42</td><td class="em">Swedish Nutra Ab</td><td>Kolajen</td><td class="tnum">5</td><td class="tnum">60</td></tr>
+              <tr><td class="tnum">43</td><td class="em">Ud Chemie Ltd</td><td>Distribütör (pharma)</td><td class="tnum">2</td><td class="tnum">40</td></tr>
+              <tr><td class="tnum">44</td><td class="em">Frieslandcampina Belgium Nv</td><td>Süt & tatlı</td><td class="tnum">7</td><td class="tnum">60</td></tr>
+              <tr><td class="tnum">45</td><td class="em">Mcc For Confectionery Manufacturing Apartment No 7</td><td>Şekerleme (Mısır)</td><td class="tnum">3</td><td class="tnum">75</td></tr>
+              <tr><td class="tnum">46</td><td class="em">Toyond Inc</td><td>Distribütör</td><td class="tnum">4</td><td class="tnum">76</td></tr>
+              <tr><td class="tnum">47</td><td class="em">Weishardt International France</td><td>Distribütör / kanal</td><td class="tnum">4</td><td class="tnum">70</td></tr>
+              <tr><td class="tnum">48</td><td class="em">Amadeh Laziz Co</td><td>Şekerleme (İran)</td><td class="tnum">2</td><td class="tnum">60</td></tr>
+              <tr class="hl"><td class="tnum">49</td><td class="em">Halavetgida Sanayi Ve Ticaret Anonim Sirketi</td><td><span class="tier t3">Kendi kol</span></td><td class="tnum">2</td><td class="tnum">41</td></tr>
+              <tr><td class="tnum">50</td><td class="em">Alwefag Trading Manufacturing Co Ltd</td><td>Şekerleme</td><td class="tnum">4</td><td class="tnum">52</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="3">Toplam · 50 müşteri (5 kendi kol dahil)</td><td class="tnum">1.339</td><td class="tnum">18.736</td></tr></tfoot>
+          </table>
+        </div>
+        <p class="chart-note">Kendi kolları (%27) çıkınca 45 gerçek 3. taraf müşteri = 13.587 ton/yıl · ort ~302 t · medyan ~120 t.</p>
+      </div>
+    </section>
+
+    <!-- 04 MARKET FRAMEWORK -->
+    <section id="pazar">
+      <div class="sec-head">
+        <span class="eyebrow">04 — Pazar Çerçevesi</span>
+        <h2>İki rüzgâr aynı yöne esiyor</h2>
+        <p>Halavet, <strong>helal sertifikalı gıda/ilaç hammaddesinin</strong> büyüyen talebi ile <strong>kolajen-tabanlı
+          nutrasötiğin</strong> yükselişinin kesişiminde. Üstelik dünya devleri helal sığır jelatinine yatırım yaparak
+          pazarı doğruluyor — Halavet'in erken-mover, saf-helal konumu avantaj.</p>
+      </div>
+
+      <div class="kpis" style="border-radius:14px">
+        <div class="kpi"><div class="num">$660<span class="u">M</span></div><div class="lab">Helal jelatin pazarı (2030) · 2023: $459M</div></div>
+        <div class="kpi"><div class="num">$8–15<span class="u">/kg</span></div><div class="lab"><b>Sığır jelatini</b> (food/pharma grade)</div></div>
+        <div class="kpi"><div class="num">2.2<span class="u">Mlr</span></div><div class="lab">2030 Müslüman nüfus · helal talep sürükleyicisi</div></div>
+        <div class="kpi"><div class="num">Avrupa #1</div><div class="lab"><b>Halavet</b> · sığır jelatini <b>+ kolajen</b> üreticisi</div></div>
+      </div>
+
+      <div class="block">
+        <h3>Fırsat tezi — neden bu iş, neden şimdi</h3>
+        <ul class="tick">
+          <li><b>Helal = wedge.</b> %100 helal sığır jelatini hem Müslüman-çoğunluk pazarlarına (Körfez, SE Asya, İran, Mısır, Pakistan) hem de Batı'nın helal/no-pork ürün üreticilerine açılır. Devlerin karışık tesisine karşı <b>saf-helal güven</b>.</li>
+          <li><b>Kanıtlı talep.</b> Top-50 datası 7 segmentin tamamını gerçek müşteriyle doğruluyor — varsayım değil, kanıt.</li>
+          <li><b>Pazar rüzgârı arkada.</b> Helal jelatin $459M→$660M (2030); kolajen supplement (beauty-from-within) patlıyor; gummy-vitamin küresel megatrend.</li>
+          <li><b>Aciliyet.</b> Rousselot (Brezilya helal sığır), Weishardt ($18M helal hat), Italgelatine (helal-özel tesis) yatırım yapıyor → yapışkan tedarik ilişkilerini rakipler ölçeklenmeden kilitlemek kritik.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>Segment çekiciliği — büyüme yönü (yıllık, yaklaşık)</h3>
+        <div class="chart">
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">Kolajen / nutrasötik supplement</span><span class="bar__val">~%9</span></div><div class="bar__track"><div class="bar__fill" style="width:100%"></div></div></div>
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">Helal sertifikalı ürün talebi</span><span class="bar__val">~%8</span></div><div class="bar__track"><div class="bar__fill" style="width:89%"></div></div></div>
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">Gummy / yumuşak şekerleme</span><span class="bar__val">~%6</span></div><div class="bar__track"><div class="bar__fill" style="width:67%"></div></div></div>
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">Jelatin pazarı (genel)</span><span class="bar__val">~%5.3</span></div><div class="bar__track"><div class="bar__fill" style="width:59%"></div></div></div>
+        </div>
+        <p class="chart-note">★ Halavet'in en güçlü kartları (Avrupa #1 kolajen + saf-helal) pazarın en hızlı büyüyen damarları — üstelik kolajende Avrupa lideri. Değerler yönsel (sektör raporları); gerçek fiyat/grade kırılımı firma teyidiyle sabitlenir.</p>
+      </div>
+
+      <div class="block">
+        <h3>Rakip manzarası — devler helal'e koşuyor</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Rakip</th><th>Hammadde</th><th>Halavet'e göre konum</th></tr></thead>
+            <tbody>
+              <tr><td class="em">GELITA (#1, ~%12 pazar)</td><td>Domuz + sığır karışık</td><td>Halavet = dedicated helal sığır → kontaminasyon endişesi yok</td></tr>
+              <tr><td class="em">Rousselot / Darling</td><td>Domuz ağırlıklı + sığır</td><td>Brezilya'da helal sığır kapasitesi artırıyor → pazar doğrulanıyor</td></tr>
+              <tr><td class="em">Weishardt</td><td>Domuz + balık</td><td>Halavet'ten ALIYOR (data #47) + $18M helal hat → hem rakip hem müşteri</td></tr>
+              <tr><td class="em">Italgelatine</td><td>Sığır</td><td>Sadece helal sığıra özel yeni tesis → en doğrudan benzer konum, izlenmeli</td></tr>
+              <tr><td class="em">Hint üreticiler</td><td>Sığır</td><td>Fiyatta agresif; helal-saflık + AB lokasyonu + lead-time'da Halavet üstün</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 TARGET MARKET -->
+    <section id="hedef">
+      <div class="sec-head">
+        <span class="eyebrow">05 — Hedef Pazar Tespiti</span>
+        <h2>Helal-çekirdek + Avrupa sanayi + Hindistan kapsül üssü</h2>
+        <p>Coğrafya, <strong>helal sığır jelatininin doğal avantaj sağladığı</strong> pazarlara göre önceliklendirildi. Birim:
+          <strong>E = bir bölgedeki tahmini hedef B2B firma sayısı</strong> (jelatin/kolajen tüketen üretici veya distribütör).
+          Çin düşük öncelik (kendi büyük üretimi). Aynı firma birden çok alt-ICP'ye düşebilir → ham toplam, benzersiz sayıdan fazladır.</p>
+      </div>
+
+      <div class="block">
+        <h3>Bölge bazlı tahmini hedef alıcı yoğunluğu</h3>
+        <div class="chart">
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">🇪🇺 Avrupa Birliği</span><span class="bar__val">~739</span></div><div class="bar__track"><div class="bar__fill" style="width:100%"></div></div></div>
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">☪️ Helal-çekirdek (Körfez / İran / SE Asya / K.Afrika)</span><span class="bar__val">~609</span></div><div class="bar__track"><div class="bar__fill" style="width:82.4%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">🌎 Diğer (TR / Latam / Asya-Pasifik)</span><span class="bar__val">~386</span></div><div class="bar__track"><div class="bar__fill" style="width:52.2%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">🇺🇸 ABD / Kanada</span><span class="bar__val">~320</span></div><div class="bar__track"><div class="bar__fill" style="width:43.3%"></div></div></div>
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">🌍 BDT / Afrika</span><span class="bar__val">~115</span></div><div class="bar__track"><div class="bar__fill" style="width:15.6%"></div></div></div>
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">🇮🇳 Hindistan (kapsül üssü)</span><span class="bar__val">~101</span></div><div class="bar__track"><div class="bar__fill" style="width:13.7%"></div></div></div>
+        </div>
+        <p class="chart-note">Ham arama-birimi tahmini (pazar-proxy). Dedup sonrası benzersiz havuz ~2.000 firma. Detaylı matris bölüm 07'de.</p>
+      </div>
+
+      <div class="block">
+        <h3>Üç kademeli önceliklendirme</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kademe</th><th>Bölge</th><th class="tnum">E (firma)</th><th>Dayanak</th></tr></thead>
+            <tbody>
+              <tr class="hl"><td><span class="tier t1">Tier 1 · Altın</span></td><td class="em">☪️ Helal-çekirdek</td><td class="tnum">~609</td><td>Wedge en keskin: Körfez, İran, SE Asya, Mısır, Pakistan — helal gummy/kapsül/şarküteri/tatlı. Çoğu kanıtlı (Shirin Asal, Iran Gelatin Capsule).</td></tr>
+              <tr class="hl"><td><span class="tier t1">Tier 1 · Altın</span></td><td class="em">🇪🇺 Avrupa Birliği</td><td class="tnum">~739</td><td>En çok kanıtlı müşteri burada: gummy (Haribo/Trolli), süt (FrieslandCampina), distribütör (Vivatis/Pluripac), kolajen, casing (Viscofan) + helal hatları.</td></tr>
+              <tr class="hl"><td><span class="tier t1">Tier 1 · Altın</span></td><td class="em">🇮🇳 Hindistan</td><td class="tnum">~101</td><td>Dünyanın kapsül/softgel üssü — ACG zaten Halavet'in müşterisi. Az firma, dev hacim.</td></tr>
+              <tr><td><span class="tier t2">Tier 2 · Yüksek</span></td><td class="em">🇺🇸 ABD / Kanada</td><td class="tnum">~320</td><td>Kolajen supplement'in en büyük pazarı + gummy-vitamin patlaması + helal/no-pork niş markaları. Halavet'in ABD deposu avantaj.</td></tr>
+              <tr><td><span class="tier t3">Tier 3 · Fırsatçı</span></td><td class="em">🌎 Diğer (TR / Latam / AP)</td><td class="tnum">~386</td><td>TR yurtiçi, Latam gummy/şekerleme (MICHOC kanıtlı), Asya-Pasifik kolajen/casing. Dağınık ama hacimli.</td></tr>
+              <tr><td><span class="tier t3">Tier 3 · Fırsatçı</span></td><td class="em">🌍 BDT / Afrika</td><td class="tnum">~115</td><td>Distribütör kanalı güçlü (Almerro kanıtlı); re-export merkezleri üzerinden bölgeye yayılır.</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="2">Ham toplam</td><td class="tnum">~2.270</td><td>benzersiz ~2.000</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Bilinçli dışlama — boşa eforu önler</h3>
+        <p>Aşağıdakiler, Halavet'in "helal sığır" wedge'i orada çalışmadığı için kapsam dışı bırakıldı. Bu disiplin eforu dönüşeceği yere odaklar.</p>
+        <div class="chips">
+          <span class="chip neg">Çin yerel jelatin (kendi büyük üretimi)</span>
+          <span class="chip neg">Domuz jelatini zorunlu pharma uygulaması</span>
+          <span class="chip neg">Vegan / agar-pektin-karragenan üreticisi</span>
+          <span class="chip neg">Balık jelatini isteyen (pesketaryen/kosher-pareve)</span>
+          <span class="chip neg">Rakip jelatin üreticisi (Gelita vb.)</span>
+          <span class="chip neg">Bitmiş ürün dağıtıcısı / son tüketici</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 ICP -->
+    <section id="icp">
+      <div class="sec-head">
+        <span class="eyebrow">06 — İdeal Müşteri Profili</span>
+        <h2>Jelatin/kolajen tüketen üretici veya distribütör</h2>
+        <p>Ortak hedef: jelatin veya kolajen hidrolizat <strong>tüketen üretici</strong> (kapsül, gummy, supplement, süt, et)
+          <strong>veya</strong> bölgesinde yeniden satan <strong>distribütör</strong>. <strong>Helal/no-pork gereksinimi olan
+          veya ondan fayda gören</strong> müşteri = altın. 7 çekirdek segment <strong>19 alt-ICP</strong>'ye bölündü; her biri ayrı
+          bir arama birimi ve her segment kanıtlı bir müşteriyle çapalı.</p>
+      </div>
+
+      <div class="block">
+        <h3>Çekirdek segmentler</h3>
+        <div class="grid g-2">
+          <div class="card">
+            <span class="ico">S1 · ★ Altın · kanıt: ACG</span>
+            <h3>İlaç &amp; nutrasötik jelatin kapsül üreticileri</h3>
+            <p>Sert (hardcap) + yumuşak (softgel) kapsül kabuğunun ana hammaddesi. Helal kapsül = devasa pazar. Sürekli,
+              yüksek-hacim, en yapışkan alıcı. <strong>Tekrar sipariş: çok yüksek.</strong></p>
+          </div>
+          <div class="card">
+            <span class="ico">S2 · ★ Altın · kanıt: Haribo/Rigo</span>
+            <h3>Şekerleme: gummy / jöle / yumuşak şeker</h3>
+            <p>Gummy'nin temel jelleştiricisi. <strong>Helal gummy küresel megatrend</strong> + gummy-vitamin furyası. En geniş
+              segment — 4 alt-ICP ile en derin havuz.</p>
+          </div>
+          <div class="card">
+            <span class="ico">S3 · ★ Altın · Avrupa #1 kolajen</span>
+            <h3>Kolajen / nutrasötik &amp; fonksiyonel beslenme</h3>
+            <p><strong>Halavet Avrupa'nın en büyük kolajen üreticisi</strong> — bu segment "yan ürün" değil, liderlik kartı.
+              Yüksek-biyoaktif peptit → cilt/saç/eklem supplement, beauty-from-within. En yüksek katma değer + en hızlı büyüyen
+              segment; kanıt: Swedish Nutra, Custom Collagen.</p>
+          </div>
+          <div class="card">
+            <span class="ico">S4 · Yüksek · kanıt: JSC Baltic</span>
+            <h3>Jelatin/kolajen distribütör &amp; hammadde trader'ı</h3>
+            <p>Bölgesine yeniden satan distribütör = <strong>kanal çarpanı</strong> (tek müşteri → bir bölgenin tüm üreticileri).
+              Ürünü tanıyan distribütörle kapanış hızlı, hacim yüksek.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>İkinci dalga &amp; fırsatçı</h3>
+        <div class="grid g-3">
+          <div class="card"><span class="ico">S5 · Yüksek</span><h3>Süt ürünleri &amp; tatlı / dessert</h3><p>Yoğurt, puding, mousse, marshmallow, dondurma jelleştiricisi. FrieslandCampina kanıtlı. Kısmi — jelatin kullanımı doğrulanır.</p></div>
+          <div class="card"><span class="ico">S6 · Orta</span><h3>Et işleme &amp; kolajen casing</h3><p>Sosis/sucuk kılıfı (kolajen) + et bağlayıcı (jelatin). Viscofan kanıtlı. Helal et sektörüyle doğal sinerji.</p></div>
+          <div class="card"><span class="ico">S7 · Orta</span><h3>Özel / teknik uygulamalar</h3><p>İçecek durultma (wine/juice fining), mikroenkapsülasyon, kozmetik. L'Enotecnica kanıtlı. Niş ama yüksek marj.</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Ortak eleme eşiği</h3>
+        <div class="chips">
+          <span class="chip pos">Jelatin / kolajen tüketen üretici</span>
+          <span class="chip pos">Helal / no-pork gereksinimi olan</span>
+          <span class="chip pos">Tekrarlı konteyner alıcısı</span>
+          <span class="chip pos">Distribütör (kanal çarpanı)</span>
+          <span class="chip neg">Bitkisel jel (agar/pektin) vegan</span>
+          <span class="chip neg">Domuz jelatini zorunlu</span>
+          <span class="chip neg">Balık jelatini isteyen</span>
+          <span class="chip neg">Bitmiş ürün dağıtıcısı / perakende</span>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>19 alt-ICP — granüler liste</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kod</th><th>Alt-ICP</th><th>Ana pazar · kanıtlı müşteri (çıpa)</th></tr></thead>
+            <tbody>
+              <tr class="grp"><td colspan="3">S1 — Kapsül üreticileri · ★ Altın</td></tr>
+              <tr><td class="em">S1.1</td><td>Bağımsız kapsül imalatçısı (hard + soft)</td><td>Hindistan / global · ACG*, CapsCanada*</td></tr>
+              <tr><td class="em">S1.2</td><td>Softgel fason üretici (CMO)</td><td>ABD / Hindistan · Catalent, Procaps tipi</td></tr>
+              <tr><td class="em">S1.3</td><td>İlaç/supplement üreticisi (kendi kapsülünü döken)</td><td>Pakistan / Endonezya / İran · helal pharma</td></tr>
+              <tr class="grp"><td colspan="3">S2 — Şekerleme / gummy · ★ Altın · çekirdek fark</td></tr>
+              <tr><td class="em">S2.1</td><td>Gummy / jöle şeker üreticisi</td><td>AB / TR / ABD · Haribo*, Trolli*, Otmuchow*</td></tr>
+              <tr><td class="em">S2.2</td><td>Helal/no-pork gummy &amp; gummy-vitamin markası</td><td>ABD / Körfez / SE Asya · helal niş</td></tr>
+              <tr><td class="em">S2.3</td><td>Marshmallow / yumuşak şeker üreticisi</td><td>ABD / AB / TR</td></tr>
+              <tr><td class="em">S2.4</td><td>Bölgesel şekerleme devi (İran/Körfez/Latam)</td><td>Shirin Asal*, Marmi*, MICHOC*</td></tr>
+              <tr class="grp"><td colspan="3">S3 — Kolajen / nutrasötik · ★ Altın</td></tr>
+              <tr><td class="em">S3.1</td><td>Kolajen supplement markası</td><td>ABD / AB / Körfez · Swedish Nutra*, Custom Collagen*</td></tr>
+              <tr><td class="em">S3.2</td><td>Nutrasötik fason üretici (CMO / private label)</td><td>ABD / AB / Hindistan · Vitafoods*</td></tr>
+              <tr><td class="em">S3.3</td><td>Fonksiyonel içecek / sporcu besini üreticisi</td><td>ABD / AB / Körfez</td></tr>
+              <tr class="grp"><td colspan="3">S4 — Distribütör / trader · Yüksek</td></tr>
+              <tr><td class="em">S4.1</td><td>Gıda hammadde / hidrokolloid distribütörü</td><td>Global · JSC Baltic*, IMCD/Brenntag tipi</td></tr>
+              <tr><td class="em">S4.2</td><td>İlaç excipient / pharma hammadde distribütörü</td><td>AB / Körfez · Vivatis*, Pluripac*, UD Chemie*</td></tr>
+              <tr><td class="em">S4.3</td><td>Bölgesel gıda-katkı trader'ı (BDT/Körfez/Afrika)</td><td>Almerro*, Szilchem*, Toyond*</td></tr>
+              <tr class="grp"><td colspan="3">S5 — Süt &amp; tatlı · Yüksek</td></tr>
+              <tr><td class="em">S5.1</td><td>Jöleli süt tatlısı / mousse / puding üreticisi</td><td>AB / Körfez / TR · FrieslandCampina*</td></tr>
+              <tr><td class="em">S5.2</td><td>Dondurma / marshmallow-bazlı tatlı üreticisi</td><td>AB / Körfez · BG Milk*</td></tr>
+              <tr class="grp"><td colspan="3">S6 — Et &amp; casing · Orta</td></tr>
+              <tr><td class="em">S6.1</td><td>Kolajen casing üreticisi</td><td>İspanya / AB · Viscofan*, Devro, Kalle</td></tr>
+              <tr><td class="em">S6.2</td><td>Helal şarküteri / sosis-sucuk üreticisi</td><td>Körfez / TR / Brezilya · helal et</td></tr>
+              <tr class="grp"><td colspan="3">S7 — Özel / teknik · Orta</td></tr>
+              <tr><td class="em">S7.1</td><td>İçecek durultma (wine/juice fining) üreticisi</td><td>İtalya / Fransa · L'Enotecnica*</td></tr>
+              <tr><td class="em">S7.2</td><td>Mikroenkapsülasyon / kozmetik jelatin kullanıcısı</td><td>ABD / AB / Kore</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">`*` = Halavet'in mevcut ihracat müşterisi (kanıtlı). Çıpa isimleri kategori örneğidir; leadgen'de tip teyidi yapılır.</p>
+      </div>
+
+      <div class="block">
+        <h3>Alt-ICP detay — hedef ürün · ayrışma nedeni · anahtar kelime</h3>
+        <p>Her satır bir leadgen arama birimidir; "anahtar kelime" arama açısını, "ayrışma nedeni" niçin ayrı bir
+          birim olduğunu verir. Örnek firmalar ve eleme kuralları: icp_master.md.</p>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kod</th><th>Hedef ürün</th><th>Neden ayrı birim</th><th>Anahtar kelime (EN)</th></tr></thead>
+            <tbody>
+              <tr class="grp"><td colspan="4">S1 — Kapsül üreticileri · ★ Altın</td></tr>
+              <tr><td class="em">S1.1</td><td>Pharma jelatin (yüksek bloom)</td><td>En büyük hammadde alıcısı, en yüksek hacim</td><td>gelatin capsule manufacturer, empty capsule</td></tr>
+              <tr><td class="em">S1.2</td><td>Pharma jelatin</td><td>Softgel'e özel, farklı firma kümesi</td><td>softgel contract manufacturer</td></tr>
+              <tr><td class="em">S1.3</td><td>Pharma jelatin</td><td>Dikey ilaç/supplement üreticisi, helal pharma</td><td>pharmaceutical capsule producer halal</td></tr>
+              <tr class="grp"><td colspan="4">S2 — Şekerleme / gummy · ★ Altın</td></tr>
+              <tr><td class="em">S2.1</td><td>Food jelatin (orta-yüksek bloom)</td><td>En büyük şekerleme kümesi</td><td>gummy candy manufacturer, jelly confectionery</td></tr>
+              <tr><td class="em">S2.2</td><td>Food jelatin (helal)</td><td>Wedge en keskin, en hızlı büyüyen</td><td>halal gummy manufacturer, gummy vitamin</td></tr>
+              <tr><td class="em">S2.3</td><td>Food jelatin</td><td>Farklı ürün/proses kümesi</td><td>marshmallow manufacturer, soft candy</td></tr>
+              <tr><td class="em">S2.4</td><td>Food jelatin</td><td>Helal-çekirdek pazar, kanıtlı bölgesel dev</td><td>jelly confectionery producer Middle East</td></tr>
+              <tr class="grp"><td colspan="4">S3 — Kolajen / nutrasötik · ★ Altın</td></tr>
+              <tr><td class="em">S3.1</td><td>Kolajen peptit</td><td>En yüksek katma değer, marka sahibi</td><td>collagen supplement brand, halal collagen</td></tr>
+              <tr><td class="em">S3.2</td><td>Kolajen + jelatin</td><td>Markaya üreten fason, hacim</td><td>nutraceutical contract manufacturer</td></tr>
+              <tr><td class="em">S3.3</td><td>Kolajen peptit</td><td>İçecek/protein formu, ayrı küme</td><td>functional drink collagen producer</td></tr>
+              <tr class="grp"><td colspan="4">S4 — Distribütör / trader · Yüksek</td></tr>
+              <tr><td class="em">S4.1</td><td>Jelatin + kolajen</td><td>Kanal çarpanı, hidrokolloid portföyü</td><td>food ingredient distributor gelatin</td></tr>
+              <tr><td class="em">S4.2</td><td>Pharma jelatin</td><td>Pharma excipient kanalı, ayrı</td><td>pharmaceutical excipient distributor</td></tr>
+              <tr><td class="em">S4.3</td><td>Jelatin + kolajen</td><td>Helal-çekirdek bölge dağıtıcısı</td><td>food additive trader distributor</td></tr>
+              <tr class="grp"><td colspan="4">S5 — Süt & tatlı · Yüksek</td></tr>
+              <tr><td class="em">S5.1</td><td>Food jelatin</td><td>Doğrudan jelatin kullanan tatlı</td><td>dairy dessert mousse pudding manufacturer</td></tr>
+              <tr><td class="em">S5.2</td><td>Food jelatin (stabilizatör)</td><td>Stabilizatör kullanımı, ayrı</td><td>ice cream stabilizer manufacturer</td></tr>
+              <tr class="grp"><td colspan="4">S6 — Et & casing · Orta</td></tr>
+              <tr><td class="em">S6.1</td><td>Kolajen</td><td>Casing hammaddesi, kanıtlı (Viscofan)</td><td>collagen casing manufacturer</td></tr>
+              <tr><td class="em">S6.2</td><td>Jelatin + kolajen</td><td>Helal et sinerjisi</td><td>halal sausage charcuterie producer</td></tr>
+              <tr class="grp"><td colspan="4">S7 — Özel / teknik · Orta</td></tr>
+              <tr><td class="em">S7.1</td><td>Özel jelatin</td><td>Niş, yüksek marj, kanıtlı (L'Enotecnica)</td><td>wine fining gelatin manufacturer</td></tr>
+              <tr><td class="em">S7.2</td><td>Özel jelatin/kolajen</td><td>Teknik niş, ayrı</td><td>microencapsulation cosmetic gelatin</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 GEOGRAPHY -->
+    <section id="cografya">
+      <div class="sec-head">
+        <span class="eyebrow">07 — Coğrafya &amp; Sizing</span>
+        <h2>Her alt-ICP'de ~kaç firma, hangi bölgede?</h2>
+        <p>19 alt-ICP × bölge matrisi. Hücre = <strong>E (tahmini doğru firma sayısı)</strong>. Bölgeler: <strong>HÇ</strong>
+          (helal-çekirdek), <strong>IN</strong> (Hindistan), <strong>AB</strong> (Avrupa), <strong>NA</strong> (ABD/Kanada),
+          <strong>BDT</strong> (BDT/Afrika), <strong>Diğ</strong> (TR/Latam/Asya-Pasifik). Bunlar arama-birimi sayılarıdır.</p>
+      </div>
+
+      <div class="block">
+        <h3>Matris — alt-ICP × bölge (hücre = E)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kod</th><th>Alt-ICP</th><th class="tnum">HÇ</th><th class="tnum">IN</th><th class="tnum">AB</th><th class="tnum">NA</th><th class="tnum">BDT</th><th class="tnum">Diğ</th><th class="tnum">E</th></tr></thead>
+            <tbody>
+              <tr class="grp"><td colspan="9">S1 — Kapsül üreticileri · alt toplam ~250</td></tr>
+              <tr><td>S1.1</td><td>Bağımsız kapsül imalatçısı (hard+soft)</td><td class="tnum">12</td><td class="tnum">28</td><td class="tnum">14</td><td class="tnum">8</td><td class="tnum">–</td><td class="tnum">28</td><td class="tnum em">90</td></tr>
+              <tr><td>S1.2</td><td>Softgel fason üretici (CMO)</td><td class="tnum">10</td><td class="tnum">12</td><td class="tnum">14</td><td class="tnum">19</td><td class="tnum">–</td><td class="tnum">15</td><td class="tnum em">70</td></tr>
+              <tr><td>S1.3</td><td>İlaç/supplement üreticisi (kendi kapsülünü döken)</td><td class="tnum">64</td><td class="tnum">10</td><td class="tnum">4</td><td class="tnum">6</td><td class="tnum">–</td><td class="tnum">6</td><td class="tnum em">90</td></tr>
+              <tr class="grp"><td colspan="9">S2 — Şekerleme / gummy · alt toplam ~600</td></tr>
+              <tr><td>S2.1</td><td>Gummy / jöle şeker üreticisi</td><td class="tnum">48</td><td class="tnum">10</td><td class="tnum">130</td><td class="tnum">25</td><td class="tnum">14</td><td class="tnum">73</td><td class="tnum em">300</td></tr>
+              <tr><td>S2.2</td><td>Helal/no-pork gummy &amp; gummy-vitamin markası</td><td class="tnum">32</td><td class="tnum">–</td><td class="tnum">23</td><td class="tnum">42</td><td class="tnum">6</td><td class="tnum">17</td><td class="tnum em">120</td></tr>
+              <tr><td>S2.3</td><td>Marshmallow / yumuşak şeker üreticisi</td><td class="tnum">21</td><td class="tnum">–</td><td class="tnum">28</td><td class="tnum">18</td><td class="tnum">–</td><td class="tnum">13</td><td class="tnum em">80</td></tr>
+              <tr><td>S2.4</td><td>Bölgesel şekerleme devi (İran/Körfez/Latam)</td><td class="tnum">74</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">8</td><td class="tnum">18</td><td class="tnum em">100</td></tr>
+              <tr class="grp"><td colspan="9">S3 — Kolajen / nutrasötik · alt toplam ~500</td></tr>
+              <tr><td>S3.1</td><td>Kolajen supplement markası</td><td class="tnum">35</td><td class="tnum">–</td><td class="tnum">101</td><td class="tnum">70</td><td class="tnum">–</td><td class="tnum">44</td><td class="tnum em">250</td></tr>
+              <tr><td>S3.2</td><td>Nutrasötik fason üretici (CMO / private label)</td><td class="tnum">22</td><td class="tnum">12</td><td class="tnum">54</td><td class="tnum">43</td><td class="tnum">–</td><td class="tnum">19</td><td class="tnum em">150</td></tr>
+              <tr><td>S3.3</td><td>Fonksiyonel içecek / sporcu besini üreticisi</td><td class="tnum">18</td><td class="tnum">–</td><td class="tnum">36</td><td class="tnum">30</td><td class="tnum">–</td><td class="tnum">16</td><td class="tnum em">100</td></tr>
+              <tr class="grp"><td colspan="9">S4 — Distribütör / trader · alt toplam ~300</td></tr>
+              <tr><td>S4.1</td><td>Gıda hammadde / hidrokolloid distribütörü</td><td class="tnum">32</td><td class="tnum">8</td><td class="tnum">50</td><td class="tnum">15</td><td class="tnum">15</td><td class="tnum">30</td><td class="tnum em">150</td></tr>
+              <tr><td>S4.2</td><td>İlaç excipient / pharma hammadde distribütörü</td><td class="tnum">22</td><td class="tnum">8</td><td class="tnum">31</td><td class="tnum">10</td><td class="tnum">–</td><td class="tnum">9</td><td class="tnum em">80</td></tr>
+              <tr><td>S4.3</td><td>Bölgesel gıda-katkı trader'ı (BDT/Körfez/Afrika)</td><td class="tnum">32</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">38</td><td class="tnum">–</td><td class="tnum em">70</td></tr>
+              <tr class="grp"><td colspan="9">S5 — Süt &amp; tatlı · alt toplam ~350</td></tr>
+              <tr><td>S5.1</td><td>Jöleli süt tatlısı / mousse / puding üreticisi</td><td class="tnum">80</td><td class="tnum">–</td><td class="tnum">107</td><td class="tnum">–</td><td class="tnum">15</td><td class="tnum">18</td><td class="tnum em">220</td></tr>
+              <tr><td>S5.2</td><td>Dondurma / marshmallow-bazlı tatlı üreticisi</td><td class="tnum">52</td><td class="tnum">8</td><td class="tnum">38</td><td class="tnum">10</td><td class="tnum">10</td><td class="tnum">12</td><td class="tnum em">130</td></tr>
+              <tr class="grp"><td colspan="9">S6 — Et &amp; casing · alt toplam ~150</td></tr>
+              <tr><td>S6.1</td><td>Kolajen casing üreticisi</td><td class="tnum">–</td><td class="tnum">5</td><td class="tnum">20</td><td class="tnum">6</td><td class="tnum">–</td><td class="tnum">19</td><td class="tnum em">50</td></tr>
+              <tr><td>S6.2</td><td>Helal şarküteri / sosis-sucuk üreticisi</td><td class="tnum">51</td><td class="tnum">–</td><td class="tnum">18</td><td class="tnum">–</td><td class="tnum">4</td><td class="tnum">27</td><td class="tnum em">100</td></tr>
+              <tr class="grp"><td colspan="9">S7 — Özel / teknik · alt toplam ~120</td></tr>
+              <tr><td>S7.1</td><td>İçecek durultma (wine/juice fining) üreticisi</td><td class="tnum">–</td><td class="tnum">–</td><td class="tnum">44</td><td class="tnum">8</td><td class="tnum">5</td><td class="tnum">13</td><td class="tnum em">70</td></tr>
+              <tr><td>S7.2</td><td>Mikroenkapsülasyon / kozmetik jelatin kullanıcısı</td><td class="tnum">4</td><td class="tnum">–</td><td class="tnum">27</td><td class="tnum">10</td><td class="tnum">–</td><td class="tnum">9</td><td class="tnum em">50</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="2">Bölge ham toplamı</td><td class="tnum">609</td><td class="tnum">101</td><td class="tnum">739</td><td class="tnum">320</td><td class="tnum">115</td><td class="tnum">386</td><td class="tnum">2270</td></tr></tfoot>
+          </table>
+        </div>
+        <p class="chart-note">Ham toplam ~2.270 arama-birimi · benzersiz (dedup) ~2.000 firma. Hiç gerçek arama yapılmadı; tüm E'ler pazar-proxy, ilk kalibrasyon turunda gerçeğe çekilir. Ülke-detay kırılımı: geography_MUSTERI.csv.</p>
+      </div>
+
+      <div class="callout">
+        <div class="ct">Önce nereye?</div>
+        <p>ALTIN üçlü (S1+S2+S3 = ~1.350 firma) ile başlanır; bölgesel olarak <strong>helal-çekirdek + Avrupa + Hindistan</strong>
+          öne alınır — wedge'in en keskin ve kanıtın en yoğun olduğu kesişim. S4–S5 ikinci dalga, S6–S7 fırsatçı.</p>
+      </div>
+
+      <div class="block">
+        <h3>Ülke-detay kırılımı — arama birimleri (254 satır)</h3>
+        <p>geography_MUSTERI.csv'nin rapor görünümü: her alt-ICP'nin ülke bazında E tahmini. Güven etiketi:
+          <span class="tier t1">yüksek</span> <span class="tier t2">orta</span> <span class="tier t3">düşük</span>.
+          Firma bu tabloya "Müşteri Görüşü" kolonuyla düzeltme girer (CSV).</p>
+        <div class="tbl-wrap" style="max-height:660px">
+          <table>
+            <thead><tr><th>Kod</th><th>Ülke</th><th class="tnum">E</th><th>Güven</th><th>Not</th></tr></thead>
+            <tbody>
+              <tr class="grp"><td colspan="5">S1.1 — Bağımsız kapsül imalatçısı (hard+soft) · toplam ~90</td></tr>
+              <tr><td class="em">S1.1</td><td>Hindistan</td><td class="tnum">28</td><td><span class="tier t1">yüksek</span></td><td>kapsül üssü — ACG mevcut müşteri</td></tr>
+              <tr><td class="em">S1.1</td><td>Çin</td><td class="tnum">12</td><td><span class="tier t3">düşük</span></td><td>helal-export niş</td></tr>
+              <tr><td class="em">S1.1</td><td>ABD</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S1.1</td><td>Almanya</td><td class="tnum">5</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S1.1</td><td>İtalya</td><td class="tnum">5</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S1.1</td><td>Güney Kore</td><td class="tnum">5</td><td><span class="tier t2">orta</span></td><td>Suheung</td></tr>
+              <tr><td class="em">S1.1</td><td>İspanya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S1.1</td><td>Brezilya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S1.1</td><td>Türkiye</td><td class="tnum">4</td><td><span class="tier t1">yüksek</span></td><td>yerel</td></tr>
+              <tr><td class="em">S1.1</td><td>Endonezya</td><td class="tnum">4</td><td><span class="tier t2">orta</span></td><td>helal-çekirdek</td></tr>
+              <tr><td class="em">S1.1</td><td>Körfez (BAE/S.Arab.)</td><td class="tnum">4</td><td><span class="tier t2">orta</span></td><td>helal-çekirdek</td></tr>
+              <tr><td class="em">S1.1</td><td>Japonya</td><td class="tnum">3</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S1.1</td><td>İran</td><td class="tnum">4</td><td><span class="tier t2">orta</span></td><td>Iran Gelatin Capsule mevcut</td></tr>
+              <tr class="grp"><td colspan="5">S1.2 — Softgel fason üretici (CMO) · toplam ~70</td></tr>
+              <tr><td class="em">S1.2</td><td>ABD</td><td class="tnum">14</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S1.2</td><td>Hindistan</td><td class="tnum">12</td><td><span class="tier t1">yüksek</span></td><td>softgel CMO yoğun</td></tr>
+              <tr><td class="em">S1.2</td><td>Çin</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td>niş</td></tr>
+              <tr><td class="em">S1.2</td><td>İtalya</td><td class="tnum">6</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S1.2</td><td>Almanya</td><td class="tnum">4</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S1.2</td><td>Kanada</td><td class="tnum">5</td><td><span class="tier t2">orta</span></td><td>CapsCanada mevcut</td></tr>
+              <tr><td class="em">S1.2</td><td>Güney Kore</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S1.2</td><td>İspanya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S1.2</td><td>Körfez</td><td class="tnum">4</td><td><span class="tier t2">orta</span></td><td>helal</td></tr>
+              <tr><td class="em">S1.2</td><td>Endonezya</td><td class="tnum">3</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S1.2</td><td>Malezya</td><td class="tnum">3</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S1.2</td><td>Türkiye</td><td class="tnum">3</td><td><span class="tier t1">yüksek</span></td><td>yerel</td></tr>
+              <tr class="grp"><td colspan="5">S1.3 — İlaç/supplement üreticisi (kendi kapsülünü döken) · toplam ~90</td></tr>
+              <tr><td class="em">S1.3</td><td>Pakistan</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td>helal pharma</td></tr>
+              <tr><td class="em">S1.3</td><td>Endonezya</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td>helal pharma</td></tr>
+              <tr><td class="em">S1.3</td><td>İran</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S1.3</td><td>Mısır</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S1.3</td><td>Hindistan</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S1.3</td><td>Körfez</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td>helal</td></tr>
+              <tr><td class="em">S1.3</td><td>Malezya</td><td class="tnum">6</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S1.3</td><td>Bangladeş</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S1.3</td><td>Türkiye</td><td class="tnum">6</td><td><span class="tier t1">yüksek</span></td><td>yerel</td></tr>
+              <tr><td class="em">S1.3</td><td>ABD</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td>helal hat</td></tr>
+              <tr><td class="em">S1.3</td><td>Almanya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S1.3</td><td>Fas</td><td class="tnum">3</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S1.3</td><td>Cezayir</td><td class="tnum">3</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S2.1 — Gummy / jöle şeker üreticisi · toplam ~300</td></tr>
+              <tr><td class="em">S2.1</td><td>Almanya</td><td class="tnum">30</td><td><span class="tier t2">orta</span></td><td>Haribo/Katjes/Mederer — Rigo mevcut</td></tr>
+              <tr><td class="em">S2.1</td><td>İspanya</td><td class="tnum">30</td><td><span class="tier t2">orta</span></td><td>Vidal/Fini/Jake</td></tr>
+              <tr><td class="em">S2.1</td><td>Türkiye</td><td class="tnum">30</td><td><span class="tier t1">yüksek</span></td><td>Kervan/Bebeto — dev gummy ihracatçısı</td></tr>
+              <tr><td class="em">S2.1</td><td>İtalya</td><td class="tnum">20</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.1</td><td>Polonya</td><td class="tnum">18</td><td><span class="tier t2">orta</span></td><td>Otmuchow mevcut</td></tr>
+              <tr><td class="em">S2.1</td><td>Hollanda</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S2.1</td><td>İngiltere</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.1</td><td>Fransa</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td>Pierrot Gourmand mevcut</td></tr>
+              <tr><td class="em">S2.1</td><td>ABD</td><td class="tnum">25</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.1</td><td>Brezilya</td><td class="tnum">18</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.1</td><td>Meksika</td><td class="tnum">15</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.1</td><td>İran</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.1</td><td>Körfez</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td>helal</td></tr>
+              <tr><td class="em">S2.1</td><td>Endonezya</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.1</td><td>Malezya</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.1</td><td>Hindistan</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S2.1</td><td>Mısır</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.1</td><td>Rusya/BDT</td><td class="tnum">14</td><td><span class="tier t2">orta</span></td><td>Marmi mevcut</td></tr>
+              <tr><td class="em">S2.1</td><td>Tayland</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S2.2 — Helal/no-pork gummy & gummy-vitamin markası · toplam ~120</td></tr>
+              <tr><td class="em">S2.2</td><td>ABD</td><td class="tnum">30</td><td><span class="tier t2">orta</span></td><td>gummy-vitamin patlaması + helal niş</td></tr>
+              <tr><td class="em">S2.2</td><td>İngiltere</td><td class="tnum">15</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.2</td><td>Kanada</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td>Herbaland vb.</td></tr>
+              <tr><td class="em">S2.2</td><td>Körfez</td><td class="tnum">12</td><td><span class="tier t1">yüksek</span></td><td>helal-çekirdek</td></tr>
+              <tr><td class="em">S2.2</td><td>Malezya</td><td class="tnum">10</td><td><span class="tier t1">yüksek</span></td><td>helal</td></tr>
+              <tr><td class="em">S2.2</td><td>Endonezya</td><td class="tnum">10</td><td><span class="tier t1">yüksek</span></td><td>helal</td></tr>
+              <tr><td class="em">S2.2</td><td>Türkiye</td><td class="tnum">10</td><td><span class="tier t1">yüksek</span></td><td>yerel helal</td></tr>
+              <tr><td class="em">S2.2</td><td>Almanya</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.2</td><td>Avustralya</td><td class="tnum">7</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S2.2</td><td>Güney Afrika</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td>helal nüfus</td></tr>
+              <tr class="grp"><td colspan="5">S2.3 — Marshmallow / yumuşak şeker üreticisi · toplam ~80</td></tr>
+              <tr><td class="em">S2.3</td><td>ABD</td><td class="tnum">18</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.3</td><td>Almanya</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.3</td><td>İngiltere</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.3</td><td>Türkiye</td><td class="tnum">8</td><td><span class="tier t1">yüksek</span></td><td>yerel</td></tr>
+              <tr><td class="em">S2.3</td><td>Körfez</td><td class="tnum">6</td><td><span class="tier t2">orta</span></td><td>helal</td></tr>
+              <tr><td class="em">S2.3</td><td>Fransa</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S2.3</td><td>İspanya</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S2.3</td><td>Endonezya</td><td class="tnum">5</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.3</td><td>Malezya</td><td class="tnum">5</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.3</td><td>Mısır</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S2.3</td><td>Brezilya</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S2.4 — Bölgesel şekerleme devi (İran/Körfez/Latam) · toplam ~100</td></tr>
+              <tr><td class="em">S2.4</td><td>İran</td><td class="tnum">20</td><td><span class="tier t1">yüksek</span></td><td>Shirin Asal mevcut — şekerleme devi</td></tr>
+              <tr><td class="em">S2.4</td><td>Mısır</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.4</td><td>Körfez</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td>helal</td></tr>
+              <tr><td class="em">S2.4</td><td>Suudi Arabistan</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td>Alwefag/MCC mevcut</td></tr>
+              <tr><td class="em">S2.4</td><td>Cezayir</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S2.4</td><td>Fas</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S2.4</td><td>Pakistan</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S2.4</td><td>Orta Asya (UZ/KZ)</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S2.4</td><td>Meksika</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td>MICHOC mevcut</td></tr>
+              <tr><td class="em">S2.4</td><td>Brezilya</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S2.4</td><td>Kolombiya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S2.4</td><td>Irak</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S3.1 — Kolajen supplement markası · toplam ~250</td></tr>
+              <tr><td class="em">S3.1</td><td>ABD</td><td class="tnum">60</td><td><span class="tier t2">orta</span></td><td>en büyük kolajen pazarı</td></tr>
+              <tr><td class="em">S3.1</td><td>Almanya</td><td class="tnum">20</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S3.1</td><td>İngiltere</td><td class="tnum">20</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S3.1</td><td>Fransa</td><td class="tnum">12</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.1</td><td>İtalya</td><td class="tnum">12</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.1</td><td>İspanya</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.1</td><td>İsveç</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td>Swedish Nutra mevcut</td></tr>
+              <tr><td class="em">S3.1</td><td>Körfez</td><td class="tnum">15</td><td><span class="tier t2">orta</span></td><td>helal beauty-from-within</td></tr>
+              <tr><td class="em">S3.1</td><td>Malezya</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S3.1</td><td>Endonezya</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S3.1</td><td>Avustralya</td><td class="tnum">12</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.1</td><td>Japonya</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.1</td><td>Güney Kore</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td>K-beauty kolajen</td></tr>
+              <tr><td class="em">S3.1</td><td>Kanada</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.1</td><td>Hollanda</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.1</td><td>Polonya</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.1</td><td>Türkiye</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td>yerel</td></tr>
+              <tr><td class="em">S3.1</td><td>Norveç</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S3.2 — Nutrasötik fason üretici (CMO / private label) · toplam ~150</td></tr>
+              <tr><td class="em">S3.2</td><td>ABD</td><td class="tnum">35</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S3.2</td><td>Almanya</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S3.2</td><td>İtalya</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td>nutra CMO yoğun</td></tr>
+              <tr><td class="em">S3.2</td><td>Hindistan</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S3.2</td><td>İngiltere</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.2</td><td>İspanya</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.2</td><td>Kanada</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.2</td><td>Körfez</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td>helal CMO</td></tr>
+              <tr><td class="em">S3.2</td><td>Malezya</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S3.2</td><td>Endonezya</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.2</td><td>Polonya</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.2</td><td>Türkiye</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td>yerel</td></tr>
+              <tr><td class="em">S3.2</td><td>Hollanda</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.2</td><td>Güney Kore</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.2</td><td>Brezilya</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S3.3 — Fonksiyonel içecek / sporcu besini üreticisi · toplam ~100</td></tr>
+              <tr><td class="em">S3.3</td><td>ABD</td><td class="tnum">30</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S3.3</td><td>Almanya</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.3</td><td>İngiltere</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.3</td><td>İsveç</td><td class="tnum">6</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S3.3</td><td>Körfez</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td>helal</td></tr>
+              <tr><td class="em">S3.3</td><td>Malezya</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.3</td><td>Endonezya</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.3</td><td>Avustralya</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.3</td><td>Hollanda</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.3</td><td>İspanya</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S3.3</td><td>Türkiye</td><td class="tnum">5</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S3.3</td><td>Japonya</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S4.1 — Gıda hammadde / hidrokolloid distribütörü · toplam ~150</td></tr>
+              <tr><td class="em">S4.1</td><td>Almanya</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td>IMCD/Brenntag merkez</td></tr>
+              <tr><td class="em">S4.1</td><td>ABD</td><td class="tnum">15</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>İngiltere</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>Fransa</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>İtalya</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>İspanya</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>Hollanda</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>Körfez</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td>bölge re-export</td></tr>
+              <tr><td class="em">S4.1</td><td>Endonezya</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>Malezya</td><td class="tnum">6</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>Hindistan</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>Brezilya</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>Meksika</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>Rusya/BDT</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td>Almerro mevcut</td></tr>
+              <tr><td class="em">S4.1</td><td>Türkiye</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>Mısır</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>Güney Afrika</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.1</td><td>Vietnam</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td>SIM VN mevcut</td></tr>
+              <tr><td class="em">S4.1</td><td>Tayland</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S4.2 — İlaç excipient / pharma hammadde distribütörü · toplam ~80</td></tr>
+              <tr><td class="em">S4.2</td><td>Almanya</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td>Vivatis/Pluripac mevcut</td></tr>
+              <tr><td class="em">S4.2</td><td>ABD</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.2</td><td>İngiltere</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td>UD Chemie mevcut</td></tr>
+              <tr><td class="em">S4.2</td><td>İtalya</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.2</td><td>Hindistan</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S4.2</td><td>Körfez</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td>helal pharma</td></tr>
+              <tr><td class="em">S4.2</td><td>Endonezya</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.2</td><td>Malezya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.2</td><td>Türkiye</td><td class="tnum">5</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S4.2</td><td>Fransa</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.2</td><td>İspanya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.2</td><td>Brezilya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.2</td><td>Mısır</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S4.3 — Bölgesel gıda-katkı trader'ı (BDT/Körfez/Afrika) · toplam ~70</td></tr>
+              <tr><td class="em">S4.3</td><td>Rusya</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S4.3</td><td>Kazakistan</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.3</td><td>Özbekistan</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.3</td><td>Azerbaycan</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.3</td><td>Körfez</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td>re-export merkezi</td></tr>
+              <tr><td class="em">S4.3</td><td>Suudi Arabistan</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.3</td><td>Mısır</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.3</td><td>Cezayir</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.3</td><td>Fas</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.3</td><td>Nijerya</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.3</td><td>Kenya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S4.3</td><td>Güney Afrika</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S5.1 — Jöleli süt tatlısı / mousse / puding üreticisi · toplam ~220</td></tr>
+              <tr><td class="em">S5.1</td><td>Almanya</td><td class="tnum">25</td><td><span class="tier t2">orta</span></td><td>Ehrmann/Müller</td></tr>
+              <tr><td class="em">S5.1</td><td>Fransa</td><td class="tnum">20</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>İtalya</td><td class="tnum">15</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>İspanya</td><td class="tnum">12</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>İngiltere</td><td class="tnum">12</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>Hollanda</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td>FrieslandCampina mevcut</td></tr>
+              <tr><td class="em">S5.1</td><td>Polonya</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>Körfez</td><td class="tnum">18</td><td><span class="tier t2">orta</span></td><td>helal — Almarai</td></tr>
+              <tr><td class="em">S5.1</td><td>Mısır</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>Türkiye</td><td class="tnum">18</td><td><span class="tier t1">yüksek</span></td><td>Sütaş/Pınar yerel</td></tr>
+              <tr><td class="em">S5.1</td><td>Endonezya</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>Malezya</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>Rusya/BDT</td><td class="tnum">15</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>İran</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>Fas</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>Cezayir</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>Yunanistan</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>Tunus</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.1</td><td>Lübnan</td><td class="tnum">3</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S5.2 — Dondurma / marshmallow-bazlı tatlı üreticisi · toplam ~130</td></tr>
+              <tr><td class="em">S5.2</td><td>Almanya</td><td class="tnum">12</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.2</td><td>İtalya</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td>gelato</td></tr>
+              <tr><td class="em">S5.2</td><td>Fransa</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.2</td><td>Türkiye</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td>yerel</td></tr>
+              <tr><td class="em">S5.2</td><td>Körfez</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td>helal</td></tr>
+              <tr><td class="em">S5.2</td><td>Mısır</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.2</td><td>Endonezya</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.2</td><td>Malezya</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.2</td><td>İspanya</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.2</td><td>ABD</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.2</td><td>Rusya/BDT</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.2</td><td>İran</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.2</td><td>Hindistan</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.2</td><td>Pakistan</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S5.2</td><td>Suudi Arabistan</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S6.1 — Kolajen casing üreticisi · toplam ~50</td></tr>
+              <tr><td class="em">S6.1</td><td>İspanya</td><td class="tnum">6</td><td><span class="tier t1">yüksek</span></td><td>Viscofan merkez (mevcut grup)</td></tr>
+              <tr><td class="em">S6.1</td><td>Almanya</td><td class="tnum">6</td><td><span class="tier t2">orta</span></td><td>Kalle</td></tr>
+              <tr><td class="em">S6.1</td><td>İngiltere</td><td class="tnum">4</td><td><span class="tier t2">orta</span></td><td>Devro</td></tr>
+              <tr><td class="em">S6.1</td><td>İtalya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S6.1</td><td>ABD</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S6.1</td><td>Brezilya</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S6.1</td><td>Çin</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td>niş</td></tr>
+              <tr><td class="em">S6.1</td><td>Japonya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td>Nitta Casings</td></tr>
+              <tr><td class="em">S6.1</td><td>Türkiye</td><td class="tnum">4</td><td><span class="tier t2">orta</span></td><td>yerel</td></tr>
+              <tr><td class="em">S6.1</td><td>Hindistan</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S6.2 — Helal şarküteri / sosis-sucuk üreticisi · toplam ~100</td></tr>
+              <tr><td class="em">S6.2</td><td>Körfez</td><td class="tnum">15</td><td><span class="tier t2">orta</span></td><td>helal şarküteri</td></tr>
+              <tr><td class="em">S6.2</td><td>Suudi Arabistan</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S6.2</td><td>Türkiye</td><td class="tnum">15</td><td><span class="tier t1">yüksek</span></td><td>sucuk/sosis yerel</td></tr>
+              <tr><td class="em">S6.2</td><td>Brezilya</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td>helal et ihracatçısı</td></tr>
+              <tr><td class="em">S6.2</td><td>Malezya</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S6.2</td><td>Endonezya</td><td class="tnum">8</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S6.2</td><td>Almanya</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td>helal hat</td></tr>
+              <tr><td class="em">S6.2</td><td>Fransa</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td>helal hat</td></tr>
+              <tr><td class="em">S6.2</td><td>İngiltere</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S6.2</td><td>Mısır</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S6.2</td><td>Pakistan</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S6.2</td><td>Güney Afrika</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S7.1 — İçecek durultma (wine/juice fining) ürün üreticisi · toplam ~70</td></tr>
+              <tr><td class="em">S7.1</td><td>İtalya</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td>L'Enotecnica mevcut</td></tr>
+              <tr><td class="em">S7.1</td><td>Fransa</td><td class="tnum">12</td><td><span class="tier t2">orta</span></td><td>şarap</td></tr>
+              <tr><td class="em">S7.1</td><td>İspanya</td><td class="tnum">10</td><td><span class="tier t2">orta</span></td><td></td></tr>
+              <tr><td class="em">S7.1</td><td>Portekiz</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S7.1</td><td>ABD</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S7.1</td><td>Şili</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S7.1</td><td>Arjantin</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S7.1</td><td>Güney Afrika</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S7.1</td><td>Avustralya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S7.1</td><td>Almanya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr class="grp"><td colspan="5">S7.2 — Mikroenkapsülasyon / kozmetik jelatin kullanıcısı · toplam ~50</td></tr>
+              <tr><td class="em">S7.2</td><td>ABD</td><td class="tnum">10</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S7.2</td><td>Almanya</td><td class="tnum">8</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S7.2</td><td>Fransa</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td>kozmetik</td></tr>
+              <tr><td class="em">S7.2</td><td>İtalya</td><td class="tnum">5</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S7.2</td><td>Güney Kore</td><td class="tnum">6</td><td><span class="tier t3">düşük</span></td><td>K-beauty</td></tr>
+              <tr><td class="em">S7.2</td><td>İsviçre</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S7.2</td><td>İspanya</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S7.2</td><td>Körfez</td><td class="tnum">4</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+              <tr><td class="em">S7.2</td><td>Japonya</td><td class="tnum">3</td><td><span class="tier t3">düşük</span></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">Toplam 254 arama-birimi satırı · 19 alt-ICP × ortalama ~13 ülke. Ham toplam ~2.270, dedup sonrası benzersiz ~2.000.</p>
+      </div>
+    </section>
+
+    <!-- 08 SEARCH INTELLIGENCE -->
+    <section id="arama">
+      <div class="sec-head">
+        <span class="eyebrow">08 — Arama Zekâsı</span>
+        <h2>Bu firmalar fiilen nerede bulunur</h2>
+        <p>Fuar katılımcı listeleri ve dernek üye listeleri, <strong>aradığımız firma havuzunun ta kendisidir</strong>. Kullanım
+          sırası: fuar listeleri → dernek/helal tedarik kaynakları → bölge kümeleri + yerel-dil dizinler → LinkedIn'den
+          satınalma/AR-GE karar vericisi. Her mevcut müşteri = aynı fuarda lookalike tohumu.</p>
+      </div>
+
+      <div class="block">
+        <h3>🥇 Uluslararası fuarlar (katılımcı listesi = hedef havuz)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Fuar</th><th>Yer</th><th>Neden / hangi segment</th></tr></thead>
+            <tbody>
+              <tr><td class="em">ISM Köln</td><td>Almanya</td><td>Dünyanın en büyük şeker fuarı — gummy/jöle alıcı havuzu (S2). Rigo/Haribo, Trolli buradan.</td></tr>
+              <tr><td class="em">Vitafoods Europe</td><td>Cenevre / Barselona</td><td>🔑 Nutrasötik &amp; kolajen — S3 için altın (Swedish Nutra, Vitafoods katılımcı)</td></tr>
+              <tr><td class="em">CPhI Worldwide</td><td>Değişken (AB)</td><td>İlaç hammadde &amp; kapsül — S1 + S4.2 (ACG, excipient distribütörleri)</td></tr>
+              <tr><td class="em">Fi Europe (Food ingredients)</td><td>Değişken (AB)</td><td>Gıda hammadde + distribütör pavyonları — S4, S5 (IMCD/Brenntag)</td></tr>
+              <tr><td class="em">Gulfood / Gulfood Mfg</td><td>Dubai</td><td>🔑 HELAL tedarik merkezi — tüm segmentler, helal-çekirdek pazar (S2/S5/S6)</td></tr>
+              <tr><td class="em">MIHAS</td><td>Malezya</td><td>Helal showcase — SE Asya helal gummy/supplement/şarküteri (S2.2, S3, S6.2)</td></tr>
+              <tr><td class="em">IFFA Frankfurt</td><td>Almanya</td><td>Et işleme &amp; casing — S6 (Viscofan, Devro, Kalle katılımcı)</td></tr>
+              <tr><td class="em">Anuga / SIAL</td><td>Köln / Paris</td><td>Gıda &amp; süt tatlısı buyer — S5 (FrieslandCampina ekosistemi)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">Kapsül ek: CPhI India / IPHEX (Hindistan) · Şarap fining ek: SIMEI Milano, Vinitech.</p>
+      </div>
+
+      <div class="block">
+        <h3>🥇 Dernekler &amp; helal tedarik kaynakları (üye/dizin listesi)</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Tip</th><th>Kaynak</th><th>Hangi segment</th></tr></thead>
+            <tbody>
+              <tr><td class="em">Helal (çapraz-segment)</td><td>SMIIC/OIC dizinleri, helal sertifika otoriteleri (JAKIM-MY, MUI-ID, ESMA-UAE, GIMDES-TR)</td><td>Tüm S — helal-arayan üretici listesi</td></tr>
+              <tr><td class="em">İlaç excipient</td><td>IPEC (excipient council), Pharmexcil (Hindistan)</td><td>S1, S4.2</td></tr>
+              <tr><td class="em">Şekerleme</td><td>BDSI (DE), NCA (US), ŞEMAD (TR)</td><td>S2</td></tr>
+              <tr><td class="em">Nutrasötik</td><td>CRN, NPA (US), NutraIngredients dizini</td><td>S3</td></tr>
+              <tr><td class="em">B2B dizin</td><td>kompass, europages, indiamart, made-in-china</td><td>boşluk tarama (tüm S)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid g-2 block">
+        <div class="card">
+          <span class="ico">Bölge / küme</span>
+          <h3>Yoğunlaşılacak kümeler</h3>
+          <ul class="tick" style="margin-top:.8rem">
+            <li><b>Hindistan:</b> Mumbai, Gujarat, Hyderabad (kapsül/softgel)</li>
+            <li><b>AB:</b> Almanya (gummy/distribütör), İspanya (gummy/casing), İtalya (nutra/fining)</li>
+            <li><b>Helal-çekirdek:</b> Dubai (re-export), İran, Mısır, Endonezya/Malezya</li>
+            <li><b>ABD:</b> kolajen + gummy-vitamin markaları (CA/UT/FL)</li>
+            <li><b>Latam:</b> Meksika, Brezilya (şekerleme + helal et)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="ico">Yerel dil terimleri</span>
+          <h3>Dizin / arama (boşluk bırakma)</h3>
+          <ul class="tick" style="margin-top:.8rem">
+            <li><b>EN:</b> gelatin capsule manufacturer, gummy candy producer, collagen peptide brand, halal gelatin</li>
+            <li><b>Helal:</b> halal gummy, kapsul halal, halal collagen supplement</li>
+            <li><b>DE:</b> Fruchtgummi-Hersteller, Kapselhersteller, Kollagen</li>
+            <li><b>ES/IT:</b> fabricante gominolas, produttore capsule, gelatina</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="ct">Risk notu</div>
+        <p>Helal tedarik kaynakları (Gulfood/MIHAS/sertifika listeleri) atlanırsa wedge'in en keskin olduğu alıcılar kaçar.
+          Aynı şekilde Vitafoods (kolajen) ve CPhI (kapsül) saf gıda fuarıyla bulunamaz — segmente özel fuar şart.</p>
+      </div>
+    </section>
+
+    <!-- 09 PROJECTION -->
+    <section id="projeksiyon">
+      <div class="sec-head">
+        <span class="eyebrow">09 — Gelir Projeksiyonu</span>
+        <h2>Üç senaryoda tekrarlı ciro</h2>
+        <p>Model, Halavet'in <strong>gerçek ihracat datasına</strong> çapalandı (mevcut müşteri ort. ~$3M, medyan ~$1.2M/yıl).
+          Yeni müşteri rampa ettiği için per-müşteri varsayımı <strong>kasıtlı olarak bu ortalamanın altında</strong> tutuldu:
+          kötümser <strong>$150k</strong>, gerçekçi <strong>$500k</strong>, iyimser <strong>$1.2M</strong> yıllık tekrarlı hacim.</p>
+      </div>
+
+      <div class="block">
+        <h3>Huni — havuzdan müşteriye (gerçekçi senaryo, yıl 1)</h3>
+        <div class="funnel">
+          <div class="fstep"><div class="fbar" style="width:100%"></div><div class="fmeta"><span class="fnum">~2.000</span><span class="flab">Benzersiz hedef havuz</span></div></div>
+          <div class="fstep"><div class="fbar" style="width:70%"></div><div class="fmeta"><span class="fnum">~1.400</span><span class="flab">Karar verici erişimi (DM %70, fazlı)</span></div><span class="fconv">%70</span></div>
+          <div class="fstep"><div class="fbar" style="width:32%"></div><div class="fmeta"><span class="fnum">~56</span><span class="flab">Pozitif yanıt</span></div><span class="fconv">%4</span></div>
+          <div class="fstep"><div class="fbar" style="width:18%"></div><div class="fmeta"><span class="fnum">~22</span><span class="flab">Toplantı + numune/kalite süreci</span></div><span class="fconv">~%40</span></div>
+          <div class="fstep"><div class="fbar" style="width:9%"></div><div class="fmeta"><span class="fnum">~5</span><span class="flab">Yeni müşteri (yıl 1)</span></div><span class="fconv">~%22</span></div>
+        </div>
+        <p class="chart-note">Endüstriyel hammadde döngüsü uzun (numune → kalite onayı → ilk konteyner) → toplantı→satış temkinli. Havuz fazlı işlenir (önce ALTIN üçlü).</p>
+      </div>
+
+      <div class="block">
+        <h3>Üç senaryo · yıl 1 ve 3 yıl</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Senaryo</th><th class="tnum">Müşteri /Y1</th><th class="tnum">Müşteri değeri</th><th class="tnum">Yıl 1</th><th class="tnum">Yıl 2</th><th class="tnum">Yıl 3</th><th class="tnum">3 Yıl Toplam</th><th class="tnum">Y3 aktif</th></tr></thead>
+            <tbody>
+              <tr><td class="em">Kötümser</td><td class="tnum">~2</td><td class="tnum">$150k</td><td class="tnum">$180k</td><td class="tnum">$645k</td><td class="tnum">$1.06M</td><td class="tnum em">~$1.9M</td><td class="tnum">~7</td></tr>
+              <tr class="hl"><td class="em">Gerçekçi</td><td class="tnum">~5</td><td class="tnum">$500k</td><td class="tnum">$1.5M</td><td class="tnum">$5.4M</td><td class="tnum">$8.8M</td><td class="tnum em accent">~$15.7M</td><td class="tnum">~18</td></tr>
+              <tr><td class="em">İyimser</td><td class="tnum">~10</td><td class="tnum">$1.2M</td><td class="tnum">$7.2M</td><td class="tnum">$25.8M</td><td class="tnum">$42.2M</td><td class="tnum em">~$75.2M</td><td class="tnum">~35</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="chart-note">Model: Yıl N aktif = (önceki aktif × 0.85 elde tutma) + (önceki yeni × 1.3 büyüme); Yıl-1 rampa ×0.6. Gelir = aktif müşteri × değer.</p>
+      </div>
+
+      <div class="block">
+        <h3>3 yıllık toplam ciro — senaryo karşılaştırması</h3>
+        <div class="chart">
+          <div class="bar muted"><div class="bar__top"><span class="bar__name">Kötümser</span><span class="bar__val">~$1.9M</span></div><div class="bar__track"><div class="bar__fill" style="width:2.5%"></div></div></div>
+          <div class="bar lead-bar"><div class="bar__top"><span class="bar__name">Gerçekçi</span><span class="bar__val">~$15.7M</span></div><div class="bar__track"><div class="bar__fill" style="width:20.9%"></div></div></div>
+          <div class="bar"><div class="bar__top"><span class="bar__name">İyimser</span><span class="bar__val">~$75.2M</span></div><div class="bar__track"><div class="bar__fill" style="width:100%"></div></div></div>
+        </div>
+        <p class="chart-note">Asıl değer tekrarda: %85 elde tutma + yıllık yeni kazanım ile 3. yıl, yıl 1'in birkaç katı. Distribütör (S4) müşterileri "sayı"dan çok hacim çarpanı getirir.</p>
+      </div>
+
+      <div class="callout">
+        <div class="ct">Stratejik okuma — sağduyu kontrolü</div>
+        <p>Gerçekçi senaryo Yıl-3'te ~18 aktif müşteri × ort. $500k ≈ $9M/yıl run-rate. Halavet'in mevcut Top-50 3. taraf cirosu
+          zaten <strong>~$136M/yıl (ort. $3M/müşteri)</strong> → bu projeksiyon, müşteri tabanını <strong>ortalamanın altı yeni
+          hesaplarla mütevazı oranda büyütmek</strong> demek. Yani model iyimser değil, temkinli. Kötümser senaryo dahi
+          (~$1.9M/3yıl) danışmanlık hizmet bedelini fazlasıyla karşılar — tek bir orta müşteri tüm yıllık ücreti çıkarır.</p>
+      </div>
+    </section>
+
+    <!-- 10 ROADMAP / BRIDGE -->
+    <section id="yol">
+      <div class="sec-head">
+        <span class="eyebrow">10 — Uygulama Yol Haritası</span>
+        <h2>Fırsattan imzalı müşteriye</h2>
+        <p>Bu araştırma fırsatın <strong>haritasıdır</strong>. Haritayı sahadaki gerçek firma listesine ve ilk temaslara çevirmek,
+          firmanın en kaliteli kanalını (fuar/dernek + hedefli erişim) izleyen yönetilen bir süreçtir.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step"><h3>Havuzu sahaya indirme &amp; kalibrasyon</h3><p>Fuar/dernek listelerinden (ISM, Vitafoods, CPhI, Gulfood, IFFA) ve helal tedarik kaynaklarından gerçek firma listesi çıkarılır; tahmini E'ler gerçek sayıma çekilir. Her mevcut müşteri lookalike tohumu olarak kullanılır.</p></div>
+        <div class="step"><h3>Karar verici erişimi</h3><p>Her firmada <strong>satınalma + AR-GE/formülasyon</strong> karar vericisi tespit edilir; kişiselleştirilmiş e-posta + LinkedIn ile doğrudan erişim kurulur.</p></div>
+        <div class="step"><h3>"Saf-helal + tedarik güvenliği" teması</h3><p>Fiyat değil; <strong>dedicated helal + AB'de yerinde stok + solar/ESG</strong> ile ikinci-kaynak konumu. Numune + sertifika paketiyle "mevcut tedarikçim var" itirazını baştan karşılayan mesaj.</p></div>
+        <div class="step"><h3>Takip &amp; dönüşüm ölçümü</h3><p>Sistematik takip ile pozitif→müşteri hunisi gerçek veriyle güncellenir; projeksiyon "taslak"tan çıkıp kanıta dayalı plana döner.</p></div>
+      </div>
+
+      <div class="block">
+        <h3>Çıktıyı keskinleştirecek firma teyitleri</h3>
+        <p>Aşağıdaki girdiler geldiğinde E tahminleri ve müşteri değeri sabitlenir; model "taslak"tan çıkar.</p>
+        <ul class="tick">
+          <li><b>Fiyat &amp; grade:</b> jelatin/kolajen $/kg ve bloom kırılımı → gelir çapası ve hedef tip netleşir.</li>
+          <li><b>MOQ / lead-time:</b> küçük palet alınıyorsa supplement markaları açılır (E artar); sadece konteyner ise büyük üretici/distribütör odak.</li>
+          <li><b>Sertifikalar:</b> hangi helal otoritesi + ISO/GMP/FSSC + FDA/EU/pharmacopeia → hangi segment/pazar kapısının açık olduğu.</li>
+          <li><b>Hacimli pazarlar:</b> 70 ülkenin en güçlü 5–10'u → coğrafya sıralaması gerçek dataya göre yeniden ağırlıklandırılır.</li>
+        </ul>
+      </div>
+
+      <div class="nextstep">
+        <span class="eyebrow">Sonraki Adım</span>
+        <h3 style="margin-top:14px">Haritayı canlı bir ihracat pipeline'ına çevirmek</h3>
+        <p>Halavet'in ürünü hazır, ayrışması net (Avrupa'nın en büyük jelatin + kolajen üreticisi · saf-helal · solar) ve pazar talebi <span class="accent">kendi
+          ihracat datasıyla kanıtlı</span>. Eksik olan tek halka, bu hedef pazarlardaki doğru alıcıları bulup karar vericilerine
+          ulaşmak ve süreci takip etmek — Tibexa Global'in Türk ihracatçılar için uçtan uca yürüttüğü iş budur. Bu rapordaki
+          haritanın imzalı müşterilere dönüştüğü yer.</p>
+      </div>
+    </section>
+
+    <!-- 11 METHODOLOGY -->
+    <section id="metodoloji">
+      <div class="sec-head">
+        <span class="eyebrow">11 — Metodoloji &amp; Kaynaklar</span>
+        <h2>Şeffaflık notu</h2>
+      </div>
+
+      <div class="note-box">
+        <p><strong>Profil temeli:</strong> halavet.com.tr + firmanın <strong>gerçek Top-50 ihracat datası</strong> (müşteri × sevkiyat ×
+          ağırlık). Segmentler bu fiili müşteri tipolojisinden türetildi — her segment kanıtlı müşteriyle çapalı.</p>
+        <p><strong>Hedef firma tahminleri (E):</strong> pazar-proxy ve dizin yoğunluğu dayanaklıdır; çoğu orta/düşük güven ve
+          <strong>bilinçli olarak şişirilmemiştir</strong>. İlk kalibrasyon turunda (gerçek arama) gerçeğe çekilir.</p>
+        <p><strong>Gelir modeli:</strong> per-müşteri çapa firmanın gerçek ihracat datasından (sağlam, hatta temkinli alınmış);
+          dönüşüm oranları bir deneme kampanyasıyla ölçülecek çerçeve varsayımlarıdır. Bu bir taahhüt değil, güvenle çizilmiş tabandır.</p>
+        <p><strong>Açık girdiler:</strong> fiyat ($/kg), sertifika otoriteleri, MOQ ve hacimli pazarlar firma teyidiyle sabitlenecek
+          (soru dokümanı: 00_research/questions.md).</p>
+      </div>
+
+      <div class="block">
+        <h3>Pazar verisi kaynakları</h3>
+        <ul class="sources">
+          <li>MarketGrowthReports — Halal Gelatin Market ($459M → $660M, 2030)</li>
+          <li>Tridge / Fact.MR — Edible Bovine Gelatin fiyat &amp; pazar ($8–15/kg, grade kırılımı)</li>
+          <li>IMARC / Expert Market Research — Top Gelatin &amp; Bovine Gelatin Companies (Gelita, Rousselot, Weishardt, Italgelatine)</li>
+          <li>Grand View Research — Gelatin Market ($381 Mlr, CAGR ~%5.5)</li>
+          <li>Halavet — Top-50 ihracat datası (firma kaynağı, gelir çapası)</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="frow">
+    <div class="fbrand">
+      <div class="brand" style="margin-bottom:0">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" style="width:22px;height:22px">
+          <path d="M6 3 H18 L22.5 9 L12 22 L1.5 9 Z" stroke="#C89010" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M1.5 9 H22.5 M9 3 L7 9 L12 22 M15 3 L17 9 L12 22" stroke="#C89010" stroke-width="0.8" opacity="0.55"/>
+        </svg>
+        <span class="wm">TIBEXA <span>GLOBAL</span></span>
+      </div>
+      <p class="ftag">Türk ihracatçılar için uluslararası alıcı geliştirme — veri toplama, hedefli erişim ve takip, uçtan uca.</p>
+    </div>
+    <div class="fmeta">Halavet · Pazar Araştırması<br>30 Haziran 2026<br>Gizli · Firmaya Özel</div>
+  </div>
+  <p class="disclaimer">Bu doküman Tibexa Global tarafından Halavet'e özel olarak hazırlanmıştır. İçerdiği tahmin ve
+    projeksiyonlar kalibre edilecek çerçevelerdir; mali taahhüt teşkil etmez.</p>
+</footer>
+
+<script>
+  (function () {
+    // Reading progress bar
+    var prog = document.getElementById('progress');
+    function onScroll() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      prog.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Scroll-spy
+    var links = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+    var byId = {};
+    links.forEach(function (l) {
+      var id = l.getAttribute('href').slice(1);
+      (byId[id] = byId[id] || []).push(l);
+    });
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (l) { l.classList.remove('active'); });
+          (byId[e.target.id] || []).forEach(function (l) { l.classList.add('active'); });
+          var active = (byId[e.target.id] || [])[1] || (byId[e.target.id] || [])[0];
+          var strip = document.getElementById('topnavM');
+          if (active && strip && getComputedStyle(strip).display !== 'none') {
+            active.scrollIntoView({ inline: 'center', block: 'nearest' });
+          }
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { obs.observe(s); });
+  })();
+</script>
+
+</body>
+</html>

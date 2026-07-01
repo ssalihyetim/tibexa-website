@@ -3,61 +3,76 @@
 User-agent: *
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 # --- Yapay zekâ / yanıt motoru botları (AEO) ---
 # Tibexa içeriğinin AI yanıt motorlarında görünmesini açıkça destekliyoruz.
-# /teklif/ (müşteriye özel teklifler) tüm botlara kapalı tutulur.
+# /teklif/ (müşteriye özel teklifler) ve /rapor/ (müşteriye özel ön araştırma
+# raporları) tüm botlara kapalı tutulur.
 
 User-agent: GPTBot
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 User-agent: Claude-Web
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 User-agent: meta-externalagent
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 User-agent: DuckAssistBot
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 User-agent: CCBot
 Allow: /
 Disallow: /teklif/
+Disallow: /rapor/
 
 Sitemap: https://tibexa.com/sitemap.xml
